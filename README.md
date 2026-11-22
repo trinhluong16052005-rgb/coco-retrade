@@ -2,6 +2,8 @@
 
 Hướng dẫn nhận dữ liệu và chạy từ GitHub: [docs/CHAY-TU-GITHUB.md](docs/CHAY-TU-GITHUB.md).
 
+Bản bàn giao đầy đủ, gồm mã nguồn, SQL và ảnh/video: [Tải ZIP trong Releases](https://github.com/trinhluong16052005-rgb/coco-retrade/releases/tag/ban-giao-20261122).
+
 # CoCo ReTrade
 
 Ứng dụng ký gửi và mua bán thời trang đã qua sử dụng, có kiểm định bởi CoCo. Dự án dùng .NET 10, SQL Server, ASP.NET Core Identity, EF Core, Bootstrap 5 và xUnit. Giao diện và thông báo dùng tiếng Việt; số tiền hiển thị theo dạng **10,000 VNĐ**. Mã trạng thái, tên API và tên lớp trong mã nguồn vẫn giữ nguyên để tránh thay đổi hợp đồng dữ liệu.

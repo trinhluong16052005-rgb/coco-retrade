@@ -2,13 +2,13 @@
 
 Kho GitHub công khai chứa mã nguồn website, migration SQL, kiểm thử và tài nguyên giao diện có thể chia sẻ.
 
-Dữ liệu tài khoản, đơn hàng, số dư, ảnh tải lên và tệp .bak không nằm trong Git. Video banner được bàn giao riêng để giữ kho mã nguồn gọn và tránh đưa tệp lớn vào lịch sử Git.
+Dữ liệu SQL, ảnh tải lên và video không nằm trong lịch sử Git. Các tệp này có trong gói ZIP đầy đủ ở mục Releases.
 
 ## Có gói bàn giao đầy đủ
 
-Lấy gói ZIP đầy đủ trực tiếp từ chủ dự án qua kênh riêng. Giải nén, đọc HUONG_DAN_KHOI_PHUC.md rồi chạy các script kiểm tra, khôi phục SQL và khởi động trong gói đó. Gói đã được chuẩn bị với đường dẫn tương đối và database mới để không ghi đè dữ liệu sẵn có.
+Tải [CoCoReTrade_BanGiao_20261122.zip trong Releases](https://github.com/trinhluong16052005-rgb/coco-retrade/releases/tag/ban-giao-20261122). Giải nén, đọc HUONG_DAN_KHOI_PHUC.md rồi chạy các script kiểm tra, khôi phục SQL và khởi động trong gói đó. Gói đã được chuẩn bị với đường dẫn tương đối và database mới để không ghi đè dữ liệu sẵn có.
 
-Không tải gói ZIP chứa dữ liệu thật lên kho công khai.
+Gói ZIP là bản dữ liệu tại thời điểm đóng gói ngày 22/11/2026, không tự cập nhật theo website đang chạy. Kích thước: 303.166.981 byte. SHA-256: `9A335277954421AF89F881B357B8B7C278CC64F031AB2C8A8902ADBDDA4F253E`.
 
 ## Chạy một database mới
 
