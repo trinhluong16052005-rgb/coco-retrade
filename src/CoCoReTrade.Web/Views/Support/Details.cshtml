@@ -1,0 +1,35 @@
+@model SupportTicketDetails
+@{
+    ViewData["Title"] = Model.Ticket.Subject;
+    var myId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+}
+<section class="support-detail-page" aria-labelledby="support-detail-title">
+<div class="support-detail-back"><a asp-action="Index">← Các yêu cầu hỗ trợ</a></div>
+<div class="eyebrow"><span id="support-ticket-status">@(Model.Ticket.Status == SupportTicketStatus.Open ? "Đang xử lý" : "Đã đóng")</span></div>
+<h1 id="support-detail-title" class="page-title">@Model.Ticket.Subject</h1>
+<p id="support-connection-status" class="small text-muted" role="status" aria-live="polite">Trao đổi với CoCo và xem phản hồi tại đây.</p>
+<div id="support-thread" class="panel message-thread mb-3" role="log" aria-live="polite"
+     aria-label="Nội dung hỗ trợ" data-ticket-id="@Model.Ticket.Id" data-current-user-id="@myId"
+     data-api-url="/api/v1/support/@Model.Ticket.Id">
+    @foreach (var message in Model.Messages)
+    {
+        <div class="message-row @(message.SenderId == myId ? "mine" : "theirs")" data-message-id="@message.Id">
+            <div class="message-bubble"><p class="mb-1" style="white-space:pre-wrap">@message.Body</p><small>@message.CreatedAtUtc.ToLocalTime().ToString("dd/MM HH:mm")</small></div>
+        </div>
+    }
+</div>
+@if (Model.Ticket.Status == SupportTicketStatus.Open)
+{
+    <form id="support-reply-form" asp-action="Reply" method="post" class="panel support-reply-panel">
+        <input type="hidden" name="id" value="@Model.Ticket.Id" />
+        <label for="body" class="form-label">Trả lời CoCo</label>
+        <textarea id="body" name="body" class="form-control" rows="2" minlength="3" maxlength="2000" required></textarea>
+        <div id="support-error" class="text-danger small mt-2" role="alert" hidden></div>
+        <div class="support-reply-actions"><button type="submit" class="btn btn-wine">Gửi trả lời</button></div>
+    </form>
+}
+</section>
+
+@section Scripts {
+    <script src="~/js/support-ticket.js" asp-append-version="true"></script>
+}

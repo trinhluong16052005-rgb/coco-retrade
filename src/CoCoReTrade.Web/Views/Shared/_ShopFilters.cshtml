@@ -1,0 +1,42 @@
+@model ProductFilter
+@{
+    var f = Model;
+    var sellerId = ViewBag.SellerId as string;
+    var count = new[] { !string.IsNullOrWhiteSpace(f.Category), !string.IsNullOrWhiteSpace(f.Brand),
+        !string.IsNullOrWhiteSpace(f.Size), f.MinPrice.HasValue, f.MaxPrice.HasValue,
+        f.MinCondition.HasValue }.Count(x => x);
+}
+<form method="get" class="catalog-controls" data-catalog-form>
+    <div class="catalog-sort">
+        <label for="Sort" class="visually-hidden">Sắp xếp sản phẩm</label>
+        <select id="Sort" name="Sort" data-catalog-sort>
+            <option value="newest" selected="@(f.Sort == "newest")">Vừa cập bến CoCo</option>
+            <option value="price_asc" selected="@(f.Sort == "price_asc")">Giá tăng dần</option>
+            <option value="price_desc" selected="@(f.Sort == "price_desc")">Giá giảm dần</option>
+            <option value="popular" selected="@(f.Sort == "popular")">Được yêu thích nhất</option>
+        </select>
+    </div>
+    <div class="catalog-search-row">
+        <div class="catalog-search-field">
+            <label class="visually-hidden" for="Search">Tìm thương hiệu hoặc sản phẩm</label>
+            <input id="Search" name="Search" type="search" value="@f.Search" placeholder="Tìm thương hiệu hoặc sản phẩm" />
+            <button type="submit" aria-label="Tìm kiếm"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#search" /></svg></button>
+        </div>
+        <button type="button" class="catalog-filter-button" data-filter-toggle aria-expanded="false" aria-haspopup="dialog" aria-controls="catalog-filters">
+            Bộ lọc @(count > 0 ? $"({count})" : "") <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#filter" /></svg>
+        </button>
+    </div>
+    <dialog id="catalog-filters" class="catalog-filter-panel" aria-labelledby="catalog-filters-title">
+        <header class="catalog-filter-head"><h2 id="catalog-filters-title">Bộ lọc</h2><button type="button" data-filter-close aria-label="Đóng bộ lọc">×</button></header>
+        <div class="catalog-filter-grid">
+            <div><label class="form-label" for="Category">Danh mục</label><select class="form-select" id="Category" name="Category"><option value="">Tất cả danh mục</option>@foreach (var category in ProductCategories.Main) { <option value="@category" selected="@(ProductCategories.Matches(f.Category ?? "", category))">@ProductCategories.Display(category)</option> }</select></div>
+            <div><label class="form-label" for="Brand">Thương hiệu</label><input class="form-control" id="Brand" name="Brand" value="@f.Brand" placeholder="Ví dụ: Zara, COS" /></div>
+            <div><label class="form-label" for="Size">Kích cỡ</label><select class="form-select" id="Size" name="Size"><option value="">Tất cả kích cỡ</option>@foreach (var size in ProductSizing.Clothing) { <option value="@size" selected="@(f.Size == size)">@UiText.For(size)</option> }</select></div>
+            <div><label class="form-label" for="MinCondition">Tình trạng</label><select class="form-select" id="MinCondition" name="MinCondition"><option value="">Tất cả tình trạng</option>@foreach (var condition in new[] { 80, 85, 90, 95, 99 }) { <option value="@condition" selected="@(f.MinCondition == condition)">Độ mới từ @condition%</option> }</select></div>
+            <div><label class="form-label" for="MinPrice">Giá từ (VNĐ)</label><input class="form-control" id="MinPrice" name="MinPrice" inputmode="numeric" autocomplete="off" data-vnd-price value="@f.MinPrice" placeholder="0" /></div>
+            <div><label class="form-label" for="MaxPrice">Giá đến (VNĐ)</label><input class="form-control" id="MaxPrice" name="MaxPrice" inputmode="numeric" autocomplete="off" data-vnd-price value="@f.MaxPrice" placeholder="Không giới hạn" /></div>
+            <div class="catalog-filter-actions"><button class="btn btn-wine" type="submit">Áp dụng</button><a class="btn btn-outline-wine" asp-action="Index" asp-route-id="@sellerId">Đặt lại</a></div>
+        </div>
+    </dialog>
+    <noscript><style>.catalog-filter-button{display:none}dialog.catalog-filter-panel:not([open]){display:block;position:static;width:100%;height:auto;max-height:none;border:0}.catalog-filter-head button{display:none}</style></noscript>
+</form>

@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 1,
+  "status": "Historical licensed asset provenance. Current homepage photography is recorded in coco-content-media.json and coco-content-usage.json.",
+  "verifiedOn": "2026-11-17",
+  "purpose": "Licensed real editorial media for homepage. Not CoCo inventory, premises, staff or customers. Existing private product photos were not copied into public editorial media.",
+  "photos": [
+    {
+      "key": "home-bag-hero",
+      "use": "hero",
+      "publicUrl": "/images/editorial/home-bag-hero.webp",
+      "width": 2400,
+      "height": 1600,
+      "bytes": 109942,
+      "sourcePage": "https://www.shopify.com/stock-photos/photos/light-pink-purse",
+      "sourceImage": "https://burst.shopifycdn.com/photos/light-pink-purse.jpg?exif=0&iptc=0",
+      "downloadUrl": "https://burst.shopifycdn.com/photos/light-pink-purse.jpg?exif=0&iptc=0&width=2400",
+      "license": {
+        "name": "Burst Photo License",
+        "url": "https://www.shopify.com/stock-photos/licenses/shopify-some-rights-reserved",
+        "terms": "https://www.shopify.com/stock-photos/legal/terms",
+        "permits": "Free adaptation and display for commercial and noncommercial uses; attribution encouraged. Do not resell as stock photos, claim authorship or create a competing stock-photo service."
+      },
+      "altVi": "Túi đeo vai hồng nhạt trên nền tường trắng",
+      "objectPosition": "50% 70%",
+      "cropRecommendation": "3:2 full image. At 2:1 use object-position 50% 85%; avoid wider than 2.2:1 or tassel/top may be cropped.",
+      "transformation": "EXIF orientation corrected. Original photograph encoded as WebP without recoloring, AI or compositing. Mobile is a 4:5 crop centered at 55% horizontal."
+    },
+    {
+      "key": "home-bag-hero-mobile",
+      "use": "hero-mobile",
+      "publicUrl": "/images/editorial/home-bag-hero-mobile.webp",
+      "width": 960,
+      "height": 1200,
+      "bytes": 53364,
+      "sourcePage": "https://www.shopify.com/stock-photos/photos/light-pink-purse",
+      "sourceImage": "https://burst.shopifycdn.com/photos/light-pink-purse.jpg?exif=0&iptc=0",
+      "downloadUrl": "https://burst.shopifycdn.com/photos/light-pink-purse.jpg?exif=0&iptc=0&width=2400",
+      "license": {
+        "name": "Burst Photo License",
+        "url": "https://www.shopify.com/stock-photos/licenses/shopify-some-rights-reserved",
+        "terms": "https://www.shopify.com/stock-photos/legal/terms",
+        "permits": "Free adaptation and display for commercial and noncommercial uses; attribution encouraged. Do not resell as stock photos, claim authorship or create a competing stock-photo service."
+      },
+      "altVi": "Túi đeo vai hồng nhạt trên nền tường trắng",
+      "objectPosition": "50% 50%",
+      "cropRecommendation": "Precropped 4:5 real-photo view; keep full image. Empty upper wall can hold copy.",
+      "transformation": "EXIF orientation corrected. Original photograph encoded as WebP without recoloring, AI or compositing. Mobile is a 4:5 crop centered at 55% horizontal."
+    },
+    {
+      "key": "category-tops",
+      "use": "category:Áo",
+      "publicUrl": "/images/editorial/category-tops.webp",
+      "width": 1400,
+      "height": 933,
+      "bytes": 53032,
+      "sourcePage": "https://www.shopify.com/stock-photos/photos/womens-tshirts",
+      "sourceImage": "https://burst.shopifycdn.com/photos/womens-tshirts.jpg?exif=0&iptc=0",
+      "license": {
+        "name": "CC0",
+        "url": "https://www.shopify.com/stock-photos/licenses/creative-commons",
+        "terms": "https://www.shopify.com/stock-photos/legal/terms",
+        "permits": "Free adaptation and display for commercial and noncommercial uses; attribution encouraged. Do not resell as stock photos, claim authorship or create a competing stock-photo service."
+      },
+      "altVi": "Áo thun treo trên móc gỗ, ảnh minh họa danh mục Áo",
+      "objectPosition": "50% 62%",
+      "cropRecommendation": "3:4 portrait tile. Keep wooden hangers in upper part."
+    },
+    {
+      "key": "category-trousers",
+      "use": "category:Quần",
+      "publicUrl": "/images/editorial/category-trousers.webp",
+      "width": 933,
+      "height": 1400,
+      "bytes": 223900,
+      "sourcePage": "https://www.shopify.com/stock-photos/photos/a-pile-of-denim-jeans-in-different-shades-of-blue",
+      "sourceImage": "https://burst.shopifycdn.com/photos/a-pile-of-denim-jeans-in-different-shades-of-blue.jpg?exif=0&iptc=0",
+      "license": {
+        "name": "Burst Photo License",
+        "url": "https://www.shopify.com/stock-photos/licenses/shopify-some-rights-reserved",
+        "terms": "https://www.shopify.com/stock-photos/legal/terms",
+        "permits": "Free adaptation and display for commercial and noncommercial uses; attribution encouraged. Do not resell as stock photos, claim authorship or create a competing stock-photo service."
+      },
+      "altVi": "Quần jeans xếp trên kệ, ảnh minh họa danh mục Quần",
+      "objectPosition": "50% 50%",
+      "cropRecommendation": "3:4 portrait tile. Natural portrait source fills tile."
+    },
+    {
+      "key": "category-dresses",
+      "use": "category:Váy / Đầm",
+      "publicUrl": "/images/editorial/category-dresses.webp",
+      "width": 1400,
+      "height": 933,
+      "bytes": 121618,
+      "sourcePage": "https://www.shopify.com/stock-photos/photos/rack-of-womens-clothing",
+      "sourceImage": "https://burst.shopifycdn.com/photos/rack-of-womens-clothing.jpg?exif=0&iptc=0",
+      "license": {
+        "name": "Burst Photo License",
+        "url": "https://www.shopify.com/stock-photos/licenses/shopify-some-rights-reserved",
+        "terms": "https://www.shopify.com/stock-photos/legal/terms",
+        "permits": "Free adaptation and display for commercial and noncommercial uses; attribution encouraged. Do not resell as stock photos, claim authorship or create a competing stock-photo service."
+      },
+      "altVi": "Váy và quần áo trên giá treo, ảnh minh họa danh mục Váy/Đầm",
+      "objectPosition": "64% 50%",
+      "cropRecommendation": "3:4 portrait tile. Focus on right clothing rail, not pink purse on left."
+    },
+    {
+      "key": "category-bags",
+      "use": "category:Túi xách",
+      "publicUrl": "/images/editorial/category-bags.webp",
+      "width": 1400,
+      "height": 933,
+      "bytes": 36382,
+      "sourcePage": "https://www.shopify.com/stock-photos/photos/light-pink-purse",
+      "sourceImage": "https://burst.shopifycdn.com/photos/light-pink-purse.jpg?exif=0&iptc=0",
+      "license": {
+        "name": "Burst Photo License",
+        "url": "https://www.shopify.com/stock-photos/licenses/shopify-some-rights-reserved",
+        "terms": "https://www.shopify.com/stock-photos/legal/terms",
+        "permits": "Free adaptation and display for commercial and noncommercial uses; attribution encouraged. Do not resell as stock photos, claim authorship or create a competing stock-photo service."
+      },
+      "altVi": "Túi đeo vai màu hồng, ảnh minh họa danh mục Túi xách",
+      "objectPosition": "53% 65%",
+      "cropRecommendation": "3:4 portrait tile. Leave lower tassel in crop."
+    },
+    {
+      "key": "category-accessories",
+      "use": "category:Phụ kiện",
+      "publicUrl": "/images/editorial/category-accessories.webp",
+      "width": 1400,
+      "height": 935,
+      "bytes": 52372,
+      "sourcePage": "https://www.shopify.com/stock-photos/photos/stacked-bracelets-set",
+      "sourceImage": "https://burst.shopifycdn.com/photos/stacked-bracelets-set.jpg?exif=0&iptc=0",
+      "license": {
+        "name": "CC0",
+        "url": "https://www.shopify.com/stock-photos/licenses/creative-commons",
+        "terms": "https://www.shopify.com/stock-photos/legal/terms",
+        "permits": "Free adaptation and display for commercial and noncommercial uses; attribution encouraged. Do not resell as stock photos, claim authorship or create a competing stock-photo service."
+      },
+      "altVi": "Bộ vòng tay, ảnh minh họa danh mục Phụ kiện",
+      "objectPosition": "50% 52%",
+      "cropRecommendation": "3:4 portrait tile. Center bracelets, leave breathing room."
+    },
+    {
+      "key": "wardrobe",
+      "use": "category:Tất cả sản phẩm",
+      "publicUrl": "/images/editorial/wardrobe.webp",
+      "width": 1400,
+      "height": 933,
+      "bytes": 82646,
+      "sourcePage": "https://www.shopify.com/stock-photos/photos/minimalist-retail-clothing-display",
+      "sourceImage": "https://burst.shopifycdn.com/photos/minimalist-retail-clothing-display.jpg?exif=0&iptc=0",
+      "license": {
+        "name": "Burst Photo License",
+        "url": "https://www.shopify.com/stock-photos/licenses/shopify-some-rights-reserved",
+        "terms": "https://www.shopify.com/stock-photos/legal/terms",
+        "permits": "Free adaptation and display for commercial and noncommercial uses; attribution encouraged. Do not resell as stock photos, claim authorship or create a competing stock-photo service."
+      },
+      "altVi": "Quần áo trên giá treo trong không gian sáng",
+      "objectPosition": "55% 55%",
+      "cropRecommendation": "3:4 portrait tile. Use existing Shop Index route without adding categories."
+    },
+    {
+      "key": "packing",
+      "use": "sell section",
+      "publicUrl": "/images/editorial/packing.webp",
+      "width": 1400,
+      "height": 933,
+      "bytes": 76052,
+      "sourcePage": "https://www.shopify.com/stock-photos/photos/retail-shopping-package",
+      "sourceImage": "https://burst.shopifycdn.com/photos/retail-shopping-package.jpg?exif=0&iptc=0",
+      "license": {
+        "name": "Burst Photo License",
+        "url": "https://www.shopify.com/stock-photos/licenses/shopify-some-rights-reserved",
+        "terms": "https://www.shopify.com/stock-photos/legal/terms",
+        "permits": "Free adaptation and display for commercial and noncommercial uses; attribution encouraged. Do not resell as stock photos, claim authorship or create a competing stock-photo service."
+      },
+      "altVi": "Chuẩn bị đóng gói một món hàng",
+      "objectPosition": "45% 50%",
+      "cropRecommendation": "4:3 landscape. Preserve shopping bag and hands."
+    },
+    {
+      "key": "inspect",
+      "use": "story section",
+      "publicUrl": "/images/editorial/inspect.webp",
+      "width": 1400,
+      "height": 787,
+      "bytes": 200536,
+      "sourcePage": "https://www.shopify.com/stock-photos/photos/woman-shopping-for-clothes",
+      "sourceImage": "https://burst.shopifycdn.com/photos/woman-shopping-for-clothes.jpg?exif=0&iptc=0",
+      "license": {
+        "name": "CC0",
+        "url": "https://www.shopify.com/stock-photos/licenses/creative-commons",
+        "terms": "https://www.shopify.com/stock-photos/legal/terms",
+        "permits": "Free adaptation and display for commercial and noncommercial uses; attribution encouraged. Do not resell as stock photos, claim authorship or create a competing stock-photo service."
+      },
+      "altVi": "Xem chất liệu và tình trạng quần áo trên giá",
+      "objectPosition": "68% 50%",
+      "cropRecommendation": "4:3 landscape. Focus woman and clothing rail. Stock editorial, not a CoCo inspection."
+    },
+    {
+      "key": "submit",
+      "use": "optional support section",
+      "publicUrl": "/images/editorial/submit.webp",
+      "width": 1400,
+      "height": 933,
+      "bytes": 63554,
+      "sourcePage": "https://www.shopify.com/stock-photos/photos/business-owner-working-on-online-store",
+      "sourceImage": "https://burst.shopifycdn.com/photos/business-owner-working-on-online-store.jpg?exif=0&iptc=0",
+      "license": {
+        "name": "Burst Photo License",
+        "url": "https://www.shopify.com/stock-photos/licenses/shopify-some-rights-reserved",
+        "terms": "https://www.shopify.com/stock-photos/legal/terms",
+        "permits": "Free adaptation and display for commercial and noncommercial uses; attribution encouraged. Do not resell as stock photos, claim authorship or create a competing stock-photo service."
+      },
+      "altVi": "Thao tác gửi thông tin trực tuyến trên máy tính",
+      "objectPosition": "55% 50%",
+      "cropRecommendation": "4:3 landscape. Keep laptop visible."
+    },
+    {
+      "key": "payment",
+      "use": "optional wallet section",
+      "publicUrl": "/images/editorial/payment.webp",
+      "width": 1400,
+      "height": 933,
+      "bytes": 359244,
+      "sourcePage": "https://www.shopify.com/stock-photos/photos/purse-wallet-money",
+      "sourceImage": "https://burst.shopifycdn.com/photos/purse-wallet-money.jpg?exif=0&iptc=0",
+      "license": {
+        "name": "Burst Photo License",
+        "url": "https://www.shopify.com/stock-photos/licenses/shopify-some-rights-reserved",
+        "terms": "https://www.shopify.com/stock-photos/legal/terms",
+        "permits": "Free adaptation and display for commercial and noncommercial uses; attribution encouraged. Do not resell as stock photos, claim authorship or create a competing stock-photo service."
+      },
+      "altVi": "Ví và phương tiện thanh toán, ảnh minh họa",
+      "objectPosition": "50% 70%",
+      "cropRecommendation": "4:3 landscape. Only payment illustration, not actual CoCo funds."
+    }
+  ],
+  "excluded": "Thrift+/Rebag/ThredUp/Sign of the Times product/editorial assets have no verified republication license. Do not promote demo assets into public real store.",
+  "videoAlternative": {
+    "manifest": "campaign-media.json",
+    "poster": "/media/editorial/fashion-market-poster.webp"
+  }
+}

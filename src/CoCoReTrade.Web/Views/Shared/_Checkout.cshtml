@@ -1,0 +1,116 @@
+@model CheckoutForm
+@{
+    var checkoutPage = (CheckoutPageData)ViewBag.CheckoutPage;
+    var quote = checkoutPage.Quote;
+    var shipping = checkoutPage.Shipping;
+    var offset = TimeSpan.FromHours(shipping.StoreUtcOffsetHours);
+    var provinceOptions = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(VietnamProvinces.Names);
+    ViewBag.SelectedIds = Model.ProductIds.ToHashSet();
+    ViewBag.FromCart = Model.FromCart;
+    ViewBag.CheckoutPrices = quote?.Items.ToDictionary(x => x.ProductId, x => x.Price);
+}
+<div class="coco-checkout" data-from-cart="@Model.FromCart.ToString().ToLowerInvariant()">
+    <div class="checkout-heading"><div><a asp-controller="Shop" asp-action="Index">← Tiếp tục mua sắm</a><h1>@(Model.FromCart ? "Giỏ hàng của bạn" : "Hoàn tất đặt hàng")</h1></div><span id="checkoutItemCount">@checkoutPage.Items.Count sản phẩm</span></div>
+    @if (checkoutPage.Items.Count == 0)
+    {
+        <div class="empty-state"><h2>Giỏ hàng đang trống</h2><p>Chọn món đồ hợp gu để bắt đầu mua sắm cùng CoCo.</p><a class="btn btn-wine" asp-controller="Shop" asp-action="Index">Khám phá sản phẩm</a></div>
+    }
+    else
+    {
+        <form asp-controller="Checkout" asp-action="Index" method="post" class="checkout-form-grid" id="checkoutForm" data-checkout-form
+              data-voucher-selection="@Model.VoucherCode" data-applied-voucher="@quote?.VoucherCode">
+            <button type="submit" class="visually-hidden" tabindex="-1" aria-hidden="true">Đặt hàng</button>
+            <input asp-for="FromCart" type="hidden" /><input asp-for="OfferId" type="hidden" /><input asp-for="IdempotencyKey" type="hidden" />
+            @if (!Model.FromCart) { <input asp-for="ProductId" type="hidden" /> }
+            <div asp-validation-summary="ModelOnly" class="checkout-validation text-danger" role="alert"></div>
+            <section class="checkout-contact checkout-box">
+                <h2>Thông tin nhận hàng</h2>
+                @if (checkoutPage.Addresses.Count > 0)
+                {
+                    <label for="savedAddress" class="form-label">Địa chỉ đã lưu</label>
+                    <select id="savedAddress" class="form-select mb-3"><option value=""></option>
+                        @foreach (var address in checkoutPage.Addresses) { <option value="@address.Id" data-recipient="@address.RecipientName" data-phone="@address.RecipientPhone" data-province="@VietnamProvinces.Normalize(address.Province)" data-ward="@address.Ward" data-street="@address.StreetAddress">@address.RecipientName · @address.StreetAddress, @address.Ward, @address.Province</option> }
+                    </select>
+                }
+                <div class="checkout-fields-two">
+                    <div><label asp-for="RecipientName" class="form-label"></label><input asp-for="RecipientName" class="form-control" autocomplete="name" /><span asp-validation-for="RecipientName" class="text-danger small"></span></div>
+                    <div><label asp-for="RecipientPhone" class="form-label"></label><input asp-for="RecipientPhone" class="form-control" inputmode="tel" autocomplete="tel" /><span asp-validation-for="RecipientPhone" class="text-danger small"></span></div>
+                </div>
+                <label asp-for="Fulfillment" class="form-label mt-3"></label>
+                <select asp-for="Fulfillment" class="form-select"><option value="Shipping">Giao tận nơi</option><option value="Pickup" disabled="@(!shipping.CanPickup)">Nhận tại CoCo · miễn phí</option></select>
+                <div id="shippingFields" class="mt-3">
+                    <div class="checkout-fields-two">
+                        <div><label asp-for="Province" class="form-label"></label><select asp-for="Province" asp-items="provinceOptions" class="form-select" autocomplete="address-level1"><option value=""></option></select><span asp-validation-for="Province" class="text-danger small"></span></div>
+                        <div><label asp-for="Ward" class="form-label"></label><input asp-for="Ward" class="form-control" autocomplete="address-level3" /><span asp-validation-for="Ward" class="text-danger small"></span></div>
+                    </div>
+                    <label asp-for="StreetAddress" class="form-label mt-3"></label><input asp-for="StreetAddress" class="form-control" autocomplete="street-address" /><span asp-validation-for="StreetAddress" class="text-danger small"></span>
+                    <label asp-for="DeliveryNote" class="form-label mt-3"></label><textarea asp-for="DeliveryNote" rows="2" maxlength="500" class="form-control"></textarea>
+                </div>
+                <div id="pickupFields" class="mt-3">
+                    <div class="checkout-store"><strong>CoCo ReTrade</strong><p>@shipping.StoreAddress</p><p>@shipping.OpeningHour.ToString("00"):@shipping.OpeningMinute.ToString("00") – @shipping.ClosingHour.ToString("00"):00 hằng ngày</p>@if (checkoutPage.StoreMapUrl is { } map) { <a href="@map" target="_blank" rel="noopener noreferrer">Xem đường đi</a> }</div>
+                </div>
+                <div class="checkout-payment" id="checkoutPayment" hidden="@(Model.Fulfillment != FulfillmentType.Shipping)"><h2>Thanh toán khi nhận hàng</h2><p>Kiểm tra hàng và thanh toán tiền mặt cho người giao hàng.</p></div>
+            </section>
+            <section class="checkout-review checkout-box">
+                <div class="checkout-review-heading"><h2>Sản phẩm của bạn</h2>@if (Model.FromCart) { <label class="checkout-select-all"><input type="checkbox" class="form-check-input" id="checkoutSelectAll" /> Chọn tất cả</label> }</div>
+                <div id="checkoutItems"><partial name="_CheckoutItems" model="checkoutPage.Items" /></div>
+                <p id="checkoutEmptySelection" class="small" hidden>Chọn ít nhất một sản phẩm để đặt hàng.</p>
+                <div class="checkout-voucher">
+                    <label asp-for="VoucherCode" class="form-label">Mã giảm giá</label>
+                    <div class="checkout-voucher-entry">
+                        <input asp-for="VoucherCode" class="form-control" placeholder="Nhập mã giảm giá" autocomplete="off" maxlength="30" />
+                        <button type="button" id="applyVoucher" class="btn btn-outline-wine">Áp dụng</button>
+                    </div>
+                    <span asp-validation-for="VoucherCode" class="text-danger small"></span>
+                    @if (checkoutPage.Vouchers.Count > 0)
+                    {
+                        <div class="checkout-voucher-list" role="group" aria-label="Mã giảm giá đang hoạt động">
+                            @for (var index = 0; index < checkoutPage.Vouchers.Count; index++)
+                            {
+                                var voucher = checkoutPage.Vouchers[index];
+                                var minimum = voucher.MinimumAmount.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"));
+                                var expiry = voucher.EndsAtUtc.AddTicks(-1).Add(offset).ToString("dd/MM/yyyy");
+                                var termsId = $"voucher-terms-{index}";
+                                <div class="checkout-voucher-card">
+                                    <label class="checkout-voucher-choice">
+                                        <span class="checkout-voucher-copy">
+                                            <strong>@voucher.Code</strong>
+                                            <span>Giảm @voucher.Percent% cho đơn từ @(minimum)đ</span>
+                                        </span>
+                                        <span class="checkout-voucher-meta">HSD @expiry</span>
+                                        <input type="radio" name="VoucherChoice" value="@voucher.Code" data-voucher-choice
+                                               checked="@(BasketCheckoutService.NormalizeCode(Model.VoucherCode) == voucher.Code)" />
+                                    </label>
+                                    <button type="button" class="checkout-voucher-terms" data-voucher-terms="@termsId"
+                                            aria-haspopup="dialog" aria-controls="@termsId" aria-label="Điều kiện mã @voucher.Code">Điều kiện</button>
+                                    <dialog id="@termsId" class="checkout-voucher-dialog" aria-labelledby="@(termsId + "-title")">
+                                        <h3 id="@(termsId + "-title")">Điều kiện mã @voucher.Code</h3>
+                                        <p>Giảm @voucher.Percent% cho đơn có tiền hàng từ @(minimum)đ, chưa tính phí giao hàng.</p>
+                                        <p>Hạn dùng @expiry. Mỗi đơn áp dụng một mã giảm giá.</p>
+                                        <button type="button" class="btn btn-outline-wine" data-voucher-terms-close autofocus>Đóng</button>
+                                    </dialog>
+                                </div>
+                            }
+                        </div>
+                    }
+                    <div class="checkout-voucher-status">
+                        <p id="voucherStatus" class="small mb-0" aria-live="polite">@(quote?.VoucherCode is { } applied ? "Đã áp dụng " + applied : "")</p>
+                        <button type="button" id="clearVoucher" class="btn btn-link" hidden="@string.IsNullOrWhiteSpace(Model.VoucherCode)">Bỏ mã</button>
+                    </div>
+                </div>
+                <div class="checkout-totals" aria-live="polite">
+                    <div><span>Tiền hàng <span id="selectedCount">(@(quote?.Items.Count ?? 0) món)</span></span><strong id="merchandiseAmount">@((quote?.MerchandiseAmount ?? 0).ToString("N0")) VNĐ</strong></div>
+                    <div><span>Phí giao hàng</span><strong id="shippingFee">@(quote?.ShippingFeePending == true ? "Chọn tỉnh / thành phố" : (quote?.ShippingFee ?? 0).ToString("N0") + " VNĐ")</strong></div>
+                    <div id="discountRow" hidden="@(quote?.DiscountAmount is not > 0)"><span>Giảm giá</span><strong id="discountAmount">−@((quote?.DiscountAmount ?? 0).ToString("N0")) VNĐ</strong></div>
+                    <div class="checkout-grand-total"><span>Tổng thanh toán</span><strong id="totalAmount">@(quote?.ShippingFeePending == true ? "—" : (quote?.TotalAmount ?? 0).ToString("N0") + " VNĐ")</strong></div>
+                </div>
+                <p id="quoteError" class="small text-danger" role="alert">@checkoutPage.QuoteError</p>
+                @if (quote?.OfferExpiresAtUtc is { } expires) { <p class="small">Giá thỏa thuận có hiệu lực đến @(new DateTimeOffset(expires, TimeSpan.Zero).ToOffset(offset).ToString("dd/MM/yyyy HH:mm")).</p> }
+                <button id="checkoutSubmit" class="btn btn-wine w-100" type="submit">Đặt hàng</button>
+                <noscript><p class="small mt-2">CoCo kiểm tra mã giảm giá và tổng tiền khi bạn đặt hàng. Nhập đủ địa chỉ nếu chọn giao tận nơi.</p></noscript>
+            </section>
+        </form>
+        <div id="checkoutRecommendations"><partial name="_CheckoutRecommendations" model="checkoutPage.Recommendations" /></div>
+        <p id="crossSellStatus" role="status" class="small mt-3"></p>
+    }
+</div>

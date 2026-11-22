@@ -1,0 +1,93 @@
+@inject MarketplacePolicy Marketplace
+@{
+    ViewData["Title"] = "Chính sách ký gửi";
+    var sellerPercent = 100 - Marketplace.CommissionPercent;
+}
+<div class="coco-about coco-policy-document" data-policy-document>
+    <nav class="about-breadcrumb" aria-label="Đường dẫn"><a asp-controller="Home" asp-action="Index">Trang chủ</a><span aria-hidden="true">/</span><span aria-current="page">Chính sách ký gửi</span></nav>
+
+    <header class="policy-document-header">
+        <h1 id="policies-title">Chính sách ký gửi</h1>
+        <p class="policy-lead">Tìm hiểu quy trình, hoa hồng và cách nhận tiền trước khi gửi những món đồ bạn ít dùng.</p>
+        <div class="policy-actions"><a class="btn btn-wine" asp-controller="Listing" asp-action="Create">Gửi sản phẩm ký gửi <span aria-hidden="true">→</span></a></div>
+    </header>
+
+    <div class="policy-document-layout">
+        <aside class="policy-toc" aria-labelledby="policy-toc-title">
+            <h2 id="policy-toc-title">Nội dung chính sách</h2>
+            <ol>
+                <li><a href="#phi-ky-gui">Phí ký gửi và tiền hàng</a></li>
+                <li><a href="#quy-trinh-ky-gui">Quy trình ký gửi</a></li>
+                <li><a href="#thoi-han-ky-gui">Thời hạn ký gửi</a></li>
+                <li><a href="#mua-hang">Giao dịch và nhận tiền</a></li>
+                <li><a href="#bat-dau-ky-gui">Bắt đầu ký gửi</a></li>
+            </ol>
+        </aside>
+
+        <div class="policy-document-content">
+            <section id="phi-ky-gui" class="policy-document-section" aria-labelledby="policy-fees">
+                <h2 id="policy-fees"><span class="policy-section-number" aria-hidden="true">01.</span> Phí ký gửi và tiền hàng</h2>
+                <div class="policy-highlight">
+                    <strong>@sellerPercent%</strong>
+                    <p>Tiền hàng bạn nhận sau hoa hồng<br />Tính trên giá bán cuối cùng</p>
+                </div>
+                <ul class="policy-list">
+                    <li>CoCo không thu thêm phí nhận đồ, kiểm định hay lưu kho. Bạn theo dõi tiền bán hàng trong ví ký gửi.</li>
+                    <li>Bạn có thể mang đồ đến CoCo hoặc gửi qua đơn vị vận chuyển và trả trước cước.</li>
+                </ul>
+            </section>
+
+            <section id="quy-trinh-ky-gui" class="policy-document-section" aria-labelledby="policy-process-title">
+                <h2 id="policy-process-title"><span class="policy-section-number" aria-hidden="true">02.</span> Quy trình ký gửi</h2>
+                <ol class="policy-steps">
+                    <li><h3>Gửi thông tin và ảnh thật</h3><p>CoCo tiếp nhận mọi thương hiệu để xem xét. Thêm 3–10 ảnh rõ nét cùng thương hiệu, kích cỡ, tình trạng và giá mong muốn.</p></li>
+                    <li><h3>Duyệt sơ bộ và nhận đồ</h3><p>Sau khi được duyệt sơ bộ, mang hoặc gửi món đồ đến CoCo trong 3 ngày để kiểm tra hiện vật.</p></li>
+                    <li><h3>Kiểm tra rồi duyệt đăng bán</h3><p>Chỉ món đồ đạt yêu cầu và được duyệt mới xuất hiện trên website. Bạn theo dõi kết quả trong tủ đồ ký gửi.</p></li>
+                    <li><h3>Theo dõi bán hàng và nhận tiền</h3><p>Sau khi khách nhận hàng, CoCo thu tiền và hoàn tất đơn, tiền bán sau hoa hồng sẽ được ghi vào ví. Bạn có thể gửi yêu cầu rút về ngân hàng và theo dõi trạng thái tại đây.</p></li>
+                </ol>
+                <a class="about-text-link" asp-controller="About" asp-action="Inspection">Xem chính sách kiểm định <span aria-hidden="true">→</span></a>
+            </section>
+
+            <section id="thoi-han-ky-gui" class="policy-document-section" aria-labelledby="policy-timing">
+                <h2 id="policy-timing"><span class="policy-section-number" aria-hidden="true">03.</span> Thời hạn ký gửi</h2>
+                <p>Các mốc dưới đây tính từ ngày sản phẩm được đăng bán trên CoCo.</p>
+                <div class="policy-table-wrap">
+                    <table class="policy-table">
+                        <caption>Các mốc theo dõi một món ký gửi</caption>
+                        <thead><tr><th scope="col">Thời điểm</th><th scope="col">Nội dung</th></tr></thead>
+                        <tbody>
+                            <tr><th scope="row">Đăng bán</th><td><strong>Bắt đầu trên website</strong><p>Sản phẩm đã được kiểm định và duyệt đăng bán. Theo dõi trạng thái trong tủ đồ ký gửi.</p></td></tr>
+                            <tr><th scope="row">45 ngày</th><td><strong>Nhắc nhận lại món đồ</strong><p>Nếu chưa bán được, CoCo thông báo để bạn nhận lại món đồ.</p></td></tr>
+                            <tr><th scope="row">60 ngày</th><td><strong>Chuyển sang thanh lý tại tiệm</strong><p>Nếu bạn chưa nhận lại, CoCo gỡ sản phẩm khỏi website và chuyển sang thanh lý trực tiếp.</p></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="policy-note">Đồ chưa đăng bán hoặc bị từ chối không tính theo mốc 45 và 60 ngày này. Xem phản hồi trong tủ đồ và liên hệ CoCo để xác nhận cách nhận lại.</p>
+            </section>
+
+            <section id="mua-hang" class="policy-document-section" aria-labelledby="policy-shopping">
+                <h2 id="policy-shopping"><span class="policy-section-number" aria-hidden="true">04.</span> Giao dịch và nhận tiền</h2>
+                <p>Từ đề xuất giá đến lúc giao dịch hoàn tất.</p>
+                <h3>Chấp nhận giá và giữ hàng</h3>
+                <p>Món đồ chỉ được giữ khi người mua tạo đơn thành công. Chấp nhận đề xuất giá chưa đồng nghĩa sản phẩm đã được bán.</p>
+                <h3>Thương lượng giá khi được cho phép</h3>
+                <ul class="policy-list">
+                    <li>Mức giảm tối đa @Marketplace.MaximumOfferDiscountPercent%.</li>
+                    <li>Mỗi người mua có tối đa ba lần đề xuất cho một món.</li>
+                    <li>Giá được chấp nhận dành riêng cho người mua đó trong 24 giờ.</li>
+                </ul>
+                <h3>Hoàn tất giao dịch và tiền hàng</h3>
+                <p>Khách kiểm tra trước khi thanh toán tiền mặt. CoCo xác nhận thu tiền và hoàn tất đơn trước khi ghi có thu nhập vào ví ký gửi. <a asp-controller="About" asp-action="Returns">Xem chính sách đổi trả.</a></p>
+            </section>
+
+            <section id="bat-dau-ky-gui" class="policy-document-section" aria-labelledby="policy-start-title">
+                <h2 id="policy-start-title"><span class="policy-section-number" aria-hidden="true">05.</span> Bắt đầu với món đồ bạn muốn gửi</h2>
+                <p>Chuẩn bị ảnh thật và thông tin món đồ để gửi CoCo duyệt sơ bộ.</p>
+                <div class="policy-actions">
+                    <a class="btn btn-wine" asp-controller="Listing" asp-action="Create">Bắt đầu ký gửi <span aria-hidden="true">→</span></a>
+                    <a class="about-text-link" asp-controller="About" asp-action="Contact">Liên hệ</a>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

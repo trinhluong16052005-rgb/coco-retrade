@@ -1,0 +1,23 @@
+@model WithdrawalPage
+@{ ViewData["Title"] = "Lịch sử yêu cầu rút tiền"; }
+<div class="wallet-banking wallet-full-history">
+    <a class="wallet-back" asp-action="Wallet">← Quay lại Ví ký gửi</a>
+    <h1 class="page-title">Lịch sử yêu cầu rút tiền</h1>
+    <form method="get" class="wallet-history-filters">
+        <div><label class="form-label" for="history-search">Tìm kiếm</label><input id="history-search" name="search" value="@ViewBag.Search" maxlength="100" class="form-control" placeholder="Ngân hàng, tài khoản, số tiền hoặc mã giao dịch" /></div>
+        <div><label class="form-label" for="history-status">Trạng thái</label><select id="history-status" name="status" class="form-select"><option value="">Tất cả trạng thái</option>@foreach (var item in new[] { ("Pending", "Chờ duyệt"), ("Approved", "Đã duyệt, chờ chuyển"), ("Transferred", "Đã chuyển"), ("Rejected", "Từ chối") }) { <option value="@item.Item1" selected="@(ViewBag.Status == item.Item1)">@item.Item2</option> }</select></div>
+        <button class="btn btn-wine" type="submit">Tìm kiếm</button>
+    </form>
+    <section class="wallet-withdrawal-panel">
+        <p class="wallet-note">@Model.Total yêu cầu · Trang @Model.Page / @Model.TotalPages</p>
+        @if (Model.Items.Count == 0) { <p>Không có yêu cầu phù hợp.</p> } else { <partial name="_WithdrawalList" model="Model.Items" /> }
+    </section>
+    @if (Model.TotalPages > 1)
+    {
+        <nav class="wallet-history-pages" aria-label="Phân trang lịch sử rút tiền">
+            @if (Model.Page > 1) { <a class="btn btn-outline-wine" asp-action="Withdrawals" asp-route-page="@(Model.Page - 1)" asp-route-search="@ViewBag.Search" asp-route-status="@ViewBag.Status">Trang trước</a> }
+            <span>Trang @Model.Page / @Model.TotalPages</span>
+            @if (Model.Page < Model.TotalPages) { <a class="btn btn-outline-wine" asp-action="Withdrawals" asp-route-page="@(Model.Page + 1)" asp-route-search="@ViewBag.Search" asp-route-status="@ViewBag.Status">Trang sau</a> }
+        </nav>
+    }
+</div>

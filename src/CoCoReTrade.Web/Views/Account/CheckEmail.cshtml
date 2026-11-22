@@ -1,0 +1,4 @@
+@{ ViewData["Title"] = "Kiểm tra email"; var returnUrl = ViewData["AuthReturnUrl"] as string ?? "/"; }
+<div class="auth-card panel text-center"><div class="empty-icon" style="font-size:4rem;color:var(--wine)">✉</div><h1>Kiểm tra email</h1><p class="subtitle">Nếu địa chỉ hợp lệ, CoCo đã gửi mã 6 chữ số để bạn tiếp tục. Mã có hiệu lực 5 phút.</p>
+@if (ViewBag.UserId is string userId) { <a class="btn btn-wine mt-2" asp-action="@(ViewBag.Flow == "activation" ? "ConfirmOtp" : "VerifyResetOtp")" asp-route-userId="@userId" asp-route-returnUrl="@returnUrl">Nhập mã xác thực →</a> }
+<a class="btn btn-outline-wine mt-3" asp-action="Login" asp-route-returnUrl="@returnUrl">Quay lại đăng nhập</a></div>

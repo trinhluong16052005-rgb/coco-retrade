@@ -1,0 +1,47 @@
+@model WalletBalanceDto
+@inject Microsoft.AspNetCore.Authorization.IAuthorizationService AuthorizationService
+@{
+    ViewData["Title"] = "Ví ký gửi CoCo";
+    var credits = (IReadOnlyList<WalletCreditDto>?)ViewBag.Credits ?? [];
+}
+<div class="eyebrow mt-4">Tiền bán hàng</div>
+<h1 class="page-title mt-1">Ví ký gửi CoCo</h1>
+<p class="subtitle">CoCo cộng tiền bán sau hoa hồng vào ví khi khách đã nhận hàng, CoCo đã thu tiền và đơn đã hoàn tất. Hoa hồng chỉ tính trên tiền hàng.</p>
+<div class="row g-3 mb-4">
+    <div class="col-sm-6 col-lg-3"><button type="button" class="panel h-100 w-100 wallet-available-toggle" data-bs-toggle="collapse" data-bs-target="#wallet-credit-history" aria-controls="wallet-credit-history" aria-expanded="false"><span class="eyebrow d-block">Khả dụng</span><strong class="wallet-stat-value">@Model.Available.ToString("N0")</strong><span class="wallet-stat-unit">VNĐ</span><span class="wallet-history-label">Xem lịch sử tiền vào ví</span></button></div>
+    <div class="col-sm-6 col-lg-3"><div class="panel h-100"><div class="eyebrow">Đơn cũ chờ đối soát</div><strong class="wallet-stat-value">@Model.PendingSellerProceeds.ToString("N0")</strong><span class="wallet-stat-unit">VNĐ</span></div></div>
+    <div class="col-sm-6 col-lg-3"><div class="panel h-100"><div class="eyebrow">Đang chờ rút</div><strong class="wallet-stat-value">@Model.PendingWithdrawal.ToString("N0")</strong><span class="wallet-stat-unit">VNĐ</span></div></div>
+    <div class="col-sm-6 col-lg-3"><div class="panel h-100"><div class="eyebrow">Đã xác nhận chuyển khoản</div><strong class="wallet-stat-value">@Model.Withdrawn.ToString("N0")</strong><span class="wallet-stat-unit">VNĐ</span></div></div>
+</div>
+<section class="collapse mb-4" id="wallet-credit-history" aria-labelledby="wallet-credit-history-title">
+    <div class="panel wallet-credit-panel">
+        <h2 id="wallet-credit-history-title" class="display-serif fs-4">Lịch sử tiền cộng vào ví</h2>
+        <p class="small text-muted">Tiền bán sản phẩm sau hoa hồng, theo số tiền đã được ghi có thực tế.</p>
+        @if (credits.Count == 0) { <p class="mb-0">Chưa có khoản tiền bán sản phẩm được cộng vào ví.</p> }
+        else
+        {
+            <ul class="wallet-credit-list">
+                @foreach (var credit in credits)
+                {
+                    var local = new DateTimeOffset(DateTime.SpecifyKind(credit.CreatedAtUtc, DateTimeKind.Utc)).ToOffset(TimeSpan.FromHours(7));
+                    <li><a asp-area="" asp-controller="Shop" asp-action="Details" asp-route-id="@credit.ProductId">
+                        <strong class="wallet-credit-amount">+@credit.Amount.ToString("N0") VNĐ</strong>
+                        <span class="wallet-credit-description"><span>Tiền bán @credit.ProductName</span><small>@credit.OrderCode · <time datetime="@local.ToString("o")">@local.ToString("dd/MM/yyyy HH:mm")</time></small></span>
+                        <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#arrow-right" /></svg>
+                    </a></li>
+                }
+            </ul>
+        }
+    </div>
+</section>
+@if ((await AuthorizationService.AuthorizeAsync(User, null, StaffPermissions.ManageWallets)).Succeeded)
+{
+    <div class="panel mb-4"><strong>Hoa hồng của sàn được theo dõi trong Ví CoCo chung.</strong> Đây là ví ký gửi cá nhân của bạn.
+        <a asp-area="Admin" asp-controller="Wallets" asp-action="Platform" class="btn btn-outline-wine btn-sm ms-sm-2 mt-2 mt-sm-0">Xem Ví CoCo</a>
+    </div>
+}
+<partial name="_WalletWithdrawals" model="Model" />
+@section Scripts {
+    <script src="~/lib/jsqr/jsQR.js" defer></script>
+    <script src="~/js/wallet-banking.js" asp-append-version="true" defer></script>
+}

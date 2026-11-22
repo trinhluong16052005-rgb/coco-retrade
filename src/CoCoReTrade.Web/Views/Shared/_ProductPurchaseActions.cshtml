@@ -1,0 +1,23 @@
+@model ProductCard
+@{
+    var viewerId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+    var addToCartLabel = ViewData["AddToCartLabel"] as string ?? "Thêm vào giỏ";
+}
+@if (Model.Status == ProductStatus.Active && Model.SellerId != viewerId)
+{
+    <div class="product-card-actions">
+        <a class="btn btn-wine btn-sm" asp-area="" asp-controller="Checkout" asp-action="Index" asp-route-productId="@Model.Id" aria-label="Mua ngay @Model.Name">Mua ngay</a>
+        @if (viewerId is not null)
+        {
+            <form asp-area="" asp-controller="Cart" asp-action="Add" method="post" data-cart-add>
+                <input type="hidden" name="productId" value="@Model.Id" />
+                <input type="hidden" name="returnUrl" value="@(Context.Request.Path + Context.Request.QueryString)" />
+                <button type="submit" class="btn btn-outline-wine btn-sm" aria-label="@addToCartLabel · @Model.Name">@addToCartLabel</button>
+            </form>
+        }
+        else
+        {
+            <a class="btn btn-outline-wine btn-sm" asp-area="" asp-controller="Account" asp-action="Login" aria-label="@addToCartLabel · Đăng nhập để thêm @Model.Name">@addToCartLabel</a>
+        }
+    </div>
+}

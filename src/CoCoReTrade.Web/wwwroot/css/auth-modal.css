@@ -1,0 +1,65 @@
+.coco-auth-modal { --bs-modal-width: 560px; --bs-modal-margin: 24px; z-index: 1065; }
+.coco-auth-modal .modal-dialog { width: calc(100% - var(--bs-modal-margin) - var(--bs-modal-margin)); max-width: var(--bs-modal-width); margin: var(--bs-modal-margin) auto; min-height: calc(100% - var(--bs-modal-margin) - var(--bs-modal-margin)); }
+.coco-auth-modal .modal-content { position: relative; overflow: hidden; border: 1px solid #F8DDE5; border-radius: 16px; color: #000000; background: #FFFFFF; box-shadow: 0 16px 60px rgb(0 0 0 / 18%); }
+.coco-auth-main { min-width: 0; padding: 40px 32px 28px; max-height: calc(100dvh - var(--bs-modal-margin) - var(--bs-modal-margin)); overflow-y: auto; overscroll-behavior: contain; }
+.coco-auth-close { position: absolute; top: 5px; right: 6px; z-index: 2; display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 50%; background: #FFFFFF; color: #000000; font: 400 28px/1 "Open Sans", sans-serif; }
+body.coco-auth-open .modal-backdrop { z-index: 1060; background: rgb(0 0 0 / 55%); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+body.coco-auth-open .modal-backdrop.show { opacity: 1; }
+.coco-auth-close:focus-visible, .auth-password-toggle:focus-visible { outline: 2px solid #F83758; outline-offset: 2px; }
+.auth-mode-tabs { display: grid; grid-template-columns: repeat(2, 1fr); margin-bottom: 23px; border-bottom: 1px solid #F8DDE5; }
+.auth-mode-tabs a { display: block; text-align: center; padding: 11px 6px; text-decoration: none; color: #000000; border-bottom: 2px solid transparent; font-weight: 600; font-size: 16px; }
+.auth-mode-tabs a[aria-current="page"] { border-color: #F83758; color: #F83758; }
+.coco-auth-heading h2 { font: 600 clamp(1.55rem, 2.8vw, 1.9rem)/1.25 "Playfair Display", Georgia, serif; margin: 0 0 8px; letter-spacing: -.02em; }
+.coco-auth-heading p { margin: 0 0 22px; font-size: 14px; line-height: 1.5; }
+.coco-auth-field { margin-bottom: 14px; min-width: 0; }
+.coco-auth-field > label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+.coco-auth-field .form-control { min-height: 46px; padding: 11px 13px; border: 1px solid #F8DDE5; border-radius: 7px; background: #FFFFFF; color: #000000; font-size: 14px; line-height: 1.4; }
+.coco-auth-field .form-control:focus { border-color: #F83758; box-shadow: 0 0 0 2px #F8DDE5; }
+.coco-auth-field .form-control::placeholder { color: #000000; opacity: .55; }
+.coco-auth-field .field-validation-error { display: block; margin-top: 5px; }
+.auth-password-field { position: relative; }
+.auth-password-field .form-control { padding-right: 60px; }
+.auth-password-toggle { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); padding: 6px; border: 0; border-radius: 4px; background: #FFFFFF; color: #000000; font-size: 12px; font-weight: 600; }
+.auth-register-contact { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; }
+.coco-auth-options { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin: 16px 0 18px; font-size: 12px; }
+.coco-auth-options label { display: inline-flex; gap: 7px; align-items: center; }
+.coco-auth-options input { width: 16px; height: 16px; margin: 0; accent-color: #F83758; }
+.coco-auth-options a, .coco-auth-footer a { color: #000000; font-weight: 600; text-underline-offset: 3px; }
+.coco-auth-submit { display: block; width: 100%; min-height: 46px; margin-top: 6px; font-size: 14px; font-weight: 700; }
+.coco-auth-pane .auth-google { margin-top: 20px; }
+.coco-auth-pane .auth-google > span { display: flex; gap: 12px; align-items: center; margin: 0 0 15px; font-size: 12px; }
+.coco-auth-pane .auth-google > span::before, .coco-auth-pane .auth-google > span::after { content: ""; flex: 1; border-top: 1px solid #F8DDE5; }
+.coco-auth-pane .auth-google .btn { display: flex; justify-content: center; align-items: center; gap: 9px; min-height: 46px; border: 1px solid #000000; color: #000000; background: #FFFFFF; font-size: 14px; }
+.auth-provider-mark { display: inline-block; font: 700 19px/1 "Open Sans", sans-serif; }
+.coco-auth-footer { margin: 19px 0 0; text-align: center; font-size: 12px; line-height: 1.7; }
+.coco-auth-notice, .coco-auth-status { padding: 10px 12px; margin: 0 0 14px; border: 1px solid #F8DDE5; border-radius: 7px; background: #F8DDE5; color: #000000; font-size: 13px; line-height: 1.6; }
+.coco-auth-pane .text-danger { color: #F83758 !important; }
+.auth-validation:empty, .auth-validation.validation-summary-valid { display: none; }
+.auth-validation { margin-bottom: 14px; font-size: 13px; }
+.auth-validation ul { margin: 0; padding-left: 18px; }
+.auth-loading { margin: 30px 0; font-size: 14px; }
+.auth-page { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; width: min(1020px, 100%); margin: 48px auto; }
+.auth-page-intro { padding: 40px 24px; align-self: center; }
+.auth-page-intro > span { font-size: 12px; letter-spacing: .16em; font-weight: 700; }
+.auth-page-intro h1 { font: 600 2.7rem/1.25 "Playfair Display", Georgia, serif; margin: 18px 0; }
+.auth-page-intro p { font-size: 15px; line-height: 1.8; }
+.auth-page-card { padding: 30px; border: 1px solid #F8DDE5; border-radius: 12px; }
+.auth-page.auth-page-modal-open { display: block; min-height: 260px; }
+.auth-page-modal-open .auth-page-intro { max-width: 580px; padding: 20px 0; }
+.auth-page-modal-open .auth-page-card { display: none; }
+@media (max-width: 767.98px) {
+    .coco-auth-modal { --bs-modal-margin: 14px; }
+    .coco-auth-main { padding: 40px 24px 25px; }
+    .auth-page { grid-template-columns: 1fr; gap: 20px; margin: 25px auto; }
+    .auth-page-intro { padding: 0 8px; }
+    .auth-page-intro h1 { font-size: 2rem; }
+    .auth-page-card { padding: 24px; }
+}
+@media (max-width: 390px) {
+    .coco-auth-main { padding: 40px 18px 22px; }
+    .auth-register-contact { grid-template-columns: 1fr; gap: 0; }
+    .coco-auth-options { font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .coco-auth-modal.fade .modal-dialog { transition: none; }
+}

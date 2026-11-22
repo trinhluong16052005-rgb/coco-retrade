@@ -1,0 +1,26 @@
+@model IReadOnlyList<WithdrawalDto>
+<ul class="wallet-withdrawal-list">
+@foreach (var request in Model)
+{
+    var local = new DateTimeOffset(DateTime.SpecifyKind(request.CreatedAtUtc, DateTimeKind.Utc)).ToOffset(TimeSpan.FromHours(7));
+    var status = request.Status switch { "Transferred" => "Đã chuyển", "Approved" => "Đã duyệt, chờ chuyển", "Rejected" => "Từ chối", _ => "Chờ duyệt" };
+    <li id="withdrawal-@request.Id" data-withdrawal-id="@request.Id" style="scroll-margin-top:110px">
+        <div class="wallet-history-row"><strong>@request.Amount.ToString("N0") VNĐ</strong><span class="wallet-request-status @request.Status">@status</span></div>
+        <p class="wallet-history-bank"><span>@(request.BankName ?? "Ngân hàng chưa lưu") · @request.BankAccountNumber</span>@if (!string.IsNullOrWhiteSpace(request.BankAccountHolder)) { <span>@request.BankAccountHolder</span> }</p>
+        <div class="wallet-history-meta">
+            <time datetime="@local.ToString("o")">@local.ToString("dd/MM/yyyy HH:mm")</time>
+            @if (request.TransferredAtUtc.HasValue || !string.IsNullOrWhiteSpace(request.DecisionReason))
+            {
+                <details class="wallet-history-extra"><summary>Chi tiết</summary>
+                    @if (request.TransferredAtUtc.HasValue)
+                    {
+                        var transferred = new DateTimeOffset(DateTime.SpecifyKind(request.TransferredAtUtc.Value, DateTimeKind.Utc)).ToOffset(TimeSpan.FromHours(7));
+                        <p>Đã chuyển @transferred.ToString("dd/MM/yyyy HH:mm") · Mã giao dịch @request.TransferReference</p>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(request.DecisionReason)) { <p>@request.DecisionReason</p> }
+                </details>
+            }
+        </div>
+    </li>
+}
+</ul>

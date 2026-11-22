@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "verifiedOn": "2026-11-19",
+  "purpose": "Homepage video selected from the local file explicitly supplied by CoCo.",
+  "video": {
+    "title": "Video banner 1118 do CoCo cung cấp",
+    "provider": "User-supplied local file",
+    "sourceFile": "D:\\Hoc Tap\\32. LOGICTIST\\1118.mp4",
+    "sourceSha256": "E3C755E532F9AFD53C3F6BCF3E913E9C25285A0960839C19C7EADD9C0CBD90BB",
+    "sourceBytes": 43721678,
+    "processing": "FFmpeg H.264 yuv420p, original display aspect ratio 16:9, faststart, audio removed. No generated frames.",
+    "files": [
+      {
+        "path": "wwwroot/media/editorial/coco-banner-1118.mp4",
+        "width": 1280,
+        "height": 720,
+        "bytes": 7690354
+      },
+      {
+        "path": "wwwroot/media/editorial/coco-banner-1118-mobile.mp4",
+        "width": 720,
+        "height": 406,
+        "displayAspectRatio": "16:9",
+        "bytes": 3034708
+      }
+    ],
+    "playback": "autoplay, muted, loop, playsinline; respects reduced motion and data saver preferences"
+  },
+  "referenceSourceAudit": [
+    {
+      "url": "https://thrift.plus/terms-of-service",
+      "result": "Previously retrieved public terms state all Store material is protected and authorized for personal noncommercial viewing/download only. No commercial republication license verified; do not use the demo Thrift+ assets on the public real store."
+    },
+    {
+      "url": "https://www.rebag.com/",
+      "result": "Public HTML returned HTTP 200 on 2026-11-17. No video URL or reusable media license observed in the returned homepage. Used as a visual reference, not as a source of licensed commercial media."
+    },
+    {
+      "url": "https://www.thredup.com/",
+      "result": "Public request returned HTTP 403 on 2026-11-17. No access restriction bypassed and no media downloaded."
+    },
+    {
+      "url": "https://www.pexels.com/search/videos/clothing%20rack/",
+      "result": "Public request returned HTTP 403; no bypass attempted."
+    },
+    {
+      "url": "https://pixabay.com/videos/search/fashion/",
+      "result": "Public request returned HTTP 403; no bypass attempted."
+    }
+  ],
+  "previousVideo": {
+    "title": "Fashion Hunt at Outdoor Market",
+    "provider": "Coverr",
+    "sourcePage": "https://coverr.co/videos/fashion-hunt-at-outdoor-market",
+    "sourceDownload": "https://cdn.coverr.co/videos/coverr-fashion-hunt-at-outdoor-market/1080p.mp4?download=true",
+    "providerId": "lrdG1TErlO",
+    "providerMetadata": {
+      "isAiGenerated": false,
+      "isPremium": false,
+      "hasAudio": false,
+      "durationSeconds": 8.166667,
+      "originalWidth": 1920,
+      "originalHeight": 1080,
+      "fps": 24
+    },
+    "descriptionVi": "Một người phụ nữ chọn quần áo trên giá tại chợ thời trang ngoài trời.",
+    "license": {
+      "name": "Coverr Stock Library License",
+      "url": "https://coverr.co/license",
+      "lastUpdated": "2026-11-04",
+      "verifiedText": "Coverr grants you a free, irrevocable, non-exclusive, worldwide license to download, copy, modify, perform and use them, including commercially, without asking anyone's permission.",
+      "permittedUse": "Incorporation into a commercial website, including trimming, resizing and transcoding. Attribution is not required for files downloaded from the website; free API app requirements are separate.",
+      "restrictions": "Do not resell or redistribute raw files as stock, claim authorship, use content for AI training or imply Coverr/model endorsement. Brands in footage are not licensed."
+    },
+    "files": [
+      {
+        "path": "wwwroot/media/editorial/fashion-market.mp4",
+        "width": 1600,
+        "height": 900,
+        "codec": "h264",
+        "bytes": 2347677
+      },
+      {
+        "path": "wwwroot/media/editorial/fashion-market-mobile.mp4",
+        "width": 960,
+        "height": 540,
+        "codec": "h264",
+        "bytes": 893051
+      },
+      {
+        "path": "wwwroot/media/editorial/fashion-market-poster.webp",
+        "width": 1600,
+        "height": 900,
+        "codec": "webp",
+        "bytes": 90268
+      }
+    ],
+    "processing": "Original real footage retained at 24fps and 8.166667 seconds; scaled with FFmpeg and encoded as H.264 yuv420p with faststart. No audio, AI generation, frame interpolation, compositing or recoloring. Poster is an actual frame at 2 seconds, encoded as WebP.",
+    "verification": "Decoded with FFmpeg/ffprobe, inspected actual frames at 0, 4 and 7 seconds. No watermark or prominent brand logo observed."
+  }
+}

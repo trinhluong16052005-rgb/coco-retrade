@@ -1,0 +1,122 @@
+/* Only the consignment introduction and the create/edit form use this type scale. */
+.clearout-page,
+.consign-form-page {
+    font-family:"Open Sans",sans-serif;
+}
+.clearout-page :is(p,a,li,address,summary,button,input,select,textarea,label),
+.consign-form-page :is(p,a,li,span,label,input,select,textarea,button,.input-group-text) {
+    font-family:"Open Sans",sans-serif;
+}
+.clearout-page :is(h1,h2,h3,h4,h5,h6),
+.consign-form-page :is(h1,h2,h3,h4,h5,h6) {
+    font-family:"Playfair Display",Georgia,serif;
+    font-weight:600;
+    letter-spacing:-.025em;
+}
+.clearout-page .consign-hero h1 {
+    font-size:clamp(3rem,5vw,4.75rem);
+    line-height:1.12;
+}
+.clearout-page h2 {
+    font-size:clamp(2.25rem,3.4vw,3.125rem);
+    line-height:1.2;
+}
+.clearout-page .consign-steps h3 {
+    font-size:clamp(1.5rem,1.9vw,1.875rem);
+    line-height:1.35;
+}
+.clearout-page .consign-step-number {
+    font-family:"Open Sans",sans-serif;
+    font-size:1.125rem;
+    font-weight:700;
+}
+.consign-form-page .page-title {
+    font-size:clamp(2.25rem,3.5vw,3.25rem);
+    line-height:1.2;
+}
+.consign-form-page .form-section-heading {
+    align-items:center;
+}
+.consign-form-page .form-section-heading h2,
+.consign-form-page .listing-guide h2 {
+    font-size:clamp(1.5rem,2vw,1.875rem);
+    line-height:1.35;
+    font-weight:600;
+}
+.consign-form-page .form-section-heading .step-number {
+    flex-basis:36px;
+    width:36px;
+    height:36px;
+    font-size:1rem;
+    font-weight:700;
+}
+.consign-form-page :is(.form-label,.form-check-label,.form-control,.form-select,.input-group-text,.btn) {
+    font-size:1rem;
+    line-height:1.6;
+}
+.consign-form-page :is(.form-label,.btn) {
+    font-weight:600;
+}
+.consign-form-page .listing-steps li {
+    font-size:1rem;
+}
+.consign-form-page .listing-steps strong {
+    display:block;
+    font-family:"Playfair Display",Georgia,serif;
+    font-size:1.1875rem;
+    font-weight:600;
+    line-height:1.4;
+}
+.consign-form-page .listing-steps p {
+    font-size:.9375rem;
+    line-height:1.7;
+}
+.consign-form-page .listing-acknowledgement {
+    padding:0;
+    border:0;
+    border-radius:0;
+    background:transparent;
+    box-shadow:none;
+}
+.consign-form-page .form-switch {
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    min-height:0;
+    padding-left:0;
+}
+.consign-form-page .form-switch .form-check-input {
+    float:none;
+    flex:0 0 2em;
+    width:2em;
+    margin:.3em 0 0;
+    cursor:pointer;
+}
+.consign-form-page .form-switch .form-check-label {
+    flex:1;
+    min-width:0;
+    line-height:1.65;
+    cursor:pointer;
+}
+.consign-form-page .listing-acknowledgement .text-danger:empty {
+    display:none;
+}
+@media (max-width:767px) {
+    .clearout-page .consign-hero h1 {
+        font-size:clamp(2.75rem,10vw,3.5rem);
+    }
+    .clearout-page h2 {
+        font-size:clamp(2rem,7.8vw,2.5rem);
+    }
+    .clearout-page .consign-steps h3 {
+        font-size:1.5rem;
+        min-height:0;
+    }
+    .consign-form-page .page-title {
+        font-size:clamp(2rem,8vw,2.5rem);
+    }
+    .consign-form-page .form-section-heading h2,
+    .consign-form-page .listing-guide h2 {
+        font-size:1.5rem;
+    }
+}

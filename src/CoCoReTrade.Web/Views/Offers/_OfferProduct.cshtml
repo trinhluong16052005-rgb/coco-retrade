@@ -1,0 +1,17 @@
+@model (string Name, string Sku, decimal AskingPrice, Guid? ImageId)
+
+<div class="offer-product">
+    @if (Model.ImageId is { } imageId)
+    {
+        <img src="/images/@imageId" alt="" width="88" height="96" decoding="async" />
+    }
+    else
+    {
+        <span class="offer-product-fallback" aria-hidden="true"><svg class="icon"><use href="/images/icons.svg#hanger" /></svg></span>
+    }
+    <div>
+        <h2>@Model.Name</h2>
+        <p>Mã sản phẩm @Model.Sku</p>
+        <p>Giá niêm yết <strong>@Model.AskingPrice.ToString("N0") VNĐ</strong></p>
+    </div>
+</div>

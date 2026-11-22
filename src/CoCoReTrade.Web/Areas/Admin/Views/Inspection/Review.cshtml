@@ -1,0 +1,262 @@
+@model InspectionForm
+@{
+    var detail = (AdminProductDetails)ViewBag.Product;
+    var p = detail.Product;
+    var isOwnListing = p.SellerId == User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+    var canInspect = !isOwnListing && User.HasClaim(StaffPermissions.ClaimType, StaffPermissions.Inspect);
+    var canPreliminary = canInspect && User.IsInRole("Admin") && User.HasClaim(StaffPermissions.ClaimType, StaffPermissions.Reject);
+    var canPublish = User.HasClaim(StaffPermissions.ClaimType, StaffPermissions.Publish);
+    var canReject = User.HasClaim(StaffPermissions.ClaimType, StaffPermissions.Reject);
+    var passed = detail.CanPublish;
+    var preliminaryApproved = p.PreliminaryStatus == PreliminaryReviewStatus.Approved;
+    ViewData["Title"] = "Kiểm định " + p.ConsignmentCode;
+}
+<div class="inspection-review-page">
+<a class="d-inline-flex align-items-center gap-2 mb-3 small" asp-action="Index">← Danh sách chờ duyệt</a>
+<header class="admin-page-header">
+    <div><div class="eyebrow">Phiếu ký gửi <span class="admin-code">@p.ConsignmentCode</span></div><h1 class="page-title">@p.Name</h1><p class="subtitle mb-0">Người ký gửi: <strong>@detail.SellerName</strong> · Độ mới khai báo: @p.DeclaredCondition%</p></div>
+    <span class="admin-status @(preliminaryApproved ? "admin-status--success" : "admin-status--warning")">@(preliminaryApproved ? "Đã duyệt sơ bộ" : p.PreliminaryStatus == PreliminaryReviewStatus.ChangesRequested ? "Cần cập nhật" : "Chờ duyệt sơ bộ")</span>
+</header>
+<div class="inspection-details-grid">
+    <section class="panel inspection-photo-panel" aria-labelledby="inspection-photo-title">
+        <header class="inspection-panel-heading">
+            <span class="inspection-heading-icon" aria-hidden="true"><svg class="icon"><use href="/images/icons.svg#image" /></svg></span>
+            <div>
+                <h2 id="inspection-photo-title">Ảnh sản phẩm</h2>
+                <p>Đối chiếu ảnh ký gửi với hiện vật đang kiểm tra.</p>
+            </div>
+        </header>
+        @if (p.ImageIds.Count > 0)
+        {
+            <div class="inspection-gallery" data-inspection-gallery>
+                <img class="inspection-main-photo" src="/images/@p.ImageIds[0]" alt="Ảnh 1 của @p.Name" data-inspection-main />
+                <div class="inspection-thumbnails" aria-label="Ảnh sản phẩm">
+                    @for (var i = 0; i < p.ImageIds.Count; i++)
+                    {
+                        var image = p.ImageIds[i];
+                        <div class="inspection-thumbnail-item">
+                            <button type="button" class="inspection-thumbnail @(i == 0 ? "is-active" : "")" data-inspection-image="/images/@image" data-image-alt="Ảnh @(i + 1) của @p.Name" aria-label="Xem ảnh @(i + 1)" aria-pressed="@(i == 0 ? "true" : "false")"><img src="/images/@image" alt="" loading="lazy" /></button>
+                            @if (canInspect && preliminaryApproved)
+                            {
+                                <form asp-action="Cover" asp-route-id="@p.Id" method="post" class="inspection-cover-form"><input type="hidden" name="imageId" value="@image" /><input type="hidden" name="expectedRowVersion" value="@detail.RowVersion" /><button class="btn btn-outline-wine btn-sm" type="submit">@(i == 0 ? "✓ Ảnh bìa" : "Đặt ảnh bìa")</button></form>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+        else { <div class="inspection-photo-empty">Chưa có ảnh sản phẩm.</div> }
+        <div class="inspection-codes">
+            <dl class="inspection-code-strip">
+                <div><dt>Mã chờ duyệt</dt><dd class="admin-code">@p.ConsignmentCode</dd></div>
+                <div><dt>SKU chính thức</dt><dd>@(string.IsNullOrEmpty(p.Sku) ? "Được cấp khi đăng bán" : p.Sku)</dd></div>
+            </dl>
+            @if (!string.IsNullOrEmpty(p.Sku)) { <a class="btn btn-outline-wine inspection-print-label" asp-action="Label" asp-route-id="@p.Id" target="_blank" rel="noopener">In tem mã sản phẩm ↗</a> }
+        </div>
+    </section>
+        <section class="panel inspection-info-panel" aria-labelledby="inspection-info-title">
+            <header class="inspection-panel-heading">
+                <span class="inspection-heading-icon" aria-hidden="true"><svg class="icon"><use href="/images/icons.svg#clipboard" /></svg></span>
+                <h2 id="inspection-info-title">Thông tin hồ sơ ký gửi</h2>
+            </header>
+            <div class="spec-row"><span>Tên sản phẩm</span><strong>@p.Name</strong></div>
+            <div class="spec-row"><span>Thương hiệu</span><strong>@(string.IsNullOrWhiteSpace(p.Brand) ? "Không có" : p.Brand)</strong></div>
+            <div class="spec-row"><span>Danh mục</span><strong>@p.Category</strong></div>
+            <div class="spec-row"><span>Kích cỡ</span><strong>@UiText.For(p.Size)</strong></div>
+            @if (!string.IsNullOrWhiteSpace(p.Color)) { <div class="spec-row"><span>Màu sắc khai báo</span><strong>@p.Color</strong></div> }
+            @if (!string.IsNullOrWhiteSpace(p.Description))
+            {
+                <div class="inspection-seller-description">
+                    <strong>Mô tả người bán</strong>
+                    <p>@p.Description</p>
+                </div>
+            }
+            <div class="spec-row"><span>Độ mới khai báo</span><strong>@p.DeclaredCondition%</strong></div>
+            <div class="spec-row"><span>Giá gốc</span><strong>@p.OriginalPrice.ToString("N0") VNĐ</strong></div>
+            <div class="spec-row"><span>Giá niêm yết</span><strong>@p.AskingPrice.ToString("N0") VNĐ</strong></div>
+            <div class="spec-row"><span>Cho phép đề xuất giá</span><strong>@(p.AllowOffers ? "Có" : "Không")</strong></div>
+            @if (p.VerifiedCondition.HasValue)
+            { <div class="spec-row"><span>Độ mới sau kiểm định</span><strong>@p.VerifiedCondition%</strong></div> }
+            <div class="spec-row"><span>Ngày gửi ký gửi</span><strong>@p.CreatedAtUtc.AddHours(7).ToString("dd/MM/yyyy HH:mm")</strong></div>
+        </section>
+</div>
+        @if (isOwnListing)
+        {
+            <div class="alert alert-warning" role="alert">Bạn là người đăng bán sản phẩm này nên không thể tự kiểm định. Hãy nhờ một kiểm định viên hoặc quản trị viên khác kiểm định hiện vật.</div>
+        }
+
+    @if (canPreliminary && !preliminaryApproved)
+    {
+        <section class="panel inspection-preliminary" data-preliminary-review aria-labelledby="preliminary-title">
+            <header class="inspection-preliminary-heading"><h2 id="preliminary-title">Bước 1 – Duyệt sơ bộ qua ảnh</h2><p>Xem ảnh, mẫu mã và kiểu dáng. Sản phẩm vẫn chưa xuất hiện trên sàn.</p></header>
+            <div class="inspection-preliminary-body">
+                <div class="inspection-choices" role="group" aria-label="Quyết định duyệt sơ bộ">
+                    <button type="button" class="inspection-choice is-active" data-preliminary-choice="approve" aria-pressed="true" aria-controls="preliminary-approve">Duyệt sơ bộ</button>
+                    <button type="button" class="inspection-choice" data-preliminary-choice="update" aria-pressed="false" aria-controls="preliminary-update">Yêu cầu cập nhật</button>
+                    <button type="button" class="inspection-choice" data-preliminary-choice="reject" aria-pressed="false" aria-controls="preliminary-reject">Từ chối</button>
+                </div>
+                <form id="preliminary-approve" asp-action="Preliminary" asp-route-id="@p.Id" method="post" class="preliminary-action-panel" data-preliminary-panel="approve">
+                    <input type="hidden" name="ExpectedRowVersion" value="@detail.RowVersion" /><input type="hidden" name="decision" value="Approved" />
+                    <p class="inspection-approval-note">Duyệt sơ bộ để người ký gửi chuyển sản phẩm đến CoCo kiểm định thực tế. Chưa đăng bán ở bước này.</p>
+                    <div class="inspection-submit-row"><button type="submit" class="btn btn-wine">Xác nhận duyệt sơ bộ</button></div>
+                </form>
+                <form id="preliminary-update" asp-action="Preliminary" asp-route-id="@p.Id" method="post" class="preliminary-action-panel" data-preliminary-panel="update" hidden>
+                    <input type="hidden" name="ExpectedRowVersion" value="@detail.RowVersion" /><input type="hidden" name="decision" value="ChangesRequested" />
+                    <label for="updateReason" class="form-label">Lý do cần cập nhật</label><textarea id="updateReason" name="Reason" rows="2" required minlength="5" maxlength="1000" class="form-control"></textarea>
+                    <div class="inspection-submit-row"><button type="submit" class="btn btn-wine">Gửi yêu cầu cập nhật</button></div>
+                </form>
+                <form id="preliminary-reject" asp-action="Reject" asp-route-id="@p.Id" method="post" class="preliminary-action-panel" data-preliminary-panel="reject" hidden>
+                    <input type="hidden" name="ExpectedRowVersion" value="@detail.RowVersion" />
+                    <label for="preliminaryRejectReason" class="form-label">Lý do từ chối</label><textarea id="preliminaryRejectReason" name="Reason" rows="2" required minlength="5" maxlength="1000" class="form-control"></textarea>
+                    <div class="inspection-submit-row"><button type="submit" class="btn btn-outline-danger">Xác nhận từ chối</button></div>
+                </form>
+            </div>
+            <noscript><style>.inspection-review-page .preliminary-action-panel[hidden]{display:block!important}.inspection-review-page .inspection-choices{display:none}</style></noscript>
+        </section>
+    }
+<div class="inspection-later-actions">
+        @if (canInspect && preliminaryApproved && !passed)
+        {
+            <form asp-action="@(canPublish ? "RecordAndPublish" : "Record")" asp-route-id="@p.Id" method="post" enctype="multipart/form-data" class="panel inspection-step-two" aria-labelledby="inspection-step-two-title">
+                <input asp-for="ProductId" type="hidden" />
+                <input asp-for="ExpectedRowVersion" type="hidden" />
+                <header class="inspection-panel-heading">
+                    <span class="inspection-heading-icon" aria-hidden="true"><svg class="icon"><use href="/images/icons.svg#package" /></svg></span>
+                    <div>
+                        <h2 id="inspection-step-two-title">Bước 2 · Kiểm tra hiện vật tại tiệm</h2>
+                        <p>Ghi kết quả kiểm định và xác nhận thông tin sản phẩm thực tế.</p>
+                    </div>
+                </header>
+                <div asp-validation-summary="All" class="text-danger" role="alert"></div>
+                <div class="inspection-step-columns">
+                    <div class="inspection-step-primary">
+                        <fieldset class="inspection-fieldset">
+                            <legend>Thông tin sản phẩm</legend>
+                            <div class="inspection-fields inspection-fields-product">
+                                <div class="inspection-field">
+                                    <label asp-for="Name" class="form-label"></label>
+                                    <input asp-for="Name" class="form-control" />
+                                    <span asp-validation-for="Name" class="small text-danger"></span>
+                                </div>
+                                <div class="inspection-field">
+                                    <label asp-for="Brand" class="form-label"></label>
+                                    <input asp-for="Brand" class="form-control" />
+                                    <span asp-validation-for="Brand" class="small text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="inspection-fields inspection-fields-product">
+                                <div class="inspection-field">
+                                    <label asp-for="Category" class="form-label"></label>
+                                    <select asp-for="Category" class="form-select" data-listing-category>
+                                        <partial name="_CategoryOptions" model="Model.Category" />
+                                    </select>
+                                    <span asp-validation-for="Category" class="small text-danger"></span>
+                                </div>
+                                <partial name="_ProductSizeInput" model="@(new ProductSizeInput(Model.Category, Model.Size, true))" />
+                            </div>
+                        </fieldset>
+                        <fieldset class="inspection-fieldset">
+                            <legend>Độ mới và giá bán</legend>
+                            <div class="inspection-fields inspection-fields-pricing">
+                                <div class="inspection-field inspection-condition-field">
+                                    <label asp-for="VerifiedCondition" class="form-label"></label>
+                                    <div class="input-group">
+                                        <input asp-for="VerifiedCondition" type="number" min="50" max="100" class="form-control" />
+                                        <span class="input-group-text" aria-hidden="true">%</span>
+                                    </div>
+                                    <span asp-validation-for="VerifiedCondition" class="small text-danger"></span>
+                                </div>
+                                <div class="inspection-field">
+                                    <label asp-for="OriginalPrice" class="form-label"></label>
+                                    <div class="inspection-price-input">
+                                        <input asp-for="OriginalPrice" type="text" inputmode="numeric" autocomplete="off" data-vnd-price class="form-control" />
+                                    </div>
+                                    <span asp-validation-for="OriginalPrice" class="small text-danger"></span>
+                                </div>
+                                <div class="inspection-field">
+                                    <label asp-for="AskingPrice" class="form-label"></label>
+                                    <div class="inspection-price-input">
+                                        <input asp-for="AskingPrice" type="text" inputmode="numeric" autocomplete="off" data-vnd-price class="form-control" />
+                                    </div>
+                                    <span asp-validation-for="AskingPrice" class="small text-danger"></span>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <fieldset class="inspection-fieldset inspection-step-extra">
+                        <legend>Bổ sung thông tin</legend>
+                        <div class="inspection-field">
+                            <label asp-for="Notes" class="form-label">Ghi chú kiểm định <span class="fw-normal">(không bắt buộc)</span></label>
+                            <textarea asp-for="Notes" rows="2" maxlength="2000" class="form-control" placeholder="Đặc điểm, vết sờn hoặc chi tiết cần lưu ý"></textarea>
+                            <span asp-validation-for="Notes" class="small text-danger"></span>
+                        </div>
+                        <div class="inspection-field">
+                            <label asp-for="InspectionImages" class="form-label"></label>
+                            <input asp-for="InspectionImages" type="file" accept="image/jpeg,image/png,image/webp" multiple class="form-control"
+                                   data-preview="inspectionPhotoPreview" data-max-files="10" aria-describedby="inspection-images-help" />
+                            <small id="inspection-images-help" class="form-text">Tối đa 10 ảnh JPEG, PNG hoặc WebP; mỗi ảnh tối đa 5 MB. Có thể chọn ảnh nhiều lần và xóa từng ảnh trước khi lưu.</small>
+                            <div id="inspectionPhotoPreview" class="photo-preview"></div>
+                            <span asp-validation-for="InspectionImages" class="small text-danger"></span>
+                        </div>
+                        <div class="form-check inspection-passed">
+                            <input asp-for="Passed" class="form-check-input" />
+                            <label asp-for="Passed" class="form-check-label">Hiện vật đạt kiểm định</label>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="inspection-step-actions">
+                    @if (canPublish)
+                    {
+                        <button class="btn btn-wine" type="submit" data-inspection-publish>Duyệt và đăng bán</button>
+                        <button class="btn btn-outline-danger" type="submit" formaction="@Url.Action("Record", "Inspection", new { area = "Admin", id = p.Id })"
+                                name="saveAsFailed" value="true">Lưu kết quả không đạt</button>
+                    }
+                    else
+                    {
+                        <button class="btn btn-wine" type="submit">Lưu kết quả kiểm định</button>
+                    }
+                </div>
+            </form>
+        }
+        @if (canPublish && passed)
+        {
+            <form asp-action="Publish" asp-route-id="@p.Id" method="post" class="panel admin-publish-panel mb-3">
+                <input type="hidden" name="ExpectedRowVersion" value="@detail.RowVersion" />
+                <div class="eyebrow">Duyệt chính thức · Đưa sản phẩm lên sàn</div>
+                <h2 class="fs-4 mt-2">Xác nhận đăng bán</h2>
+                <p class="small text-muted">CoCo sẽ cấp SKU chính thức và hiển thị sản phẩm cho khách mua sau khi bạn xác nhận.</p>
+                <div class="form-check mb-4"><input class="form-check-input" type="checkbox" name="PhysicalItemConfirmed" value="true" id="confirmItem" required /><label class="form-check-label" for="confirmItem">Tôi đã kiểm tra hiện vật và xác nhận thông tin đạt yêu cầu.</label></div>
+                <button class="btn btn-wine w-100" type="submit"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#check" /></svg> Duyệt và đăng bán</button>
+            </form>
+        }
+        @if (canReject && detail.Inspections.Count > 0)
+        {
+            <details class="panel">
+                <summary class="fw-semibold">Từ chối ký gửi</summary>
+                <form asp-action="Reject" asp-route-id="@p.Id" method="post" class="mt-3">
+                    <input type="hidden" name="ExpectedRowVersion" value="@detail.RowVersion" />
+                    <p class="small text-muted">Người bán sẽ nhận được thông báo kèm lý do từ chối.</p>
+                    <label for="reason" class="form-label">Lý do gửi người bán</label><textarea id="reason" name="Reason" rows="2" required minlength="5" class="form-control"></textarea>
+                    <button type="submit" class="btn btn-outline-danger mt-3">Từ chối ký gửi</button>
+                </form>
+            </details>
+        }
+        @if (detail.Inspections.Count > 0)
+        {
+            <section class="panel mt-3">
+                <h2 class="fs-5 mb-3">Lịch sử kiểm định <span class="text-muted small">(@detail.Inspections.Count)</span></h2>
+                @foreach (var item in detail.Inspections)
+                {
+                    <div class="border-top py-3">
+                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2"><span class="admin-status @(item.Passed ? "admin-status--success" : "admin-status--danger")">@(item.Passed ? "Đạt yêu cầu" : "Không đạt")</span><span class="small text-muted">@item.CreatedAtUtc.AddHours(7).ToString("dd/MM/yyyy HH:mm")</span></div>
+                        <div class="small">@item.Brand · @UiText.For(item.Size) · Độ mới @item.VerifiedCondition%</div>
+                        @if (!string.IsNullOrWhiteSpace(item.Notes)) { <p class="mb-0 mt-2 small text-muted">@item.Notes</p> }
+                    </div>
+                }
+            </section>
+        }
+</div>
+</div>
+@section Scripts {
+    <script src="~/js/inspection-review.js" asp-append-version="true"></script>
+}

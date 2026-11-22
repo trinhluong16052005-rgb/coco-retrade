@@ -1,0 +1,278 @@
+{
+  "schemaVersion": 1,
+  "status": "Historical attachment provenance. Expanded shop and activity photography is recorded in coco-content-media.json and coco-content-usage.json.",
+  "updatedOn": "2026-11-18",
+  "purpose": "Actual CoCo shop photos supplied by user, prioritized for public editorial illustrations. Not new product inventory or verified customer reviews.",
+  "authorization": "User explicitly requested reuse of these supplied shop photos on the CoCo website. Photographers are not identified. No unrelated images were scraped.",
+  "publicResearch": [
+    {
+      "url": "https://www.facebook.com/ShopCoCo.65Nguyenluongbang/",
+      "verifiedTitle": "CoCo Kho Ký Gửi _ 65 Nguyễn Lương Bằng | Da Nang",
+      "description": "Public metadata describes a clothing and accessories consignment store in Da Nang."
+    },
+    {
+      "url": "https://www.facebook.com/profile.php?id=100064128906547",
+      "verifiedTitle": "CoCo Kho Ký Gửi Đà Nẵng",
+      "description": "Public metadata describes purchase and consignment of designer, Quang Chau and branded clothing."
+    }
+  ],
+  "researchLimit": "Public HTML exposed page title and introductory metadata, but no readable post feed or photo gallery. No login, access restriction bypass or private endpoint used. These files come from attachments, not a verified individual Facebook photo URL.",
+  "transformation": "EXIF orientation corrected, cropped where recorded and encoded WebP. Natural colors retained. No generated imagery, compositing or added text.",
+  "contactPolicy": "User confirmed 536/538 Nui Thanh and requested the shop hotline. Website uses 0905 808 679 visible consistently on both supplied storefront photographs. No order history or user contact data modified.",
+  "unusedAttachment": {
+    "name": "codex-clipboard-29608b80-fc2b-40e9-8efa-7abf00812251.png",
+    "sha256": "14bbd304463121459adcbd76e16e9a414765dce2257757a6946a17afdb1440c9",
+    "reason": "Promotional graphic embeds additional contact numbers and large text blocks. Shop photography is prioritized; public contact details use the confirmed address and storefront hotline."
+  },
+  "photos": [
+    {
+      "key": "coco-shop-floor",
+      "url": "/images/coco/coco-shop-floor.webp",
+      "width": 1440,
+      "height": 1080,
+      "bytes": 173722,
+      "sha256": "4fb2ceaadf9ef9c1f56b20329ae34dfb10a3905d85d1da52e9adb5f7a13caf1e",
+      "altVi": "Khách xem quần áo và trao đổi cùng nhân viên trong cửa hàng CoCo",
+      "sourceType": "user-attachment",
+      "sourceAttachment": "codex-clipboard-de854510-d69e-4d9c-be09-92362ce0f4cb.png",
+      "originalSha256": "ec2959eed19ba41aeb5ce3db06fb0d142bd036ddf669df7d31732c4cadee0e13",
+      "cropBox": null,
+      "variants": [
+        {
+          "url": "/images/coco/coco-shop-floor-480.webp",
+          "width": 480,
+          "height": 360,
+          "bytes": 33470
+        },
+        {
+          "url": "/images/coco/coco-shop-floor-800.webp",
+          "width": 800,
+          "height": 600,
+          "bytes": 70976
+        }
+      ]
+    },
+    {
+      "key": "coco-shop-floor-wide",
+      "url": "/images/coco/coco-shop-floor-wide.webp",
+      "width": 1440,
+      "height": 810,
+      "bytes": 163878,
+      "sha256": "93c0d793e03e71e8be712bc25f37cf4b700fbef43138caebbd248df7c4fd5ce1",
+      "altVi": "Hoạt động lựa chọn quần áo tại cửa hàng CoCo",
+      "sourceType": "user-attachment",
+      "sourceAttachment": "codex-clipboard-de854510-d69e-4d9c-be09-92362ce0f4cb.png",
+      "originalSha256": "ec2959eed19ba41aeb5ce3db06fb0d142bd036ddf669df7d31732c4cadee0e13",
+      "cropBox": [
+        0,
+        190,
+        1440,
+        1000
+      ],
+      "variants": [
+        {
+          "url": "/images/coco/coco-shop-floor-wide-480.webp",
+          "width": 480,
+          "height": 270,
+          "bytes": 29976
+        },
+        {
+          "url": "/images/coco/coco-shop-floor-wide-800.webp",
+          "width": 800,
+          "height": 450,
+          "bytes": 65248
+        }
+      ]
+    },
+    {
+      "key": "coco-accessories",
+      "url": "/images/coco/coco-accessories.webp",
+      "width": 1080,
+      "height": 1440,
+      "bytes": 353120,
+      "sha256": "c745970845663da54b2ce6cb813c96d8df97aabcb51419562974b876ca7fa5ea",
+      "altVi": "Nhân viên CoCo sắp xếp tất, mũ và phụ kiện trong cửa hàng",
+      "sourceType": "user-attachment",
+      "sourceAttachment": "codex-clipboard-4cf467ca-75a9-40a8-a607-e1ad11a34a1f.png",
+      "originalSha256": "b110f5c0c7220051713e1cf85b419281b7c10ad4d1f437a68a0b378eeccb97ef",
+      "cropBox": null,
+      "variants": [
+        {
+          "url": "/images/coco/coco-accessories-480.webp",
+          "width": 480,
+          "height": 640,
+          "bytes": 95394
+        },
+        {
+          "url": "/images/coco/coco-accessories-800.webp",
+          "width": 800,
+          "height": 1067,
+          "bytes": 214964
+        }
+      ]
+    },
+    {
+      "key": "coco-accessories-wide",
+      "url": "/images/coco/coco-accessories-wide.webp",
+      "width": 1080,
+      "height": 810,
+      "bytes": 214284,
+      "sha256": "0918b581fc65fb863da0738cbd2d35a3b8b45bbef46859aa16245e8d1de81815",
+      "altVi": "Sắp xếp và lựa chọn phụ kiện tại CoCo",
+      "sourceType": "user-attachment",
+      "sourceAttachment": "codex-clipboard-4cf467ca-75a9-40a8-a607-e1ad11a34a1f.png",
+      "originalSha256": "b110f5c0c7220051713e1cf85b419281b7c10ad4d1f437a68a0b378eeccb97ef",
+      "cropBox": [
+        0,
+        220,
+        1080,
+        1030
+      ],
+      "variants": [
+        {
+          "url": "/images/coco/coco-accessories-wide-480.webp",
+          "width": 480,
+          "height": 360,
+          "bytes": 56870
+        },
+        {
+          "url": "/images/coco/coco-accessories-wide-800.webp",
+          "width": 800,
+          "height": 600,
+          "bytes": 129856
+        }
+      ]
+    },
+    {
+      "key": "coco-accessories-detail",
+      "url": "/images/coco/coco-accessories-detail.webp",
+      "width": 740,
+      "height": 500,
+      "bytes": 91656,
+      "sha256": "e7774bbeb179cf6ffd6991a4a5456030d3e43b922c11ff3e0b773179f5847382",
+      "altVi": "Các món phụ kiện được sắp xếp theo từng nhóm tại CoCo",
+      "sourceType": "user-attachment",
+      "sourceAttachment": "codex-clipboard-4cf467ca-75a9-40a8-a607-e1ad11a34a1f.png",
+      "originalSha256": "b110f5c0c7220051713e1cf85b419281b7c10ad4d1f437a68a0b378eeccb97ef",
+      "cropBox": [
+        320,
+        400,
+        1060,
+        900
+      ],
+      "variants": [
+        {
+          "url": "/images/coco/coco-accessories-detail-480.webp",
+          "width": 480,
+          "height": 324,
+          "bytes": 45362
+        }
+      ]
+    },
+    {
+      "key": "coco-clothing-rack",
+      "url": "/images/coco/coco-clothing-rack.webp",
+      "width": 452,
+      "height": 232,
+      "bytes": 18210,
+      "sha256": "90c91557c03dad4e880793e5b59ed9b1361b376d6d8e2402890f0436b03b5b1b",
+      "altVi": "Quần áo được treo trên giá trong cửa hàng CoCo",
+      "sourceType": "user-attachment",
+      "sourceAttachment": "codex-clipboard-de854510-d69e-4d9c-be09-92362ce0f4cb.png",
+      "originalSha256": "ec2959eed19ba41aeb5ce3db06fb0d142bd036ddf669df7d31732c4cadee0e13",
+      "cropBox": [
+        8,
+        235,
+        460,
+        467
+      ],
+      "variants": []
+    },
+    {
+      "key": "coco-storefront",
+      "url": "/images/coco/coco-storefront.webp",
+      "width": 1088,
+      "height": 1440,
+      "bytes": 322226,
+      "sha256": "8480798bd6c1037a3bc21ede98049c034fdedeb0b08acde7244ca83e3dd86dd0",
+      "altVi": "Mặt tiền CoCo Kho Ký Gửi trong ảnh cửa hàng được cung cấp",
+      "sourceType": "user-attachment",
+      "sourceAttachment": "codex-clipboard-d19ba572-e188-4b61-b8d7-2158f79ee36f.png",
+      "originalSha256": "c12073a2b10b06ae4415818ddd3e9b6665ea1ba3af816b79f4bb103f5def6809",
+      "cropBox": null,
+      "variants": [
+        {
+          "url": "/images/coco/coco-storefront-480.webp",
+          "width": 480,
+          "height": 635,
+          "bytes": 84346
+        },
+        {
+          "url": "/images/coco/coco-storefront-800.webp",
+          "width": 800,
+          "height": 1059,
+          "bytes": 192662
+        }
+      ]
+    },
+    {
+      "key": "coco-storefront-detail",
+      "url": "/images/coco/coco-storefront-detail.webp",
+      "width": 1040,
+      "height": 625,
+      "bytes": 134482,
+      "sha256": "67bd1891cffff3b80847318e71bef3f86b33f80136fe13e1219ab1705d5e465d",
+      "altVi": "Biển hiệu và khu trưng bày của CoCo Kho Ký Gửi",
+      "sourceType": "user-attachment",
+      "sourceAttachment": "codex-clipboard-d19ba572-e188-4b61-b8d7-2158f79ee36f.png",
+      "originalSha256": "c12073a2b10b06ae4415818ddd3e9b6665ea1ba3af816b79f4bb103f5def6809",
+      "cropBox": [
+        25,
+        330,
+        1065,
+        955
+      ],
+      "variants": [
+        {
+          "url": "/images/coco/coco-storefront-detail-480.webp",
+          "width": 480,
+          "height": 288,
+          "bytes": 36250
+        },
+        {
+          "url": "/images/coco/coco-storefront-detail-800.webp",
+          "width": 800,
+          "height": 481,
+          "bytes": 80376
+        }
+      ]
+    },
+    {
+      "key": "coco-storefront-day",
+      "url": "/images/coco/coco-storefront-day.webp",
+      "width": 1080,
+      "height": 1440,
+      "bytes": 425774,
+      "sha256": "c45712254b8ce2a1850732d980f977609cab679d43f21953ce8a07b8d2783c37",
+      "altVi": "Không gian bên ngoài cửa hàng CoCo trong ảnh ban ngày",
+      "sourceType": "user-attachment",
+      "sourceAttachment": "codex-clipboard-be849431-788f-41a6-91e8-19f8c5ca5487.png",
+      "originalSha256": "2f56172efedf6b8c9a9e78d1d8b7f08223127bd7dff6d0325f46d5c41e8a7acc",
+      "cropBox": null,
+      "variants": [
+        {
+          "url": "/images/coco/coco-storefront-day-480.webp",
+          "width": 480,
+          "height": 640,
+          "bytes": 103042
+        },
+        {
+          "url": "/images/coco/coco-storefront-day-800.webp",
+          "width": 800,
+          "height": 1067,
+          "bytes": 250604
+        }
+      ]
+    }
+  ]
+}

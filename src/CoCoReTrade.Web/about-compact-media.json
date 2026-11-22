@@ -1,0 +1,149 @@
+{
+  "version": 1,
+  "purpose": "Distinct original photographs for compact About mission, vision and direction sections",
+  "sourceFolder": "D:\\DỰ ÁN\\ẢNH COCO\\ẢNH COCO",
+  "conversion": {
+    "format": "WebP",
+    "quality": 94,
+    "method": 6,
+    "maxWidth": 1600,
+    "upscale": false,
+    "crop": false,
+    "colorEdits": false,
+    "aiGenerated": false,
+    "responsiveWidths": [
+      800,
+      480
+    ],
+    "orientation": "EXIF orientation applied if present",
+    "note": "Native aspect ratio retained; browser framing belongs to CSS. Dimension rounding is at most half a pixel."
+  },
+  "retainedHero": {
+    "source": "1.png",
+    "sourceDimensions": [
+      1380,
+      626
+    ],
+    "sourceSha256": "c973b9494efafd5e9f82abf09f2252ebd238b257677df92fe27c6c20f28b5555",
+    "existingUrl": "/images/coco/coco-storefront-daylight.webp",
+    "reason": "Existing hero already uses this original; no replacement needed."
+  },
+  "images": [
+    {
+      "section": "mission",
+      "source": "D:\\DỰ ÁN\\ẢNH COCO\\ẢNH COCO\\ảnh cửa hàng.png",
+      "sourceFile": "ảnh cửa hàng.png",
+      "sourceDimensions": [
+        1448,
+        1086
+      ],
+      "sourceBytes": 2370697,
+      "sourceSha256": "3a7430ec93d61ad3740f1ef64c776e442f90c6807562c372527e27f7a075dacb",
+      "alt": "Dãy trang phục được sắp xếp trong không gian cửa hàng CoCo",
+      "visibleContext": "Empty clothing display area with garment rails. No activity claims.",
+      "outputs": [
+        {
+          "url": "/images/coco/about/about-garment-rails.webp",
+          "width": 1448,
+          "height": 1086,
+          "bytes": 340360,
+          "sha256": "959331a0d69871510d74d27e22e3396d482f13a29320d4f20f4c140242f136ea"
+        },
+        {
+          "url": "/images/coco/about/about-garment-rails-800.webp",
+          "width": 800,
+          "height": 600,
+          "bytes": 134712,
+          "sha256": "689b95e2fa9b2cd82420548fb2b608f9e27fa76da93362d81f9b34da01ef0c35"
+        },
+        {
+          "url": "/images/coco/about/about-garment-rails-480.webp",
+          "width": 480,
+          "height": 360,
+          "bytes": 55610,
+          "sha256": "175e6b409ae4a60b62e949d36cb3fea89d2c7ce1628f0db4814ca475e97bf98d"
+        }
+      ]
+    },
+    {
+      "section": "vision",
+      "source": "D:\\DỰ ÁN\\ẢNH COCO\\ẢNH COCO\\PHỤ KIỆN.jpg",
+      "sourceFile": "PHỤ KIỆN.jpg",
+      "sourceDimensions": [
+        1080,
+        1076
+      ],
+      "sourceBytes": 335465,
+      "sourceSha256": "455b4f46f087fe370fb9b3ad2108a5fcfa56d51d3979b958729b9da867664081",
+      "alt": "Kệ túi, giày và phụ kiện tại cửa hàng CoCo",
+      "visibleContext": "Accessory display with bags, shoes, jewellery and hair accessories.",
+      "outputs": [
+        {
+          "url": "/images/coco/about/about-accessory-shelves.webp",
+          "width": 1080,
+          "height": 1076,
+          "bytes": 344482,
+          "sha256": "67059410ac2a3f6cf963d3fb21c71f38118476f49a80298856fd29324531cc06"
+        },
+        {
+          "url": "/images/coco/about/about-accessory-shelves-800.webp",
+          "width": 800,
+          "height": 797,
+          "bytes": 216328,
+          "sha256": "1377a76662c299599aaac5ed220f77a4d42913541031b794168f5a059515f7f5"
+        },
+        {
+          "url": "/images/coco/about/about-accessory-shelves-480.webp",
+          "width": 480,
+          "height": 478,
+          "bytes": 88688,
+          "sha256": "14dada4235699ab898831c5c46e3d70927c5482bd303d8f3a38a5c8683058a57"
+        }
+      ]
+    },
+    {
+      "section": "direction",
+      "source": "D:\\DỰ ÁN\\ẢNH COCO\\ẢNH COCO\\ẢNH BÊN TRONG COCO.jpg",
+      "sourceFile": "ẢNH BÊN TRONG COCO.jpg",
+      "sourceDimensions": [
+        1080,
+        979
+      ],
+      "sourceBytes": 196591,
+      "sourceSha256": "0d4bc5e67d6980ebaebf6e1c79789649a60cd81e610da0e2b975b997773ce4e9",
+      "alt": "Khu thử đồ và ghế ngồi tại cửa hàng CoCo",
+      "visibleContext": "Fitting-room curtains, full-length mirror and seating area.",
+      "outputs": [
+        {
+          "url": "/images/coco/about/about-fitting-room.webp",
+          "width": 1080,
+          "height": 979,
+          "bytes": 185428,
+          "sha256": "abbc40aaf80e68bb1d75d8612e78f95d823a621fa424db922b96bed60d51c77f"
+        },
+        {
+          "url": "/images/coco/about/about-fitting-room-800.webp",
+          "width": 800,
+          "height": 725,
+          "bytes": 119624,
+          "sha256": "8a55ead356eaaedc16f5bb73f830fb0be7d9f8c669e9b8c2036199e3217404e6"
+        },
+        {
+          "url": "/images/coco/about/about-fitting-room-480.webp",
+          "width": 480,
+          "height": 435,
+          "bytes": 49424,
+          "sha256": "39c00db4dcf7f481a4e3ebd289267ca2344f2dec0112474b66f4fa8e1154abcd"
+        }
+      ]
+    }
+  ],
+  "excluded": {
+    "source": "ẢNH NÀY ĐỂ ĐẦU TRANG KÝ GỬI GIÚP TÔI.jpg",
+    "dimensions": [
+      788,
+      788
+    ],
+    "reason": "Low-detail promotional graphic with baked-in text; unsuitable as About section photograph."
+  }
+}

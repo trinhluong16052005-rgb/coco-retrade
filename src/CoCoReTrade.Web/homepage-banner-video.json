@@ -1,0 +1,16 @@
+﻿{
+    "source":  "C:\\Users\\laptop\\Documents\\ChatGPT\\COCORETRADE\\coco-store-banner\\renders\\coco-store-web-3840x1880.mp4",
+    "asset":  "/media/editorial/coco-store-web-3840x1880.mp4",
+    "poster":  "/media/editorial/coco-store-web-3840x1880-poster.jpg",
+    "resolution":  [
+                       3840,
+                       1880
+                   ],
+    "fps":  30,
+    "durationSeconds":  36,
+    "processing":  "Exact source copy, no transcoding or filters. Poster extracted at 5.5 seconds and resized to 1920x940. No audio track in source.",
+    "bytes":  44035915,
+    "sha256":  "a877c92b9a8317d22d1b93550ec457803a8fcd5c4a24777419520750a4c653a0",
+    "display":  "object-fit:contain; full 3840:1880 frame on desktop and mobile; existing autoplay muted loop playsinline controls preserved",
+    "updatedOn":  "2026-11-20"
+}

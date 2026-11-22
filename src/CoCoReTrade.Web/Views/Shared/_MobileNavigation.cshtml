@@ -1,0 +1,34 @@
+@{
+    var signedIn = User.Identity?.IsAuthenticated == true;
+    var inAdmin = string.Equals(ViewContext.RouteData.Values["area"]?.ToString(), "Admin", StringComparison.OrdinalIgnoreCase);
+    var controller = ViewContext.RouteData.Values["controller"]?.ToString();
+    var action = ViewContext.RouteData.Values["action"]?.ToString();
+    var section = inAdmin ? null : controller switch
+    {
+        "Home" when action == "Index" => "Home",
+        "Shop" or "Sellers" or "Cart" or "Checkout" => "Shop",
+        "Home" when action == "Clearout" => "Consign",
+        "Listing" => "Consign",
+        "Messages" => "Messages",
+        "Account" or "Profile" or "Orders" or "Offers" or "Support" => "Profile",
+        _ => null
+    };
+    var messagesUrl = Url.Action("Index", "Messages", new { area = "" });
+    var profileUrl = Url.Action("Index", "Profile", new { area = "" });
+    string? Current(string target) => section == target ? "page" : null;
+}
+<nav class="bottom-nav" aria-label="Điều hướng chính trên điện thoại">
+    <a asp-area="" asp-controller="Home" asp-action="Index" aria-current="@Current("Home")"><span class="nav-icon"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#home" /></svg></span><span>Trang chủ</span></a>
+    <a asp-area="" asp-controller="Shop" asp-action="Index" aria-current="@Current("Shop")"><span class="nav-icon"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#bag" /></svg></span><span>Mua sắm</span></a>
+    <a asp-area="" asp-controller="Home" asp-action="Clearout" aria-current="@Current("Consign")"><span class="nav-icon"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#hanger" /></svg></span><span>Ký gửi</span></a>
+    <a href="@(signedIn ? messagesUrl : Url.Action("Login", "Account", new { area = "", returnUrl = messagesUrl }))"
+       aria-current="@Current("Messages")" data-unread-label="Tin nhắn">
+        <span class="nav-icon">
+            <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#message" /></svg>
+            @if (signedIn) { <span class="unread-count" data-unread-badge="messages" aria-hidden="true" hidden></span> }
+        </span>
+        <span>Tin nhắn</span>
+    </a>
+    <a href="@(signedIn ? profileUrl : Url.Action("Login", "Account", new { area = "", returnUrl = profileUrl }))"
+       aria-current="@Current("Profile")"><span class="nav-icon"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#user" /></svg></span><span>Tài khoản</span></a>
+</nav>

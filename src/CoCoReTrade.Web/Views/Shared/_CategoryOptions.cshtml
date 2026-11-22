@@ -1,0 +1,6 @@
+@model string
+<option value="">Chọn danh mục</option>
+@foreach (var category in ProductCategories.Main)
+{
+    <option value="@category" selected="@(ProductCategories.Matches(Model ?? "", category))">@ProductCategories.Display(category)</option>
+}

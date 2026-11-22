@@ -1,0 +1,31 @@
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService Authorization
+@{
+    var current = ViewContext.RouteData.Values["controller"]?.ToString();
+    var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+    var links = new[] {
+        ("Dashboard", "Index", "Tổng quan", "grid", StaffPermissions.ReadPending, "Công việc"),
+        ("Inspection", "Index", "Kiểm định và duyệt", "clipboard", StaffPermissions.ReadPending, ""),
+        ("Products", "Index", "Sản phẩm", "hanger", StaffPermissions.ManageProducts, ""),
+        ("Orders", "Index", "Đơn hàng", "package", StaffPermissions.ManageOrders, ""),
+        ("Orders", "HeldPickups", "Tạm giữ chờ lấy", "clock", StaffPermissions.ManageOrders, ""),
+        ("Wallets", "Index", "Ví và rút tiền", "wallet", StaffPermissions.ManageWallets, "Tài chính"),
+        ("Reports", "Revenue", "Báo cáo doanh thu", "chart", StaffPermissions.ManageWallets, ""),
+        ("Users", "Index", "Người dùng", "users", StaffPermissions.ManageUsers, "Quản lý"),
+        ("HelpDesk", "Index", "Hỗ trợ khách hàng", "help", StaffPermissions.ManageUsers, ""),
+        ("Audit", "Index", "Lịch sử thao tác", "clock", StaffPermissions.ReadAudit, "")
+    };
+}
+<nav class="admin-navigation" aria-label="Chức năng quản trị">
+    <div class="sidebar-intro"><span class="eyebrow">CoCo ReTrade</span><strong>Quản lý cửa hàng</strong></div>
+    @foreach (var (controller, action, title, icon, permission, group) in links)
+    {
+        @if ((await Authorization.AuthorizeAsync(User, permission)).Succeeded)
+        {
+            @if (!string.IsNullOrEmpty(group)) { <span class="sidebar-group">@group</span> }
+            var selected = current == controller && (controller != "Orders" || currentAction == action);
+            <a class="@(selected ? "is-active" : "")" asp-area="Admin" asp-controller="@controller" asp-action="@action" aria-current="@(selected ? "page" : null)"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#@icon"></use></svg><span>@title</span></a>
+        }
+    }
+    <div class="sidebar-footer"><a asp-area="" asp-controller="Home" asp-action="Index"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#home"></use></svg> Về trang mua sắm</a><p>Mỗi món đồ, một hành trình mới.</p></div>
+</nav>

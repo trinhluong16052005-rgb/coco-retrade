@@ -1,0 +1,108 @@
+{
+  "reviewedAt": "2026-11-20",
+  "sourceFolder": "D:\\DỰ ÁN\\ẢNH COCO\\thiện nguyện",
+  "source": "User-supplied photographs",
+  "imageCount": 8,
+  "columnOrder": [
+    [
+      2,
+      3
+    ],
+    [
+      4
+    ],
+    [
+      5,
+      6
+    ],
+    [
+      1
+    ],
+    [
+      7,
+      8
+    ]
+  ],
+  "images": [
+    {
+      "index": 1,
+      "sourceFile": "602985347_1281314810682804_4945838973653248167_n.jpg",
+      "sourceSha256": "28026fa48380e7b9950e39a9b40609a44799eb9845558740b03abdeab2852320",
+      "url": "/images/coco/community/community-001.webp",
+      "width": 1400,
+      "height": 788,
+      "srcset": "/images/coco/community/community-001-480.webp 480w, /images/coco/community/community-001-800.webp 800w, /images/coco/community/community-001.webp 1400w",
+      "fullImageLink": "/images/coco/community/community-001.webp"
+    },
+    {
+      "index": 2,
+      "sourceFile": "605177142_1281315520682733_2451746523018012782_n.jpg",
+      "sourceSha256": "6fc3d4f2e6296352395d87c2f381261b5d0159aa4bbc92f06675501a3195d479",
+      "url": "/images/coco/community/community-002.webp",
+      "width": 1400,
+      "height": 796,
+      "srcset": "/images/coco/community/community-002-480.webp 480w, /images/coco/community/community-002-800.webp 800w, /images/coco/community/community-002.webp 1400w",
+      "fullImageLink": "/images/coco/community/community-002.webp"
+    },
+    {
+      "index": 3,
+      "sourceFile": "605850207_1281314290682856_6051835353126588331_n.jpg",
+      "sourceSha256": "6b0a1f2a993da14936a66f7873746912db3668279ff1c9c8960295d2010407be",
+      "url": "/images/coco/community/community-003.webp",
+      "width": 1400,
+      "height": 934,
+      "srcset": "/images/coco/community/community-003-480.webp 480w, /images/coco/community/community-003-800.webp 800w, /images/coco/community/community-003.webp 1400w",
+      "fullImageLink": "/images/coco/community/community-003.webp"
+    },
+    {
+      "index": 4,
+      "sourceFile": "674932479_1370824545065163_3109852570827693196_n.jpg",
+      "sourceSha256": "ee5c5a36077e468ce753f169fa5bca1742b3f044a648feab8f24747936847ac1",
+      "url": "/images/coco/community/community-004.webp",
+      "width": 1082,
+      "height": 1440,
+      "srcset": "/images/coco/community/community-004-480.webp 480w, /images/coco/community/community-004-800.webp 800w, /images/coco/community/community-004.webp 1082w",
+      "fullImageLink": "/images/coco/community/community-004.webp"
+    },
+    {
+      "index": 5,
+      "sourceFile": "675471928_1370824578398493_8519361813745017357_n.jpg",
+      "sourceSha256": "6c9536fc1e9c916912e8c42a148f6869eddae1f50ad272ffa4c51621ed9feb5a",
+      "url": "/images/coco/community/community-005.webp",
+      "width": 1400,
+      "height": 1069,
+      "srcset": "/images/coco/community/community-005-480.webp 480w, /images/coco/community/community-005-800.webp 800w, /images/coco/community/community-005.webp 1400w",
+      "fullImageLink": "/images/coco/community/community-005.webp"
+    },
+    {
+      "index": 6,
+      "sourceFile": "714566527_1407900568024227_2531167798139064306_n.jpg",
+      "sourceSha256": "f73a9867fc8d01231e34185932363aaeaf1e6b172f237fc9d99e9ae3e8403fad",
+      "url": "/images/coco/community/community-006.webp",
+      "width": 1400,
+      "height": 1079,
+      "srcset": "/images/coco/community/community-006-480.webp 480w, /images/coco/community/community-006-800.webp 800w, /images/coco/community/community-006.webp 1400w",
+      "fullImageLink": "/images/coco/community/community-006.webp"
+    },
+    {
+      "index": 7,
+      "sourceFile": "817625114_1502487358565547_4153755684417831852_n.jpg",
+      "sourceSha256": "6db6c5947c5b6e3c3e3e294b5135eda479675ca9bd7d9ba9e07d847d292ff27a",
+      "url": "/images/coco/community/community-007.webp",
+      "width": 1400,
+      "height": 1077,
+      "srcset": "/images/coco/community/community-007-480.webp 480w, /images/coco/community/community-007-800.webp 800w, /images/coco/community/community-007.webp 1400w",
+      "fullImageLink": "/images/coco/community/community-007.webp"
+    },
+    {
+      "index": 8,
+      "sourceFile": "825281846_1511018024379147_5514432552776611913_n.jpg",
+      "sourceSha256": "e29fd4fa289c1838053ebac1b39fb4b5567f203cebab438b6ca3cbd786d9a579",
+      "url": "/images/coco/community/community-008.webp",
+      "width": 1400,
+      "height": 1050,
+      "srcset": "/images/coco/community/community-008-480.webp 480w, /images/coco/community/community-008-800.webp 800w, /images/coco/community/community-008.webp 1400w",
+      "fullImageLink": "/images/coco/community/community-008.webp"
+    }
+  ]
+}

@@ -1,0 +1,153 @@
+{
+  "source": "https://www.tiktok.com/embed/@cocokhokygui.dn?lang=vi",
+  "fetchedAt": "2026-11-20T08:33:38.832315+00:00",
+  "account": {
+    "username": "cocokhokygui.dn",
+    "name": "COCO KHO KÝ GỬI",
+    "id": "6876427857472766978",
+    "url": "https://www.tiktok.com/@cocokhokygui.dn",
+    "signature": "CHUYÊN THU MUA QUẦN ÁO THANH LÝ\nLiên hệ: 0333050493\nPage: cocokhokygui",
+    "verifiedBadge": false,
+    "authorMatched": true
+  },
+  "avatar": {
+    "asset": "/images/coco/tiktok/profile/avatar.webp",
+    "originalDimensions": [
+      100,
+      100
+    ],
+    "dimensions": [
+      100,
+      100
+    ],
+    "bytes": 3986
+  },
+  "posts": [
+    {
+      "id": "7582494077216738567",
+      "url": "https://www.tiktok.com/@cocokhokygui.dn/video/7582494077216738567",
+      "title": "#thanhlykygui #cocokhokygui #kyguidanang",
+      "kind": "photo-post",
+      "videoDimensions": [
+        0,
+        0
+      ],
+      "verifiedAuthorMatch": true,
+      "asset": "/images/coco/tiktok/profile/post-7582494077216738567.webp",
+      "originalDimensions": [
+        2160,
+        2160
+      ],
+      "dimensions": [
+        360,
+        360
+      ],
+      "bytes": 24724
+    },
+    {
+      "id": "7655982782014852360",
+      "url": "https://www.tiktok.com/@cocokhokygui.dn/video/7655982782014852360",
+      "title": "Lưu ngay toạ độ này nếu bạn đang tìm một shop phụ kiện đẹp - giá mềm tại Đà Nẵng #tiemnhacoco #phukiendanang #xuhuong #phukienbien",
+      "kind": "photo-post",
+      "videoDimensions": [
+        0,
+        0
+      ],
+      "verifiedAuthorMatch": true,
+      "asset": "/images/coco/tiktok/profile/post-7655982782014852360.webp",
+      "originalDimensions": [
+        1086,
+        1448
+      ],
+      "dimensions": [
+        360,
+        480
+      ],
+      "bytes": 47838
+    },
+    {
+      "id": "7674839713936674056",
+      "url": "https://www.tiktok.com/@cocokhokygui.dn/video/7674839713936674056",
+      "title": "Thiên đường quần áo dành cho HSSV Liên Chiểu mí fen biết chưa #cocokhokygui #thanhlykygui #kyguidanang #xuhuongtiktokk",
+      "kind": "photo-post",
+      "videoDimensions": [
+        0,
+        0
+      ],
+      "verifiedAuthorMatch": true,
+      "asset": "/images/coco/tiktok/profile/post-7674839713936674056.webp",
+      "originalDimensions": [
+        1080,
+        1440
+      ],
+      "dimensions": [
+        360,
+        480
+      ],
+      "bytes": 37352
+    },
+    {
+      "id": "7710096760315628808",
+      "url": "https://www.tiktok.com/@cocokhokygui.dn/video/7710096760315628808",
+      "title": "Mí bạn sinh viên quận 3 Đà Nẵng nhớ ghé tiệm nhé!!! #tiemnhacoco #phukiengiare #xuhuong #phukiendanang",
+      "kind": "photo-post",
+      "videoDimensions": [
+        0,
+        0
+      ],
+      "verifiedAuthorMatch": true,
+      "asset": "/images/coco/tiktok/profile/post-7710096760315628808.webp",
+      "originalDimensions": [
+        1290,
+        1720
+      ],
+      "dimensions": [
+        360,
+        480
+      ],
+      "bytes": 35182
+    },
+    {
+      "id": "7709703115796172040",
+      "url": "https://www.tiktok.com/@cocokhokygui.dn/video/7709703115796172040",
+      "title": "Một chiếc khoảnh khắc đáng yêu tại COCO ngày 20/11 #tiemnhcoco #phukiengiare #xuhuong",
+      "kind": "photo-post",
+      "videoDimensions": [
+        0,
+        0
+      ],
+      "verifiedAuthorMatch": true,
+      "asset": "/images/coco/tiktok/profile/post-7709703115796172040.webp",
+      "originalDimensions": [
+        1920,
+        2560
+      ],
+      "dimensions": [
+        360,
+        480
+      ],
+      "bytes": 43022
+    },
+    {
+      "id": "7708975344639888647",
+      "url": "https://www.tiktok.com/@cocokhokygui.dn/video/7708975344639888647",
+      "title": "Tiệm phụ kiện có nhiều mẫu kẹp xinh lắm nè👀 #tiemnhacoco #phukienxinh #phukiendanang #xuhuong",
+      "kind": "photo-post",
+      "videoDimensions": [
+        0,
+        0
+      ],
+      "verifiedAuthorMatch": true,
+      "asset": "/images/coco/tiktok/profile/post-7708975344639888647.webp",
+      "originalDimensions": [
+        1536,
+        2048
+      ],
+      "dimensions": [
+        360,
+        480
+      ],
+      "bytes": 26390
+    }
+  ]
+}

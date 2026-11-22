@@ -1,0 +1,191 @@
+@{
+    ViewData["Title"] = "Về CoCo";
+    var communityPhotos = new[]
+    {
+        (Number: 1, Width: 1400, Height: 788),
+        (Number: 2, Width: 1400, Height: 796),
+        (Number: 4, Width: 1082, Height: 1440),
+        (Number: 5, Width: 1400, Height: 1069),
+        (Number: 6, Width: 1400, Height: 1079),
+        (Number: 7, Width: 1400, Height: 1077),
+        (Number: 8, Width: 1400, Height: 1050)
+    };
+}
+<div class="coco-about coco-esg-page">
+    <nav class="esg-breadcrumb esg-gutter" aria-label="Đường dẫn">
+        <a asp-controller="Home" asp-action="Index">Trang chủ</a><span aria-hidden="true">/</span><span aria-current="page">Về CoCo</span>
+    </nav>
+
+    <section class="esg-introduction" aria-labelledby="about-coco-title">
+        <header class="esg-intro-heading esg-gutter">
+            <h1 id="about-coco-title">Đồ còn đẹp,<br /><em>câu chuyện còn tiếp.</em></h1>
+        </header>
+        <figure class="esg-panorama">
+            <img src="/images/coco/coco-storefront-daylight.webp" srcset="/images/coco/coco-storefront-daylight-480.webp 480w, /images/coco/coco-storefront-daylight-800.webp 800w, /images/coco/coco-storefront-daylight.webp 1380w" sizes="(min-width: 1920px) calc(100vw - 128px), (min-width: 960px) 93.32vw, calc(100vw - 64px)" width="1380" height="626" alt="Mặt tiền CoCo Kho Ký Gửi trên đường Núi Thành" fetchpriority="high" decoding="async" />
+            <figcaption class="esg-gutter">Từ cửa hàng CoCo tại Đà Nẵng, nối tiếp những câu chuyện của thời trang.</figcaption>
+        </figure>
+        <div class="esg-story esg-gutter">
+            <div>
+                <p class="esg-eyebrow esg-section-label">Câu chuyện CoCo</p>
+                <h2>Một món đồ.<br />Thêm một vòng đời.</h2>
+            </div>
+            <div class="esg-story-copy">
+                <p>CoCo Kho Ký Gửi tại Đà Nẵng kết nối người mua với những món đồ còn đẹp, đồng thời giúp bạn ký gửi món ít dùng qua cửa hàng và nền tảng CoCo ReTrade.</p>
+                <p>Thời trang tuần hoàn bắt đầu từ việc giữ những món còn giá trị trong vòng sử dụng.</p>
+                <a class="esg-text-link" asp-controller="Shop" asp-action="Index">Tìm món đồ của bạn <span aria-hidden="true">↗</span></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="esg-mission esg-split esg-gutter" aria-labelledby="about-mission-title">
+        <figure class="esg-editorial-image">
+            <img src="/images/coco/about/about-garment-rails.webp" srcset="/images/coco/about/about-garment-rails-480.webp 480w, /images/coco/about/about-garment-rails-800.webp 800w, /images/coco/about/about-garment-rails.webp 1448w" sizes="(max-width: 991px) calc(100vw - 64px), (min-width: 1920px) calc((100vw - 168px) / 2), calc((93.32vw - 40px) / 2)" width="1448" height="1086" alt="Dãy trang phục được sắp xếp trong không gian cửa hàng CoCo" loading="lazy" decoding="async" />
+        </figure>
+        <div class="esg-split-copy">
+            <p class="esg-eyebrow esg-section-label">01 / Sứ mệnh</p>
+            <h2 id="about-mission-title">Ký gửi có kiểm định.<br />Tiêu dùng có ý thức.</h2>
+            <p class="esg-mission-statement">Xây dựng nền tảng ký gửi thời trang có kiểm định, thúc đẩy tiêu dùng bền vững, minh bạch và tiện lợi.</p>
+        </div>
+    </section>
+
+    <section class="esg-vision esg-split" aria-labelledby="about-vision-title">
+        <div class="esg-split-copy">
+            <p class="esg-eyebrow esg-section-label">02 / Tầm nhìn</p>
+            <p class="esg-vision-year" aria-hidden="true">2030</p>
+            <h2 id="about-vision-title">Từ Đà Nẵng,<br />hướng tới toàn quốc.</h2>
+            <p>Đến năm 2030, CoCo đặt mục tiêu trở thành nền tảng thương mại điện tử ký gửi thời trang hàng đầu tại Đà Nẵng, hướng tới phục vụ người dùng trên toàn quốc.</p>
+        </div>
+        <figure class="esg-editorial-image">
+            <img src="/images/coco/about/about-accessory-shelves.webp" srcset="/images/coco/about/about-accessory-shelves-480.webp 480w, /images/coco/about/about-accessory-shelves-800.webp 800w, /images/coco/about/about-accessory-shelves.webp 1080w" sizes="(max-width: 991px) calc(100vw - 64px), (min-width: 1920px) calc((100vw - 168px) / 2), calc((93.32vw - 40px) / 2)" width="1080" height="1076" alt="Kệ túi, giày và phụ kiện tại cửa hàng CoCo" loading="lazy" decoding="async" />
+        </figure>
+    </section>
+
+    <section class="esg-direction esg-split esg-gutter" aria-labelledby="about-direction-title">
+        <figure class="esg-editorial-image">
+            <img src="/images/coco/about/about-fitting-room.webp" srcset="/images/coco/about/about-fitting-room-480.webp 480w, /images/coco/about/about-fitting-room-800.webp 800w, /images/coco/about/about-fitting-room.webp 1080w" sizes="(max-width: 991px) calc(100vw - 64px), (min-width: 1920px) calc((100vw - 168px) / 2), calc((93.32vw - 40px) / 2)" width="1080" height="979" alt="Khu thử đồ và ghế ngồi tại cửa hàng CoCo" loading="lazy" decoding="async" />
+            <figcaption>Khởi đầu từ những kết nối tại cửa hàng CoCo.</figcaption>
+        </figure>
+        <div class="esg-split-copy">
+            <p class="esg-eyebrow esg-section-label">03 / Định hướng phát triển</p>
+            <h2 id="about-direction-title">Kết nối gần hơn.<br />Vươn xa từng bước.</h2>
+            <p>CoCo định hướng phát triển từ Đà Nẵng đến TP.HCM, Hà Nội qua ba hướng:</p>
+            <ul class="esg-plans">
+                <li><strong>Mở rộng O2O</strong><span>Hướng tới mạng lưới kết nối mua sắm, thử đồ và ký gửi giữa trực tuyến với cửa hàng.</span></li>
+                <li><strong>Phát triển ứng dụng secondhand</strong><span>Dự kiến xây dựng ứng dụng để việc tìm đồ và ký gửi dễ tiếp cận hơn.</span></li>
+                <li><strong>Nuôi dưỡng cộng đồng thời trang xanh</strong><span>Khuyến khích chia sẻ, sử dụng tiếp và lựa chọn thời trang có trách nhiệm.</span></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="esg-values esg-gutter" aria-labelledby="about-values-title">
+        <header class="esg-centered-heading">
+            <p class="esg-eyebrow esg-section-label">04 / Giá trị cốt lõi</p>
+            <h2 id="about-values-title">Niềm tin bắt đầu từ TRUST</h2>
+        </header>
+        <div class="esg-value-grid">
+            <article>
+                <span class="esg-value-letter" aria-hidden="true">T</span>
+                <p class="esg-value-name" lang="en">Transparency</p>
+                <h3>Minh bạch</h3>
+                <p>Thông tin về hình ảnh, kích cỡ, tình trạng món đồ và quy trình ký gửi được trình bày rõ ràng.</p>
+            </article>
+            <article>
+                <span class="esg-value-letter" aria-hidden="true">R</span>
+                <p class="esg-value-name" lang="en">Reliability</p>
+                <h3>Tin cậy</h3>
+                <p>Kiểm tra món đồ trước khi đăng bán, làm nền tảng cho những lựa chọn có cơ sở.</p>
+            </article>
+            <article>
+                <span class="esg-value-letter" aria-hidden="true">U</span>
+                <p class="esg-value-name" lang="en">User-Centric Convenience</p>
+                <h3>Tiện lợi</h3>
+                <p>Đặt nhu cầu người dùng ở trung tâm, từ xem đồ trực tuyến đến thử đồ và trao đổi tại cửa hàng.</p>
+            </article>
+            <article>
+                <span class="esg-value-letter" aria-hidden="true">S</span>
+                <p class="esg-value-name" lang="en">Sustainability</p>
+                <h3>Bền vững</h3>
+                <p>Khuyến khích sử dụng tiếp những món còn đẹp, kéo dài vòng đời trang phục qua ký gửi.</p>
+            </article>
+            <article>
+                <span class="esg-value-letter" aria-hidden="true">T</span>
+                <p class="esg-value-name" lang="en">Tech-Driven Efficiency</p>
+                <h3>Công nghệ</h3>
+                <p>Dùng nền tảng số để theo dõi trạng thái đăng bán, giao dịch và tiền hàng thuận tiện hơn.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="esg-community" aria-labelledby="about-activities-title">
+        <header class="esg-centered-heading esg-gutter">
+            <p class="esg-eyebrow esg-section-label">05 / CoCo và cộng đồng</p>
+            <h2 id="about-activities-title">Cùng CoCo,<br /><em>sẻ chia thêm một chút.</em></h2>
+            <p>Không chỉ có những cuộc hẹn mua sắm. CoCo còn lưu lại những lần gặp gỡ, giao lưu và đồng hành cùng các hoạt động cộng đồng.</p>
+        </header>
+        <div class="esg-community-gallery" aria-label="Những khoảnh khắc hoạt động cộng đồng của CoCo">
+            @foreach (var photo in communityPhotos)
+            {
+                var imagePath = $"/images/coco/community/community-{photo.Number:000}";
+                <a class="esg-community-photo esg-community-photo-@photo.Number" href="@(imagePath + ".webp")" target="_blank" rel="noopener noreferrer" aria-label="Xem ảnh hoạt động cộng đồng của CoCo, ảnh @photo.Number (mở trong thẻ mới)">
+                    <img src="@(imagePath + ".webp")" srcset="@(imagePath + "-480.webp 480w, " + imagePath + "-800.webp 800w, " + imagePath + ".webp " + photo.Width + "w")" sizes="@(photo.Number == 2 ? "(max-width: 767px) calc(100vw - 64px), 46vw" : "(max-width: 767px) 42vw, 23vw")" width="@photo.Width" height="@photo.Height" alt="Khoảnh khắc trong hoạt động cộng đồng được CoCo ghi lại, ảnh @photo.Number" loading="lazy" decoding="async" />
+                </a>
+            }
+        </div>
+        <div class="esg-community-stories esg-gutter">
+            <article class="esg-community-story">
+                <figure><img src="/images/coco/coco-childrens-day.webp" srcset="/images/coco/coco-childrens-day-480.webp 480w, /images/coco/coco-childrens-day-800.webp 800w, /images/coco/coco-childrens-day.webp 900w" sizes="(max-width: 767px) 112px, (max-width: 1199px) 44vw, 23vw" width="900" height="600" alt="Tiết mục của các em nhỏ trong chương trình Quốc tế Thiếu nhi được CoCo chia sẻ" loading="lazy" decoding="async" /></figure>
+                <p class="esg-story-date">01/06/2026</p>
+                <h3>Một ngày vui cùng các em nhỏ</h3>
+                <p>CoCo cùng Đội Thanh niên Tình nguyện D.A.U thăm hỏi, giao lưu với các em nhân Ngày Quốc tế Thiếu nhi.</p>
+                <a class="esg-text-link" href="https://www.facebook.com/share/p/1A9tU2LHGi/" target="_blank" rel="noopener noreferrer">Câu chuyện ngày 1/6 <span aria-hidden="true">↗</span><span class="esg-sr-only"> (mở trong thẻ mới)</span></a>
+            </article>
+            <article class="esg-community-story">
+                <figure><img src="/images/coco/coco-mid-autumn.webp" srcset="/images/coco/coco-mid-autumn-480.webp 480w, /images/coco/coco-mid-autumn-800.webp 800w, /images/coco/coco-mid-autumn.webp 1067w" sizes="(max-width: 767px) 112px, (max-width: 1199px) 44vw, 23vw" width="1067" height="600" alt="Quà Trung thu và đồ chơi trong chương trình Trung thu cho em 2026" loading="lazy" decoding="async" /></figure>
+                <p class="esg-story-date">Trung thu 2026</p>
+                <h3>Trung thu cho em 2026</h3>
+                <p>Những món quà và sắc màu mùa trăng trong chương trình tại Trung tâm nuôi dạy trẻ mồ côi Hoa Mai, Đà Nẵng, được CoCo chia sẻ qua bài viết Trung thu cho em.</p>
+                <a class="esg-text-link" href="https://www.facebook.com/share/p/1DxVSEKZKC/" target="_blank" rel="noopener noreferrer">Khoảnh khắc Trung thu <span aria-hidden="true">↗</span><span class="esg-sr-only"> (mở trong thẻ mới)</span></a>
+            </article>
+            <article class="esg-community-story">
+                <figure><img src="/images/coco/community/community-003.webp" srcset="/images/coco/community/community-003-480.webp 480w, /images/coco/community/community-003-800.webp 800w, /images/coco/community/community-003.webp 1400w" sizes="(max-width: 767px) 112px, (max-width: 1199px) 44vw, 23vw" width="1400" height="934" alt="Ảnh tập thể trong chương trình Đông ấm áp 2025 tại Bình Minh, Quảng Ngãi" loading="lazy" decoding="async" /></figure>
+                <p class="esg-story-date">27–28/12/2025</p>
+                <h3>Đông ấm áp 2025</h3>
+                <p>CoCo cùng đội thanh niên tình nguyện tham gia chương trình Đông ấm áp tại xã Bình Minh, Quảng Ngãi.</p>
+                <a class="esg-text-link" href="https://www.facebook.com/share/p/1HiBE9A7Kg/" target="_blank" rel="noopener noreferrer">Hành trình Đông ấm áp <span aria-hidden="true">↗</span><span class="esg-sr-only"> (mở trong thẻ mới)</span></a>
+            </article>
+            <article class="esg-community-story">
+                <figure><img src="/images/coco/coco-dau-gathering.webp" srcset="/images/coco/coco-dau-gathering-480.webp 480w, /images/coco/coco-dau-gathering.webp 800w" sizes="(max-width: 767px) 112px, (max-width: 1199px) 44vw, 23vw" width="800" height="600" alt="Buổi lễ ra mắt Ban Điều hành và sinh nhật bốn tuổi của Đội tình nguyện DAU" loading="lazy" decoding="async" /></figure>
+                <p class="esg-story-date">Đồng hành cùng Đội DAU</p>
+                <h3>Một dấu mốc cùng Đội DAU</h3>
+                <p>CoCo tham dự lễ ra mắt Ban Điều hành mới và mừng sinh nhật bốn tuổi của Đội Thanh niên Tình nguyện DAU.</p>
+                <a class="esg-text-link" href="https://www.facebook.com/share/p/1QYpDMneSH/" target="_blank" rel="noopener noreferrer">Gặp gỡ cùng Đội DAU <span aria-hidden="true">↗</span><span class="esg-sr-only"> (mở trong thẻ mới)</span></a>
+            </article>
+        </div>
+        <div class="esg-community-follow esg-gutter">
+            <a class="esg-text-link" href="https://www.facebook.com/profile.php?id=100064128906547" target="_blank" rel="noopener noreferrer">Theo dõi CoCo Kho Ký Gửi Đà Nẵng <span aria-hidden="true">↗</span><span class="esg-sr-only"> (mở trong thẻ mới)</span></a>
+        </div>
+    </section>
+
+    <section class="esg-paths esg-gutter" aria-labelledby="about-paths-title">
+        <header class="esg-centered-heading">
+            <h2 id="about-paths-title">Một CoCo.<br />Hai cách viết tiếp câu chuyện.</h2>
+            <p>Chọn món đồ tiếp theo hoặc gửi món bạn ít dùng.</p>
+        </header>
+        <div class="esg-path-grid">
+            <article>
+                <h3>Mua sắm cùng CoCo</h3>
+                <p>Khám phá áo, quần, váy đầm, túi xách và phụ kiện. Xem kỹ ảnh, kích cỡ và tình trạng để chọn món phù hợp với bạn.</p>
+                <a class="esg-button esg-button-primary" asp-controller="Shop" asp-action="Index">Khám phá cửa hàng <span aria-hidden="true">↗</span></a>
+            </article>
+            <article>
+                <h3>Ký gửi cùng CoCo</h3>
+                <p>Gửi thông tin và ảnh thật để CoCo duyệt sơ bộ, sau đó chuyển món đồ đến cửa hàng để kiểm tra. Theo dõi trạng thái đăng bán, giao dịch và tiền hàng trong tài khoản.</p>
+                <a class="esg-button esg-button-outline" asp-controller="Home" asp-action="Clearout">Tìm hiểu ký gửi <span aria-hidden="true">↗</span></a>
+            </article>
+        </div>
+        <aside class="esg-connect" aria-label="Liên hệ CoCo">
+            <p>Hẹn gặp bạn ở CoCo.</p>
+            <a class="esg-text-link" asp-controller="About" asp-action="Contact">Liên hệ CoCo <span aria-hidden="true">↗</span></a>
+        </aside>
+    </section>
+</div>

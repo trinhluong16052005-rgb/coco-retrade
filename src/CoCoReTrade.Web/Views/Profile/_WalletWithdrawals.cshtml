@@ -1,0 +1,63 @@
+@model WalletBalanceDto
+@{
+    var history = (WithdrawalPage)ViewBag.WithdrawalPage;
+    var accounts = (IReadOnlyList<SavedBankAccountDto>)ViewBag.BankAccounts;
+    var selected = accounts.FirstOrDefault(x => x.IsDefault) ?? accounts.FirstOrDefault();
+}
+<div class="wallet-banking" data-wallet-banking>
+    <div class="wallet-withdrawal-grid">
+        <form asp-action="Withdraw" method="post" class="wallet-withdrawal-panel" data-withdrawal-form>
+            <h2>Yêu cầu rút tiền</h2>
+            <p class="wallet-note">Chọn tài khoản nhận tiền. CoCo chỉ cập nhật “Đã chuyển” sau khi nhân viên xác nhận chuyển khoản thực tế.</p>
+            <input type="hidden" name="RequestKey" value="@Guid.NewGuid()" />
+            <input type="hidden" name="SavedAccountId" value="@selected?.Id" />
+            <input type="hidden" name="SavedAccountVersion" value="@selected?.RowVersion" />
+            <input type="hidden" name="SaveAccount" value="false" />
+            <label for="amount" class="form-label">Số tiền rút (VNĐ)</label>
+            <input id="amount" name="Amount" type="text" inputmode="numeric" autocomplete="off" data-vnd-price required class="form-control" aria-describedby="wallet-available" />
+            <p id="wallet-available" class="wallet-note">Khả dụng: <strong>@Model.Available.ToString("N0") VNĐ</strong></p>
+            <label class="form-label" id="wallet-bank-label">Tài khoản nhận tiền</label>
+            <details class="wallet-bank-picker" data-bank-picker>
+                <summary aria-labelledby="wallet-bank-label"><span data-selected-bank>@if (selected is not null) { <strong>@selected.BankName · @selected.AccountNumber</strong><small>@selected.AccountHolder</small> } else { <strong>Chọn hoặc thêm tài khoản ngân hàng</strong> }</span><span aria-hidden="true">⌄</span></summary>
+                <div class="wallet-bank-menu">
+                    <div class="wallet-bank-list" data-bank-list></div>
+                    <button type="button" class="wallet-bank-add" data-bank-add>+ Thêm tài khoản ngân hàng</button>
+                </div>
+            </details>
+            <div class="wallet-bank-fields" data-withdrawal-bank-fields hidden="@(selected is not null)">
+                <label for="bankName" class="form-label">Tên ngân hàng</label>
+                <input id="bankName" name="BankName" value="@selected?.BankName" list="wallet-bank-names" minlength="2" maxlength="100" required class="form-control" />
+                <label for="bankAccountNumber" class="form-label">Số tài khoản ngân hàng</label>
+                <input id="bankAccountNumber" name="BankAccountNumber" value="@selected?.AccountNumber" inputmode="numeric" pattern="[0-9]{6,30}" minlength="6" maxlength="30" required class="form-control" />
+                <label for="accountHolder" class="form-label">Tên chủ tài khoản</label>
+                <input id="accountHolder" name="AccountHolder" value="@selected?.AccountHolder" minlength="2" maxlength="150" autocomplete="name" required class="form-control" />
+            </div>
+            <p class="wallet-feedback" data-wallet-feedback role="status" aria-live="polite" hidden></p>
+            <button type="submit" class="btn btn-wine wallet-submit" disabled="@(Model.Available <= 0)">Gửi yêu cầu</button>
+        </form>
+        <section class="wallet-withdrawal-panel" aria-labelledby="withdrawal-history-title">
+            <div class="wallet-panel-heading"><h2 id="withdrawal-history-title">Lịch sử yêu cầu</h2><a asp-action="Withdrawals">Xem tất cả<span class="visually-hidden"> @history.Total yêu cầu</span></a></div>
+            @if (history.Items.Count == 0) { <p class="wallet-empty">Chưa có yêu cầu rút tiền.</p> }
+            else { <partial name="_WithdrawalList" model="history.Items" /> }
+        </section>
+    </div>
+    <dialog class="wallet-dialog" data-bank-editor aria-labelledby="bank-editor-title">
+        <form data-bank-editor-form>
+            <div class="wallet-panel-heading"><h2 id="bank-editor-title">Thêm tài khoản ngân hàng</h2><button type="button" class="wallet-dialog-close" data-dialog-close aria-label="Đóng">×</button></div>
+            <label class="wallet-qr-upload">Tải ảnh QR ngân hàng<input type="file" accept="image/png,image/jpeg,image/webp" data-bank-qr /></label>
+            <p class="wallet-note" data-qr-feedback role="status">Ảnh được đọc trên thiết bị. Kiểm tra lại thông tin trước khi lưu.</p>
+            <label class="form-label" for="editor-bank">Tên ngân hàng</label><input id="editor-bank" name="BankName" list="wallet-bank-names" minlength="2" maxlength="100" required class="form-control" />
+            <label class="form-label" for="editor-number">Số tài khoản</label><input id="editor-number" name="AccountNumber" inputmode="numeric" pattern="[0-9]{6,30}" minlength="6" maxlength="30" required class="form-control" />
+            <label class="form-label" for="editor-holder">Tên chủ tài khoản</label><input id="editor-holder" name="AccountHolder" autocomplete="name" minlength="2" maxlength="150" required class="form-control" />
+            <label class="wallet-default-option"><input type="checkbox" name="IsDefault" /> Đặt làm tài khoản mặc định</label>
+            <p class="wallet-feedback" data-editor-feedback role="alert" hidden></p>
+            <div class="wallet-dialog-actions"><button type="button" class="btn btn-outline-wine" data-bank-use>Dùng lần này</button><button type="submit" class="btn btn-wine">Lưu tài khoản</button></div>
+        </form>
+    </dialog>
+    <dialog class="wallet-dialog wallet-save-prompt" data-save-prompt aria-labelledby="bank-save-title">
+        <h2 id="bank-save-title">Bạn có muốn lưu tài khoản này cho lần sau không?</h2>
+        <div class="wallet-dialog-actions"><button type="button" class="btn btn-outline-wine" data-save-choice="false">Không, cảm ơn</button><button type="button" class="btn btn-wine" data-save-choice="true">Lưu tài khoản</button></div>
+    </dialog>
+    <datalist id="wallet-bank-names"></datalist>
+    <script type="application/json" id="wallet-bank-data">@Html.Raw(System.Text.Json.JsonSerializer.Serialize(accounts, new System.Text.Json.JsonSerializerOptions(System.Text.Json.JsonSerializerDefaults.Web)))</script>
+</div>

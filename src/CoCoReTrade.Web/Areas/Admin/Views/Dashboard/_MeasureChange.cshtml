@@ -1,0 +1,3 @@
+@model DashboardMeasure
+@{ var hasChange = Model.Value.HasValue && Model.Previous.HasValue && Model.Difference != 0; }
+<div class="dashboard-metric-change" hidden="@(!hasChange)"><span class="dashboard-change @(Model.Favorable ? "is-favorable" : "is-caution")" data-measure-change>@(hasChange ? Model.ChangeLabel : "")</span></div>

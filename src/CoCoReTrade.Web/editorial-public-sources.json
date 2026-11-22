@@ -1,0 +1,269 @@
+{
+  "schemaVersion": 1,
+  "verifiedOn": "2026-11-18",
+  "provider": "Burst by Shopify",
+  "purpose": "Licensed editorial and category illustrations for public CoCo information pages. Photos do not depict CoCo staff, premises, actual inspection, payments or consignments, and are not product listings.",
+  "photos": [
+    {
+      "path": "wwwroot/images/editorial/submit.webp",
+      "title": "Business Owner Working On Online Store",
+      "altVi": "Thao tác gửi thông tin trực tuyến trên máy tính",
+      "description": "A business owner sits at a table in his retail store, taking some time to work on his online store.",
+      "photographer": "Sarah Pflug",
+      "creditText": "Photo by Sarah Pflug",
+      "sourcePage": "https://www.shopify.com/stock-photos/photos/business-owner-working-on-online-store",
+      "sourceImage": "https://burst.shopifycdn.com/photos/business-owner-working-on-online-store.jpg?exif=0&iptc=0",
+      "downloadUrl": "https://burst.shopifycdn.com/photos/business-owner-working-on-online-store.jpg?exif=0&iptc=0&width=1400",
+      "license": {
+        "name": "Burst Photo License",
+        "url": "https://www.shopify.com/stock-photos/licenses/shopify-some-rights-reserved",
+        "terms": "https://www.shopify.com/stock-photos/legal/terms",
+        "permits": "Free adaptation and display for commercial and noncommercial uses; attribution encouraged. Do not resell as stock photos, claim authorship or create a competing stock-photo service."
+      },
+      "transformation": "EXIF orientation corrected; resized to fit 1400 × 1400 px without upscaling; encoded WebP quality 85. No AI generation, compositing or recoloring."
+    },
+    {
+      "path": "wwwroot/images/editorial/inspect.webp",
+      "title": "Woman Shopping For Clothes",
+      "altVi": "Xem chất liệu và tình trạng quần áo trên giá",
+      "description": "Woman browsing through clothing rack in store.",
+      "photographer": "Matthew Henry",
+      "creditText": "Photo by Matthew Henry",
+      "sourcePage": "https://www.shopify.com/stock-photos/photos/woman-shopping-for-clothes",
+      "sourceImage": "https://burst.shopifycdn.com/photos/woman-shopping-for-clothes.jpg?exif=0&iptc=0",
+      "downloadUrl": "https://burst.shopifycdn.com/photos/woman-shopping-for-clothes.jpg?exif=0&iptc=0&width=1400",
+      "license": {
+        "name": "CC0",
+        "url": "https://www.shopify.com/stock-photos/licenses/creative-commons",
+        "terms": "https://www.shopify.com/stock-photos/legal/terms",
+        "permits": "Free adaptation and display for commercial and noncommercial uses; attribution encouraged. Do not resell as stock photos, claim authorship or create a competing stock-photo service."
+      },
+      "transformation": "EXIF orientation corrected; resized to fit 1400 × 1400 px without upscaling; encoded WebP quality 85. No AI generation, compositing or recoloring."
+    },
+    {
+      "path": "wwwroot/images/editorial/delivery.webp",
+      "title": "Man Holding Shipping Box On Red Brick",
+      "altVi": "Người cầm kiện hàng chuẩn bị giao nhận",
+      "description": "A man wearing a blue button-up shirt holds a large cardboard box while standing in front of a red brick wall.",
+      "photographer": "Matthew Henry",
+      "creditText": "Photo by Matthew Henry",
+      "sourcePage": "https://www.shopify.com/stock-photos/photos/man-holding-shipping-box-on-red-brick",
+      "sourceImage": "https://burst.shopifycdn.com/photos/man-holding-shipping-box-on-red-brick.jpg?exif=0&iptc=0",
+      "downloadUrl": "https://burst.shopifycdn.com/photos/man-holding-shipping-box-on-red-brick.jpg?exif=0&iptc=0&width=1400",
+      "license": {
+        "name": "Burst Photo License",
+        "url": "https://www.shopify.com/stock-photos/licenses/shopify-some-rights-reserved",
+        "terms": "https://www.shopify.com/stock-photos/legal/terms",
+        "permits": "Free adaptation and display for commercial and noncommercial uses; attribution encouraged. Do not resell as stock photos, claim authorship or create a competing stock-photo service."
+      },
+      "transformation": "EXIF orientation corrected; resized to fit 1400 × 1400 px without upscaling; encoded WebP quality 85. No AI generation, compositing or recoloring."
+    },
+    {
+      "path": "wwwroot/images/editorial/wardrobe.webp",
+      "title": "Minimalist Retail Clothing Display",
+      "altVi": "Quần áo trên giá treo trong không gian sáng",
+      "description": "A minimalist clothing rail displaying colors ready for the new fall season.",
+      "photographer": "Sarah Pflug",
+      "creditText": "Photo by Sarah Pflug",
+      "sourcePage": "https://www.shopify.com/stock-photos/photos/minimalist-retail-clothing-display",
+      "sourceImage": "https://burst.shopifycdn.com/photos/minimalist-retail-clothing-display.jpg?exif=0&iptc=0",
+      "downloadUrl": "https://burst.shopifycdn.com/photos/minimalist-retail-clothing-display.jpg?exif=0&iptc=0&width=1400",
+      "license": {
+        "name": "Burst Photo License",
+        "url": "https://www.shopify.com/stock-photos/licenses/shopify-some-rights-reserved",
+        "terms": "https://www.shopify.com/stock-photos/legal/terms",
+        "permits": "Free adaptation and display for commercial and noncommercial uses; attribution encouraged. Do not resell as stock photos, claim authorship or create a competing stock-photo service."
+      },
+      "transformation": "EXIF orientation corrected; resized to fit 1400 × 1400 px without upscaling; encoded WebP quality 85. No AI generation, compositing or recoloring."
+    },
+    {
+      "path": "wwwroot/images/editorial/packing.webp",
+      "title": "Retail Shopping Package",
+      "altVi": "Chuẩn bị đóng gói một món hàng",
+      "description": "After making a purchase at this small business and entrepreneur takes the time and care to wrap this purchase. Details like this can really make a shopping experience lovely.",
+      "photographer": "Sarah Pflug",
+      "creditText": "Photo by Sarah Pflug",
+      "sourcePage": "https://www.shopify.com/stock-photos/photos/retail-shopping-package",
+      "sourceImage": "https://burst.shopifycdn.com/photos/retail-shopping-package.jpg?exif=0&iptc=0",
+      "downloadUrl": "https://burst.shopifycdn.com/photos/retail-shopping-package.jpg?exif=0&iptc=0&width=1400",
+      "license": {
+        "name": "Burst Photo License",
+        "url": "https://www.shopify.com/stock-photos/licenses/shopify-some-rights-reserved",
+        "terms": "https://www.shopify.com/stock-photos/legal/terms",
+        "permits": "Free adaptation and display for commercial and noncommercial uses; attribution encouraged. Do not resell as stock photos, claim authorship or create a competing stock-photo service."
+      },
+      "transformation": "EXIF orientation corrected; resized to fit 1400 × 1400 px without upscaling; encoded WebP quality 85. No AI generation, compositing or recoloring."
+    },
+    {
+      "path": "wwwroot/images/editorial/payment.webp",
+      "title": "Purse, Wallet & Money",
+      "altVi": "Ví và phương tiện thanh toán, ảnh minh họa",
+      "description": "A purse containing all the essentials for shopping. Credit cards and cash money spill out of this simple handbag ready for spending and saving!",
+      "photographer": "Shopify Partners",
+      "creditText": "Photo by Shopify Partners",
+      "sourcePage": "https://www.shopify.com/stock-photos/photos/purse-wallet-money",
+      "sourceImage": "https://burst.shopifycdn.com/photos/purse-wallet-money.jpg?exif=0&iptc=0",
+      "downloadUrl": "https://burst.shopifycdn.com/photos/purse-wallet-money.jpg?exif=0&iptc=0&width=1400",
+      "license": {
+        "name": "Burst Photo License",
+        "url": "https://www.shopify.com/stock-photos/licenses/shopify-some-rights-reserved",
+        "terms": "https://www.shopify.com/stock-photos/legal/terms",
+        "permits": "Free adaptation and display for commercial and noncommercial uses; attribution encouraged. Do not resell as stock photos, claim authorship or create a competing stock-photo service."
+      },
+      "transformation": "EXIF orientation corrected; resized to fit 1400 × 1400 px without upscaling; encoded WebP quality 85. No AI generation, compositing or recoloring."
+    },
+    {
+      "path": "wwwroot/images/editorial/category-tops.webp",
+      "displayUse": "Category illustration only; not an actual CoCo consignment or purchasable listing.",
+      "title": "Womens Tshirts",
+      "altVi": "Áo thun treo trên móc gỗ, ảnh minh họa danh mục Áo",
+      "description": "Womens plain t-shirts hanging on wooden hangers.",
+      "photographer": "Matthew Henry",
+      "creditText": "Photo by Matthew Henry",
+      "sourcePage": "https://www.shopify.com/stock-photos/photos/womens-tshirts",
+      "sourceImage": "https://burst.shopifycdn.com/photos/womens-tshirts.jpg?exif=0&iptc=0",
+      "downloadUrl": "https://burst.shopifycdn.com/photos/womens-tshirts.jpg?exif=0&iptc=0&width=1400",
+      "license": {
+        "name": "CC0",
+        "url": "https://www.shopify.com/stock-photos/licenses/creative-commons",
+        "terms": "https://www.shopify.com/stock-photos/legal/terms",
+        "permits": "Free adaptation and display for commercial and noncommercial uses; attribution encouraged. Do not resell as stock photos, claim authorship or create a competing stock-photo service."
+      },
+      "transformation": "EXIF orientation corrected; resized to fit 1400 × 1400 px without upscaling; encoded WebP quality 85. No AI generation, compositing or recoloring."
+    },
+    {
+      "path": "wwwroot/images/editorial/category-trousers.webp",
+      "displayUse": "Category illustration only; not an actual CoCo consignment or purchasable listing.",
+      "title": "A Pile Of Denim Jeans In Different Shades Of Blue",
+      "altVi": "Quần jeans xếp trên kệ, ảnh minh họa danh mục Quần",
+      "description": "A tall pile of denim jeans stacked on a retail shelf, from stone washed to deep blue, there's a style for everyone.",
+      "photographer": "Sarah Pflug",
+      "creditText": "Photo by Sarah Pflug",
+      "sourcePage": "https://www.shopify.com/stock-photos/photos/a-pile-of-denim-jeans-in-different-shades-of-blue",
+      "sourceImage": "https://burst.shopifycdn.com/photos/a-pile-of-denim-jeans-in-different-shades-of-blue.jpg?exif=0&iptc=0",
+      "downloadUrl": "https://burst.shopifycdn.com/photos/a-pile-of-denim-jeans-in-different-shades-of-blue.jpg?exif=0&iptc=0&width=1400",
+      "license": {
+        "name": "Burst Photo License",
+        "url": "https://www.shopify.com/stock-photos/licenses/shopify-some-rights-reserved",
+        "terms": "https://www.shopify.com/stock-photos/legal/terms",
+        "permits": "Free adaptation and display for commercial and noncommercial uses; attribution encouraged. Do not resell as stock photos, claim authorship or create a competing stock-photo service."
+      },
+      "transformation": "EXIF orientation corrected; resized to fit 1400 × 1400 px without upscaling; encoded WebP quality 85. No AI generation, compositing or recoloring."
+    },
+    {
+      "path": "wwwroot/images/editorial/category-dresses.webp",
+      "displayUse": "Category illustration only; not an actual CoCo consignment or purchasable listing.",
+      "title": "Rack Of Womens Clothing",
+      "altVi": "Váy và quần áo trên giá treo, ảnh minh họa danh mục Váy/Đầm",
+      "description": "A rack of women's clothing next to a side table with a pink purse on it.",
+      "photographer": "Sarah Pflug",
+      "creditText": "Photo by Sarah Pflug",
+      "sourcePage": "https://www.shopify.com/stock-photos/photos/rack-of-womens-clothing",
+      "sourceImage": "https://burst.shopifycdn.com/photos/rack-of-womens-clothing.jpg?exif=0&iptc=0",
+      "downloadUrl": "https://burst.shopifycdn.com/photos/rack-of-womens-clothing.jpg?exif=0&iptc=0&width=1400",
+      "license": {
+        "name": "Burst Photo License",
+        "url": "https://www.shopify.com/stock-photos/licenses/shopify-some-rights-reserved",
+        "terms": "https://www.shopify.com/stock-photos/legal/terms",
+        "permits": "Free adaptation and display for commercial and noncommercial uses; attribution encouraged. Do not resell as stock photos, claim authorship or create a competing stock-photo service."
+      },
+      "transformation": "EXIF orientation corrected; resized to fit 1400 × 1400 px without upscaling; encoded WebP quality 85. No AI generation, compositing or recoloring."
+    },
+    {
+      "path": "wwwroot/images/editorial/category-bags.webp",
+      "displayUse": "Category illustration only; not an actual CoCo consignment or purchasable listing.",
+      "title": "Light Pink Purse",
+      "altVi": "Túi đeo vai màu hồng, ảnh minh họa danh mục Túi xách",
+      "description": "Side view of a pink hand bag with zipper tassel.",
+      "photographer": "Shopify Partners",
+      "creditText": "Photo by Shopify Partners",
+      "sourcePage": "https://www.shopify.com/stock-photos/photos/light-pink-purse",
+      "sourceImage": "https://burst.shopifycdn.com/photos/light-pink-purse.jpg?exif=0&iptc=0",
+      "downloadUrl": "https://burst.shopifycdn.com/photos/light-pink-purse.jpg?exif=0&iptc=0&width=1400",
+      "license": {
+        "name": "Burst Photo License",
+        "url": "https://www.shopify.com/stock-photos/licenses/shopify-some-rights-reserved",
+        "terms": "https://www.shopify.com/stock-photos/legal/terms",
+        "permits": "Free adaptation and display for commercial and noncommercial uses; attribution encouraged. Do not resell as stock photos, claim authorship or create a competing stock-photo service."
+      },
+      "transformation": "EXIF orientation corrected; resized to fit 1400 × 1400 px without upscaling; encoded WebP quality 85. No AI generation, compositing or recoloring."
+    },
+    {
+      "path": "wwwroot/images/editorial/category-accessories.webp",
+      "displayUse": "Category illustration only; not an actual CoCo consignment or purchasable listing.",
+      "title": "Stacked Bracelets Set",
+      "altVi": "Bộ vòng tay, ảnh minh họa danh mục Phụ kiện",
+      "description": "Stacked Bracelets Set",
+      "photographer": "Alexandra Lee",
+      "creditText": "Photo by Alexandra Lee",
+      "sourcePage": "https://www.shopify.com/stock-photos/photos/stacked-bracelets-set",
+      "sourceImage": "https://burst.shopifycdn.com/photos/stacked-bracelets-set.jpg?exif=0&iptc=0",
+      "downloadUrl": "https://burst.shopifycdn.com/photos/stacked-bracelets-set.jpg?exif=0&iptc=0&width=1400",
+      "license": {
+        "name": "CC0",
+        "url": "https://www.shopify.com/stock-photos/licenses/creative-commons",
+        "terms": "https://www.shopify.com/stock-photos/legal/terms",
+        "permits": "Free adaptation and display for commercial and noncommercial uses; attribution encouraged. Do not resell as stock photos, claim authorship or create a competing stock-photo service."
+      },
+      "transformation": "EXIF orientation corrected; resized to fit 1400 × 1400 px without upscaling; encoded WebP quality 85. No AI generation, compositing or recoloring."
+    },
+    {
+      "path": "wwwroot/images/editorial/everyday-shirts.webp",
+      "displayUse": "Editorial illustration only, not CoCo premises, staff, customers or an actual consignment.",
+      "altVi": "Áo thun thường ngày treo trên móc gỗ",
+      "width": 1400,
+      "height": 933,
+      "bytes": 75752,
+      "sha256": "e966e1e2d842eb8e81d48e9fc3d9935a99c5b728ed3c097d25aa6009e5f7fc32",
+      "transformation": "Real photograph resized/cropped to 1400 × 933 and encoded WebP quality 85. No AI generation, recoloring or compositing.",
+      "title": "Picture of Tshirts - Free Stock Photo",
+      "sourcePage": "https://www.shopify.com/stock-photos/photos/tshirts",
+      "sourceImage": "https://burst.shopifycdn.com/photos/tshirts.jpg?exif=0&iptc=0&width=1400",
+      "license": {
+        "name": "CC0",
+        "url": "https://www.shopify.com/stock-photos/licenses/creative-commons",
+        "terms": "https://www.shopify.com/stock-photos/legal/terms",
+        "permits": "Commercial use and adaptation under CC0."
+      }
+    },
+    {
+      "path": "wwwroot/images/editorial/clothing-detail.webp",
+      "displayUse": "Editorial illustration only, not CoCo premises, staff, customers or an actual consignment.",
+      "altVi": "Cận cảnh cổ áo và chất liệu vải",
+      "width": 1400,
+      "height": 933,
+      "bytes": 131714,
+      "sha256": "efe01eadcb5772da39d29cee897402d6dffd4f09a9439a9ffe1b0ee78fec1a29",
+      "transformation": "Real photograph resized/cropped to 1400 × 933 and encoded WebP quality 85. No AI generation, recoloring or compositing.",
+      "title": "Picture of Rack Of Blank Tshirts - Free Stock Photo",
+      "sourcePage": "https://www.shopify.com/stock-photos/photos/rack-of-blank-tshirts",
+      "sourceImage": "https://burst.shopifycdn.com/photos/rack-of-blank-tshirts.jpg?exif=0&iptc=0&width=1400",
+      "license": {
+        "name": "CC0",
+        "url": "https://www.shopify.com/stock-photos/licenses/creative-commons",
+        "terms": "https://www.shopify.com/stock-photos/legal/terms",
+        "permits": "Commercial use and adaptation under CC0."
+      }
+    },
+    {
+      "path": "wwwroot/images/editorial/everyday-bag.webp",
+      "displayUse": "Editorial illustration only, not CoCo premises, staff, customers or an actual consignment.",
+      "altVi": "Túi đeo vai màu hồng nhạt trên nền trắng",
+      "width": 1400,
+      "height": 933,
+      "bytes": 32058,
+      "sha256": "d113c79632064b312237ead7b2691a9687fbd782f6a225935425cb07cf70ffe1",
+      "transformation": "Real photograph resized/cropped to 1400 × 933 and encoded WebP quality 85. No AI generation, recoloring or compositing.",
+      "title": "Light Pink Purse",
+      "sourcePage": "https://www.shopify.com/stock-photos/photos/light-pink-purse",
+      "sourceImage": "https://burst.shopifycdn.com/photos/light-pink-purse.jpg?exif=0&iptc=0",
+      "license": {
+        "name": "Burst Photo License",
+        "url": "https://www.shopify.com/stock-photos/licenses/shopify-some-rights-reserved",
+        "terms": "https://www.shopify.com/stock-photos/legal/terms",
+        "permits": "Free adaptation and display for commercial and noncommercial uses; attribution encouraged. Do not resell as stock photos, claim authorship or create a competing stock-photo service."
+      },
+      "derivedFromLocal": "wwwroot/images/editorial/home-bag-hero.webp"
+    }
+  ]
+}

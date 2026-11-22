@@ -1,0 +1,57 @@
+@{ ViewData["Title"] = "Chính sách kiểm định"; }
+<div class="coco-about coco-policy-document" data-policy-document>
+    <nav class="about-breadcrumb" aria-label="Đường dẫn"><a asp-controller="Home" asp-action="Index">Trang chủ</a><span aria-hidden="true">/</span><span aria-current="page">Chính sách kiểm định</span></nav>
+    <header class="policy-document-header">
+        <h1 id="inspection-title">Chính sách kiểm định</h1>
+        <p class="policy-lead">CoCo xem ảnh để duyệt sơ bộ, sau đó kiểm tra trực tiếp và ghi nhận tình trạng món đồ trước khi đăng bán.</p>
+        <div class="policy-actions"><a class="btn btn-wine" asp-controller="Listing" asp-action="Create">Gửi sản phẩm để kiểm định <span aria-hidden="true">→</span></a></div>
+    </header>
+    <div class="policy-document-layout">
+        <aside class="policy-toc" aria-labelledby="policy-toc-title">
+            <h2 id="policy-toc-title">Nội dung chính sách</h2>
+            <nav aria-label="Mục lục chính sách kiểm định">
+                <ol>
+                    <li><a href="#inspection-stages">Quy trình kiểm định</a></li>
+                    <li><a href="#inspection-prepare">Chuẩn bị và gửi sản phẩm</a></li>
+                    <li><a href="#bat-dau-kiem-dinh">Bắt đầu ký gửi</a></li>
+                </ol>
+            </nav>
+        </aside>
+        <div class="policy-document-content">
+            <section id="inspection-stages" class="policy-document-section" aria-labelledby="inspection-stages-title">
+                <h2 id="inspection-stages-title"><span class="policy-section-number" aria-hidden="true">01.</span> Ba bước kiểm tra trước khi đăng bán</h2>
+                <p>Bạn theo dõi kết quả trong tủ đồ ký gửi, ngay trong tài khoản CoCo.</p>
+                <ol class="policy-steps">
+                    <li>
+                        <span class="policy-step-label">Duyệt qua ảnh</span>
+                        <h3>Để CoCo nhìn rõ món đồ</h3>
+                        <p>Gửi 3–10 ảnh thật: mặt trước, mặt sau, tem mác và các chi tiết cần lưu ý. Điền thương hiệu, kích cỡ, tình trạng và giá mong muốn. Có thể sửa thông tin trước khi được duyệt sơ bộ.</p>
+                    </li>
+                    <li>
+                        <span class="policy-step-label">Kiểm định hiện vật</span>
+                        <h3>Đối chiếu từng chi tiết</h3>
+                        <p>Sau khi được duyệt sơ bộ, mang hoặc gửi đồ đến CoCo trong 3 ngày. CoCo kiểm tra tình trạng thực tế. Xem kết quả và lý do chưa đạt trong tài khoản.</p>
+                    </li>
+                    <li>
+                        <span class="policy-step-label">Duyệt đăng bán</span>
+                        <h3>Sẵn sàng cho chủ nhân mới</h3>
+                        <p>Món đồ đạt yêu cầu được cấp mã sản phẩm. Chỉ sau bước duyệt đăng bán, sản phẩm mới xuất hiện công khai trên CoCo.</p>
+                    </li>
+                </ol>
+            </section>
+            <section id="inspection-prepare" class="policy-document-section" aria-labelledby="inspection-prepare-title">
+                <h2 id="inspection-prepare-title"><span class="policy-section-number" aria-hidden="true">02.</span> Chuẩn bị món đồ, gửi đủ thông tin</h2>
+                <ul class="policy-list">
+                    <li><strong>Mô tả đúng tình trạng hiện tại</strong><p>Ảnh và thông tin cần phản ánh món đồ thực tế, bao gồm điểm cần lưu ý.</p></li>
+                    <li><strong>Ghi rõ người gửi</strong><p>Ghi họ tên và số điện thoại trên kiện để CoCo đối chiếu.</p></li>
+                    <li><strong>Trả trước cước gửi đến CoCo</strong><p>CoCo chỉ nhận kiện không thu tiền khi giao. Có thể mang trực tiếp đến tiệm.</p></li>
+                </ul>
+                <a class="about-text-link" asp-controller="About" asp-action="Policies">Xem phí và chính sách ký gửi <span aria-hidden="true">→</span></a>
+            </section>
+            <section id="bat-dau-kiem-dinh" class="policy-document-section" aria-labelledby="inspection-start-title">
+                <h2 id="inspection-start-title"><span class="policy-section-number" aria-hidden="true">03.</span> Bắt đầu từ vài tấm ảnh thật</h2>
+                <div class="policy-actions"><a class="btn btn-wine" asp-controller="Listing" asp-action="Create">Bắt đầu ký gửi <span aria-hidden="true">→</span></a></div>
+            </section>
+        </div>
+    </div>
+</div>

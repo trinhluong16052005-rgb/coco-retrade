@@ -1,0 +1,16 @@
+.page-profile .wallet-available-toggle { display:block; color:inherit; font:inherit; text-align:left; cursor:pointer; }
+.page-profile .wallet-available-toggle[aria-expanded="true"] { border-color:#FF3366; background:#fff2f6; }
+.wallet-history-label { display:block; margin-top:8px; color:#c32250; font-size:.8125rem; }
+.wallet-credit-list { display:grid; gap:0; max-height:380px; margin:0; padding:0; list-style:none; overflow-y:auto; }
+.wallet-credit-list a { display:grid; grid-template-columns:auto minmax(0,1fr) 20px; align-items:center; gap:16px; padding:14px 0; color:inherit; text-decoration:none; }
+.wallet-credit-list li + li { border-top:1px solid #eaeaea; }
+.wallet-credit-amount { color:#18783d; font-size:1.0625rem; white-space:nowrap; }
+.wallet-credit-description { display:grid; min-width:0; gap:4px; overflow-wrap:anywhere; }
+.wallet-credit-description small { color:#665f62; font-size:.8125rem; }
+.wallet-credit-list a:hover .wallet-credit-description > span { color:#FF3366; }
+@media (max-width:575px) {
+    .wallet-credit-list a { grid-template-columns:minmax(0,1fr) 18px; gap:5px 8px; padding-block:12px; }
+    .wallet-credit-amount { grid-column:1; }
+    .wallet-credit-description { grid-column:1; }
+    .wallet-credit-list .icon { grid-column:2; grid-row:1 / span 2; }
+}

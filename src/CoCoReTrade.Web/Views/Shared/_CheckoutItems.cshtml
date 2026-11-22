@@ -1,0 +1,25 @@
+@model IReadOnlyList<ProductCard>
+@{
+    var selected = (HashSet<Guid>?)ViewBag.SelectedIds ?? [];
+    var fromCart = ViewBag.FromCart == true;
+    var prices = ViewBag.CheckoutPrices as IReadOnlyDictionary<Guid, decimal>;
+}
+@foreach (var item in Model)
+{
+    var price = prices?.GetValueOrDefault(item.Id) ?? item.AskingPrice;
+    <article class="checkout-item" data-checkout-item="@item.Id">
+        @if (fromCart) { <input type="checkbox" name="ProductIds" value="@item.Id" checked="@(selected.Contains(item.Id))" class="form-check-input checkout-item-select" aria-label="Chọn @item.Name" /> }
+        else { <input type="hidden" name="ProductIds" value="@item.Id" /> }
+        <a class="checkout-item-image" asp-controller="Shop" asp-action="Details" asp-route-id="@item.Id">
+            @if (item.CoverImageId is { } image) { <img src="/images/@image" alt="@item.Name" loading="lazy" width="100" height="125" /> }
+        </a>
+        <div class="checkout-item-copy">
+            <span class="checkout-item-brand">@item.Brand</span>
+            <h3><a asp-controller="Shop" asp-action="Details" asp-route-id="@item.Id">@item.Name</a></h3>
+            <p>Kích cỡ @UiText.For(item.Size) · Tình trạng @item.ConditionPercent%</p>
+            <strong>@price.ToString("N0") VNĐ</strong>
+        </div>
+        @if (fromCart)
+        { <button class="checkout-remove" type="submit" name="productId" value="@item.Id" formaction="@Url.Action("Remove", "Cart")" formnovalidate data-checkout-remove="@item.Id" aria-label="Bỏ @item.Name khỏi giỏ">×</button> }
+    </article>
+}

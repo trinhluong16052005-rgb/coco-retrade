@@ -1,0 +1,156 @@
+/* Decorative section rules give way to existing spacing. Field, button, tab,
+   table, selected-thumbnail and focus borders keep their functional meaning. */
+.site-header,
+.category-nav,
+.trust-strip,
+.shop-filters,
+.product-seller,
+.detail-information,
+.seller-line,
+.auth-secondary,
+.sidebar-footer,
+.admin-form-section + .admin-form-section,
+.profile-avatar-editor,
+.admin-bulk-toolbar,
+.admin-metric-card,
+.wallet-overview,
+.catalog-filter-head,
+.auth-mode-tabs,
+.checkout-payment,
+.checkout-review-heading {
+    border-top:0;
+    border-bottom:0;
+}
+.coco-auth-pane .auth-google > span::before,
+.coco-auth-pane .auth-google > span::after { border-top:0; }
+
+.page-home .sign-home :is(.sign-text-link,.coco-community-link),
+.clearout-page .consign-text-link,
+.page-about :is(.about-text-link,.coco-page-jumps a) {
+    border-bottom:0;
+}
+
+.page-about :is(.about-hero,.about-editorial-split,.about-bottom-cta,
+    .about-navigation,.about-check-list li,.about-fee-details > div,
+    .about-compact-steps li,.about-information-grid article,.about-faq-list details,
+    .about-contact-grid > a,.about-contact-grid > div,.coco-story-panorama figcaption,
+    .coco-story-paths article,.coco-social-pages > a,.coco-fee-receipt,
+    .coco-fee-receipt dl > div,.coco-fee-receipt .coco-fee-total,
+    .coco-policy-hero,.coco-policy-process,.coco-policy-fees,.coco-policy-cta,
+    .coco-process-list li,.coco-timeline li,.coco-receive-steps li,
+    .coco-support-checklist li,.coco-returns-support,
+    .coco-returns-decision-grid article + article,.coco-activity-grid article),
+.clearout-page :is(.consign-fees,.consign-finish,.clearout-faq details) {
+    border-top:0;
+    border-bottom:0;
+}
+
+/* Restore the footer separators without adding rules elsewhere. */
+.site-footer { border-top:1px solid #000000; }
+.site-footer .footer-bottom { margin-top:24px; padding-top:8px; border-top:1px solid #000000; }
+.site-footer :is(.footer-contact,.footer-group) { border-color:#000000; }
+@media (max-width:767px) {
+    .site-footer .footer-contact { border-top:1px solid #000000; }
+}
+@media (max-width:767px) {
+    .site-footer .footer-group { border-bottom:1px solid #000000; }
+}
+
+/* Home, Shop and detail recommendations keep five cards per desktop row. */
+.page-home .sign-home .sign-product-track { scroll-padding-inline:20px; }
+@media (min-width:1024px) {
+    body.storefront-pages.page-details #main-content .recommendations .product-grid {
+        grid-template-columns:repeat(5,minmax(0,1fr)) !important;
+    }
+    body.storefront-pages.page-shop:not(.page-home):not(.page-clearout) #main-content .product-grid {
+        grid-template-columns:repeat(5,minmax(0,1fr));
+    }
+    .page-home .sign-home .sign-product-track {
+        grid-auto-columns:calc((100% - 80px)/5);
+    }
+    .page-home .sign-home .sign-rail-controls button {
+        top:calc((100vw - 120px)*2/15 - 30px);
+    }
+}
+@media (min-width:768px) and (max-width:1023px) {
+    body.storefront-pages.page-details #main-content .recommendations .product-grid {
+        grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+    }
+    body.storefront-pages.page-shop:not(.page-home):not(.page-clearout) #main-content .product-grid {
+        grid-template-columns:repeat(3,minmax(0,1fr));
+    }
+    .page-home .sign-home .sign-product-track {
+        grid-auto-columns:calc((100% - 40px)/3);
+    }
+    .page-home .sign-home .sign-rail-controls button {
+        top:calc((100vw - 80px)*2/9 - 30px);
+    }
+}
+@media (max-width:767px) {
+    .page-home .sign-home .sign-product-track { scroll-padding-inline:12px; }
+    body.storefront-pages.page-shop:not(.page-home):not(.page-clearout) #main-content .product-grid {
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+}
+
+/* Six categories keep their three-by-two desktop layout with shorter photos. */
+.page-home .sign-home .sign-category { aspect-ratio:16/9; }
+.page-home .sign-home .sign-category img { object-fit:cover; }
+@media (max-width:767px) {
+    .page-home .sign-home .sign-category { aspect-ratio:16/10; }
+}
+
+/* Both social panels share a compact height, independent of TikTok's embed size. */
+.page-home .sign-home .coco-social-grid {
+    --social-panel-height:clamp(560px,42vw,620px);
+    align-items:stretch;
+}
+.page-home .sign-home .coco-facebook-story {
+    min-height:0;
+    height:var(--social-panel-height);
+}
+.page-home .sign-home .coco-facebook-copy { padding-top:24px; }
+.page-home .sign-home .coco-facebook-copy h3 {
+    margin-bottom:16px;
+    font-size:clamp(1.875rem,2.7vw,3rem);
+}
+.page-home .sign-home .coco-facebook-copy p {
+    margin-bottom:20px;
+    font-size:.875rem;
+    line-height:1.65;
+}
+.page-home .sign-home .coco-tiktok-panel {
+    height:var(--social-panel-height);
+    min-height:0;
+    padding-block:24px;
+}
+.page-home .sign-home .coco-tiktok-heading { flex:none; }
+.page-home .sign-home .coco-tiktok-heading h3 { margin-bottom:10px; }
+.page-home .sign-home .coco-tiktok-feed,
+.page-home .sign-home .coco-tiktok-feed.is-ready {
+    flex:1 1 0;
+    height:auto;
+    min-height:0;
+    margin-top:16px;
+    overflow-y:auto;
+    overflow-x:hidden;
+    overscroll-behavior-y:contain;
+    scrollbar-width:thin;
+    scrollbar-color:#d5bfc5 transparent;
+}
+.page-home .sign-home .coco-tiktok-feed.is-ready .coco-tiktok-mount {
+    position:relative;
+    inset:auto;
+    min-height:100%;
+}
+.page-home .sign-home .coco-tiktok-feed:focus-visible { outline:2px solid var(--red); outline-offset:-2px; }
+.page-home .sign-home .coco-tiktok-profile-preview { margin-inline:20px; padding:16px; }
+.page-home .sign-home .coco-tiktok-account { margin-bottom:12px; }
+.page-home .sign-home .coco-tiktok-feedback { flex:none; }
+@media (max-width:767px) {
+    .page-home .sign-home .coco-facebook-story { height:auto; min-height:400px; }
+    .page-home .sign-home .coco-tiktok-panel { height:580px; padding-block:22px; }
+}
+
+/* Keep the new store sign in view inside the existing panorama frame. */
+.coco-story-panorama > img[src*="coco-storefront-outside"] { object-position:50% 35%; }

@@ -1,0 +1,23 @@
+@model IReadOnlyList<ProductCard>
+@{
+    ViewData["Title"] = "Đồ đã lưu";
+    ViewBag.FavoriteIds = Model.Select(x => x.Id).ToArray();
+    ViewBag.ProductSelection = "saved";
+    ViewBag.AlignProductCards = true;
+}
+<div class="eyebrow mt-4">Tủ đồ yêu thích</div><h1 class="page-title mt-1">Đồ đã lưu</h1>
+<p class="subtitle">Xem các món đã lưu còn mở bán.</p>
+<section class="saved-products product-collection" data-product-collection="saved" aria-label="Danh sách yêu thích">
+    <p class="collection-total"><strong data-collection-count>@Model.Count</strong> món đồ đã lưu</p>
+    <form id="saved-selection-form" asp-controller="Social" asp-action="RemoveFavorites" method="post" class="collection-toolbar" data-collection-form hidden="@(Model.Count == 0)">
+        <button type="button" class="btn btn-outline-wine" data-collection-all>Chọn tất cả</button>
+        <button type="button" class="btn btn-light" data-collection-clear disabled>Bỏ chọn</button>
+        <span class="collection-selection-count" data-selection-count>Đã chọn 0</span>
+        <button type="submit" class="btn btn-wine collection-remove-icon" data-collection-remove disabled aria-label="Xóa khỏi yêu thích" title="Xóa món đã chọn khỏi yêu thích">
+            <partial name="_AdminTrashIcon" />
+        </button>
+    </form>
+    <p class="collection-feedback" data-collection-feedback role="status" aria-live="polite" hidden></p>
+    @if (Model.Count > 0) { <partial name="_ProductGrid" model="Model" /> }
+    <div class="empty-state" data-collection-empty hidden="@(Model.Count > 0)"><h2>Chưa có món đồ đã lưu</h2><p>Khám phá và lưu lại những món bạn yêu thích.</p><a class="btn btn-outline-wine" asp-controller="Shop" asp-action="Index">Khám phá sản phẩm</a></div>
+</section>

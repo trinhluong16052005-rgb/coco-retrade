@@ -1,0 +1,113 @@
+:root {
+    --mobile-nav-height: calc(58px + env(safe-area-inset-bottom, 0px));
+}
+
+.bottom-nav {
+    display: none;
+    position: fixed;
+    z-index: 1030;
+    inset-inline: 0;
+    bottom: 0;
+    box-sizing: border-box;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    height: var(--mobile-nav-height);
+    padding: 4px max(4px, env(safe-area-inset-right, 0px)) calc(4px + env(safe-area-inset-bottom, 0px)) max(4px, env(safe-area-inset-left, 0px));
+    border-top: 1px solid var(--line, #f8dde5);
+    background: var(--white, #fff);
+    box-shadow: 0 -3px 16px rgb(32 16 20 / 6%);
+}
+
+.bottom-nav > a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    min-width: 0;
+    min-height: 44px;
+    border-radius: 8px;
+    color: var(--ink, #000);
+    font: 600 .75rem/1.25 var(--font-body, "Open Sans", sans-serif);
+    text-align: center;
+    text-decoration: none;
+    touch-action: manipulation;
+}
+
+.bottom-nav .nav-icon {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 24px;
+    border-radius: 8px;
+}
+
+.bottom-nav .icon {
+    width: 22px;
+    height: 22px;
+}
+
+.bottom-nav > [aria-current] {
+    color: #ac1641;
+    font-weight: 700;
+}
+
+.bottom-nav > [aria-current] .nav-icon {
+    color: #ff3366;
+    background: #fff0f4;
+}
+
+.bottom-nav .unread-count {
+    top: -3px;
+    right: -6px;
+}
+
+@media screen and (max-width: 767.98px),
+       screen and (max-width: 1023.98px) and (max-height: 550px) and (pointer: coarse) and (orientation: landscape) {
+    html {
+        scroll-padding-bottom: calc(var(--mobile-nav-height) + 8px);
+    }
+
+    body:has(> .bottom-nav) {
+        padding-bottom: var(--mobile-nav-height);
+    }
+
+    .bottom-nav {
+        display: grid;
+    }
+
+    .site-header .desktop-header-action {
+        display: none;
+    }
+
+    .admin-workspace .site-header :is(.icon-link, .brand) {
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    .admin-workspace .admin-content {
+        min-width: 0;
+    }
+
+    .admin-workspace .admin-content :is(.admin-status, .status-pill) {
+        font-size: .75rem;
+    }
+
+    .admin-workspace .admin-content :is(.form-control, .form-select) {
+        font-size: 1rem;
+    }
+
+    .admin-workspace .admin-content :is(th, small, .report-chart-label, .report-rank, .report-trust, #support-ticket-status) {
+        font-size: .8125rem;
+    }
+
+    .admin-workspace .admin-content .btn {
+        min-height: 40px;
+        font-size: .875rem;
+    }
+
+    .admin-workspace .admin-selection-column .form-check-input {
+        width: 22px;
+        height: 22px;
+    }
+}

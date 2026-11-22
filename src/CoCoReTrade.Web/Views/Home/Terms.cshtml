@@ -1,0 +1,73 @@
+@inject CoCoReTrade.Application.MarketplacePolicy Marketplace
+@inject CoCoReTrade.Application.ShippingPolicy Shipping
+@{ ViewData["Title"] = "Quy định giao dịch"; }
+<header class="page-heading">
+    <div><p class="eyebrow">CoCo ReTrade</p><h1 class="page-title">Quy định giao dịch</h1><p class="subtitle mb-0">Thông tin ký gửi, mua hàng và nhận tiền tại CoCo.</p></div>
+    <a class="text-link" asp-controller="Home" asp-action="Clearout">Tìm hiểu quy trình ký gửi <span aria-hidden="true">→</span></a>
+</header>
+<div class="row g-4 mb-5">
+    <div class="col-12">
+        <section class="panel" aria-labelledby="terms-consignment">
+            <p class="eyebrow">01 / KÝ GỬI</p><h2 id="terms-consignment" class="display-serif fs-3 mb-3">Từ tủ đồ của bạn đến chủ nhân tiếp theo</h2>
+            <p>CoCo nhận ký gửi <strong>mọi thương hiệu</strong>. Món đồ chỉ xuất hiện công khai sau khi được kiểm định hiện vật, cấp mã sản phẩm và duyệt đăng bán.</p>
+            <ol class="mb-4">
+                <li class="mb-2"><strong>Gửi thông tin:</strong> thêm tên, thương hiệu, danh mục, kích cỡ, tình trạng, giá mong muốn và từ 3 đến 10 ảnh thật rõ nét.</li>
+                <li class="mb-2"><strong>Duyệt sơ bộ:</strong> CoCo xem ảnh và phản hồi trong tủ đồ. Người ký gửi có thể sửa thông tin trước khi được duyệt sơ bộ.</li>
+                <li class="mb-2"><strong>Kiểm định hiện vật:</strong> sau khi được duyệt sơ bộ, mang hoặc gửi sản phẩm đến CoCo trong 3 ngày. Khi dùng đơn vị vận chuyển, người gửi trả trước cước, ghi đủ họ tên và số điện thoại. CoCo chỉ nhận kiện không thu tiền khi giao.</li>
+                <li class="mb-2"><strong>Đăng bán:</strong> món đồ đạt yêu cầu được cấp mã sản phẩm và công khai sau khi được duyệt. Sản phẩm bị từ chối có lý do. Chỉ người ký gửi và nhân viên có quyền xem.</li>
+                <li class="mb-2"><strong>Theo dõi giao dịch:</strong> xem trạng thái sản phẩm, đề xuất giá và đơn hàng trong tài khoản.</li>
+                <li><strong>Nhận tiền:</strong> tiền hàng sau hoa hồng được ghi có vào ví khi CoCo đã thu tiền và hoàn tất đơn.</li>
+            </ol>
+            @if (Shipping.CanPickup)
+            {
+                <p class="mb-0"><strong>Địa chỉ CoCo:</strong> @Shipping.StoreAddress.<br /><strong>Giờ tiếp nhận:</strong> @Shipping.OpeningHour.ToString("00"):@Shipping.OpeningMinute.ToString("00")–@Shipping.ClosingHour.ToString("00"):00 hằng ngày.</p>
+            }
+        </section>
+    </div>
+    <div class="col-md-6">
+        <section class="panel h-100" aria-labelledby="terms-fees">
+            <p class="eyebrow">02 / HOA HỒNG VÀ THU NHẬP</p><h2 id="terms-fees" class="display-serif fs-4 mb-3">Một mức phí rõ ràng</h2>
+            <p>Phí dịch vụ ký gửi chỉ gồm <strong>hoa hồng @Marketplace.CommissionPercent%</strong> trên giá bán cuối cùng, không gồm phí giao hàng. CoCo không thu thêm phí nhận đồ, kiểm định hoặc lưu kho.</p>
+            <p>Tiền bán chỉ được ghi có khi khách đã nhận hàng, CoCo xác nhận thu tiền và nhân viên hoàn tất đơn. Đơn mới đặt hoặc chỉ xác nhận thanh toán chưa làm tăng số dư ví.</p>
+            <p class="mb-0">Người ký gửi gửi yêu cầu rút với số tài khoản và tên ngân hàng đầy đủ. CoCo duyệt, chuyển khoản ngoài ứng dụng rồi nhân viên nhập mã giao dịch để xác nhận. Ứng dụng không tự thực hiện chuyển khoản ngân hàng.</p>
+        </section>
+    </div>
+    <div class="col-md-6">
+        <section class="panel h-100" aria-labelledby="terms-unsold">
+            <p class="eyebrow">03 / THỜI HẠN ĐĂNG BÁN</p><h2 id="terms-unsold" class="display-serif fs-4 mb-3">Khi món đồ chưa bán được</h2>
+            <p><strong>Sau 45 ngày kể từ ngày đăng bán,</strong> CoCo nhắc người ký gửi nhận lại món đồ chưa bán.</p>
+            <p><strong>Sau 60 ngày kể từ ngày đăng bán,</strong> nếu người ký gửi chưa nhận lại, CoCo gỡ sản phẩm khỏi website và chuyển sang thanh lý trực tiếp tại tiệm.</p>
+            <p class="mb-0">Các mốc này áp dụng với sản phẩm đã đăng bán. Với sản phẩm chưa đăng bán hoặc bị từ chối kiểm định, xem phản hồi trong tủ đồ và liên hệ CoCo để xác nhận cách nhận lại.</p>
+        </section>
+    </div>
+    <div class="col-md-6">
+        <section class="panel h-100" aria-labelledby="terms-offers">
+            <p class="eyebrow">04 / ĐỀ XUẤT GIÁ</p><h2 id="terms-offers" class="display-serif fs-4 mb-3">Thỏa thuận trước khi đặt hàng</h2>
+            <p>Chỉ sản phẩm đang mở bán và cho phép trả giá mới nhận đề xuất. Giá giảm tối đa @Marketplace.MaximumOfferDiscountPercent% so với giá niêm yết. Mỗi người mua tối đa ba lần đề xuất cho một món.</p>
+            <p class="mb-0">Giá chấp nhận dành riêng cho người mua đó trong 24 giờ, nhưng chưa giữ món đồ. Với giá thỏa thuận, khách cần lấy hàng trong 24 giờ kể từ khi chấp nhận. Quá hạn chưa nhận và chưa thanh toán, đơn hủy và sản phẩm mở bán lại theo giá niêm yết.</p>
+        </section>
+    </div>
+    <div class="col-md-6">
+        <section class="panel h-100" aria-labelledby="terms-orders">
+            <p class="eyebrow">05 / ĐẶT HÀNG VÀ THANH TOÁN</p><h2 id="terms-orders" class="display-serif fs-4 mb-3">Kiểm tra rồi nhận hàng</h2>
+            <p>Mỗi món đồ là độc bản. Chỉ khi đơn được tạo thành công, sản phẩm mới chuyển sang trạng thái giữ hàng. Đơn mới chờ xử lý, chưa được đánh dấu đã thanh toán.</p>
+            <p>Khách không cần chuyển khoản trước. Với giao tận nơi, khách kiểm tra lúc người giao hàng đến và thanh toán tiền mặt khi đồng ý nhận. Nếu không nhận, giao lại cho người giao hàng trước khi thanh toán. Theo chính sách dự kiến, khách từ chối nhận chịu phí vận chuyển một chiều; sau khi đã thanh toán, CoCo không nhận yêu cầu hoàn trả do đổi ý.</p>
+            <p class="mb-0">Nhận tại CoCo: kiểm tra và thanh toán tiền mặt tại cửa hàng. Bạn có thể chọn cách nhận này khi đặt hàng.</p>
+        </section>
+    </div>
+    <div class="col-md-6">
+        <section class="panel h-100" aria-labelledby="terms-shipping">
+            <p class="eyebrow">06 / NHẬN HÀNG</p><h2 id="terms-shipping" class="display-serif fs-4 mb-3">Chọn cách nhận phù hợp</h2>
+            <p>Nhận tại CoCo miễn phí. Phí giao hàng hiện tại là <strong>20.000 VNĐ tại Đà Nẵng</strong>, <strong>35.000 VNĐ tại khu vực khác</strong>.</p>
+            <p class="mb-0">Phí và tổng tiền được hiển thị trước khi xác nhận. Với nhận tại cửa hàng, chọn thời gian trong 24 giờ tiếp theo và trong giờ tiếp nhận của CoCo.</p>
+        </section>
+    </div>
+    <div class="col-md-6">
+        <section class="panel h-100" aria-labelledby="terms-contact">
+            <p class="eyebrow">HỖ TRỢ GIAO DỊCH</p><h2 id="terms-contact" class="display-serif fs-4 mb-3">Liên hệ CoCo</h2>
+            <p>Gửi kèm mã ký gửi, mã sản phẩm hoặc mã đơn hàng để CoCo kiểm tra.</p>
+            <p><strong>Hotline:</strong> <a href="tel:0905808679">0905 808 679</a><br /><strong>Email:</strong> <a href="mailto:cocoretradekygui@gmail.com" class="text-break">cocoretradekygui@gmail.com</a></p>
+            <a class="btn btn-outline-wine" asp-controller="Support" asp-action="Create">Gửi yêu cầu hỗ trợ</a>
+        </section>
+    </div>
+</div>

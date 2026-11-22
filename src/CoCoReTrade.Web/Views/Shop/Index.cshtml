@@ -1,0 +1,77 @@
+@using Microsoft.AspNetCore.WebUtilities
+@model ProductPage<ProductCard>
+@{
+    var f = (ProductFilter)ViewBag.Filter;
+    var categoryName = ProductCategories.Display(f.Category);
+    ViewData["Title"] = string.IsNullOrWhiteSpace(categoryName) ? "Mua sắm đồ ký gửi" : categoryName;
+    var hasFilters = !string.IsNullOrWhiteSpace(f.Category) || !string.IsNullOrWhiteSpace(f.Brand) || !string.IsNullOrWhiteSpace(f.Size)
+        || f.MinPrice.HasValue || f.MaxPrice.HasValue || f.MinCondition.HasValue;
+    var firstItem = (Model.PageNumber - 1) * ProductPage<ProductCard>.PageSize + 1;
+    var lastItem = firstItem + Model.Items.Count - 1;
+    var firstPage = Math.Max(1, Model.PageNumber - 1);
+    var lastPage = Math.Min(Model.TotalPages, firstPage + 2);
+    firstPage = Math.Max(1, lastPage - 2);
+    string PageUrl(int pageNumber)
+    {
+        var query = Context.Request.Query.ToDictionary(item => item.Key, item => item.Value, StringComparer.OrdinalIgnoreCase);
+        query["page"] = pageNumber.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        return QueryHelpers.AddQueryString(Url.Action("Index")!, query);
+    }
+}
+<nav class="breadcrumbs" aria-label="Đường dẫn"><a asp-controller="Home" asp-action="Index">Trang chủ</a><span aria-hidden="true">/</span><a asp-action="Index">Mua sắm</a>@if (!string.IsNullOrWhiteSpace(categoryName)) { <span aria-hidden="true">/</span><span>@categoryName</span> }</nav>
+<header class="catalog-heading"><h1>@(string.IsNullOrWhiteSpace(categoryName) ? "Tất cả sản phẩm" : categoryName)</h1></header>
+<partial name="_ShopFilters" model="f" />
+<div class="catalog-results" aria-live="polite">
+    <span><strong>@Model.TotalCount</strong> sản phẩm @if (!string.IsNullOrWhiteSpace(f.Search)) { <span>khớp với “@f.Search”</span> }</span>
+    @if (hasFilters || !string.IsNullOrWhiteSpace(f.Search)) { <a asp-action="Index">Xóa bộ lọc</a> }
+</div>
+<partial name="_ProductGrid" model="Model.Items" />
+@if (Model.Items.Count > 0)
+{
+    <div class="catalog-end">
+        <p>Hiển thị @firstItem–@lastItem trong @Model.TotalCount sản phẩm</p>
+        @if (Model.TotalPages > 1)
+        {
+            <nav class="catalog-pagination" aria-label="Trang sản phẩm">
+                @if (Model.PageNumber > 1)
+                {
+                    <a href="@PageUrl(Model.PageNumber - 1)" rel="prev" aria-label="Trang trước"><span aria-hidden="true">‹</span></a>
+                }
+                else
+                {
+                    <span class="is-disabled" aria-disabled="true" aria-label="Trang trước"><span aria-hidden="true">‹</span></span>
+                }
+                @if (firstPage > 1)
+                {
+                    <a href="@PageUrl(1)" aria-label="Trang 1">1</a>
+                    @if (firstPage > 2) { <span class="pagination-gap" aria-hidden="true">…</span> }
+                }
+                @for (var number = firstPage; number <= lastPage; number++)
+                {
+                    @if (number == Model.PageNumber)
+                    {
+                        <span class="is-current" aria-current="page" aria-label="Trang @number">@number</span>
+                    }
+                    else
+                    {
+                        <a href="@PageUrl(number)" aria-label="Trang @number">@number</a>
+                    }
+                }
+                @if (lastPage < Model.TotalPages)
+                {
+                    @if (lastPage < Model.TotalPages - 1) { <span class="pagination-gap" aria-hidden="true">…</span> }
+                    <a href="@PageUrl(Model.TotalPages)" aria-label="Trang @Model.TotalPages">@Model.TotalPages</a>
+                }
+                @if (Model.PageNumber < Model.TotalPages)
+                {
+                    <a href="@PageUrl(Model.PageNumber + 1)" rel="next" aria-label="Trang sau"><span aria-hidden="true">›</span></a>
+                }
+                else
+                {
+                    <span class="is-disabled" aria-disabled="true" aria-label="Trang sau"><span aria-hidden="true">›</span></span>
+                }
+            </nav>
+        }
+        <a href="#main-content" class="text-link">Về đầu trang <span aria-hidden="true">↑</span></a>
+    </div>
+}

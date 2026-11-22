@@ -1,0 +1,10 @@
+@if (ViewBag.DashboardFrom is DateOnly from && ViewBag.DashboardThrough is DateOnly through)
+{
+    <div class="d-flex align-items-center flex-wrap gap-2 small mb-3" data-dashboard-selection>
+        <strong>@from.ToString("dd/MM/yyyy") – @through.ToString("dd/MM/yyyy")</strong>
+        <span>· @(ViewBag.DashboardBasis as string == "completed" ? "Theo ngày hoàn tất, đã thanh toán" : "Khoảng ngày đã chọn từ Tổng quan")</span>
+        @if (ViewBag.DashboardStatus is ProductStatus productStatus) { <span>· @UiText.For(productStatus)</span> }
+        @if (ViewBag.DashboardStatus is OrderStatus orderStatus) { <span>· @UiText.For(orderStatus)</span> }
+        <a class="ms-sm-auto" asp-area="Admin" asp-controller="Dashboard" asp-action="Index" asp-route-period="custom" asp-route-from="@from.ToString("yyyy-MM-dd")" asp-route-through="@through.ToString("yyyy-MM-dd")">Quay lại Tổng quan</a>
+    </div>
+}

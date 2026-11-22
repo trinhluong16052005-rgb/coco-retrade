@@ -1,0 +1,32 @@
+@model (int Total, int Page, int PageSize)
+@{
+    var pageCount = Math.Max(1, (Model.Total + Model.PageSize - 1) / Model.PageSize);
+    var firstPage = Math.Max(1, Model.Page - 1);
+    var lastPage = Math.Min(pageCount, Model.Page + 1);
+    string PageUrl(int number)
+    {
+        var query = Context.Request.Query.ToDictionary(x => x.Key, x => x.Value);
+        query["page"] = number.ToString();
+        return Microsoft.AspNetCore.WebUtilities.QueryHelpers.AddQueryString(Context.Request.Path, query);
+    }
+}
+@if (Model.Total > 0)
+{
+    <div class="admin-list-pagination">
+        <span>Hiển thị @((Model.Page - 1) * Model.PageSize + 1)–@Math.Min(Model.Page * Model.PageSize, Model.Total) trong @Model.Total kết quả</span>
+        <nav aria-label="Phân trang danh sách">
+            <ul class="pagination mb-0">
+                <li class="page-item @(Model.Page == 1 ? "disabled" : "")">@if (Model.Page > 1) { <a class="page-link" href="@PageUrl(Model.Page - 1)" rel="prev" aria-label="Trang trước">‹</a> } else { <span class="page-link" aria-hidden="true">‹</span> }</li>
+                @if (firstPage > 1) { <li class="page-item"><a class="page-link" href="@PageUrl(1)" aria-label="Trang 1">1</a></li> }
+                @if (firstPage > 2) { <li class="page-item disabled"><span class="page-link">…</span></li> }
+                @for (var number = firstPage; number <= lastPage; number++)
+                {
+                    <li class="page-item @(number == Model.Page ? "active" : "")">@if (number == Model.Page) { <span class="page-link" aria-current="page">@number</span> } else { <a class="page-link" href="@PageUrl(number)" aria-label="Trang @number">@number</a> }</li>
+                }
+                @if (lastPage < pageCount - 1) { <li class="page-item disabled"><span class="page-link">…</span></li> }
+                @if (lastPage < pageCount) { <li class="page-item"><a class="page-link" href="@PageUrl(pageCount)" aria-label="Trang @pageCount">@pageCount</a></li> }
+                <li class="page-item @(Model.Page == pageCount ? "disabled" : "")">@if (Model.Page < pageCount) { <a class="page-link" href="@PageUrl(Model.Page + 1)" rel="next" aria-label="Trang sau">›</a> } else { <span class="page-link" aria-hidden="true">›</span> }</li>
+            </ul>
+        </nav>
+    </div>
+}

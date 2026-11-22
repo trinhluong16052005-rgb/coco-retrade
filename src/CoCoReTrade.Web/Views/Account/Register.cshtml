@@ -1,0 +1,6 @@
+@model RegisterForm
+@{ ViewData["Title"] = "Đăng ký"; }
+<section class="auth-page" data-auth-page="register">
+    <div class="auth-page-intro"><span>COCO RETRADE</span><h1>Thêm một người bạn của CoCo.</h1><p>Tạo tài khoản để mua sắm và gửi bán những món đồ bạn yêu.</p></div>
+    <div class="auth-page-card" data-auth-page-content><partial name="_RegisterForm" model="Model" /></div>
+</section>

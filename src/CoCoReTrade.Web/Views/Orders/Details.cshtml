@@ -1,0 +1,234 @@
+@model OrderDetailsPage
+@inject ShippingPolicy Shipping
+@{
+    var order = Model.Order;
+    ViewData["Title"] = "Chi tiết đơn hàng";
+    var viewerId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+    var isAdmin = User.IsInRole("Admin");
+    var isBuyer = viewerId == order.BuyerId;
+    var isSeller = viewerId == order.SellerId && !isBuyer;
+    var showRecipient = isAdmin || !isSeller;
+    var pickup = order.Fulfillment == FulfillmentType.Pickup;
+    var cancelled = order.Status == OrderStatus.Cancelled;
+    var completed = order.Status == OrderStatus.Completed;
+    var events = order.Timeline ?? Array.Empty<OrderTimelineEvent>();
+    var confirmedAt = events.FirstOrDefault(entry => entry.Action == "OrderConfirmed")?.CreatedAtUtc;
+    var preparedAt = events.FirstOrDefault(entry => entry.Action == "OrderPrepared")?.CreatedAtUtc;
+    var canCancel = isBuyer && order.Status == OrderStatus.PendingProcessing
+        && order.PaymentStatus == PaymentStatus.Unpaid && !confirmedAt.HasValue && !preparedAt.HasValue;
+    var statusLabel = order.Status switch
+    {
+        OrderStatus.Completed => pickup ? "Đã nhận tại CoCo" : "Giao hàng thành công",
+        OrderStatus.PendingProcessing when confirmedAt.HasValue => "CoCo đã xác nhận",
+        _ => UiText.For(order.Status)
+    };
+    var latestStep = order.Status switch
+    {
+        OrderStatus.Completed => 3,
+        OrderStatus.Shipping or OrderStatus.ReadyForPickup => 2,
+        _ when preparedAt.HasValue => 2,
+        _ when confirmedAt.HasValue => 1,
+        _ => 0
+    };
+    var steps = new (string Label, string Icon, DateTime? At)[]
+    {
+        ("Đã đặt đơn", "clipboard", order.CreatedAtUtc),
+        ("CoCo xác nhận", "shield", confirmedAt),
+        (pickup ? "Sẵn sàng nhận tại CoCo" : "Bàn giao vận chuyển", pickup ? "location" : "package", preparedAt),
+        (pickup ? "Đã nhận tại CoCo" : "Giao hàng thành công", "check", order.CompletedAtUtc)
+    };
+    var address = pickup ? order.PickupAddress : string.Join(", ",
+        new[] { order.StreetAddress, order.Ward, order.Province }.Where(part => !string.IsNullOrWhiteSpace(part)));
+    var storeOffset = TimeSpan.FromHours(Shipping.StoreUtcOffsetHours);
+    DateTimeOffset StoreTime(DateTime value) =>
+        new DateTimeOffset(DateTime.SpecifyKind(value, DateTimeKind.Utc)).ToOffset(storeOffset);
+    var createdAt = StoreTime(order.CreatedAtUtc);
+}
+
+<div class="order-detail">
+    <header class="order-detail-heading">
+        <div class="order-detail-nav">
+            <a class="text-link order-detail-back" asp-action="Index">
+                <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#arrow-right" /></svg>Quay lại đơn hàng
+            </a>
+            @if (isAdmin)
+            {
+                <a class="text-link" asp-area="Admin" asp-controller="Orders" asp-action="Details" asp-route-id="@order.Id">Mở quản lý đơn</a>
+            }
+        </div>
+        <h1>Chi tiết đơn hàng</h1>
+        <div class="order-detail-meta">
+            <span>Mã đơn <strong>@order.OrderCode</strong></span>
+            <span>Đặt lúc <time datetime="@createdAt.ToString("O")">@createdAt.ToString("dd/MM/yyyy HH:mm")</time></span>
+        </div>
+    </header>
+
+    <section class="order-detail-status" aria-label="Trạng thái đơn hàng">
+        <span class="order-detail-status-icon" aria-hidden="true">
+            <svg class="icon"><use href="/images/icons.svg#@(completed ? "check" : cancelled ? "close" : "clock")" /></svg>
+        </span>
+        <div class="order-detail-status-copy">
+            <span>Trạng thái đơn hàng</span>
+            <strong>@statusLabel</strong>
+            @if (cancelled && order.CancelledAtUtc is { } cancelledAt)
+            {
+                var local = StoreTime(cancelledAt);
+                <time datetime="@local.ToString("O")">@local.ToString("dd/MM/yyyy HH:mm")</time>
+            }
+        </div>
+        <span class="order-detail-payment-tag @(order.PaymentStatus == PaymentStatus.Paid ? "is-paid" : "")">@UiText.For(order.PaymentStatus)</span>
+    </section>
+
+    <section class="order-detail-card" aria-labelledby="order-progress-title">
+        <div class="order-detail-card-heading">
+            <h2 id="order-progress-title">Theo dõi đơn hàng</h2>
+            <span>Giờ Việt Nam</span>
+        </div>
+        <ol class="order-detail-steps">
+            @for (var i = 0; i < steps.Length; i++)
+            {
+                var step = steps[i];
+                var current = i == latestStep && !cancelled;
+                var state = i > latestStep ? "is-pending" : current && !completed ? "is-current" : "is-complete";
+                <li class="@state @(i < latestStep ? "is-linked" : "")" aria-current="@(current ? "step" : null)">
+                    <span class="order-step-icon" aria-hidden="true"><svg class="icon"><use href="/images/icons.svg#@step.Icon" /></svg></span>
+                    <div>
+                        <strong>@step.Label</strong>
+                        @if (step.At is { } at)
+                        {
+                            var local = StoreTime(at);
+                            <time datetime="@local.ToString("O")"><span>@local.ToString("dd/MM/yyyy")</span> <span>@local.ToString("HH:mm")</span></time>
+                        }
+                        else
+                        {
+                            <span class="order-step-time">@(i <= latestStep ? "Chưa ghi thời gian" : cancelled ? "Chưa thực hiện" : "Chờ cập nhật")</span>
+                        }
+                    </div>
+                </li>
+            }
+        </ol>
+    </section>
+
+    <section class="order-detail-card" aria-labelledby="order-product-title">
+        <div class="order-detail-card-heading"><h2 id="order-product-title">Sản phẩm trong đơn</h2></div>
+        <article class="order-detail-product">
+            <div class="order-detail-photo">
+                <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#image" /></svg>
+                @if (Model.HasProductImage)
+                {
+                    <img src="@Url.Action("ProductImage", new { id = order.Id })" alt="" width="88" height="96" decoding="async" />
+                }
+            </div>
+            <div class="order-detail-product-copy">
+                <h3>@order.ProductName</h3>
+                <dl class="order-detail-product-facts">
+                    <div><dt>Mã sản phẩm</dt><dd>@order.ProductSku</dd></div>
+                    <div><dt>Kích cỡ</dt><dd>@UiText.For(order.ProductSize)</dd></div>
+                    <div><dt>Độ mới</dt><dd>@(Model.ConditionPercent is { } value ? $"{value}%" : "Chưa cập nhật")</dd></div>
+                </dl>
+            </div>
+            <div class="order-detail-product-price">
+                <strong>@order.MerchandisePrice.ToString("N0") VNĐ</strong>
+                <span>Số lượng <b>1</b></span>
+            </div>
+        </article>
+    </section>
+
+    <div class="order-detail-summary">
+        <section class="order-detail-card" aria-labelledby="order-fulfillment-title">
+            <div class="order-detail-card-heading"><h2 id="order-fulfillment-title">Giao hàng và thanh toán</h2></div>
+            <dl class="order-detail-facts">
+                @if (showRecipient)
+                {
+                    <div><dt>Người nhận</dt><dd>@order.RecipientName <span class="order-detail-phone">@order.RecipientPhone</span></dd></div>
+                    <div><dt>@(pickup ? "Địa chỉ nhận tại CoCo" : "Địa chỉ giao hàng")</dt><dd>@address</dd></div>
+                }
+                <div><dt>Phương thức giao hàng</dt><dd>@UiText.For(order.Fulfillment)</dd></div>
+                @if (!isSeller)
+                {
+                    <div><dt>Phương thức thanh toán</dt><dd>Tiền mặt khi nhận hàng</dd></div>
+                }
+                @if (pickup && showRecipient)
+                {
+                    @if (order.PickupAtUtc is { } pickupAt)
+                    {
+                        var local = StoreTime(pickupAt);
+                        <div><dt>Giờ lấy tại CoCo</dt><dd><time datetime="@local.ToString("O")">@local.ToString("dd/MM/yyyy HH:mm")</time></dd></div>
+                    }
+                    @if (order.PickupDeadlineAtUtc is { } pickupDeadline)
+                    {
+                        var local = StoreTime(pickupDeadline);
+                        <div><dt>Hạn tới lấy</dt><dd><time datetime="@local.ToString("O")">@local.ToString("dd/MM/yyyy HH:mm")</time></dd></div>
+                    }
+                }
+                @if (!pickup && !string.IsNullOrWhiteSpace(order.TrackingCode))
+                {
+                    <div><dt>Mã vận chuyển</dt><dd>@order.TrackingCode</dd></div>
+                }
+            </dl>
+            @if (!showRecipient)
+            {
+                <p class="order-detail-private">CoCo phụ trách giao nhận và giữ riêng thông tin liên hệ của người mua.</p>
+            }
+        </section>
+
+        <section class="order-detail-card" aria-labelledby="order-payment-title">
+            <div class="order-detail-card-heading"><h2 id="order-payment-title">Tóm tắt thanh toán</h2></div>
+            <dl class="order-detail-amounts">
+                <div><dt>Tiền hàng</dt><dd>@order.MerchandisePrice.ToString("N0") VNĐ</dd></div>
+                @if (isSeller)
+                {
+                    <div class="order-detail-total"><dt>Tiền nhận sau hoa hồng</dt><dd>@((order.MerchandisePrice - order.CommissionAmount).ToString("N0")) VNĐ</dd></div>
+                }
+                else
+                {
+                    <div><dt>Phí vận chuyển</dt><dd>@order.ShippingFee.ToString("N0") VNĐ</dd></div>
+                    @if (order.DiscountAmount > 0)
+                    {
+                        <div><dt>Giảm giá @order.DiscountCode</dt><dd>−@order.DiscountAmount.ToString("N0") VNĐ</dd></div>
+                    }
+                    <div class="order-detail-total"><dt>Tổng thanh toán</dt><dd>@order.TotalAmount.ToString("N0") VNĐ</dd></div>
+                }
+            </dl>
+        </section>
+    </div>
+
+    <aside class="order-detail-note" aria-labelledby="order-note-title">
+        <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#@(pickup ? "location" : "package")" /></svg>
+        <div>
+            <h2 id="order-note-title">@(pickup ? "Lưu ý nhận tại CoCo" : "Lưu ý giao hàng")</h2>
+            @if (showRecipient && !pickup && !string.IsNullOrWhiteSpace(order.DeliveryNote))
+            {
+                <p class="order-detail-delivery-note"><strong>Ghi chú giao hàng</strong> @order.DeliveryNote</p>
+            }
+            @if (completed || cancelled || isSeller || order.PaymentStatus == PaymentStatus.Paid)
+            {
+                <p>Cung cấp mã đơn khi cần CoCo tra cứu thông tin giao nhận.</p>
+            }
+            else if (pickup)
+            {
+                <p>CoCo giữ món đồ tại cửa hàng. Bạn có thể kiểm tra và thanh toán tiền mặt khi đến nhận.</p>
+                @if (showRecipient && order.OfferId.HasValue && order.PickupDeadlineAtUtc.HasValue)
+                {
+                    <p>Giá thỏa thuận áp dụng trước hạn tới lấy. Quá hạn chưa nhận và chưa thanh toán, đơn sẽ hủy và món đồ mở bán lại theo giá niêm yết.</p>
+                }
+            }
+            else
+            {
+                <p>Kiểm tra món đồ khi người giao hàng đến và thanh toán tiền mặt khi nhận. CoCo cập nhật trạng thái sau khi xác nhận đã thu tiền.</p>
+            }
+        </div>
+    </aside>
+
+    <div class="order-detail-actions @(isBuyer ? "order-detail-actions--buyer" : null)">
+        @if (canCancel)
+        {
+            <form asp-action="Cancel" asp-route-id="@order.Id" method="post">
+                <button type="submit" class="btn btn-outline-danger">Hủy đơn trước khi xử lý</button>
+            </form>
+        }
+        <a class="btn btn-wine" asp-controller="Support" asp-action="Create">
+            <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#message" /></svg>Liên hệ hỗ trợ
+        </a>
+    </div>
+</div>

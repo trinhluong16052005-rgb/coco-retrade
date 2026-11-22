@@ -1,0 +1,63 @@
+@model ContactForm
+@{ ViewData["Title"] = "Liên hệ"; }
+<div class="coco-about coco-contact-page">
+    <nav class="about-breadcrumb" aria-label="Đường dẫn"><a asp-controller="Home" asp-action="Index">Trang chủ</a><span aria-hidden="true">/</span><span aria-current="page">Liên hệ</span></nav>
+    <div class="contact-layout">
+        <section class="contact-map" aria-label="Vị trí cửa hàng CoCo">
+            <div class="contact-map-frame">
+                <iframe src="https://www.google.com/maps?q=536%2F538%20N%C3%BAi%20Th%C3%A0nh%2C%20%C4%90%C3%A0%20N%E1%BA%B5ng%2C%20Vi%E1%BB%87t%20Nam&amp;z=17&amp;output=embed" title="Bản đồ cửa hàng CoCo tại 536/538 Núi Thành, Đà Nẵng" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+            </div>
+            <a class="contact-directions" href="https://www.google.com/maps/search/?api=1&amp;query=536%2F538%20N%C3%BAi%20Th%C3%A0nh%2C%20%C4%90%C3%A0%20N%E1%BA%B5ng%2C%20Vi%E1%BB%87t%20Nam" target="_blank" rel="noopener noreferrer">Chỉ đường đến CoCo <span aria-hidden="true">↗</span></a>
+        </section>
+        <div class="contact-panel">
+            <header class="contact-heading">
+                <h1>Liên hệ với CoCo</h1>
+                <p>CoCo luôn sẵn sàng lắng nghe và hỗ trợ bạn trong quá trình mua sắm, ký gửi và trao gửi những món đồ yêu thích.</p>
+            </header>
+            <dl class="contact-details">
+                <div><dt>Địa chỉ</dt><dd><address>536/538 Núi Thành, Đà Nẵng, Việt Nam.</address></dd></div>
+                <div><dt>Hotline</dt><dd><a href="tel:0905808679">0905 808 679</a></dd></div>
+                <div><dt>Email</dt><dd><a href="mailto:cocoretradekygui@gmail.com">cocoretradekygui@gmail.com</a></dd></div>
+                <div><dt>Giờ mở cửa</dt><dd><time datetime="08:30">08:30</time> – <time datetime="21:00">21:00</time></dd></div>
+            </dl>
+            <section class="contact-message" aria-labelledby="contact-form-title">
+                <h2 id="contact-form-title">Gửi lời nhắn cho CoCo</h2>
+                @if (TempData["ContactSuccess"] is true)
+                {
+                    <div class="contact-feedback" role="status">CoCo đã nhận được lời nhắn của bạn. Chúng mình sẽ liên hệ qua thông tin bạn đã cung cấp.</div>
+                }
+                <form asp-controller="About" asp-action="Contact" method="post" class="contact-form">
+                    <div asp-validation-summary="ModelOnly" class="contact-errors" role="alert"></div>
+                    <div class="contact-field">
+                        <label asp-for="Name">Họ tên</label>
+                        <input asp-for="Name" class="form-control" autocomplete="name" minlength="2" maxlength="100" required />
+                        <span asp-validation-for="Name" class="contact-field-error"></span>
+                    </div>
+                    <div class="contact-field-row">
+                        <div class="contact-field">
+                            <label asp-for="Email">Email</label>
+                            <input asp-for="Email" class="form-control" type="email" autocomplete="email" maxlength="254" required />
+                            <span asp-validation-for="Email" class="contact-field-error"></span>
+                        </div>
+                        <div class="contact-field">
+                            <label asp-for="Phone">Số điện thoại</label>
+                            <input asp-for="Phone" class="form-control" type="tel" autocomplete="tel" maxlength="30" pattern="\+?(?:[0-9][ .\(\)\-]*){6,14}[0-9]" required />
+                            <span asp-validation-for="Phone" class="contact-field-error"></span>
+                        </div>
+                    </div>
+                    <div class="contact-field">
+                        <label asp-for="Message">Nội dung</label>
+                        <textarea asp-for="Message" class="form-control" rows="5" minlength="3" maxlength="1500" required></textarea>
+                        <span asp-validation-for="Message" class="contact-field-error"></span>
+                    </div>
+                    <div class="contact-website" aria-hidden="true">
+                        <label asp-for="Website">Website</label>
+                        <input asp-for="Website" tabindex="-1" autocomplete="off" />
+                    </div>
+                    <button type="submit" class="btn btn-wine">Gửi liên hệ</button>
+                </form>
+                <a class="contact-history" asp-controller="Support" asp-action="Index">Xem yêu cầu đã gửi <span aria-hidden="true">→</span></a>
+            </section>
+        </div>
+    </div>
+</div>

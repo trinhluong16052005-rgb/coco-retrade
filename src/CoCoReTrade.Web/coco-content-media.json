@@ -1,0 +1,872 @@
+{
+  "schemaVersion": 2,
+  "updatedOn": "2026-11-18",
+  "purpose": "Actual shop and activity illustrations; not product inventory or customer endorsements.",
+  "authorization": "User supplied the local folder and explicitly requested these four public Facebook posts for CoCo's website.",
+  "transformation": "EXIF orientation corrected, optional crop recorded, WebP quality 82 with responsive variants. No synthetic images, upscaling or color replacement.",
+  "researchLimit": "Facebook public Open Graph descriptions are truncated. Only visible facts are used; source links accompany all four activities.",
+  "allocationRule": "Preserve existing placement except explicit user changes. Category all-products intentionally uses the supplied flat-lay photograph, also shown in an existing benefit and on the separate consignment page. See coco-content-usage.json for actual source reuse.",
+  "excluded": [
+    {
+      "source": "D:\\DỰ ÁN\\ẢNH COCO\\ẢNH KHÁCH MUA HÀNG (3).jpg",
+      "reason": "Visually duplicates ẢNH KHÁCH MUA HÀNG (2).jpg."
+    },
+    {
+      "source": "D:\\DỰ ÁN\\ẢNH COCO\\ẢNH NÀY ĐỂ ĐẦU TRANG KÝ GỬI GIÚP TÔI.jpg",
+      "reason": "Text-heavy old promotion with extra contact numbers; use actual shop photography and current verified contacts."
+    }
+  ],
+  "photos": [
+    {
+      "key": "coco-white-rail",
+      "url": "/images/coco/coco-white-rail.webp",
+      "width": 1536,
+      "height": 1568,
+      "bytes": 289702,
+      "sha256": "452a9e5a9fea4decba708571865834f0ad71ef036d2ef5b9a99a826ff3bbb7df",
+      "altVi": "Các mẫu áo và váy được treo trên giá tại CoCo",
+      "sourceType": "user-folder",
+      "sourcePath": "D:\\DỰ ÁN\\ẢNH COCO\\905897010_29162462973363833_6301713506763060015_n.jpg",
+      "sourceUrl": null,
+      "sourceImageUrl": null,
+      "originalSha256": "9c026c923dbf2394a9864ff3cb87d929f42043ed06a7c44e636a301b20e367a2",
+      "cropBox": null,
+      "variants": [
+        {
+          "url": "/images/coco/coco-white-rail-480.webp",
+          "width": 480,
+          "height": 490,
+          "bytes": 46610
+        },
+        {
+          "url": "/images/coco/coco-white-rail-800.webp",
+          "width": 800,
+          "height": 817,
+          "bytes": 112018
+        }
+      ]
+    },
+    {
+      "key": "coco-tops-flatlay",
+      "url": "/images/coco/coco-tops-flatlay.webp",
+      "width": 1080,
+      "height": 1440,
+      "bytes": 159330,
+      "sha256": "7d2e315f9cf85adde44eaf0cc8882bb28f84cdf7497b554a2fd5c4c7f52426a8",
+      "altVi": "Áo được trải phẳng để nhìn rõ kiểu dáng và tem nhãn",
+      "sourceType": "user-folder",
+      "sourcePath": "D:\\DỰ ÁN\\ẢNH COCO\\ALL SẢN PHẨM.jpg",
+      "sourceUrl": null,
+      "sourceImageUrl": null,
+      "originalSha256": "eeaae9d53bf21b9ca8003c5df4c33e3460816aaf36fcaf8f95fd047da4b7a224",
+      "cropBox": null,
+      "variants": [
+        {
+          "url": "/images/coco/coco-tops-flatlay-480.webp",
+          "width": 480,
+          "height": 640,
+          "bytes": 43356
+        },
+        {
+          "url": "/images/coco/coco-tops-flatlay-800.webp",
+          "width": 800,
+          "height": 1067,
+          "bytes": 99604
+        }
+      ],
+      "previousSourcePath": "D:\\DỰ ÁN\\ẢNH COCO\\72a51a9ca67626287f672.jpg"
+    },
+    {
+      "key": "coco-shop-exterior",
+      "url": "/images/coco/coco-shop-exterior.webp",
+      "width": 1440,
+      "height": 1080,
+      "bytes": 345044,
+      "sha256": "6b37bfa0689389a113ac0411bb792a3e1a326de825e332eb956192e8d1c7928b",
+      "altVi": "Mặt tiền CoCo Kho Ký Gửi trên đường Núi Thành",
+      "sourceType": "user-folder",
+      "sourcePath": "D:\\DỰ ÁN\\ẢNH COCO\\ANH COCO  Ở NGOÀI.jpg",
+      "sourceUrl": null,
+      "sourceImageUrl": null,
+      "originalSha256": "156ae3886de39f8535c6461325856fcf8e5ce527ce64cb84a1fa9cafa5c7e81c",
+      "cropBox": null,
+      "variants": [
+        {
+          "url": "/images/coco/coco-shop-exterior-480.webp",
+          "width": 480,
+          "height": 360,
+          "bytes": 49538
+        },
+        {
+          "url": "/images/coco/coco-shop-exterior-800.webp",
+          "width": 800,
+          "height": 600,
+          "bytes": 125930
+        }
+      ]
+    },
+    {
+      "key": "coco-shoes-selection",
+      "url": "/images/coco/coco-shoes-selection.webp",
+      "width": 1080,
+      "height": 1440,
+      "bytes": 209608,
+      "sha256": "6cc287d7fdc465c248009fa21b79274999a6257151fe1a9cb4647371213cb33f",
+      "altVi": "Các đôi giày với nhiều kiểu dáng trong bộ ảnh CoCo",
+      "sourceType": "user-folder",
+      "sourcePath": "D:\\DỰ ÁN\\ẢNH COCO\\GIẦY.jpg",
+      "sourceUrl": null,
+      "sourceImageUrl": null,
+      "originalSha256": "c1ec82c931f781930538a35574284b1967b08f3dafb252c3659a78cc5c6f2a5f",
+      "cropBox": null,
+      "variants": [
+        {
+          "url": "/images/coco/coco-shoes-selection-480.webp",
+          "width": 480,
+          "height": 640,
+          "bytes": 56896
+        },
+        {
+          "url": "/images/coco/coco-shoes-selection-800.webp",
+          "width": 800,
+          "height": 1067,
+          "bytes": 131688
+        }
+      ]
+    },
+    {
+      "key": "coco-visitors-together",
+      "url": "/images/coco/coco-visitors-together.webp",
+      "width": 1308,
+      "height": 1203,
+      "bytes": 202196,
+      "sha256": "5578bffeb71a195229e925efb937291b7ef6a819ac08c2564c492061a799f0fc",
+      "altVi": "Khách ghé mua sắm tại CoCo với túi hàng của cửa tiệm",
+      "sourceType": "user-folder",
+      "sourcePath": "D:\\DỰ ÁN\\ẢNH COCO\\khách 1.png",
+      "sourceUrl": null,
+      "sourceImageUrl": null,
+      "originalSha256": "8f77d2538858cc16c66526c0c29381ad1d5ff7f74772426e2555068ff74b3af9",
+      "cropBox": null,
+      "variants": [
+        {
+          "url": "/images/coco/coco-visitors-together-480.webp",
+          "width": 479,
+          "height": 441,
+          "bytes": 49188
+        },
+        {
+          "url": "/images/coco/coco-visitors-together-800.webp",
+          "width": 800,
+          "height": 736,
+          "bytes": 106296
+        }
+      ]
+    },
+    {
+      "key": "coco-visitor-bag",
+      "url": "/images/coco/coco-visitor-bag.webp",
+      "width": 1341,
+      "height": 1173,
+      "bytes": 143110,
+      "sha256": "b9da412bd7facf13244f90f3d4886fde3c085381aa0da452bc419cad93fe7290",
+      "altVi": "Khách cầm túi mua hàng CoCo tại khu phụ kiện của cửa hàng",
+      "sourceType": "user-folder",
+      "sourcePath": "D:\\DỰ ÁN\\ẢNH COCO\\khách 2.png",
+      "sourceUrl": null,
+      "sourceImageUrl": null,
+      "originalSha256": "420866e7b23bd0320fa319b6ea9ec95b551815aa637c3b120d0709d8bccb9c4a",
+      "cropBox": null,
+      "variants": [
+        {
+          "url": "/images/coco/coco-visitor-bag-480.webp",
+          "width": 480,
+          "height": 420,
+          "bytes": 38722
+        },
+        {
+          "url": "/images/coco/coco-visitor-bag-800.webp",
+          "width": 800,
+          "height": 700,
+          "bytes": 76152
+        }
+      ]
+    },
+    {
+      "key": "coco-bag-shelves",
+      "url": "/images/coco/coco-bag-shelves.webp",
+      "width": 520,
+      "height": 520,
+      "bytes": 63102,
+      "sha256": "bbc1ab372027b29e97483d101dfd6d14cdd34b66556d139a08fd4f38782aed70",
+      "altVi": "Túi xách được bày trên kệ tại CoCo",
+      "sourceType": "user-folder",
+      "sourcePath": "D:\\DỰ ÁN\\ẢNH COCO\\PHỤ KIỆN 2.jpg",
+      "sourceUrl": null,
+      "sourceImageUrl": null,
+      "originalSha256": "f9755375807af9d5cfda69bb375e8e06d4a2f629244b9659b1c876361d44a0a7",
+      "cropBox": [
+        0,
+        390,
+        520,
+        910
+      ],
+      "variants": [
+        {
+          "url": "/images/coco/coco-bag-shelves-480.webp",
+          "width": 480,
+          "height": 480,
+          "bytes": 54130
+        }
+      ]
+    },
+    {
+      "key": "coco-accessory-room",
+      "url": "/images/coco/coco-accessory-room.webp",
+      "width": 1080,
+      "height": 810,
+      "bytes": 160458,
+      "sha256": "a0b0576d5ca86bbab8e3c3569d9b4e034dd2d19bca52a49f3299a3e724a93a1b",
+      "altVi": "Kệ túi xách và bàn phụ kiện trong cửa hàng CoCo",
+      "sourceType": "user-folder",
+      "sourcePath": "D:\\DỰ ÁN\\ẢNH COCO\\PHỤ KIỆN 2.jpg",
+      "sourceUrl": null,
+      "sourceImageUrl": null,
+      "originalSha256": "f9755375807af9d5cfda69bb375e8e06d4a2f629244b9659b1c876361d44a0a7",
+      "cropBox": [
+        0,
+        280,
+        1080,
+        1090
+      ],
+      "variants": [
+        {
+          "url": "/images/coco/coco-accessory-room-480.webp",
+          "width": 480,
+          "height": 360,
+          "bytes": 41792
+        },
+        {
+          "url": "/images/coco/coco-accessory-room-800.webp",
+          "width": 800,
+          "height": 600,
+          "bytes": 99398
+        }
+      ]
+    },
+    {
+      "key": "coco-accessories-selection",
+      "url": "/images/coco/coco-accessories-selection.webp",
+      "width": 1080,
+      "height": 1440,
+      "bytes": 264984,
+      "sha256": "98217b6fc7c674eb26777b650076ce0b2b5fc856ac3791585f8206f18c47c1c1",
+      "altVi": "Góc trưng bày nhiều loại phụ kiện tại CoCo",
+      "sourceType": "user-folder",
+      "sourcePath": "D:\\DỰ ÁN\\ẢNH COCO\\PHỤ KIỆN.jpg",
+      "sourceUrl": null,
+      "sourceImageUrl": null,
+      "originalSha256": "5787b5c8206486a3eba5f8c031e4aa642075f9e0cd0e36d5d3ab9e3d209a58aa",
+      "cropBox": null,
+      "variants": [
+        {
+          "url": "/images/coco/coco-accessories-selection-480.webp",
+          "width": 480,
+          "height": 640,
+          "bytes": 75458
+        },
+        {
+          "url": "/images/coco/coco-accessories-selection-800.webp",
+          "width": 800,
+          "height": 1067,
+          "bytes": 173832
+        }
+      ]
+    },
+    {
+      "key": "coco-folded-trousers",
+      "url": "/images/coco/coco-folded-trousers.webp",
+      "width": 1080,
+      "height": 1440,
+      "bytes": 180972,
+      "sha256": "1ae22d6fc9ce7083a663fb01ae0a0267681aed86a50cbb65cf7f0c1ac141ae13",
+      "altVi": "Quần jeans và quần vải được gấp gọn theo từng chồng",
+      "sourceType": "user-folder",
+      "sourcePath": "D:\\DỰ ÁN\\ẢNH COCO\\QUẦN 2.jpg",
+      "sourceUrl": null,
+      "sourceImageUrl": null,
+      "originalSha256": "a4f51950f7448730df59964e97986b4b0dadb83e31a2f8f793d2102841715cb2",
+      "cropBox": null,
+      "variants": [
+        {
+          "url": "/images/coco/coco-folded-trousers-480.webp",
+          "width": 480,
+          "height": 640,
+          "bytes": 45166
+        },
+        {
+          "url": "/images/coco/coco-folded-trousers-800.webp",
+          "width": 800,
+          "height": 1067,
+          "bytes": 114738
+        }
+      ]
+    },
+    {
+      "key": "coco-trouser-rail",
+      "url": "/images/coco/coco-trouser-rail.webp",
+      "width": 1080,
+      "height": 1440,
+      "bytes": 179136,
+      "sha256": "1af1b7350e48e203ec6e507fa64662b856635b74d9b1685a3672cf6df411964d",
+      "altVi": "Quần với nhiều màu sắc được treo trên giá tại CoCo",
+      "sourceType": "user-folder",
+      "sourcePath": "D:\\DỰ ÁN\\ẢNH COCO\\QUẦN.jpg",
+      "sourceUrl": null,
+      "sourceImageUrl": null,
+      "originalSha256": "adf29038e24f3b39a7c1728c281a4361a57f67f1e945cac31f93c199f478d343",
+      "cropBox": null,
+      "variants": [
+        {
+          "url": "/images/coco/coco-trouser-rail-480.webp",
+          "width": 480,
+          "height": 640,
+          "bytes": 49044
+        },
+        {
+          "url": "/images/coco/coco-trouser-rail-800.webp",
+          "width": 800,
+          "height": 1067,
+          "bytes": 114982
+        }
+      ]
+    },
+    {
+      "key": "coco-dress-rail",
+      "url": "/images/coco/coco-dress-rail.webp",
+      "width": 913,
+      "height": 1197,
+      "bytes": 103210,
+      "sha256": "12ca7a2510f4763a1b0c77df18cc8629d7ddd50ffeee233708657d769966fdf3",
+      "altVi": "Váy và đầm sáng màu trên giá treo tại CoCo",
+      "sourceType": "user-folder",
+      "sourcePath": "D:\\DỰ ÁN\\ẢNH COCO\\VẤY.jpg",
+      "sourceUrl": null,
+      "sourceImageUrl": null,
+      "originalSha256": "734c41a49a0c69f10a4b6eee48f6187359f75b3620416c9c7bdb638c08645b7a",
+      "cropBox": null,
+      "variants": [
+        {
+          "url": "/images/coco/coco-dress-rail-480.webp",
+          "width": 480,
+          "height": 629,
+          "bytes": 40436
+        },
+        {
+          "url": "/images/coco/coco-dress-rail-800.webp",
+          "width": 800,
+          "height": 1049,
+          "bytes": 87824
+        }
+      ]
+    },
+    {
+      "key": "coco-top-rail",
+      "url": "/images/coco/coco-top-rail.webp",
+      "width": 1080,
+      "height": 1440,
+      "bytes": 213004,
+      "sha256": "832aebfb1912d258903c407348df6b618264c95834a41718e4b6dbd16b159aa0",
+      "altVi": "Áo khoác và áo kiểu được sắp xếp trên giá tại CoCo",
+      "sourceType": "user-folder",
+      "sourcePath": "D:\\DỰ ÁN\\ẢNH COCO\\ÁO.jpg",
+      "sourceUrl": null,
+      "sourceImageUrl": null,
+      "originalSha256": "a26ad9148340df51731721e8117d8057c55d815b4e3ab7eeaf177ec519d702e7",
+      "cropBox": null,
+      "variants": [
+        {
+          "url": "/images/coco/coco-top-rail-480.webp",
+          "width": 480,
+          "height": 640,
+          "bytes": 50154
+        },
+        {
+          "url": "/images/coco/coco-top-rail-800.webp",
+          "width": 800,
+          "height": 1067,
+          "bytes": 128996
+        }
+      ]
+    },
+    {
+      "key": "coco-fitting-area",
+      "url": "/images/coco/coco-fitting-area.webp",
+      "width": 1080,
+      "height": 1440,
+      "bytes": 104812,
+      "sha256": "908cbcbf0a92b4e3c3c6197ccc03614462abb910735370923929e64b49705386",
+      "altVi": "Khu thử đồ và ghế ngồi trong không gian CoCo",
+      "sourceType": "user-folder",
+      "sourcePath": "D:\\DỰ ÁN\\ẢNH COCO\\ẢNH BÊN TRONG COCO.jpg",
+      "sourceUrl": null,
+      "sourceImageUrl": null,
+      "originalSha256": "48d1fe551e6b033f5fc0822e1d5ca6f26aa80ef000a69c3b95761600bcb477e6",
+      "cropBox": null,
+      "variants": [
+        {
+          "url": "/images/coco/coco-fitting-area-480.webp",
+          "width": 480,
+          "height": 640,
+          "bytes": 25990
+        },
+        {
+          "url": "/images/coco/coco-fitting-area-800.webp",
+          "width": 800,
+          "height": 1067,
+          "bytes": 62528
+        }
+      ]
+    },
+    {
+      "key": "coco-busy-clothing",
+      "url": "/images/coco/coco-busy-clothing.webp",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 203664,
+      "sha256": "eb05bc15f77c6a8bffa4bdd766191ce86199e8dab46d22522a1898ad8ffc9d04",
+      "altVi": "Không gian cửa hàng CoCo với các dãy quần áo được sắp xếp gọn gàng",
+      "sourceType": "user-folder",
+      "sourcePath": "D:\\DỰ ÁN\\ẢNH COCO\\ảnh cửa hàng.png",
+      "sourceUrl": null,
+      "sourceImageUrl": null,
+      "originalSha256": "3a7430ec93d61ad3740f1ef64c776e442f90c6807562c372527e27f7a075dacb",
+      "cropBox": null,
+      "variants": [
+        {
+          "url": "/images/coco/coco-busy-clothing-480.webp",
+          "width": 480,
+          "height": 360,
+          "bytes": 36206
+        },
+        {
+          "url": "/images/coco/coco-busy-clothing-800.webp",
+          "width": 800,
+          "height": 600,
+          "bytes": 84654
+        }
+      ]
+    },
+    {
+      "key": "coco-shoppers-rail",
+      "url": "/images/coco/coco-shoppers-rail.webp",
+      "width": 810,
+      "height": 1080,
+      "bytes": 100308,
+      "sha256": "a1c4d825eebcd243046ac6108869e7aec70e71c88bb7a059bc93194daca139dd",
+      "altVi": "Khách lựa chọn quần áo giữa các dãy trưng bày",
+      "sourceType": "user-folder",
+      "sourcePath": "D:\\DỰ ÁN\\ẢNH COCO\\ẢNH KHÁCH MUA HÀNG (4).jpg",
+      "sourceUrl": null,
+      "sourceImageUrl": null,
+      "originalSha256": "a8cae8a550cab728db0a9e83332d0eedbdb35dbac07affb75044c51eb23c5b4e",
+      "cropBox": null,
+      "variants": [
+        {
+          "url": "/images/coco/coco-shoppers-rail-480.webp",
+          "width": 480,
+          "height": 640,
+          "bytes": 42854
+        },
+        {
+          "url": "/images/coco/coco-shoppers-rail-800.webp",
+          "width": 800,
+          "height": 1067,
+          "bytes": 99760
+        }
+      ]
+    },
+    {
+      "key": "coco-shoppers-accessories",
+      "url": "/images/coco/coco-shoppers-accessories.webp",
+      "width": 1080,
+      "height": 1440,
+      "bytes": 197140,
+      "sha256": "7bf9b949c430af3facef5ff03079a1addb4a4dde95b91f4de3caf517a5a89a5c",
+      "altVi": "Khách lựa chọn tại khu phụ kiện của CoCo",
+      "sourceType": "user-folder",
+      "sourcePath": "D:\\DỰ ÁN\\ẢNH COCO\\ẢNH KHÁCH MUA HÀNG (5).jpg",
+      "sourceUrl": null,
+      "sourceImageUrl": null,
+      "originalSha256": "ee268d6a8450105db7db71775dbbe6b66ed16c6a7b3cd8e7ee8a431e492e2a48",
+      "cropBox": null,
+      "variants": [
+        {
+          "url": "/images/coco/coco-shoppers-accessories-480.webp",
+          "width": 480,
+          "height": 640,
+          "bytes": 55250
+        },
+        {
+          "url": "/images/coco/coco-shoppers-accessories-800.webp",
+          "width": 800,
+          "height": 1067,
+          "bytes": 122634
+        }
+      ]
+    },
+    {
+      "key": "coco-clothing-selection",
+      "url": "/images/coco/coco-clothing-selection.webp",
+      "width": 1080,
+      "height": 1440,
+      "bytes": 166970,
+      "sha256": "96a3f40c063d7f1478d4eaf848653b863cd5b6c65b105f0ec967ad7642f381af",
+      "altVi": "Một góc khách xem đồ giữa các dãy trang phục CoCo",
+      "sourceType": "user-folder",
+      "sourcePath": "D:\\DỰ ÁN\\ẢNH COCO\\ẢNH KHÁCH MUA HÀNG (6).jpg",
+      "sourceUrl": null,
+      "sourceImageUrl": null,
+      "originalSha256": "37bec90aaba80eb7fde0606b86eda68bd84aec1ad3c6b89d4e6b9e662ef8b0c1",
+      "cropBox": null,
+      "variants": [
+        {
+          "url": "/images/coco/coco-clothing-selection-480.webp",
+          "width": 480,
+          "height": 640,
+          "bytes": 49224
+        },
+        {
+          "url": "/images/coco/coco-clothing-selection-800.webp",
+          "width": 800,
+          "height": 1067,
+          "bytes": 106098
+        }
+      ]
+    },
+    {
+      "key": "coco-shop-browsing",
+      "url": "/images/coco/coco-shop-browsing.webp",
+      "width": 1440,
+      "height": 1080,
+      "bytes": 166852,
+      "sha256": "bf5734538c41d100127869949c7896bfc7a66d7fd4bcbe41254be92cf9cd5b01",
+      "altVi": "Không gian mua sắm và những dãy trang phục tại CoCo",
+      "sourceType": "user-folder",
+      "sourcePath": "D:\\DỰ ÁN\\ẢNH COCO\\ẢNH KHÁCH MUA HÀNG.jpg",
+      "sourceUrl": null,
+      "sourceImageUrl": null,
+      "originalSha256": "043703690cc8ed818f988f4f4e50c79227cffe63a37039266f84e810f42b009f",
+      "cropBox": null,
+      "variants": [
+        {
+          "url": "/images/coco/coco-shop-browsing-480.webp",
+          "width": 480,
+          "height": 360,
+          "bytes": 31486
+        },
+        {
+          "url": "/images/coco/coco-shop-browsing-800.webp",
+          "width": 800,
+          "height": 600,
+          "bytes": 67358
+        }
+      ]
+    },
+    {
+      "key": "coco-shop-interior",
+      "url": "/images/coco/coco-shop-interior.webp",
+      "width": 1440,
+      "height": 1080,
+      "bytes": 182376,
+      "sha256": "42e7a9dd5bc2e3d7c7e71ded9d527ff543ec57f61684de0448f31086adc5c72a",
+      "altVi": "Không gian cửa hàng CoCo với những dãy quần áo sáng thoáng",
+      "sourceType": "user-folder",
+      "sourcePath": "D:\\DỰ ÁN\\ẢNH COCO\\ẢNH SHOP.jpg",
+      "sourceUrl": null,
+      "sourceImageUrl": null,
+      "originalSha256": "a5d21611cea7328882eb4af808da2d668f0857406a8f84c1d92cd36a9651b041",
+      "cropBox": null,
+      "variants": [
+        {
+          "url": "/images/coco/coco-shop-interior-480.webp",
+          "width": 480,
+          "height": 360,
+          "bytes": 28546
+        },
+        {
+          "url": "/images/coco/coco-shop-interior-800.webp",
+          "width": 800,
+          "height": 600,
+          "bytes": 69278
+        }
+      ]
+    },
+    {
+      "key": "coco-childrens-day",
+      "url": "/images/coco/coco-childrens-day.webp",
+      "width": 900,
+      "height": 600,
+      "bytes": 60050,
+      "sha256": "982eb5acabeda7a0bbe088f99f10b7c44db5c248dd2d239c0ae50f0498fc93b3",
+      "altVi": "Tiết mục của các em nhỏ trong chương trình Quốc tế Thiếu nhi được CoCo chia sẻ",
+      "sourceType": "public-facebook-post",
+      "sourcePath": "D:\\Hoc Tap\\31. QUẢN TRỊ DỰ ÁN\\CoCoRetrade\\.artifacts\\coco-content-20261118\\activity-1.jpg",
+      "sourceUrl": "https://www.facebook.com/share/p/1A9tU2LHGi/",
+      "sourceImageUrl": "https://scontent.fdad3-9.fna.fbcdn.net/v/t39.30808-6/710756106_1407900141357603_4916488248781360414_n.jpg?stp=dst-jpg_tt6&cstp=mx1440x960&ctp=p600x600&_nc_cat=109&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=b96d88&_nc_ohc=nIZ87r_92wYQ7kNvwGtm_Xv&_nc_oc=Adr7LLLfb58c_eDSQuDcKla3l1Flci8h5yTaP05qNYlw3JjfHQSbKyW77M50lG-k-oyEXDM5KZ_Gzh5GEAdFExFu&_nc_zt=23&_nc_ht=scontent.fdad3-9.fna&_nc_gid=le85pcx1QxZgGyh_0NJEow&_nc_ss=7f20f&oh=00_AQTVXC3ycU_aYUz-CG4eb8L-AkpiCWiEFwjg6XnwJt3RpQ&oe=6B034550",
+      "originalSha256": "a8b64b9b82b4f060025d9863848173d6b197b6782a69bcc6b6fcf337ad0f80ee",
+      "cropBox": null,
+      "variants": [
+        {
+          "url": "/images/coco/coco-childrens-day-480.webp",
+          "width": 480,
+          "height": 320,
+          "bytes": 28028
+        },
+        {
+          "url": "/images/coco/coco-childrens-day-800.webp",
+          "width": 800,
+          "height": 533,
+          "bytes": 51646
+        }
+      ]
+    },
+    {
+      "key": "coco-mid-autumn",
+      "url": "/images/coco/coco-mid-autumn.webp",
+      "width": 1067,
+      "height": 600,
+      "bytes": 131770,
+      "sha256": "9aa99610706c2b171abe00f05563d3ed3373d31c141d0eeb1fa1b1cc3fe02c51",
+      "altVi": "Quà Trung thu và đồ chơi trong chương trình Trung thu cho em 2026",
+      "sourceType": "public-facebook-post",
+      "sourcePath": "D:\\Hoc Tap\\31. QUẢN TRỊ DỰ ÁN\\CoCoRetrade\\.artifacts\\coco-content-20261118\\activity-2.jpg",
+      "sourceUrl": "https://www.facebook.com/share/p/1DxVSEKZKC/",
+      "sourceImageUrl": "https://scontent.fdad3-9.fna.fbcdn.net/v/t39.30808-6/828391763_1511017584379191_1713887303264216817_n.jpg?stp=dst-jpg_tt6&cstp=mx1440x810&ctp=p600x600&_nc_cat=106&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=b96d88&_nc_ohc=z5q99C3_gWwQ7kNvwEI8fDW&_nc_oc=AdpW_k18cEp1ponnU9wO7wzNJ_N6Bm-nl2OvSGE4DrA5fuC2r6ny2gviUK3uS5UNPa5J6o-u36yY94P5Un2Tv_I-&_nc_zt=23&_nc_ht=scontent.fdad3-9.fna&_nc_gid=e9NKDIg_JqwOS6gCXgOm0w&_nc_ss=7f20f&oh=00_AQTcTrOXz6GstakoQjweCHSxNV5EFsKhBrAPQ89nMMDXiQ&oe=6B03597E",
+      "originalSha256": "98868cfaa40ccd94c52c8fb92764affd0ae4ff20294c66b7f3440b19ade2cb2d",
+      "cropBox": null,
+      "variants": [
+        {
+          "url": "/images/coco/coco-mid-autumn-480.webp",
+          "width": 480,
+          "height": 270,
+          "bytes": 35754
+        },
+        {
+          "url": "/images/coco/coco-mid-autumn-800.webp",
+          "width": 800,
+          "height": 450,
+          "bytes": 84052
+        }
+      ]
+    },
+    {
+      "key": "coco-warm-winter",
+      "url": "/images/coco/coco-warm-winter.webp",
+      "width": 900,
+      "height": 600,
+      "bytes": 59882,
+      "sha256": "ac61a6ddcbd8c03d120bff507582c45df543a8f5a78b52d4d58b1dd704ed98ec",
+      "altVi": "Ảnh tập thể trong chương trình Đông ấm áp 2025 tại Bình Minh, Quảng Ngãi",
+      "sourceType": "public-facebook-post",
+      "sourcePath": "D:\\Hoc Tap\\31. QUẢN TRỊ DỰ ÁN\\CoCoRetrade\\.artifacts\\coco-content-20261118\\activity-3.jpg",
+      "sourceUrl": "https://www.facebook.com/share/p/1HiBE9A7Kg/",
+      "sourceImageUrl": "https://scontent.fdad3-4.fna.fbcdn.net/v/t39.30808-6/605850207_1281314290682856_6051835353126588331_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1366&ctp=p600x600&_nc_cat=102&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=b96d88&_nc_ohc=9GWnNa4yvPEQ7kNvwFIEdwx&_nc_oc=Adrsvwdbp0CwCgm_5o8C9wC3mHbY9gdS5JoHwfVdIE2fT8tl2bw3DnwspR3eBK3A2GGA3B8Eyd9b4y2NfFjX-Knu&_nc_zt=23&_nc_ht=scontent.fdad3-4.fna&_nc_gid=gd7Ap5EtiaOSyEwIKuIqRw&_nc_ss=7f20f&oh=00_AQQl69FLOJABskUxjZcUafJXMjqCdRu_RSLKg_6OXn4PAQ&oe=6B034079",
+      "originalSha256": "d57b30fee04e78e2948aabeeb7699b2e6ec79515216fd3cd0b346fe8913ce344",
+      "cropBox": null,
+      "variants": [
+        {
+          "url": "/images/coco/coco-warm-winter-480.webp",
+          "width": 480,
+          "height": 320,
+          "bytes": 24582
+        },
+        {
+          "url": "/images/coco/coco-warm-winter-800.webp",
+          "width": 800,
+          "height": 533,
+          "bytes": 50602
+        }
+      ]
+    },
+    {
+      "key": "coco-dau-gathering",
+      "url": "/images/coco/coco-dau-gathering.webp",
+      "width": 800,
+      "height": 600,
+      "bytes": 103390,
+      "sha256": "43647dee507129a7f0ff177c41d1011f5966c24e406632f766e45afe41182547",
+      "altVi": "Buổi lễ ra mắt Ban Điều hành và sinh nhật bốn tuổi của Đội tình nguyện DAU",
+      "sourceType": "public-facebook-post",
+      "sourcePath": "D:\\Hoc Tap\\31. QUẢN TRỊ DỰ ÁN\\CoCoRetrade\\.artifacts\\coco-content-20261118\\activity-4.jpg",
+      "sourceUrl": "https://www.facebook.com/share/p/1QYpDMneSH/",
+      "sourceImageUrl": "https://scontent.fdad3-4.fna.fbcdn.net/v/t39.30808-6/817390938_1502487221898894_6220507915054018181_n.jpg?stp=dst-jpg_tt6&cstp=mx1440x1080&ctp=p600x600&_nc_cat=104&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=b96d88&_nc_ohc=_-lHkRPFQ5oQ7kNvwFzqH_Y&_nc_oc=Adr4yNbwZn2-C1wTz7dqzXAo4GIEsPfp2I8NDSkzN7KpvlCsERazAUhV5yoTUYWiCiiaZ2P3pA2AfjRBzqM_vqiD&_nc_zt=23&_nc_ht=scontent.fdad3-4.fna&_nc_gid=loWEpyKDJEq_6GFf9mTJeQ&_nc_ss=7f20f&oh=00_AQT_wzUzhUFu6HcgD9DSNQv_QSrIvuPc5sw-B-5cF_Ya1g&oe=6B0349C7",
+      "originalSha256": "7aa72ab79762ebd00c0773161650a9a3641f394b0f5f32d358ea13b4b5315e74",
+      "cropBox": null,
+      "variants": [
+        {
+          "url": "/images/coco/coco-dau-gathering-480.webp",
+          "width": 480,
+          "height": 360,
+          "bytes": 42904
+        }
+      ]
+    },
+    {
+      "key": "coco-category-bags-display",
+      "url": "/images/coco/coco-category-bags-display.webp",
+      "width": 1440,
+      "height": 1440,
+      "bytes": 277696,
+      "sha256": "836d67d4c4330864fa6fcc7799cdce62d78bcb5474db8d5c1c3493a8e77b12d1",
+      "altVi": "Túi xách với nhiều kiểu dáng được bày cùng giày và phụ kiện",
+      "sourceType": "user-attachment",
+      "sourcePath": "D:\\AI-Cache\\temp\\codex-clipboard-71ad2df5-a9c3-4ed9-b514-f0ec4bfd23dc.png",
+      "sourceUrl": null,
+      "sourceImageUrl": null,
+      "originalSha256": "ab8eb781fa63f6cc4cdb2483a72b4bde47f28694966eb33144e8c3054ddfd21f",
+      "cropBox": [
+        0,
+        0,
+        2048,
+        2048
+      ],
+      "variants": [
+        {
+          "url": "/images/coco/coco-category-bags-display-480.webp",
+          "width": 480,
+          "height": 480,
+          "bytes": 45098
+        },
+        {
+          "url": "/images/coco/coco-category-bags-display-800.webp",
+          "width": 800,
+          "height": 800,
+          "bytes": 109246
+        }
+      ]
+    },
+    {
+      "key": "coco-category-all-outfits",
+      "url": "/images/coco/coco-category-all-outfits.webp",
+      "width": 1080,
+      "height": 1080,
+      "bytes": 172614,
+      "sha256": "c962861b7416bc3fcc6d37631a26356e6d431d8eaa52c2ba6d0936fa2ac7840a",
+      "altVi": "Áo thun và áo sơ mi với nhiều kiểu dáng, màu sắc",
+      "sourceType": "user-attachment",
+      "sourcePath": "D:\\AI-Cache\\temp\\codex-clipboard-75365035-3efe-42a7-a7dc-a8986e831f8f.png",
+      "sourceUrl": null,
+      "sourceImageUrl": null,
+      "originalSha256": "343bf0b787d514a642d239538da9201b0c1aa447810cf499a52364edeed6adbf",
+      "cropBox": [
+        0,
+        180,
+        1080,
+        1260
+      ],
+      "variants": [
+        {
+          "url": "/images/coco/coco-category-all-outfits-480.webp",
+          "width": 480,
+          "height": 480,
+          "bytes": 43834
+        },
+        {
+          "url": "/images/coco/coco-category-all-outfits-800.webp",
+          "width": 800,
+          "height": 800,
+          "bytes": 104104
+        }
+      ],
+      "samePhotographAs": "coco-tops-flatlay",
+      "reuseReason": "User explicitly selected this attachment for the all-products category. Existing benefit image is preserved as requested."
+    },
+    {
+      "key": "coco-consign-step-photos",
+      "url": "/images/coco/coco-consign-step-photos.webp",
+      "width": 800,
+      "height": 800,
+      "bytes": 80926,
+      "sha256": "b44116df150d860b8bb2ab9a32bc795c32f4f9d449f8aaaa03ddec452a9d0e94",
+      "altVi": "Áo được trải phẳng để nhìn rõ kiểu dáng và tem nhãn",
+      "sourceType": "user-folder",
+      "sourcePath": "D:\\DỰ ÁN\\ẢNH COCO\\ALL SẢN PHẨM.jpg",
+      "sourceUrl": null,
+      "sourceImageUrl": null,
+      "originalSha256": "eeaae9d53bf21b9ca8003c5df4c33e3460816aaf36fcaf8f95fd047da4b7a224",
+      "cropBox": [
+        0,
+        180,
+        1080,
+        1260
+      ],
+      "variants": [
+        {
+          "url": "/images/coco/coco-consign-step-photos-480.webp",
+          "width": 480,
+          "height": 480,
+          "bytes": 35738
+        }
+      ],
+      "derivedFrom": "coco-tops-flatlay"
+    },
+    {
+      "key": "coco-consign-step-check",
+      "url": "/images/coco/coco-consign-step-check.webp",
+      "width": 800,
+      "height": 800,
+      "bytes": 51928,
+      "sha256": "5d83b384a466c0e4e2ca88f347d681adfd97df2f3abafa3ecc53d3a47d4da143",
+      "altVi": "Lựa chọn trang phục bên dãy áo trắng tại CoCo",
+      "sourceType": "user-folder",
+      "sourcePath": "D:\\DỰ ÁN\\ẢNH COCO\\555058192_1203903841757235_5988157220821645583_n.jpg",
+      "sourceUrl": null,
+      "sourceImageUrl": null,
+      "originalSha256": "8a892baac27c88ecc08a8ecdae1e662646fc489d3c247db48bbb95e0822d25a1",
+      "cropBox": [
+        0,
+        256,
+        1536,
+        1792
+      ],
+      "variants": [
+        {
+          "url": "/images/coco/coco-consign-step-check-480.webp",
+          "width": 480,
+          "height": 480,
+          "bytes": 24610
+        }
+      ]
+    },
+    {
+      "key": "coco-consign-step-sale",
+      "url": "/images/coco/coco-consign-step-sale.webp",
+      "width": 800,
+      "height": 800,
+      "bytes": 85118,
+      "sha256": "7d4bcd79a750950f44aeb07a5faaaa40526f6c5b9a8336d1dd4d075031b7e213",
+      "altVi": "Khách lựa chọn phụ kiện tại cửa hàng CoCo",
+      "sourceType": "user-folder",
+      "sourcePath": "D:\\DỰ ÁN\\ẢNH COCO\\ẢNH KHÁCH MUA HÀNG (4).jpg",
+      "sourceUrl": null,
+      "sourceImageUrl": null,
+      "originalSha256": "a8cae8a550cab728db0a9e83332d0eedbdb35dbac07affb75044c51eb23c5b4e",
+      "cropBox": [
+        0,
+        135,
+        810,
+        945
+      ],
+      "variants": [
+        {
+          "url": "/images/coco/coco-consign-step-sale-480.webp",
+          "width": 480,
+          "height": 480,
+          "bytes": 36102
+        }
+      ],
+      "derivedFrom": "coco-shoppers-rail"
+    }
+  ]
+}

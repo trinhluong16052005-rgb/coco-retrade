@@ -1,0 +1,14 @@
+@model ErrorViewModel
+@{
+    ViewData["Title"] = "Có lỗi xảy ra";
+}
+
+<h1 class="text-danger">Có lỗi xảy ra</h1>
+<p>CoCo chưa thể xử lý yêu cầu. Vui lòng thử lại.</p>
+
+@if (Model.ShowRequestId)
+{
+    <p>
+        <strong>Mã yêu cầu:</strong> <code>@Model.RequestId</code>
+    </p>
+}

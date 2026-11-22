@@ -1,0 +1,30 @@
+.admin-bulk-toolbar{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.75rem 0;margin:0 0 .75rem;border-bottom:1px solid #f8dde5;font-size:.9rem}
+.admin-bulk-toolbar .admin-bulk-select-all{display:flex;align-items:center;gap:.65rem;margin:0;cursor:pointer}
+.admin-trash-button{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;min-width:40px;min-height:40px;padding:.5rem;border:1px solid #f8dde5;border-radius:8px;color:#f83758;background:#fff;cursor:pointer;transition:background-color .15s,color .15s}
+.admin-trash-button:hover:not(:disabled){background:#f8dde5;color:#000}
+.admin-trash-button:focus-visible{outline:2px solid #f83758;outline-offset:3px}
+.admin-trash-button:disabled{opacity:.35;cursor:not-allowed}
+.admin-trash-button .icon{width:21px;height:21px;fill:none}
+.admin-row-actions{display:flex;align-items:center;justify-content:flex-end;gap:.6rem}
+.admin-row-actions form{margin:0}
+.admin-product-table{min-width:1040px}
+.admin-product-table .admin-product-status-column{width:168px;min-width:168px;text-align:center;white-space:nowrap}
+.admin-product-table .admin-product-status{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;width:144px;min-height:34px;padding:6px 12px;border:1px solid #d1d5db;border-radius:8px;background:#f3f4f6;color:#374151;font-size:.8125rem;font-weight:700;line-height:1.4;white-space:nowrap;word-break:normal;overflow-wrap:normal;vertical-align:middle}
+.admin-product-table .admin-product-status--PendingApproval{background:#fff3d6;color:#7a4300;border-color:#f4c76a}
+.admin-product-table .admin-product-status--Active{background:#dcfce7;color:#166534;border-color:#86efac}
+.admin-product-table .admin-product-status--Rejected{background:#fee2e2;color:#991b1b;border-color:#fca5a5}
+.admin-product-table .admin-product-status--Reserved{background:#ede9fe;color:#5b21b6;border-color:#c4b5fd}
+.admin-product-table .admin-product-status--Sold{background:#dbeafe;color:#1e40af;border-color:#93c5fd}
+.admin-product-table .admin-product-status--Removed{background:#f3f4f6;color:#374151;border-color:#d1d5db}
+.admin-selection-column{width:44px;text-align:center}
+.admin-product-identity{display:flex;align-items:center;gap:.8rem;min-width:240px}
+.admin-product-identity>div{min-width:0;max-width:290px}
+.admin-product-identity strong{display:block;line-height:1.4;overflow-wrap:anywhere}
+.admin-product-thumb{display:block;width:64px;height:64px;flex:0 0 64px;object-fit:cover;border-radius:8px;background:#f8dde5}
+.admin-product-thumb--empty{display:flex;align-items:center;justify-content:center}
+.admin-user-select{display:flex;align-items:flex-start;gap:.75rem;min-width:0}
+.admin-user-select .form-check-input{flex:0 0 auto;margin-top:.25rem}
+.admin-user-select h2{overflow-wrap:anywhere;line-height:1.35}
+.admin-user-title-actions{display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem;margin-bottom:1rem}
+.admin-user-title-actions form{margin:0;flex-shrink:0}
+@media(max-width:575px){.admin-product-thumb{width:52px;height:52px;flex-basis:52px}.admin-product-identity{gap:.65rem;min-width:210px}.admin-bulk-toolbar{font-size:.85rem}.admin-user-title-actions{gap:.5rem}}

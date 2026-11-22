@@ -1,0 +1,23 @@
+@model OrderDto
+@if (Model.Fulfillment == FulfillmentType.Pickup && Model.Status == OrderStatus.PendingProcessing && !(Model.Timeline?.Any(x => x.Action == "OrderConfirmed") ?? false))
+    { <form asp-action="Confirm" asp-route-id="@Model.Id" method="post" class="mb-2"><button class="btn btn-wine w-100">Xác nhận đơn hàng</button></form> }
+    @if (Model.Status == OrderStatus.PendingProcessing &&
+        (Model.Fulfillment == FulfillmentType.Shipping || (Model.Timeline?.Any(x => x.Action == "OrderConfirmed") ?? false)))
+    { <form asp-action="Ready" asp-route-id="@Model.Id" method="post" class="mb-2">
+        @if (Model.Fulfillment == FulfillmentType.Shipping)
+        { <label class="form-label" for="trackingCode">Mã vận chuyển</label><input class="form-control mb-2" id="trackingCode" name="trackingCode" required minlength="4" maxlength="100" autocomplete="off" /> }
+        <button class="btn btn-wine w-100">@(Model.Fulfillment == FulfillmentType.Pickup ? "Sẵn sàng tại cửa hàng" : "Đã bàn giao vận chuyển")</button>
+    </form> }
+    @if (Model.PaymentStatus == PaymentStatus.Unpaid && Model.Status is OrderStatus.ReadyForPickup or OrderStatus.Shipping)
+    { <form asp-action="ConfirmPayment" asp-route-id="@Model.Id" method="post" class="mb-3"><button class="btn btn-outline-wine w-100">Xác nhận đã nhận tiền</button></form> }
+    @if (Model.PaymentStatus == PaymentStatus.Paid && Model.Status is OrderStatus.ReadyForPickup or OrderStatus.Shipping)
+    { <form asp-action="Complete" asp-route-id="@Model.Id" method="post" class="mb-2"><button class="btn btn-wine w-100">@(Model.Fulfillment == FulfillmentType.Pickup ? "Xác nhận nhận tại CoCo, hoàn tất đơn và cộng tiền vào ví" : "Xác nhận giao thành công, hoàn tất đơn và cộng tiền vào ví")</button></form> }
+    @if (Model.PaymentStatus == PaymentStatus.Unpaid && Model.Status is OrderStatus.PendingProcessing or OrderStatus.ReadyForPickup)
+    { <form asp-action="Cancel" asp-route-id="@Model.Id" method="post"><button class="btn btn-outline-danger w-100">Hủy và mở bán lại</button></form> }
+    @if (Model.PaymentStatus == PaymentStatus.Unpaid && Model.Status == OrderStatus.Shipping)
+    { <form asp-action="ReturnUndelivered" asp-route-id="@Model.Id" method="post" class="mt-3 border-top pt-3">
+        <p class="small">Khách không nhận hàng: chỉ mở bán lại sau khi món đồ thực tế đã quay về CoCo. Phí một chiều được xử lý theo chính sách vận chuyển riêng.</p>
+        <div class="form-check mb-2"><input class="form-check-input" type="checkbox" id="itemReturnedToStore" name="itemReturnedToStore" value="true" required /><label class="form-check-label" for="itemReturnedToStore">Tôi xác nhận món đồ đã về CoCo</label></div>
+        <button class="btn btn-outline-danger w-100" type="submit">Ghi nhận không nhận hàng · mở bán lại</button>
+    </form> }
+

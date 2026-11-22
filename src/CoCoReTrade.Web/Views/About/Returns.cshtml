@@ -1,0 +1,86 @@
+@{ ViewData["Title"] = "Chính sách đổi trả"; }
+<div class="coco-about coco-policy-document" data-policy-document>
+    <nav class="about-breadcrumb" aria-label="Đường dẫn"><a asp-controller="Home" asp-action="Index">Trang chủ</a><span aria-hidden="true">/</span><span aria-current="page">Chính sách đổi trả</span></nav>
+
+    <header class="policy-document-header">
+        <h1 id="returns-title">Chính sách đổi trả</h1>
+        <p class="policy-lead">Xem kỹ thông tin trước khi mua, kiểm tra sản phẩm khi nhận và thanh toán khi đồng ý nhận hàng.</p>
+        <p>Hướng dẫn dưới đây giúp bạn biết cách kiểm tra và liên hệ CoCo khi cần đối chiếu đơn hàng.</p>
+    </header>
+
+    <div class="policy-document-layout">
+        <aside class="policy-toc" aria-labelledby="policy-toc-title">
+            <h2 id="policy-toc-title">Nội dung chính sách</h2>
+            <ol>
+                <li><a href="#kiem-tra-khi-nhan">Kiểm tra khi nhận hàng</a></li>
+                <li><a href="#truoc-sau-thanh-toan">Trước và sau thanh toán</a></li>
+                <li><a href="#ho-tro-don-hang">Gửi yêu cầu hỗ trợ</a></li>
+                <li><a href="#tiep-tuc-mua-sam">Tiếp tục mua sắm</a></li>
+            </ol>
+        </aside>
+
+        <div class="policy-document-content">
+            <section id="kiem-tra-khi-nhan" class="policy-document-section" aria-labelledby="returns-check">
+                <h2 id="returns-check"><span class="policy-section-number" aria-hidden="true">01.</span> Mở kiện hàng, xem đúng món bạn chọn</h2>
+                <p>Áp dụng khi nhận tại CoCo hoặc khi người giao hàng đến.</p>
+                <div class="policy-note">
+                    <h3>Kiểm tra trước khi thanh toán</h3>
+                    <p>Thanh toán tiền mặt sau khi kiểm tra và đồng ý nhận. CoCo không yêu cầu chuyển khoản trước.</p>
+                </div>
+                <ol class="policy-steps">
+                    <li>
+                        <h3>Đối chiếu sản phẩm</h3>
+                        <p>Mở thông tin đơn trong tài khoản. Kiểm tra tên món đồ, mã đơn và sản phẩm thực tế được giao.</p>
+                        <a class="about-text-link" asp-controller="Orders" asp-action="Index">Xem đơn hàng của bạn <span aria-hidden="true">→</span></a>
+                    </li>
+                    <li>
+                        <h3>Xem tình trạng thực tế</h3>
+                        <p>Đối chiếu kích cỡ, màu sắc và những chi tiết đã ghi trong mô tả với món đồ khi nhận.</p>
+                    </li>
+                    <li>
+                        <h3>Quyết định nhận và thanh toán</h3>
+                        <p>Nếu đồng ý, thanh toán tiền mặt. Nếu chưa đồng ý khi giao tận nơi, giao lại món đồ cho người giao hàng trước khi trả tiền.</p>
+                    </li>
+                </ol>
+            </section>
+
+            <section id="truoc-sau-thanh-toan" class="policy-document-section" aria-labelledby="returns-decisions">
+                <h2 id="returns-decisions"><span class="policy-section-number" aria-hidden="true">02.</span> Hai thời điểm cần phân biệt</h2>
+                <div class="policy-subsection">
+                    <p class="policy-step-label">Trước khi thanh toán</p>
+                    <h3>Bạn chưa đồng ý nhận</h3>
+                    <p>Khi giao tận nơi, trả lại món đồ cho người giao hàng trước khi thanh toán. Nếu nhận tại tiệm, trao đổi trực tiếp với nhân viên trước khi nhận.</p>
+                    <p>Phí vận chuyển một chiều khi từ chối nhận đang là chính sách dự kiến. Liên hệ CoCo để xác nhận trường hợp cụ thể.</p>
+                    <a class="about-text-link" href="tel:0905808679">Gọi CoCo để trao đổi <span aria-hidden="true">→</span></a>
+                </div>
+                <div class="policy-subsection">
+                    <p class="policy-step-label">Sau khi thanh toán</p>
+                    <h3>Bạn đã nhận món đồ</h3>
+                    <p>CoCo không nhận hoàn trả do đổi ý sau khi đã thanh toán. Nếu phát hiện vấn đề cần đối chiếu, gửi yêu cầu kèm mã đơn và thông tin thực tế để nhân viên xem xét.</p>
+                    <p>Việc gửi yêu cầu không đồng nghĩa đã được chấp nhận đổi trả hoặc hoàn tiền.</p>
+                    <a class="about-text-link" asp-controller="Support" asp-action="Create">Gửi yêu cầu về đơn hàng <span aria-hidden="true">→</span></a>
+                </div>
+            </section>
+
+            <section id="ho-tro-don-hang" class="policy-document-section" aria-labelledby="returns-support">
+                <h2 id="returns-support"><span class="policy-section-number" aria-hidden="true">03.</span> Để CoCo hỗ trợ đúng điều bạn cần</h2>
+                <p>Chuẩn bị các thông tin dưới đây khi muốn CoCo kiểm tra một giao dịch.</p>
+                <ul class="policy-list">
+                    <li><strong>Mã đơn hoặc mã sản phẩm</strong><p>Tìm trong mục đơn hàng của tài khoản.</p></li>
+                    <li><strong>Điều bạn cần kiểm tra</strong><p>Mô tả tình trạng thực tế và thời điểm nhận thấy vấn đề.</p></li>
+                    <li><strong>Theo dõi phản hồi</strong><p>Nhân viên trao đổi tại yêu cầu hỗ trợ trong tài khoản của bạn.</p></li>
+                </ul>
+                <div class="policy-actions">
+                    <a class="btn btn-wine" asp-controller="Support" asp-action="Create">Tạo yêu cầu hỗ trợ <span aria-hidden="true">→</span></a>
+                    <a class="about-text-link" asp-controller="Support" asp-action="Index">Xem yêu cầu đã gửi</a>
+                </div>
+            </section>
+
+            <section id="tiep-tuc-mua-sam" class="policy-document-section" aria-labelledby="returns-shopping">
+                <h2 id="returns-shopping"><span class="policy-section-number" aria-hidden="true">04.</span> Tìm thêm món đồ hợp gu</h2>
+                <p>Xem kỹ hình ảnh, kích cỡ và tình trạng trước khi đặt hàng.</p>
+                <div class="policy-actions"><a class="btn btn-outline-wine" asp-controller="Shop" asp-action="Index">Tiếp tục mua sắm <span aria-hidden="true">→</span></a></div>
+            </section>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+@{
+    var message = TempData["NewsletterMessage"] as string;
+    var success = TempData["NewsletterSuccess"] as bool?;
+    var email = TempData["NewsletterEmail"] as string;
+}
+<section class="footer-newsletter" id="footer-newsletter" aria-labelledby="footer-newsletter-title">
+    <div class="container footer-newsletter-inner">
+    <div class="footer-newsletter-copy">
+        <h2 id="footer-newsletter-title">Đăng ký nhận ưu đãi giảm giá</h2>
+        <p>Nhận tin về ưu đãi và các chương trình giảm giá tại CoCo.</p>
+    </div>
+    <form asp-area="" asp-controller="Newsletter" asp-action="Subscribe" method="post" data-newsletter-form>
+        <input type="hidden" name="ReturnUrl" value="@(Context.Request.Path + Context.Request.QueryString)" />
+        <input type="text" name="Website" tabindex="-1" autocomplete="off" aria-hidden="true" hidden />
+        <label class="visually-hidden" for="footer-newsletter-email">Email của bạn</label>
+        <div class="footer-newsletter-fields">
+            <input type="email" name="Email" id="footer-newsletter-email" value="@email" placeholder="Email của bạn"
+                   autocomplete="email" inputmode="email" maxlength="254" required
+                   aria-describedby="footer-newsletter-status" />
+            <button type="submit" class="btn btn-wine">Đăng ký</button>
+        </div>
+        <p id="footer-newsletter-status" class="footer-newsletter-status @(success == false ? "is-error" : "")"
+           role="status" aria-live="polite" data-newsletter-status hidden="@(message is null)">@message</p>
+    </form>
+    </div>
+</section>

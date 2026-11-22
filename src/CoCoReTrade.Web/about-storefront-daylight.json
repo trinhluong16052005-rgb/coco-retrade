@@ -1,0 +1,50 @@
+{
+  "source": "D:\\DỰ ÁN\\ẢNH COCO\\1.png",
+  "sourceDimensions": [
+    1380,
+    626
+  ],
+  "sourceSha256": "c973b9494efafd5e9f82abf09f2252ebd238b257677df92fe27c6c20f28b5555",
+  "purpose": "About page hero replaced with exact user-supplied storefront image",
+  "processing": {
+    "tool": "FFmpeg",
+    "filter": "none at native resolution; Lanczos downsampling only for 800px and 480px variants",
+    "nativeQuality": 94,
+    "responsiveQuality": 92,
+    "resampling": "Lanczos",
+    "crop": "none",
+    "colorEdits": false,
+    "upscale": false,
+    "generativeEdits": false,
+    "sourcePreserved": true,
+    "previousAssetsBackup": "C:\\Users\\laptop\\Documents\\ChatGPT\\COCORETRADE\\tmp\\details-tabs\\storefront-before"
+  },
+  "displaySuggestion": {
+    "nativeAspectRatio": "1380:626",
+    "objectPosition": "50% 50%",
+    "avoidCroppingStoreSign": true
+  },
+  "assets": [
+    {
+      "url": "/images/coco/coco-storefront-daylight.webp",
+      "width": 1380,
+      "height": 626,
+      "bytes": 340434,
+      "sha256": "6f3b226030d97edf99e89e50ce843de2579731faf25f2959bef4f6769116e0a1"
+    },
+    {
+      "url": "/images/coco/coco-storefront-daylight-800.webp",
+      "width": 800,
+      "height": 363,
+      "bytes": 128372,
+      "sha256": "322bd3e0b0b48a13e62879f4b92cd10ace1e204b4f3d2f4b6a1717918e19da9d"
+    },
+    {
+      "url": "/images/coco/coco-storefront-daylight-480.webp",
+      "width": 480,
+      "height": 218,
+      "bytes": 51236,
+      "sha256": "70bf2e689f5d111d3d60398838db06bd566adf253f0d087f1cf88753593f620d"
+    }
+  ]
+}

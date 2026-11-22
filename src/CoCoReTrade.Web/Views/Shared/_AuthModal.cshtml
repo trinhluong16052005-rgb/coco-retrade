@@ -1,0 +1,15 @@
+@if (User.Identity?.IsAuthenticated != true)
+{
+    <div class="modal fade coco-auth-modal" id="coco-auth-modal" tabindex="-1" aria-labelledby="coco-auth-modal-title" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <h2 class="visually-hidden" id="coco-auth-modal-title">Tài khoản CoCo</h2>
+                <button class="coco-auth-close" type="button" data-bs-dismiss="modal" aria-label="Đóng cửa sổ tài khoản"><span aria-hidden="true">×</span></button>
+                <div class="coco-auth-main">
+                    <div class="coco-auth-status" role="alert" data-auth-status hidden></div>
+                    <div data-auth-modal-content><p class="auth-loading" role="status">Đang mở tài khoản CoCo.</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

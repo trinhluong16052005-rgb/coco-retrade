@@ -1,0 +1,60 @@
+@inject CoCoReTrade.Application.ShippingPolicy Shipping
+@inject CoCoReTrade.Application.MarketplacePolicy Marketplace
+@{
+    ViewData["Title"] = "Ký gửi cùng CoCo";
+    var sellerPercent = 100 - Marketplace.CommissionPercent;
+}
+<div class="clearout-page coco-clearout-editorial">
+    <section class="cce-hero" aria-labelledby="consign-title">
+        <img class="cce-hero-image" src="/images/coco/about/about-garment-rails.webp" srcset="/images/coco/about/about-garment-rails-800.webp 800w, /images/coco/about/about-garment-rails.webp 1448w" sizes="100vw" width="1448" height="1086" alt="Không gian cửa hàng CoCo với những dãy trang phục" fetchpriority="high" decoding="async" />
+        <div class="cce-hero-copy">
+            <h1 id="consign-title">Ký gửi cùng CoCo.<br />Nhẹ tủ, thêm giá trị.</h1>
+            <p>Để những món đồ còn đẹp tìm được người chủ mới. CoCo hỗ trợ kiểm tra, đăng bán và theo dõi giao dịch cùng bạn.</p>
+            <a class="cce-button cce-button-pink" asp-controller="Listing" asp-action="Create">KÝ GỬI NGAY <span aria-hidden="true">↗</span></a>
+        </div>
+    </section>
+    <section id="cach-ky-gui" class="cce-section cce-journey" aria-labelledby="consign-journey-title">
+        <header class="cce-section-heading"><h2 id="consign-journey-title">3 bước ký gửi</h2><a class="cce-text-link" asp-controller="About" asp-action="Inspection">Chính sách kiểm định <span aria-hidden="true">↗</span></a></header>
+        <ol class="cce-steps coco-process-steps">
+            <li><span class="cce-step-number coco-process-number" aria-hidden="true">01</span><img src="/images/coco/coco-consign-step-photos.webp" srcset="/images/coco/coco-consign-step-photos-480.webp 480w, /images/coco/coco-consign-step-photos.webp 800w" sizes="(max-width: 767px) calc(100vw - 48px), 31vw" width="800" height="800" alt="Áo được trải phẳng để nhìn rõ kiểu dáng và tem nhãn" loading="lazy" decoding="async" /><h3 class="coco-process-title">Gửi ảnh duyệt sơ bộ</h3><p>Thêm 3–10 ảnh thật cùng thông tin và giá mong muốn. CoCo duyệt sơ bộ. Bạn xem kết quả ngay trong tủ đồ.</p></li>
+            <li><span class="cce-step-number coco-process-number" aria-hidden="true">02</span><img src="/images/coco/coco-consign-step-check.webp" srcset="/images/coco/coco-consign-step-check-480.webp 480w, /images/coco/coco-consign-step-check.webp 800w" sizes="(max-width: 767px) calc(100vw - 48px), 31vw" width="800" height="800" alt="Lựa chọn trang phục bên dãy áo trắng tại CoCo" loading="lazy" decoding="async" /><h3 class="coco-process-title">Mang đồ đến kiểm định</h3><p>Sau khi được duyệt sơ bộ, mang hoặc gửi món đồ trong 3 ngày. CoCo kiểm tra hiện vật và đăng bán món đồ đạt yêu cầu.</p></li>
+            <li><span class="cce-step-number coco-process-number" aria-hidden="true">03</span><img src="/images/coco/coco-consign-step-sale.webp" srcset="/images/coco/coco-consign-step-sale-480.webp 480w, /images/coco/coco-consign-step-sale.webp 800w" sizes="(max-width: 767px) calc(100vw - 48px), 31vw" width="800" height="800" alt="Khách lựa chọn phụ kiện tại cửa hàng CoCo" loading="lazy" decoding="async" /><h3 class="coco-process-title">Đăng bán và nhận tiền</h3><p>Khi đơn hoàn tất và tiền đã thu, thu nhập sau hoa hồng được ghi vào ví. Bạn xem giao dịch và gửi yêu cầu rút ngay trong tài khoản.</p></li>
+        </ol>
+        <a class="cce-text-link cce-journey-link" asp-controller="Listing" asp-action="Create">Bắt đầu ký gửi <span aria-hidden="true">↗</span></a>
+    </section>
+    <section id="loi-ich" class="cce-section cce-benefits" aria-labelledby="cce-benefits-title">
+        <figure><img src="/images/coco/about/about-accessory-shelves.webp" srcset="/images/coco/about/about-accessory-shelves-480.webp 480w, /images/coco/about/about-accessory-shelves-800.webp 800w, /images/coco/about/about-accessory-shelves.webp 1080w" sizes="(max-width: 767px) calc(100vw - 48px), 46vw" width="1080" height="1076" alt="Kệ túi, giày và phụ kiện trong không gian cửa hàng CoCo" loading="lazy" decoding="async" /></figure>
+        <div><h2 id="cce-benefits-title">Những điều bạn nhận lại</h2><ol class="cce-benefit-list">
+            <li><span aria-hidden="true">01</span><div><h3>Ký gửi nhanh chóng</h3><p>Gửi ảnh và thông tin trực tuyến, theo dõi kết quả duyệt trong tủ đồ. CoCo hỗ trợ kiểm tra, đăng bán và theo dõi giao dịch.</p></div></li>
+            <li><span aria-hidden="true">02</span><div><h3>Giảm lãng phí</h3><p>Để những món đồ còn đẹp tiếp tục được sử dụng và tìm người chủ mới phù hợp.</p></div></li>
+            <li><span aria-hidden="true">03</span><div><h3>Nhận giá trị</h3><p>Khi đơn hoàn tất và tiền đã thu, tiền hàng sau hoa hồng được ghi vào ví ký gửi của bạn.</p></div></li>
+        </ol></div>
+    </section>
+    <section id="ty-le-ky-gui" class="cce-section cce-share" aria-labelledby="consign-fees-title">
+        <div><h2 id="consign-fees-title">Người ký gửi nhận</h2><p>Không thêm phí nhận đồ, kiểm định hay lưu kho. Hoa hồng tính trên giá bán cuối cùng của sản phẩm, không gồm phí giao hàng.</p><a class="cce-text-link" asp-controller="About" asp-action="Policies">Xem chính sách ký gửi <span aria-hidden="true">↗</span></a></div>
+        <div class="cce-share-value"><strong>@sellerPercent<span>%</span></strong><p>giá bán sản phẩm</p></div>
+    </section>
+    <section id="cau-hoi" class="cce-section cce-faq" aria-labelledby="consign-questions-title">
+        <div><h2 id="consign-questions-title">Bạn hỏi.<br />CoCo trả lời.</h2></div>
+        <div class="cce-faq-list">
+            <details><summary id="consign-acceptance-title">CoCo tiếp nhận những món đồ nào?</summary><div><p>CoCo xem xét đồ ký gửi từ mọi thương hiệu. Hãy gửi ảnh rõ và mô tả đúng tình trạng. Món đồ chỉ được đăng bán sau khi kiểm tra trực tiếp và được duyệt.</p><ul><li>Áo</li><li>Quần</li><li>Váy</li><li>Set đồ</li><li>Phụ kiện, gồm túi xách</li></ul></div></details>
+            <details><summary>Ảnh cần chuẩn bị</summary><div><p>Gửi 3–10 ảnh JPG, PNG hoặc WebP rõ nét: mặt trước, mặt sau, tem mác và chi tiết cần lưu ý. Ảnh cần phản ánh đúng tình trạng hiện tại của món đồ.</p></div></details>
+<details><summary>Cách gửi hiện vật đến CoCo</summary><div><p>Sau khi được duyệt sơ bộ, mang hoặc gửi hiện vật trong 3 ngày. Ghi họ tên, số điện thoại và mã ký gửi để đối chiếu. Nếu dùng đơn vị vận chuyển, bạn thanh toán trước cước gửi đến CoCo. CoCo chỉ nhận kiện hàng đã trả trước cước và không thu hộ tiền khi giao.</p><p>Xem địa điểm nhận trong hướng dẫn ký gửi. Bạn có thể gọi CoCo để xác nhận trước khi gửi.</p></div></details>
+<details><summary>Nhận tiền sau khi bán</summary><div><p>Khi CoCo xác nhận đã thu tiền và hoàn tất đơn, tiền hàng sau hoa hồng được ghi có vào <a asp-controller="Profile" asp-action="Wallet">ví ký gửi</a>. Bạn gửi yêu cầu rút về tài khoản ngân hàng. Nhân viên xử lý và cập nhật xác nhận giao dịch trong ví.</p></div></details>
+<details><summary>Thời hạn đăng bán</summary><div><p>Sau 45 ngày tính từ ngày đăng bán, CoCo nhắc bạn nhận lại món đồ chưa bán. Sau 60 ngày tính từ ngày đăng bán, nếu chưa nhận lại, CoCo gỡ sản phẩm khỏi website và chuyển sang thanh lý trực tiếp tại tiệm. <a asp-controller="About" asp-action="Policies" asp-fragment="thoi-han-ky-gui">Xem chính sách ký gửi.</a></p></div></details>
+<details><summary>Nhận lại đồ chưa được duyệt</summary><div><p>Xem lý do và phản hồi trong <a asp-controller="Listing" asp-action="Closet">tủ đồ ký gửi</a>. Liên hệ CoCo kèm mã ký gửi để xác nhận cách nhận lại hiện vật. Mốc 45/60 ngày tính từ ngày đăng bán chỉ áp dụng cho sản phẩm đã đăng.</p></div></details>
+        </div>
+    </section>
+    <section id="lien-he" class="cce-section cce-contact" aria-labelledby="consign-finish-title">
+        <img class="cce-contact-image" src="/images/coco/coco-storefront-daylight.webp" srcset="/images/coco/coco-storefront-daylight-800.webp 800w, /images/coco/coco-storefront-daylight.webp 1380w" sizes="100vw" width="1380" height="626" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+        <div class="cce-contact-copy"><h2 id="consign-finish-title">Liên hệ CoCo ngay<br />nếu cần</h2><a class="cce-button cce-button-pink" asp-controller="About" asp-action="Contact">Liên hệ CoCo <span aria-hidden="true">↗</span></a><a class="cce-text-link cce-support-link" asp-controller="Support" asp-action="Create">Gửi yêu cầu hỗ trợ <span aria-hidden="true">↗</span></a></div>
+        <dl class="cce-contact-details">
+            <div><dt>Hotline</dt><dd><a href="tel:0905808679">0905 808 679</a></dd></div>
+            <div><dt>Email</dt><dd><a href="mailto:cocoretradekygui@gmail.com">cocoretradekygui@gmail.com</a></dd></div>
+            @if (Shipping.CanPickup) {
+                <div><dt>Địa chỉ</dt><dd><address>@Shipping.StoreAddress</address></dd></div>
+                <div><dt>Giờ mở cửa</dt><dd>@Shipping.OpeningHour.ToString("00"):@Shipping.OpeningMinute.ToString("00") – @Shipping.ClosingHour.ToString("00"):00</dd></div>
+            }
+        </dl>
+    </section>
+</div>

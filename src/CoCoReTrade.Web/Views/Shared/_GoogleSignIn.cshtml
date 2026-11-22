@@ -1,0 +1,10 @@
+@inject AccountDeliveryStatus Delivery
+@{ var returnUrl = ViewData["AuthReturnUrl"] as string ?? "/"; }
+<div class="auth-google">
+    <span>hoặc tiếp tục với</span>
+    <form asp-area="" asp-controller="Account" asp-action="Google" method="post" data-auth-external>
+        <input type="hidden" name="returnUrl" value="@returnUrl" />
+        <button type="submit" class="btn btn-outline-wine w-100" disabled="@(!Delivery.GoogleReady)"><span class="auth-provider-mark" aria-hidden="true">G</span> Tiếp tục với Google</button>
+    </form>
+    @if (!Delivery.GoogleReady) { <p class="small mt-2 mb-0">Đăng nhập Google đang chờ cấu hình.</p> }
+</div>

@@ -1,0 +1,96 @@
+{
+    "schemaVersion":  1,
+    "reviewedAt":  "2026-11-20",
+    "purpose":  "Source provenance for the two homepage community and social sections.",
+    "verification":  {
+                         "facebook":  "Four public Open Graph excerpts, canonical post URLs and source image filenames rechecked; all returned HTTP 200. Excerpts are truncated.",
+                         "images":  "Four community source JPEG and local WebP hashes/dimensions match coco-content-media.json."
+                     },
+    "facebook":  {
+                     "profileId":  "100064128906547",
+                     "profileUrl":  "https://www.facebook.com/profile.php?id=100064128906547",
+                     "displayName":  "CoCo Kho Ký Gửi Đà Nẵng"
+                 },
+    "communityPosts":  [
+                           {
+                               "sourceUrl":  "https://www.facebook.com/share/p/1A9tU2LHGi/",
+                               "canonicalPostId":  "1407900924690858",
+                               "image":  {
+                                             "key":  "coco-childrens-day",
+                                             "url":  "/images/coco/coco-childrens-day.webp",
+                                             "width":  900,
+                                             "height":  600,
+                                             "sourceType":  "public-facebook-post",
+                                             "provenanceFile":  "coco-content-media.json"
+                                         },
+                               "verifiedFacts":  [
+                                                     "Sáng 01/06/2026, CoCo Kho Ký Gửi cùng Đội Thanh niên Tình nguyện D.A.U tổ chức chương trình thăm hỏi, giao lưu nhân Ngày Quốc tế Thiếu nhi."
+                                                 ],
+                               "evidenceLimit":  "Phần mô tả tiếp theo bị cắt; không xác minh loại hoặc số lượng quà."
+                           },
+                           {
+                               "sourceUrl":  "https://www.facebook.com/share/p/1DxVSEKZKC/",
+                               "canonicalPostId":  "1511018141045802",
+                               "image":  {
+                                             "key":  "coco-mid-autumn",
+                                             "url":  "/images/coco/coco-mid-autumn.webp",
+                                             "width":  1067,
+                                             "height":  600,
+                                             "sourceType":  "public-facebook-post",
+                                             "provenanceFile":  "coco-content-media.json"
+                                         },
+                               "verifiedFacts":  [
+                                                     "Bài viết giới thiệu Trung thu cho em 2026 tại Trung tâm nuôi dạy trẻ mồ côi Hoa Mai, 326 Mai Đăng Chơn, Ngũ Hành Sơn, Đà Nẵng."
+                                                 ],
+                               "evidenceLimit":  "Đoạn công khai không cho biết ngày cụ thể hoặc đơn vị phối hợp."
+                           },
+                           {
+                               "sourceUrl":  "https://www.facebook.com/share/p/1HiBE9A7Kg/",
+                               "canonicalPostId":  "1281310187349933",
+                               "image":  {
+                                             "key":  "coco-warm-winter",
+                                             "url":  "/images/coco/coco-warm-winter.webp",
+                                             "width":  900,
+                                             "height":  600,
+                                             "sourceType":  "public-facebook-post",
+                                             "provenanceFile":  "coco-content-media.json"
+                                         },
+                               "verifiedFacts":  [
+                                                     "Chương trình Đông ấm áp 2025 diễn ra tại xã Bình Minh, Quảng Ngãi trong hai ngày 27–28/12/2025.",
+                                                     "Đoạn công khai nhắc Team CoCo Kho Ký Gửi cùng đội thanh niên tình nguyện."
+                                                 ],
+                               "evidenceLimit":  "Tên riêng của đội tình nguyện bị cắt; không suy ra tên đội hoặc quan hệ đối tác chính thức."
+                           },
+                           {
+                               "sourceUrl":  "https://www.facebook.com/share/p/1QYpDMneSH/",
+                               "canonicalPostId":  "1502487585232191",
+                               "image":  {
+                                             "key":  "coco-dau-gathering",
+                                             "url":  "/images/coco/coco-dau-gathering.webp",
+                                             "width":  800,
+                                             "height":  600,
+                                             "sourceType":  "public-facebook-post",
+                                             "provenanceFile":  "coco-content-media.json"
+                                         },
+                               "verifiedFacts":  [
+                                                     "CoCo tham dự lễ ra mắt Ban Điều hành mới và mừng sinh nhật bốn tuổi của Đội Thanh niên Tình nguyện DAU."
+                                                 ],
+                               "evidenceLimit":  "Đoạn công khai không cho biết ngày cụ thể."
+                           }
+                       ],
+    "storeImage":  {
+                       "key":  "coco-busy-clothing",
+                       "url":  "/images/coco/coco-busy-clothing.webp",
+                       "width":  1448,
+                       "height":  1086,
+                       "sourceType":  "user-folder",
+                       "provenanceFile":  "coco-content-media.json",
+                       "description":  "Các dãy trang phục trong không gian cửa hàng CoCo, từ ảnh cửa hàng do người dùng cung cấp."
+                   },
+    "tiktok":  {
+                   "creatorUrl":  "https://www.tiktok.com/@cocokhokygui.dn",
+                   "creatorOEmbedUrl":  "https://www.tiktok.com/oembed?url=https%3A%2F%2Fwww.tiktok.com%2F%40cocokhokygui.dn",
+                   "providerName":  "TikTok",
+                   "verification":  "Official oEmbed endpoint returned HTTP 200 with the expected creator URL and creator embed markup."
+               }
+}

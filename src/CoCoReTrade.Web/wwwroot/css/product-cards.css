@@ -1,0 +1,163 @@
+/* One card layout for catalogs, seller stores, saved items and recommendations. */
+body.storefront-pages #main-content .product-grid {
+    --coco-card-row-space: 24px;
+    align-items: stretch;
+}
+
+body.storefront-pages #main-content .product-grid > .col {
+    display: flex;
+    min-width: 0;
+}
+
+body.storefront-pages #main-content .product-grid .product-card {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+    height: 100%;
+}
+
+body.storefront-pages #main-content .product-grid .product-card-media {
+    position: relative;
+    flex: 0 0 auto;
+    width: 100%;
+    min-width: 0;
+}
+
+body.storefront-pages #main-content .product-grid .product-photo {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+}
+
+body.storefront-pages #main-content .product-grid .product-photo .product-image-frame {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body.storefront-pages #main-content .product-grid .product-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.product-card-summary { display: contents; min-width: 0; }
+
+body.storefront-pages #main-content .product-sale-status.Active { background: #fff0f5; color: #ba174b; }
+body.storefront-pages #main-content .product-sale-status.PendingApproval { background: #fff4dc; color: #805800; }
+body.storefront-pages #main-content .product-sale-status.Reserved { background: #eaf2ff; color: #235bb5; }
+body.storefront-pages #main-content .product-sale-status.Sold { background: #e5f5eb; color: #17713e; }
+body.storefront-pages #main-content .product-sale-status.Rejected { background: #fde9e7; color: #b13029; }
+body.storefront-pages #main-content .product-sale-status.Removed { background: #eef0f3; color: #526071; }
+.page-home .sign-product-price .product-sale-status { margin-inline-start: 6px; vertical-align: middle; }
+
+body.storefront-pages #main-content .product-grid .product-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+}
+
+body.storefront-pages #main-content .product-grid .product-price-row { margin-top: auto !important; }
+body.storefront-pages #main-content .product-grid .product-price {
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+body.storefront-pages #main-content .product-grid .product-card-brand {
+    min-width: 0;
+    height: 1.4em;
+    min-height: 1.4em;
+    line-height: 1.4;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+body.storefront-pages #main-content .product-grid .product-body h3,
+.page-home .sign-home .sign-product h3,
+body.storefront-pages #main-content .checkout-cross-sell h3 {
+    display: block !important;
+    height: 1.4em !important;
+    min-height: 1.4em !important;
+    max-height: 1.4em !important;
+    line-height: 1.4 !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1 !important;
+    line-clamp: 1 !important;
+}
+
+body.storefront-pages #main-content .product-grid .product-meta { min-height:2.8em; height:2.8em; line-height:1.4; }
+body.storefront-pages #main-content .product-grid .product-meta > span { display:block; flex:0 0 100%; width:100%; min-width:0; height:1.4em; margin:0; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
+
+/* Intrinsic shared rows grow for long sizes, prices or status messages.
+   No fixed card height, browser zoom calculation or JavaScript sizing. */
+@supports (grid-template-rows: subgrid) {
+    body.storefront-pages #main-content .product-grid {
+        grid-template-rows: none !important;
+        grid-auto-rows: auto !important;
+        row-gap: 0 !important;
+    }
+
+    body.storefront-pages #main-content .product-grid > .col,
+    body.storefront-pages #main-content .product-grid .product-card {
+        display: grid !important;
+        grid-template-rows: subgrid;
+        grid-row: span 5;
+        row-gap: 0;
+        height: auto !important;
+    }
+
+    body.storefront-pages #main-content .product-grid > .col {
+        padding-bottom: var(--coco-card-row-space) !important;
+    }
+
+    body.storefront-pages #main-content .product-grid .product-card-media { grid-row: 1; }
+
+    body.storefront-pages #main-content .product-grid .product-body {
+        display: grid !important;
+        grid-template-rows: subgrid !important;
+        grid-row: 2 / span 4;
+        row-gap: 0 !important;
+        min-width: 0;
+    }
+
+    body.storefront-pages #main-content .product-grid .product-card-summary {
+        display: flow-root;
+        grid-row: 1;
+    }
+
+    body.storefront-pages #main-content .product-grid .product-price-row {
+        grid-row: 2;
+        align-self: stretch;
+        align-content: start;
+        margin-top: 0 !important;
+    }
+
+    body.storefront-pages #main-content .product-grid .product-card-actions {
+        grid-row: 3;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        align-self: stretch;
+    }
+
+    body.storefront-pages #main-content .product-grid .product-seller { grid-row: 4; }
+}
+
+@media (max-width: 767px) {
+    body.storefront-pages #main-content .product-grid { --coco-card-row-space: 14px; }
+    body.storefront-pages #main-content .detail-recommendations .product-grid { --coco-card-row-space: 0px; }
+}

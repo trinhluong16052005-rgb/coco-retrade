@@ -1,0 +1,22 @@
+/* A single marker geometry keeps both three-step sequences aligned. */
+body.storefront-pages #main-content .coco-process-steps { --process-column-gap:24px; --process-number-width:64px; --process-number-height:52px; --process-line-space:12px; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); column-gap:var(--process-column-gap); row-gap:10px; padding:0; list-style:none; }
+body.storefront-pages #main-content .coco-process-steps > li { position:relative; display:grid; grid-template-rows:subgrid; grid-row:span 4; align-content:start; align-items:start; gap:inherit; min-width:0; margin:0; padding:0; }
+body.storefront-pages #main-content .listing-progress.coco-process-steps > li { grid-row:span 2; }
+body.storefront-pages #main-content .coco-process-steps .coco-process-number { display:grid; grid-row:1; justify-self:center; place-items:center; width:var(--process-number-width); height:var(--process-number-height); margin:0; padding:0; color:#FF3366; font-family:"Open Sans",sans-serif; font-size:40px; font-weight:700; font-variant-numeric:tabular-nums; line-height:1; }
+body.storefront-pages #main-content .coco-process-steps > li:not(:last-child)::after { position:absolute; display:block; top:calc(var(--process-number-height) / 2); left:calc(50% + var(--process-number-width) / 2 + var(--process-line-space)); right:auto; width:calc(100% + var(--process-column-gap) - var(--process-number-width) - 2 * var(--process-line-space)); height:1px; margin:0; padding:0; border:0; background:#000000; transform:none; content:""; pointer-events:none; }
+body.storefront-pages #main-content .coco-process-steps .coco-process-title { margin:0; padding:0; min-width:0; }
+body.storefront-pages #main-content .listing-progress .coco-process-title { text-align:center; }
+body.storefront-pages.page-clearout #main-content .coco-clearout-editorial .coco-process-steps img { grid-row:2; width:100%; height:auto; max-height:none; aspect-ratio:16/9; border-radius:8px; object-fit:cover; }
+body.storefront-pages.page-clearout #main-content .coco-clearout-editorial .coco-process-title { grid-row:3; margin:0; font-size:clamp(18px,1.9vw,28px); line-height:1.35; }
+body.storefront-pages.page-clearout #main-content .coco-clearout-editorial .coco-process-steps li > p { grid-row:4; margin:0; }
+@media (max-width:991px) {
+    body.storefront-pages #main-content .coco-process-steps { --process-column-gap:18px; --process-number-width:52px; --process-number-height:44px; --process-line-space:8px; }
+    body.storefront-pages #main-content .coco-process-steps .coco-process-number { font-size:32px; }
+}
+@media (max-width:575px) {
+    body.storefront-pages #main-content .coco-process-steps { --process-column-gap:12px; --process-number-width:40px; --process-number-height:36px; --process-line-space:6px; row-gap:10px; }
+    body.storefront-pages #main-content .coco-process-steps .coco-process-number { font-size:26px; }
+    body.storefront-pages.page-clearout #main-content .coco-clearout-editorial .coco-process-title { font-size:16px; line-height:1.45; text-align:left; }
+    body.storefront-pages.page-clearout #main-content .coco-clearout-editorial .coco-process-steps li > p { font-size:.875rem; line-height:1.6; }
+    body.storefront-pages #main-content .listing-progress .coco-process-title { font-size:.8125rem; line-height:1.6; }
+}

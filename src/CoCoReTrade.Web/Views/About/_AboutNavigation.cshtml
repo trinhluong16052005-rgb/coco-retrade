@@ -1,0 +1,8 @@
+@{ var current = ViewContext.RouteData.Values["action"]?.ToString(); }
+<nav class="about-navigation" aria-label="Thông tin về CoCo">
+    <a class="@(current == "Index" ? "is-current" : "")" aria-current="@(current == "Index" ? "page" : null)" asp-controller="About" asp-action="Index">Về CoCo</a>
+    <a class="@(current == "Inspection" ? "is-current" : "")" aria-current="@(current == "Inspection" ? "page" : null)" asp-controller="About" asp-action="Inspection">Chính sách kiểm định</a>
+    <a class="@(current == "Policies" ? "is-current" : "")" aria-current="@(current == "Policies" ? "page" : null)" asp-controller="About" asp-action="Policies">Chính sách ký gửi</a>
+    <a class="@(current == "Returns" ? "is-current" : "")" aria-current="@(current == "Returns" ? "page" : null)" asp-controller="About" asp-action="Returns">Chính sách đổi trả</a>
+    <a class="@(current == "Contact" ? "is-current" : "")" aria-current="@(current == "Contact" ? "page" : null)" asp-controller="About" asp-action="Contact">Liên hệ</a>
+</nav>

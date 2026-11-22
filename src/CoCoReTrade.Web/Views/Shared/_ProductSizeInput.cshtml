@@ -1,0 +1,20 @@
+@model ProductSizeInput
+@{
+    var custom = ProductCategories.IsAccessory(Model.Category);
+    var legacyClothing = Model.PreserveLegacyClothing && !custom && !string.IsNullOrWhiteSpace(Model.Size)
+        && !ProductSizing.Clothing.Contains(Model.Size);
+}
+<div data-listing-size-field>
+    <label class="form-label" for="@(custom ? "AccessorySize" : "Size")" data-listing-size-label>Kích cỡ</label>
+    <select class="form-select @(custom ? "d-none" : "")" id="Size" name="Size" data-listing-size-select hidden="@custom" disabled="@custom"
+            required data-val="true" data-val-required="Vui lòng nhập trường này.">
+        <option value="">Chọn kích cỡ</option>
+        @if (legacyClothing) { <option value="@Model.Size" selected>@UiText.For(Model.Size)</option> }
+        @foreach (var size in ProductSizing.Clothing) { <option value="@size" selected="@(Model.Size == size)">@size</option> }
+    </select>
+    <input class="form-control @(!custom ? "d-none" : "")" id="AccessorySize" name="Size" type="text" value="@(custom ? Model.Size : "")"
+           maxlength="@ProductSizing.MaximumLength" data-listing-size-custom hidden="@(!custom)" disabled="@(!custom)"
+           required data-val="true" data-val-required="Vui lòng nhập trường này."
+           data-val-length="Kích cỡ không được vượt quá 30 ký tự." data-val-length-max="@ProductSizing.MaximumLength" />
+    <span asp-validation-for="Size" class="text-danger small"></span>
+</div>

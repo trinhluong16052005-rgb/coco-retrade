@@ -1,0 +1,213 @@
+@using System.Security.Claims
+@inject CoCoReTrade.Application.IUserProfileService UserProfiles
+@inject CoCoReTrade.Application.ShippingPolicy Shipping
+@inject CoCoReTrade.Web.Demo.DemoCatalog Demo
+@{
+    CoCoReTrade.Application.UserProfileDto? headerProfile = null;
+    var headerUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+    var signedIn = User.Identity?.IsAuthenticated == true;
+    if (signedIn && !string.IsNullOrWhiteSpace(headerUserId))
+        headerProfile = await UserProfiles.GetAsync(headerUserId, Context.RequestAborted);
+    var inAdmin = string.Equals(ViewContext.RouteData.Values["area"]?.ToString(), "Admin", StringComparison.OrdinalIgnoreCase);
+    var controller = ViewContext.RouteData.Values["controller"]?.ToString();
+    var action = ViewContext.RouteData.Values["action"]?.ToString();
+    var isAdmin = signedIn && User.IsInRole("Admin");
+    var onShopIndex = !inAdmin && controller == "Shop" && action == "Index";
+    var name = headerProfile?.FullName ?? User.Identity?.Name ?? "Tài khoản";
+    string Selected(string target, string? targetAction = null) => !inAdmin && controller == target && (targetAction == null || action == targetAction) ? "is-active" : "";
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <partial name="_PhoneViewport" />
+    <meta name="theme-color" content="#ffffff" />
+    <title>@ViewData["Title"] · CoCo ReTrade</title>
+    <link rel="icon" href="~/images/coco-logo.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/fonts.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/marketplace.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+    @if (controller == "Home" && action == "Clearout") { <link rel="stylesheet" href="~/css/clearout.css" asp-append-version="true" /> }
+    @if (controller == "About") { <link rel="stylesheet" href="~/css/about.css" asp-append-version="true" /> }
+    <link rel="stylesheet" href="~/css/main-pages.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/header-nav.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/refinements.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/checkout.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/coco-update.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/auth-modal.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/layout-polish.css" asp-append-version="true" />
+    @if ((controller == "Shop" && action == "Details") || (controller == "Profile" && action == "Saved") || (controller == "Listing" && action == "Closet")) { <link rel="stylesheet" href="~/css/product-collections.css" asp-append-version="true" /> }
+    @if ((controller == "Home" && action == "Clearout") || (controller == "Listing" && (action == "Create" || action == "Edit"))) { <link rel="stylesheet" href="~/css/consign-pages-polish.css" asp-append-version="true" /> }
+    @if (controller == "Home" && action == "Clearout") { <link rel="stylesheet" href="~/css/clearout-editorial.css" asp-append-version="true" /> }
+    @if (controller == "Listing" && action == "Create") { <link rel="stylesheet" href="~/css/listing-create.css" asp-append-version="true" /> }
+    @if ((controller == "Home" && action == "Clearout") || (controller == "Listing" && action == "Create")) { <link rel="stylesheet" href="~/css/consign-steps.css" asp-append-version="true" /> }
+    @if (controller == "Support" && action == "Details" && !inAdmin) { <link rel="stylesheet" href="~/css/support-detail.css" asp-append-version="true" /> }
+    @if (controller == "Inspection" && action == "Review" && inAdmin) { <link rel="stylesheet" href="~/css/inspection-review.css" asp-append-version="true" /> }
+    @if (controller == "About") { <link rel="stylesheet" href="~/css/about-pages-polish.css" asp-append-version="true" /> }
+    @if (controller == "About" && action == "Index") { <link rel="stylesheet" href="~/css/about-esg.css" asp-append-version="true" /> }
+    @if (controller == "About" && action == "Contact") { <link rel="stylesheet" href="~/css/contact.css" asp-append-version="true" /> }
+    @if (controller == "About" && (action == "Policies" || action == "Returns" || action == "Inspection")) { <link rel="stylesheet" href="~/css/policy-documents.css" asp-append-version="true" /> }
+    <link rel="stylesheet" href="~/css/motion.css" asp-append-version="true" />
+    @if ((controller == "Offers" && (action == "Details" || action == "Make")) || (controller == "Preview" && (action == "Offer" || action == "MakeOffer"))) { <link rel="stylesheet" href="~/css/offer-page.css" asp-append-version="true" /> }
+    @if (!inAdmin && controller == "Orders" && action == "Details") { <link rel="stylesheet" href="~/css/order-details.css" asp-append-version="true" /> }
+    @if (!inAdmin) { <link rel="stylesheet" href="~/css/mobile-storefront.css" asp-append-version="true" /> }
+    @if (!inAdmin) { <link rel="stylesheet" href="~/css/product-cards.css" asp-append-version="true" /> }
+    @if (!inAdmin && controller == "Profile" && action == "Wallet") { <link rel="stylesheet" href="~/css/wallet-history.css" asp-append-version="true" /> }
+    @if (!inAdmin && controller == "Profile" && (action == "Wallet" || action == "Withdrawals")) { <link rel="stylesheet" href="~/css/wallet-banking.css" asp-append-version="true" /> }
+    @if (!inAdmin && controller == "Shop" && action == "Details") { <link rel="stylesheet" href="~/css/product-detail-mobile.css" asp-append-version="true" /> }
+    @if (inAdmin && controller == "Orders" && action == "Details") { <link rel="stylesheet" href="~/css/admin-order-details.css" asp-append-version="true" /> }
+    @if (inAdmin && controller == "Dashboard") { <link rel="stylesheet" href="~/css/admin-dashboard.css" asp-append-version="true" /> }
+</head>
+<body class="@(inAdmin ? "admin-workspace" : "storefront storefront-pages") @(controller == "Home" && action == "Index" ? "page-home" : "") @(controller == "Home" && action == "Clearout" ? "page-clearout" : "") @(controller == "Shop" && action == "Index" ? "page-shop" : "") @(controller == "Shop" && action == "Details" ? "page-details" : "") @(controller == "About" ? "page-about" : "") @(!inAdmin ? controller switch { "Cart" => "page-cart", "Checkout" => "page-checkout", "Profile" => "page-profile", "Orders" => "page-orders", "Listing" => "page-listing", "Support" => "page-support", "Account" => "page-account", _ => "" } : "")">
+    <a class="skip-link" href="#main-content">Đi đến nội dung chính</a>
+    @if (Context.RequestServices.GetRequiredService<IConfiguration>().GetValue<bool>("Preview:Enabled") && Context.RequestServices.GetRequiredService<IWebHostEnvironment>().IsDevelopment())
+    {
+        <div class="preview-banner">Bản xem giao diện · dữ liệu minh họa <a asp-area="" asp-controller="Preview" asp-action="Index">Xem các màn hình →</a></div>
+    }
+    @if (Demo.Enabled)
+    {
+        <div class="demo-banner" role="status">Bản mô phỏng môn học · Sản phẩm, kiểm định, đơn hàng và thanh toán không phải giao dịch thật.</div>
+    }
+    @if (!inAdmin)
+    {
+        <div class="announcement-bar"><div class="container">Thời trang đã qua sử dụng, chọn lọc theo gu của bạn <span aria-hidden="true">·</span> <a asp-area="" asp-controller="Home" asp-action="Clearout">Tìm hiểu quy trình ký gửi</a></div></div>
+    }
+    <header class="site-header">
+        <div class="container header-inner @(inAdmin ? "" : "market-header")">
+            @if (!inAdmin)
+            {
+                <nav class="header-browse" aria-label="Điều hướng chính">
+                    <a class="header-main-link @Selected("Home", "Index")" asp-area="" asp-controller="Home" asp-action="Index">Trang chủ</a>
+                    <a class="header-main-link @Selected("Shop")" asp-area="" asp-controller="Shop" asp-action="Index">Mua sắm</a>
+                    <a class="header-main-link @(Selected("Home", "Clearout"))" asp-area="" asp-controller="Home" asp-action="Clearout">Ký gửi</a>
+                    @if (isAdmin) { <a class="header-main-link" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">Quản trị</a> }
+                </nav>
+            }
+            @if (inAdmin)
+            {
+                <button type="button" class="icon-link d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#admin-navigation" aria-controls="admin-navigation" aria-label="Mở menu quản trị"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#menu"></use></svg></button>
+            }
+            <a class="brand" asp-area="" asp-controller="Home" asp-action="Index" aria-label="CoCo ReTrade — Trang chủ"><img src="~/images/coco-logo.svg" asp-append-version="true" width="100" height="78" alt="CoCo ReTrade" /></a>
+            @if (!inAdmin)
+            {
+                var shopSearch = Url.Action("Index", "Shop", new { area = "" }, null, null, "Search");
+                <a class="mobile-search-toggle" href="@(onShopIndex ? "#Search" : shopSearch)"
+                   data-bs-toggle="@(onShopIndex ? null : "collapse")" data-bs-target="@(onShopIndex ? null : "#mobile-search-panel")"
+                   aria-controls="@(onShopIndex ? null : "mobile-search-panel")" aria-expanded="@(onShopIndex ? null : "false")">
+                    <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#search" /></svg><span>Tìm kiếm</span>
+                </a>
+            }
+            @if (inAdmin)
+            {
+                <div class="workspace-label d-none d-md-flex"><span class="workspace-dot"></span>Không gian quản trị</div>
+                <a class="back-to-shop d-none d-lg-inline-flex" asp-area="" asp-controller="Home" asp-action="Index">Về cửa hàng <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#arrow-right"></use></svg></a>
+            }
+            <div class="header-actions">
+                @if (signedIn)
+                {
+                    <a class="icon-link unread-link desktop-header-action" asp-area="" asp-controller="Messages" asp-action="Index" aria-label="Tin nhắn" data-unread-label="Tin nhắn" title="Tin nhắn"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#message"></use></svg><span class="unread-count" data-unread-badge="messages" aria-hidden="true" hidden></span></a>
+                    <a class="icon-link @(inAdmin ? "d-none d-md-inline-flex" : "")" asp-area="" asp-controller="Profile" asp-action="Saved" aria-label="Sản phẩm đã lưu" title="Đã lưu"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#heart" /></svg></a>
+                    <a class="icon-link cart-link @(inAdmin ? "d-none d-md-inline-flex" : "")" asp-area="" asp-controller="Cart" asp-action="Index" aria-label="Giỏ hàng" title="Giỏ hàng"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#bag"></use></svg><span class="unread-count" data-cart-count aria-hidden="true" hidden></span></a>
+                    <a class="icon-link unread-link @(inAdmin ? "d-none d-sm-inline-flex" : "")" asp-area="" asp-controller="Profile" asp-action="Notifications" aria-label="Thông báo" data-unread-label="Thông báo" title="Thông báo"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#bell"></use></svg><span class="unread-count" data-unread-badge="notifications" aria-hidden="true" hidden></span></a>
+                    <a class="account-link desktop-header-action" asp-area="" asp-controller="Profile" asp-action="Index" aria-label="Tài khoản của @name">
+                        @if (headerProfile?.HasAvatar == true) { <img class="header-avatar" src="/avatars/@headerProfile.Id" alt="" width="32" height="32" /> }
+                        else { <span class="header-avatar header-avatar-empty" aria-hidden="true">@(name.FirstOrDefault().ToString().ToUpperInvariant())</span> }
+                        <span class="account-name">@name</span>
+                    </a>
+                }
+                else
+                {
+                    <a class="header-utility-link desktop-header-action" asp-area="" asp-controller="Account" asp-action="Login" aria-label="Đăng nhập"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#user" /></svg><span>Đăng nhập</span></a>
+                    <a class="header-utility-link" asp-area="" asp-controller="Profile" asp-action="Saved" aria-label="Sản phẩm đã lưu"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#heart" /></svg><span>Đã lưu</span></a>
+                    <a class="header-utility-link" asp-area="" asp-controller="Cart" asp-action="Index" aria-label="Giỏ hàng"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#bag" /></svg><span>Giỏ hàng</span></a>
+                }
+            </div>
+        </div>
+        @if (!inAdmin && !onShopIndex)
+        {
+            <div id="mobile-search-panel" class="mobile-search-panel collapse">
+                <form asp-area="" asp-controller="Shop" asp-action="Index" method="get" role="search" aria-label="Tìm sản phẩm">
+                    <label for="mobile-product-search" class="visually-hidden">Tìm thương hiệu hoặc sản phẩm</label>
+                    <input id="mobile-product-search" class="form-control" name="Search" type="search" enterkeyhint="search" placeholder="Tìm thương hiệu hoặc sản phẩm" />
+                    <button type="submit" class="btn btn-wine" aria-label="Tìm kiếm"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#search" /></svg></button>
+                </form>
+            </div>
+        }
+        @if (onShopIndex)
+        {
+            <nav class="category-nav" aria-label="Danh mục mua sắm"><div class="container category-nav-inner">
+                <a class="category-nav-all" asp-area="" asp-controller="Shop" asp-action="Index">Tất cả sản phẩm</a>
+                <a asp-area="" asp-controller="Shop" asp-action="Index" asp-route-category="Áo">Áo</a>
+                <a asp-area="" asp-controller="Shop" asp-action="Index" asp-route-category="Quần">Quần</a>
+                <a asp-area="" asp-controller="Shop" asp-action="Index" asp-route-category="Đầm/Váy">Váy</a>
+                <a asp-area="" asp-controller="Shop" asp-action="Index" asp-route-category="Set đồ">Set đồ</a>
+                <a asp-area="" asp-controller="Shop" asp-action="Index" asp-route-category="Phụ kiện">Phụ kiện</a>
+            </div></nav>
+        }
+    </header>
+    <div class="@(inAdmin ? "admin-shell" : "storefront-shell")">
+        @if (inAdmin)
+        {
+            <aside class="admin-sidebar offcanvas-lg offcanvas-start" tabindex="-1" id="admin-navigation" aria-labelledby="admin-nav-title">
+                <div class="offcanvas-header"><h2 id="admin-nav-title" class="fs-5 mb-0">Quản lý CoCo</h2><button class="btn-close" type="button" data-bs-dismiss="offcanvas" data-bs-target="#admin-navigation" aria-label="Đóng menu"></button></div>
+                <div class="offcanvas-body"><partial name="_AdminNavigation" /></div>
+            </aside>
+        }
+        <main id="main-content" class="@(inAdmin ? "admin-content" : "container content-wrap")" tabindex="-1">
+            @if (TempData["Message"] is string message) { <div class="alert alert-success mt-3" role="status"><svg class="icon me-2" aria-hidden="true"><use href="/images/icons.svg#check"></use></svg>@message</div> }
+            @if (TempData["Error"] is string error) { <div class="alert alert-danger mt-3" role="alert">@error</div> }
+            @RenderBody()
+        </main>
+    </div>
+    @if (!inAdmin)
+    {
+        <partial name="_FooterNewsletter" />
+        <footer class="site-footer"><div class="container footer-inner">
+            <div class="footer-grid">
+                <details class="footer-group" open>
+                    <summary>MUA SẮM</summary>
+                    <nav aria-label="Mua sắm">
+                        <a asp-area="" asp-controller="Shop" asp-action="Index">Tất cả sản phẩm</a>
+                        <a asp-area="" asp-controller="Shop" asp-action="Index" asp-route-category="Áo">Áo</a>
+                        <a asp-area="" asp-controller="Shop" asp-action="Index" asp-route-category="Quần">Quần</a>
+                        <a asp-area="" asp-controller="Shop" asp-action="Index" asp-route-category="Đầm/Váy">Váy</a>
+                        <a asp-area="" asp-controller="Shop" asp-action="Index" asp-route-category="Set đồ">Set đồ</a>
+                        <a asp-area="" asp-controller="Shop" asp-action="Index" asp-route-category="Phụ kiện">Phụ kiện</a>
+                    </nav>
+                </details>
+                <details class="footer-group" open>
+                    <summary>COCO RETRADE</summary>
+                    <nav aria-label="CoCo ReTrade">
+                        <a asp-area="" asp-controller="About" asp-action="Index">Về CoCo</a>
+                        <a asp-area="" asp-controller="About" asp-action="Contact">Liên hệ</a>
+                        <a asp-area="" asp-controller="About" asp-action="Policies">Chính sách ký gửi</a>
+                        <a asp-area="" asp-controller="About" asp-action="Returns">Chính sách đổi trả</a>
+                        <a asp-area="" asp-controller="About" asp-action="Inspection">Chính sách kiểm định</a>
+                    </nav>
+                </details>
+                <section class="footer-contact" aria-labelledby="footer-contact-title">
+                    <h2 id="footer-contact-title">Thông tin cửa hàng</h2>
+                    <p class="footer-store-message">Ghé CoCo<br />Tìm điều bạn yêu</p>
+                    <a class="footer-phone" href="tel:0905808679">0905 808 679</a><a class="footer-email" href="mailto:cocoretradekygui@gmail.com">cocoretradekygui@gmail.com</a>
+                    @if (Shipping.CanPickup) { <address>@Shipping.StoreAddress</address> }
+                    <p class="footer-hours">Mở cửa @Shipping.OpeningHour.ToString("00"):@Shipping.OpeningMinute.ToString("00") – @Shipping.ClosingHour.ToString("00"):00</p>
+                </section>
+            </div>
+            <div class="footer-bottom"><a asp-area="" asp-controller="Home" asp-action="Index" class="footer-logo"><img src="~/images/coco-logo.svg" asp-append-version="true" width="80" height="62" alt="CoCo ReTrade" /></a><p>© @DateTime.UtcNow.Year CoCo ReTrade.<br />Thời trang đẹp. Thêm một vòng đời.</p></div>
+        </div></footer>
+    }
+    <partial name="_MobileNavigation" />
+    @if (!signedIn) { <partial name="_AuthModal" /> }
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @if (signedIn) { <script src="~/lib/signalr/signalr.min.js" asp-append-version="true"></script> }
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/motion.js" asp-append-version="true" defer></script>
+    @if (!inAdmin) { <script src="~/js/newsletter.js" asp-append-version="true" defer></script> }
+    @if ((controller == "Profile" && action == "Saved") || (controller == "Listing" && action == "Closet")) { <script src="~/js/product-collections.js" asp-append-version="true"></script> }
+    @if (controller == "About" && (action == "Policies" || action == "Returns" || action == "Inspection")) { <script src="~/js/policy-documents.js" asp-append-version="true"></script> }
+    @if (!signedIn) { <script src="~/js/auth-modal.js" asp-append-version="true"></script> }
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,204 @@
+@model IReadOnlyList<ProductCard>
+@inject CoCoReTrade.Web.Demo.DemoCatalog Demo
+@{
+    ViewData["Title"] = "Trang chủ";
+    ViewData["AddToCartLabel"] = "Thêm vào giỏ hàng";
+    var arrivals = Model.Where(p => p.CoverImageId.HasValue).Take(12).ToArray();
+    var savedIds = ((IEnumerable<Guid>?)ViewBag.FavoriteIds ?? []).ToHashSet();
+    var brands = Model.Select(p => p.Brand)
+        .Where(b => !string.IsNullOrWhiteSpace(b) && !string.Equals(b.Trim(), "No Brand", StringComparison.OrdinalIgnoreCase))
+        .Select(b => b.Trim()).Distinct(StringComparer.OrdinalIgnoreCase).Take(8).ToArray();
+    var brandLogos = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase) {
+        ["Lululemon"] = "lululemon.svg",
+        ["Badgley Mischka"] = "badgley-mischka.svg",
+        ["ALDO"] = "aldo.svg",
+        ["Steve Madden"] = "steve-madden.webp",
+        ["Edikted"] = "edikted.svg"
+    };
+    var categories = new[] {
+        (Value: "Phụ kiện", Label: "Phụ kiện", Image: "category-bags", Url: "/images/coco/coco-category-bags-display.webp", Srcset: "/images/coco/coco-category-bags-display-480.webp 480w, /images/coco/coco-category-bags-display-800.webp 800w, /images/coco/coco-category-bags-display.webp 1440w", Width: 1440, Height: 1440, Alt: "Túi xách với nhiều kiểu dáng được bày cùng giày và phụ kiện"),
+        (Value: "Áo", Label: "Áo", Image: "category-tops", Url: "/images/coco/coco-top-rail.webp", Srcset: "/images/coco/coco-top-rail-480.webp 480w, /images/coco/coco-top-rail-800.webp 800w, /images/coco/coco-top-rail.webp 1080w", Width: 1080, Height: 1440, Alt: "Áo khoác và áo kiểu được sắp xếp trên giá tại CoCo"),
+        (Value: "Quần", Label: "Quần", Image: "category-trousers", Url: "/images/coco/coco-trouser-rail.webp", Srcset: "/images/coco/coco-trouser-rail-480.webp 480w, /images/coco/coco-trouser-rail-800.webp 800w, /images/coco/coco-trouser-rail.webp 1080w", Width: 1080, Height: 1440, Alt: "Quần với nhiều màu sắc được treo trên giá tại CoCo"),
+        (Value: "Đầm/Váy", Label: "Váy", Image: "category-dresses", Url: "/images/coco/coco-dress-rail.webp", Srcset: "/images/coco/coco-dress-rail-480.webp 480w, /images/coco/coco-dress-rail-800.webp 800w, /images/coco/coco-dress-rail.webp 913w", Width: 913, Height: 1197, Alt: "Váy và đầm sáng màu trên giá treo tại CoCo"),
+        (Value: "Set đồ", Label: "Set đồ", Image: "category-sets", Url: "/images/coco/coco-category-sets.webp", Srcset: "/images/coco/coco-category-sets-480.webp 480w, /images/coco/coco-category-sets-800.webp 800w, /images/coco/coco-category-sets.webp 1078w", Width: 1078, Height: 1440, Alt: "Trang phục và các set đồ tông hồng, trắng và đen được phối cùng nhau"),
+        (Value: "", Label: "Tất cả sản phẩm", Image: "wardrobe", Url: "/images/coco/coco-category-all-outfits.webp", Srcset: "/images/coco/coco-category-all-outfits-480.webp 480w, /images/coco/coco-category-all-outfits-800.webp 800w, /images/coco/coco-category-all-outfits.webp 1080w", Width: 1080, Height: 1080, Alt: "Áo thun và áo sơ mi với nhiều kiểu dáng, màu sắc")
+    };
+}
+<div class="sign-home">
+    <section class="sign-hero sign-hero-black-friday sign-hero-store" aria-labelledby="sign-hero-title" data-campaign-video>
+        <div class="sign-hero-media">
+            <a class="campaign-video-link" asp-controller="Shop" asp-action="Index" aria-label="Khám phá cửa hàng CoCo">
+                <video class="sign-hero-video" width="5070" height="2160" autoplay muted loop playsinline preload="none"
+                       poster="/media/editorial/coco-banner-1120-poster.jpg"
+                       data-desktop-src="/media/editorial/coco-banner-1120.mp4"
+                       data-mobile-src="/media/editorial/coco-banner-1120-mobile.mp4"
+                       aria-label="Khám phá không gian cửa hàng, trang phục và phụ kiện tại CoCo">
+                    Ghé CoCo, tìm món hợp gu. Khám phá trang phục và phụ kiện tại cửa hàng hoặc trên trang Mua sắm.
+                </video>
+            </a>
+            <button class="campaign-video-toggle" type="button" aria-label="Tạm dừng video" hidden>
+                <span class="campaign-video-symbol" data-video-symbol aria-hidden="true">Ⅱ</span>
+                <span class="visually-hidden" data-video-label>Tạm dừng video</span>
+            </button>
+        </div>
+        <div class="sign-hero-copy sign-hero-overlay">
+            <h1 id="sign-hero-title">GHÉ COCO, TÌM MÓN HỢP GU</h1>
+            <p>Dạo một vòng cửa hàng, khám phá trang phục và phụ kiện theo phong cách riêng. Ghé tiệm hoặc chọn món ngay trên CoCo ReTrade.</p>
+            <a class="sign-button" asp-controller="Shop" asp-action="Index">Mua sắm ngay</a>
+        </div>
+    </section>
+
+    @if (arrivals.Length > 0)
+    {
+        <section class="sign-arrivals" aria-labelledby="sign-arrivals-title" data-editorial-carousel>
+            <h2 class="sign-section-title" id="sign-arrivals-title">VỪA CẬP BẾN COCO</h2>
+            <div class="sign-rail-wrap">
+                <div class="editorial-track sign-product-track" tabindex="0" aria-label="Sản phẩm vừa cập bến CoCo">
+                    @foreach (var p in arrivals)
+                    {
+                        var saved = savedIds.Contains(p.Id);
+                        var demoProduct = Demo.Find(p.Sku);
+                        <article class="sign-product">
+                            <div class="sign-product-media">
+                                <a asp-controller="Shop" asp-action="Details" asp-route-id="@p.Id" aria-label="Xem @p.Name">
+                                    <partial name="_ProductCardPhoto" model="p" />
+                                </a>
+                                @if (demoProduct is not null) { <span class="sign-demo-label">Dữ liệu thử</span> }
+                                @if (User.Identity?.IsAuthenticated == true)
+                                {
+                                    <form asp-controller="Social" asp-action="Favorite" method="post" class="sign-favorite" data-favorite data-product-name="@p.Name">
+                                        <input type="hidden" name="productId" value="@p.Id" />
+                                        <input type="hidden" name="selected" value="@(!saved ? "true" : "false")" />
+                                        <input type="hidden" name="returnUrl" value="@(Context.Request.Path + Context.Request.QueryString)" />
+                                        <button class="favorite-button @(saved ? "is-saved" : "")" type="submit" aria-label="@(saved ? "Bỏ lưu" : "Lưu") @p.Name" aria-pressed="@(saved ? "true" : "false")"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path data-favorite-shape fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z" /></svg></button>
+                                    </form>
+                                }
+                                else
+                                {
+                                    <a class="favorite-button sign-favorite" asp-controller="Account" asp-action="Login" aria-label="Đăng nhập để lưu @p.Name"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#heart" /></svg></a>
+                                }
+                            </div>
+                            <div class="sign-product-copy">
+                                <p class="sign-product-brand">@p.Brand</p>
+                                <h3><a asp-controller="Shop" asp-action="Details" asp-route-id="@p.Id">@p.Name</a></h3>
+                                <p class="sign-product-size">Cỡ @UiText.For(p.Size) · Tình trạng @p.ConditionPercent%</p>
+                                <p class="sign-product-price">@p.AskingPrice.ToString("N0") ₫
+                                    @if (p.SellerId == User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value)
+                                    { <span class="status-pill product-sale-status @p.Status">@(p.Status == ProductStatus.Active ? "Chưa bán" : UiText.For(p.Status))</span> }
+                                </p>
+                            </div>
+                            <partial name="_ProductPurchaseActions" model="p" />
+                        </article>
+                    }
+                </div>
+                <div class="sign-rail-controls">
+                    <button type="button" data-editorial-step="-1" aria-label="Xem sản phẩm trước"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#arrow-right" /></svg></button>
+                    <span class="visually-hidden" data-editorial-position aria-live="polite"></span>
+                    <button type="button" data-editorial-step="1" aria-label="Xem sản phẩm tiếp theo"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#arrow-right" /></svg></button>
+                </div>
+            </div>
+            <a class="sign-button" asp-controller="Shop" asp-action="Index">Xem tất cả sản phẩm</a>
+        </section>
+    }
+
+    @if (brands.Length > 0)
+    {
+        <section class="sign-brands" aria-labelledby="sign-brands-title" data-brand-marquee>
+            <h2 class="sign-section-title" id="sign-brands-title">THƯƠNG HIỆU TẠI COCO</h2>
+            <div class="sign-brand-viewport" id="sign-brand-viewport">
+                <div class="sign-brand-track">
+                    <ul class="sign-brand-strip">
+                        @foreach (var brand in brands)
+                        {
+                            <li>
+                                <a asp-controller="Shop" asp-action="Index" asp-route-brand="@brand" aria-label="Mua sắm @brand">
+                                    @if (brandLogos.TryGetValue(brand, out var logo))
+                                    {
+                                        <img src="~/images/brands/@logo" asp-append-version="true" width="240" height="64" alt="@brand" loading="lazy" decoding="async" />
+                                    }
+                                    else
+                                    {
+                                        <span>@brand</span>
+                                    }
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </section>
+    }
+
+    <section class="sign-categories" aria-labelledby="sign-categories-title">
+        <h2 class="sign-section-title" id="sign-categories-title">KHÁM PHÁ THEO DANH MỤC</h2>
+        <div class="sign-category-grid">
+            @foreach (var category in categories)
+            {
+                <a class="sign-category sign-category-@category.Image" asp-controller="Shop" asp-action="Index" asp-route-category="@category.Value">
+                    <img src="@category.Url" srcset="@category.Srcset" sizes="(max-width: 767px) 50vw, 33vw" alt="@category.Alt" width="@category.Width" height="@category.Height" loading="lazy" />
+                    <h3>@category.Label</h3>
+                </a>
+            }
+        </div>
+    </section>
+
+    <div class="sign-lower">
+        <section class="sign-split sign-sell" aria-labelledby="sign-sell-title">
+            <div class="sign-sell-media"><img src="/images/coco/coco-white-rail.webp?v=452a9e5a9fea" srcset="/images/coco/coco-white-rail-480.webp?v=452a9e5a9fea 480w, /images/coco/coco-white-rail-800.webp?v=452a9e5a9fea 800w, /images/coco/coco-white-rail.webp?v=452a9e5a9fea 1536w" sizes="(max-width: 767px) 100vw, 50vw" width="1536" height="1568" alt="Các mẫu áo và váy được treo trên giá tại CoCo" loading="lazy" /></div>
+            <div class="sign-split-copy">
+                <h2 id="sign-sell-title">KÝ GỬI NHỮNG MÓN BẠN ÍT DÙNG</h2>
+                <p>CoCo giúp bạn tìm chủ mới cho những món đồ còn đẹp mà bạn ít dùng. Để bắt đầu, bạn gửi ảnh thật kèm thông tin và giá mong muốn. CoCo duyệt sơ bộ qua ảnh, kiểm định khi nhận đồ và đăng bán những món đạt yêu cầu. Bạn có thể theo dõi tình trạng ký gửi trong tủ đồ và xem tiền bán hàng trong ví khi đơn đã hoàn tất và CoCo đã thu tiền.</p>
+                <a class="sign-button" asp-controller="Home" asp-action="Clearout">Ký gửi cùng CoCo <span aria-hidden="true">→</span></a>
+            </div>
+        </section>
+
+    </div>
+        <div class="sign-details-grid">
+            <section class="sign-benefits" aria-labelledby="sign-benefits-title">
+                <div class="sign-feedback-heading"><h2 class="sign-column-title" id="sign-benefits-title">LÝ DO CHỌN COCO</h2><p class="sign-feedback-notice">MUA SẮM DỄ DÀNG, KÝ GỬI AN TÂM</p></div>
+                <div class="sign-benefit-list">
+                <article class="sign-benefit">
+                    <img src="/images/coco/coco-tops-flatlay.webp" srcset="/images/coco/coco-tops-flatlay-480.webp 480w, /images/coco/coco-tops-flatlay-800.webp 800w, /images/coco/coco-tops-flatlay.webp 1080w" sizes="(max-width: 479px) 88px, (max-width: 1100px) 120px, 190px" width="1080" height="1440" alt="Áo được trải phẳng để nhìn rõ kiểu dáng và tem nhãn" loading="lazy" />
+                    <div><h3>THÔNG TIN SẢN PHẨM RÕ RÀNG</h3><p>Xem ảnh thật, kích cỡ và tình trạng để chọn món phù hợp.</p><a class="sign-text-link" asp-controller="About" asp-action="Inspection">Tìm hiểu quy trình kiểm tra <span aria-hidden="true">→</span></a></div>
+                </article>
+                <article class="sign-benefit">
+                    <img src="/images/coco/coco-shoppers-accessories.webp" srcset="/images/coco/coco-shoppers-accessories-480.webp 480w, /images/coco/coco-shoppers-accessories-800.webp 800w, /images/coco/coco-shoppers-accessories.webp 1080w" sizes="(max-width: 479px) 88px, (max-width: 1100px) 120px, 190px" width="1080" height="1440" alt="Khách lựa chọn tại khu phụ kiện của CoCo" loading="lazy" />
+                    <div><h3>DỄ TÌM MÓN HỢP GU</h3><p>Lọc theo danh mục, thương hiệu, kích cỡ hoặc mức giá. Lưu món yêu thích để xem lại.</p><a class="sign-text-link" asp-controller="Shop" asp-action="Index">Khám phá sản phẩm <span aria-hidden="true">→</span></a></div>
+                </article>
+                <article class="sign-benefit">
+                    <img src="/images/coco/coco-folded-trousers.webp" srcset="/images/coco/coco-folded-trousers-480.webp 480w, /images/coco/coco-folded-trousers-800.webp 800w, /images/coco/coco-folded-trousers.webp 1080w" sizes="(max-width: 479px) 88px, (max-width: 1100px) 120px, 190px" width="1080" height="1440" alt="Quần jeans và quần vải được gấp gọn theo từng chồng" loading="lazy" />
+                    <div><h3>THÊM MỘT VÒNG ĐỜI CHO MÓN ĐỒ</h3><p>Ký gửi giúp món đồ của bạn đến tay người cần và tiếp tục được sử dụng.</p><a class="sign-text-link" asp-controller="About" asp-action="Policies">Tìm hiểu về ký gửi <span aria-hidden="true">→</span></a></div>
+                </article>
+                </div>
+            </section>
+
+            <section class="sign-journey sign-feedback-section" aria-labelledby="sign-feedback-title" aria-describedby="sign-feedback-notice">
+                <div class="sign-feedback-heading">
+                    <h2 class="sign-column-title" id="sign-feedback-title">KHÁCH HÀNG NGHĨ GÌ VỀ COCO</h2>
+                    <p class="sign-feedback-notice" id="sign-feedback-notice">NHỮNG LỜI NHẮN GỬI ĐẾN COCO</p>
+                </div>
+                <div class="sign-feedback-list">
+                <article class="sign-journey-card sign-feedback-card">
+                    <img src="/images/coco/coco-visitors-together.webp?v=5578bffeb71a" srcset="/images/coco/coco-visitors-together-480.webp?v=5578bffeb71a 479w, /images/coco/coco-visitors-together-800.webp?v=5578bffeb71a 800w, /images/coco/coco-visitors-together.webp?v=5578bffeb71a 1308w" sizes="(max-width: 479px) 112px, (max-width: 1100px) 160px, 220px" width="1308" height="1203" alt="Khách ghé mua sắm tại CoCo với túi hàng của cửa tiệm" loading="lazy" />
+                    <div>
+                        <h3>Minh Khang và Đức Anh</h3>
+                        <p>“Tụi em thích cảm giác được trực tiếp khám phá và lựa chọn những món đồ hợp với phong cách riêng. CoCo có nhiều sản phẩm thú vị, mức giá dễ tiếp cận. Một trải nghiệm mua sắm rất đáng nhớ!”</p>
+                        <a class="sign-text-link" asp-controller="Shop" asp-action="Index">Khám phá sản phẩm <span aria-hidden="true">→</span></a>
+                    </div>
+                </article>
+                <article class="sign-journey-card sign-journey-reverse sign-feedback-card">
+                    <img src="/images/coco/coco-visitor-bag.webp?v=b9da412bd7fa" srcset="/images/coco/coco-visitor-bag-480.webp?v=b9da412bd7fa 480w, /images/coco/coco-visitor-bag-800.webp?v=b9da412bd7fa 800w, /images/coco/coco-visitor-bag.webp?v=b9da412bd7fa 1341w" sizes="(max-width: 479px) 112px, (max-width: 1100px) 160px, 220px" width="1341" height="1173" alt="Khách cầm túi mua hàng CoCo tại khu phụ kiện của cửa hàng" loading="lazy" />
+                    <div>
+                        <h3>Chị Marry</h3>
+                        <p>“Có những món đồ mình không còn sử dụng thường xuyên nhưng vẫn còn rất tốt. Mình chọn ký gửi tại CoCo để được hỗ trợ từ khâu tiếp nhận, kiểm tra đến đăng bán và theo dõi giao dịch. Cảm thấy rất yên tâm khi những món đồ của mình có thêm cơ hội tìm được chủ nhân mới.”</p>
+                        <a class="sign-text-link" asp-controller="Home" asp-action="Clearout">Ký gửi ngay <span aria-hidden="true">→</span></a>
+                    </div>
+                </article>
+                </div>
+            </section>
+        </div>
+    <partial name="_CoCoCommunity" />
+</div>
+@section Scripts {
+    <script src="~/js/home-community.js" asp-append-version="true" defer></script>
+}

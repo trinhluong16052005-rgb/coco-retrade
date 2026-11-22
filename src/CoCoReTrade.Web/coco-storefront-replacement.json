@@ -1,0 +1,32 @@
+{
+  "source": "D:\\DỰ ÁN\\ẢNH COCO\\ANH COCO  Ở NGOÀI.jpg",
+  "sourceDimensions": [
+    1440,
+    1080
+  ],
+  "usage": "Views/About/Index.cshtml .coco-story-panorama",
+  "description": "Actual CoCo storefront supplied by user",
+  "processing": "Original preserved; native-resolution WebP quality 88 and responsive Lanczos WebP quality 86; no crop or stretching",
+  "assets": [
+    {
+      "url": "/images/coco/originals/coco-storefront-outside.jpg",
+      "bytes": 322543,
+      "sha256": "156ae3886de39f8535c6461325856fcf8e5ce527ce64cb84a1fa9cafa5c7e81c"
+    },
+    {
+      "url": "/images/coco/coco-storefront-outside.webp",
+      "bytes": 423138,
+      "sha256": "c853bc5635a0a3dafd8c4e756f944988ad110d2b6a126d7408d4771619a564a9"
+    },
+    {
+      "url": "/images/coco/coco-storefront-outside-800.webp",
+      "bytes": 146482,
+      "sha256": "fba813cc012528e87702938b7997bc0c5336e3fbce3ae9f1bc78753b13651816"
+    },
+    {
+      "url": "/images/coco/coco-storefront-outside-480.webp",
+      "bytes": 58088,
+      "sha256": "e2293a6fc2f336750cf9a225767550cea8c12d4698512e7655de3eaf101fc8f8"
+    }
+  ]
+}

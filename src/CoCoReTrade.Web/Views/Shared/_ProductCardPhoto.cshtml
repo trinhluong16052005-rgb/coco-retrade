@@ -1,0 +1,8 @@
+@model ProductCard
+@if (Model.CoverImageId is Guid cover)
+{
+    var secondPhoto = Model.SecondaryImageId is Guid secondary && secondary != cover ? $"/images/{secondary}" : null;
+    <div class="product-image-frame" data-secondary-src="@secondPhoto">
+        <img class="product-image-cover" src="/images/@cover" alt="@Model.Name" width="450" height="600" loading="lazy" decoding="async" />
+    </div>
+}

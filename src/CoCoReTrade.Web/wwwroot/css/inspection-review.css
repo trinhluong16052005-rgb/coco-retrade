@@ -1,0 +1,224 @@
+/* Inspection/Review only; permission gates and POST forms remain server rendered. */
+.admin-workspace #main-content .inspection-review-page {
+    --inspection-pink:#ff3366;
+    --inspection-wash:#fff0f4;
+    --inspection-divider:#f1dbe2;
+    width:100%;
+    max-width:1440px;
+    margin-inline:auto;
+    padding-top:20px;
+    color:#262126;
+    font-family:"Open Sans",sans-serif;
+    container:inspection-review / inline-size;
+}
+.inspection-review-page :is(h1,h2) { font-family:"Playfair Display",Georgia,serif; font-weight:600; line-height:1.3; }
+.inspection-review-page .admin-page-header { gap:16px; margin:0 0 20px; }
+.inspection-review-page .admin-page-header h1 { margin:4px 0 8px; font-size:clamp(30px,3vw,42px); overflow-wrap:anywhere; }
+.inspection-review-page .admin-page-header .subtitle { font-size:.875rem; line-height:1.6; }
+.inspection-review-page .inspection-details-grid { display:grid; gap:16px; }
+.admin-workspace #main-content .inspection-review-page .panel { min-width:0; margin:0; padding:20px; border:1px solid #000; border-radius:10px; background:#fff; box-shadow:none; }
+.admin-workspace #main-content .inspection-review-page :is(.inspection-details-grid > .panel,.panel.inspection-step-two) {
+    padding:clamp(14px,1.5vw,20px);
+}
+.inspection-review-page .inspection-photo-panel { display:flex; flex-direction:column; }
+.inspection-review-page .inspection-panel-heading { display:flex; align-items:flex-start; gap:12px; margin-bottom:14px; }
+.inspection-review-page .inspection-panel-heading h2 {
+    margin:0;
+    color:var(--inspection-pink);
+    font:700 clamp(1.1875rem,1.65vw,1.375rem)/1.35 "Playfair Display",Georgia,serif;
+    letter-spacing:-.015em;
+}
+.inspection-review-page .inspection-panel-heading p { margin:4px 0 0; color:#655d62; font-size:.8125rem; line-height:1.55; }
+.inspection-review-page .inspection-heading-icon {
+    display:grid;
+    flex:0 0 36px;
+    place-items:center;
+    height:36px;
+    border-radius:50%;
+    background:#fce0e8;
+    color:#a21c41;
+}
+.inspection-review-page .inspection-heading-icon .icon { width:19px; height:19px; }
+.inspection-review-page .inspection-gallery {
+    display:grid;
+    grid-template-columns:minmax(0,1fr) clamp(62px,6vw,84px);
+    grid-template-rows:minmax(0,1fr);
+    gap:10px;
+    height:clamp(216px,65vw,288px);
+    min-width:0;
+}
+.inspection-review-page .inspection-main-photo { display:block; width:100%; height:100%; min-width:0; min-height:0; object-fit:contain; background:#f5f3f4; border-radius:8px; }
+.inspection-review-page .inspection-thumbnails { display:flex; flex-direction:column; gap:8px; min-height:0; padding:1px; overflow-y:auto; scrollbar-width:thin; }
+.inspection-review-page .inspection-thumbnail-item { flex:0 0 auto; min-width:0; }
+.inspection-review-page .inspection-thumbnail { display:block; width:100%; height:clamp(58px,5.5vw,76px); padding:0; overflow:hidden; border:1px solid #eaeaea; border-radius:8px; background:#fff; }
+.inspection-review-page .inspection-thumbnail.is-active { border:2px solid var(--inspection-pink); }
+.inspection-review-page .inspection-thumbnail img { display:block; width:100%; height:100%; object-fit:cover; }
+.inspection-review-page .inspection-cover-form { margin-top:4px; }
+.inspection-review-page .inspection-cover-form .btn { width:100%; min-height:32px; padding:4px 2px; font-size:.6875rem; line-height:1.5; }
+.inspection-review-page .inspection-photo-empty { padding:36px 12px; text-align:center; color:#6b6066; }
+.inspection-review-page .inspection-codes { margin-top:10px; }
+.inspection-review-page .inspection-code-strip {
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    margin:0;
+    padding-block:8px;
+    border-radius:8px;
+    background:var(--inspection-wash);
+    text-align:center;
+}
+.inspection-review-page .inspection-code-strip > div { min-width:0; padding-inline:8px; }
+.inspection-review-page .inspection-code-strip > div + div { border-inline-start:1px solid #e9bac7; }
+.inspection-review-page .inspection-code-strip dt { font-size:.75rem; font-weight:500; color:#655d62; }
+.inspection-review-page .inspection-code-strip dd { margin:3px 0 0; font-size:.875rem; font-weight:700; overflow-wrap:anywhere; }
+.inspection-review-page .inspection-print-label { width:100%; margin-top:8px; }
+.inspection-review-page .spec-row { display:flex; justify-content:space-between; align-items:baseline; gap:12px; min-width:0; margin:0; padding:6px 0; border-bottom:1px solid var(--inspection-divider); font-size:.875rem; line-height:1.55; }
+.inspection-review-page .spec-row > span { flex:0 1 42%; color:#655d62; }
+.inspection-review-page .spec-row > strong { min-width:0; max-width:62%; text-align:right; font-weight:600; overflow-wrap:anywhere; }
+.inspection-review-page .spec-row:last-child { border-bottom:0; }
+.inspection-review-page .inspection-seller-description { padding-block:8px; border-bottom:1px solid var(--inspection-divider); font-size:.875rem; line-height:1.55; }
+.inspection-review-page .inspection-seller-description p { margin:3px 0 0; white-space:pre-line; overflow-wrap:anywhere; }
+.admin-workspace #main-content .inspection-review-page .inspection-preliminary { margin-top:20px; padding:0; overflow:hidden; }
+.inspection-review-page .inspection-preliminary-heading { padding:16px 20px; border-bottom:1px solid #000; background:#fff0f4; }
+.inspection-review-page .inspection-preliminary-heading h2 { margin:0 0 4px; font-size:24px; }
+.inspection-review-page .inspection-preliminary-heading p { margin:0; color:#655d62; font-size:.875rem; line-height:1.6; }
+.inspection-review-page .inspection-preliminary-body { padding:18px 20px; }
+.inspection-review-page .inspection-choices { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+.inspection-review-page .inspection-choice { display:flex; align-items:center; justify-content:center; min-height:46px; padding:9px; border:1px solid #000; border-radius:var(--cta-radius); color:#262126; background:#fff; font:600 .9375rem/1.5 "Open Sans",sans-serif; text-align:center; }
+.inspection-review-page .inspection-choice:hover { background:#fff0f4; }
+.inspection-review-page .inspection-choice.is-active { border-color:var(--inspection-pink); background:var(--inspection-pink); color:var(--white); }
+.inspection-review-page .preliminary-action-panel { margin-top:14px; }
+.inspection-review-page .preliminary-action-panel[hidden] { display:none; }
+.inspection-review-page .inspection-approval-note { margin:0; padding:12px 14px; border-radius:8px; background:#fff6f8; color:#65464f; font-size:.875rem; line-height:1.6; }
+.inspection-review-page .form-label { font-family:"Open Sans",sans-serif; font-weight:600; }
+.inspection-review-page :is(.form-control,.form-select) { border-radius:8px; font-family:"Open Sans",sans-serif; }
+.inspection-review-page .preliminary-action-panel textarea { min-height:84px; padding:10px 12px; border:1px solid #b9afb4; font-size:1rem; line-height:1.6; resize:vertical; }
+.inspection-review-page .inspection-submit-row { display:flex; justify-content:flex-end; margin-top:14px; }
+.inspection-review-page .inspection-submit-row .btn { min-height:44px; padding:10px 20px; font-family:"Open Sans",sans-serif; font-weight:600; }
+.inspection-review-page .inspection-submit-row .btn-wine { color:var(--white); background:var(--inspection-pink); border-color:var(--inspection-pink); }
+.inspection-review-page .inspection-later-actions:empty { display:none; }
+.inspection-review-page .inspection-later-actions > :is(form,details,section) { margin-top:20px !important; }
+.inspection-review-page :is(.inspection-choice,.inspection-thumbnail):focus-visible { outline:2px solid #FF3366; outline-offset:3px; }
+.inspection-review-page .inspection-step-two {
+    --inspection-field-height:42px;
+    --inspection-field-border:#b9b2b6;
+    --inspection-step-gap:24px;
+}
+.inspection-step-two .inspection-panel-heading { margin-bottom:16px; }
+.inspection-step-two .inspection-step-columns { display:grid; gap:var(--inspection-step-gap); }
+.inspection-step-two .inspection-fieldset { min-inline-size:0; margin:0; padding:0; border:0; }
+.inspection-step-two .inspection-fieldset + .inspection-fieldset { margin-top:14px; }
+.inspection-step-two .inspection-fieldset > legend {
+    float:none;
+    margin:0 0 10px;
+    color:#000;
+    font:700 1.0625rem/1.4 "Playfair Display",Georgia,serif;
+}
+.inspection-step-two .inspection-fields { display:grid; gap:4px 12px; }
+.inspection-step-two .inspection-fields + .inspection-fields { margin-top:10px; }
+.inspection-step-two .inspection-fields > :is(.inspection-field,[data-listing-size-field]) {
+    display:grid;
+    grid-template-rows:subgrid;
+    grid-row:span 3;
+    min-width:0;
+}
+.inspection-step-two .inspection-fields-pricing { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.inspection-step-two .inspection-condition-field { grid-column:1 / -1; }
+.inspection-step-two .inspection-condition-field .input-group { max-width:10rem; }
+.inspection-step-two .form-label { display:block; align-self:end; margin:0 0 4px; font-size:.875rem; line-height:1.35; }
+.inspection-step-two .inspection-fields .form-label { margin:0; }
+.inspection-step-two :is(.form-control,.form-select,.input-group-text) {
+    min-height:var(--inspection-field-height);
+    padding:8px 10px;
+    border:1px solid var(--inspection-field-border);
+    border-radius:7px;
+    font-size:.875rem;
+    line-height:1.5;
+}
+.inspection-step-two :is(.form-control,.form-select):focus { border-color:var(--inspection-pink); box-shadow:0 0 0 2px #ff336624; }
+.inspection-step-two .form-select { padding-inline-end:32px; background-position:right 10px center; }
+.inspection-step-two .input-group > .form-control { border-start-end-radius:0; border-end-end-radius:0; }
+.inspection-step-two .input-group-text {
+    padding-inline:8px;
+    border-start-start-radius:0;
+    border-end-start-radius:0;
+    background:#faf8f9;
+}
+.inspection-step-two .inspection-price-input { position:relative; min-width:0; }
+.inspection-step-two .vnd-price-preview { left:10px; max-width:calc(100% - 20px); overflow:hidden; font-size:inherit; }
+.inspection-step-two .inspection-step-extra .inspection-field + .inspection-field { margin-top:12px; }
+.inspection-step-two textarea.form-control { min-height:72px; resize:vertical; }
+.inspection-step-two input[type="file"] { padding:0 8px 0 0; line-height:calc(var(--inspection-field-height) - 2px); }
+.inspection-step-two input[type="file"]::file-selector-button {
+    min-height:calc(var(--inspection-field-height) - 2px);
+    margin:0 10px 0 0;
+    padding:0 10px;
+    border-color:#e9bac7;
+    background:#fce0e8;
+    color:#701c34;
+    font-weight:600;
+}
+.inspection-step-two .form-text { display:block; font-size:.75rem; line-height:1.5; }
+.inspection-step-two .photo-preview:empty { display:none; }
+.inspection-step-two .photo-preview img { width:68px; height:76px; border-radius:6px; }
+.inspection-step-two .inspection-passed { display:flex; align-items:center; gap:8px; margin:12px 0 0; padding:0; }
+.inspection-step-two .inspection-passed .form-check-input { flex:0 0 18px; width:18px; height:18px; margin:0; }
+.inspection-step-two .inspection-passed label { min-width:0; padding-block:5px; font-size:.875rem; font-weight:700; cursor:pointer; }
+.inspection-step-two .inspection-step-actions {
+    display:grid;
+    grid-auto-flow:column;
+    grid-auto-columns:minmax(0,1fr);
+    gap:clamp(8px,1.5vw,16px);
+    margin-top:16px;
+    padding-top:14px;
+    border-top:1px solid var(--inspection-divider);
+}
+.inspection-step-two .inspection-step-actions .btn {
+    min-width:0;
+    min-height:44px;
+    padding:10px 8px;
+    font-size:.875rem;
+    font-weight:700;
+    line-height:1.35;
+}
+.inspection-step-two .inspection-step-actions .btn-wine:not(:disabled) { border-color:#d81f4d; background:#d81f4d; color:var(--white); }
+.inspection-step-two .inspection-step-actions .btn-wine:hover:not(:disabled) { border-color:#a91b3c; background:#a91b3c; }
+.inspection-step-two .inspection-step-actions .btn-wine:disabled { border-color:#ecd0d9; background:#f8e1e8; color:#70545e; }
+.inspection-step-two .inspection-step-actions .btn-outline-danger { border-color:#262126; background:#fff; color:#262126; }
+.inspection-step-two .inspection-step-actions .btn-outline-danger:hover { border-color:#b31e43; background:var(--inspection-wash); color:#931835; }
+@container inspection-review (min-width:21rem) {
+    .inspection-step-two .inspection-fields-product { grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); }
+}
+@container inspection-review (min-width:27rem) {
+    .inspection-step-two .inspection-fields-pricing { grid-template-columns:repeat(3,minmax(0,1fr)); }
+    .inspection-step-two .inspection-condition-field { grid-column:auto; }
+}
+@container inspection-review (min-width:48rem) {
+    .inspection-review-page .inspection-details-grid,
+    .inspection-step-two .inspection-step-columns { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    /* Use the dossier height as the reference without letting photo dimensions stretch the row. */
+    .inspection-review-page .inspection-gallery { flex:1 1 0; height:auto; min-height:216px; contain:size; }
+    .inspection-step-two .inspection-step-extra { position:relative; }
+    .inspection-step-two .inspection-step-extra::before {
+        position:absolute;
+        inset-block:0;
+        inset-inline-start:calc(var(--inspection-step-gap) / -2);
+        width:1px;
+        background:var(--inspection-divider);
+        content:"";
+    }
+}
+@media (max-width:575px) {
+    .admin-workspace #main-content .inspection-review-page { padding-top:14px; }
+    .inspection-review-page .admin-page-header { align-items:flex-start; }
+    .admin-workspace #main-content .inspection-review-page .panel { padding:16px; }
+    .inspection-review-page .inspection-gallery { gap:8px; }
+    .inspection-step-two { --inspection-step-gap:14px; --inspection-field-height:44px; }
+    .inspection-step-two :is(.form-control,.form-select) { font-size:1rem; }
+    .inspection-step-two .vnd-price-preview { font-size:1rem; }
+    .admin-workspace #main-content .inspection-review-page .inspection-preliminary { padding:0; }
+    .inspection-review-page .inspection-preliminary-heading,.inspection-review-page .inspection-preliminary-body { padding:14px; }
+    .inspection-review-page .inspection-preliminary-heading h2 { font-size:22px; }
+    .inspection-review-page .inspection-choices { gap:6px; }
+    .inspection-review-page .inspection-choice { min-height:62px; padding:6px; font-size:.8125rem; }
+    .inspection-review-page .inspection-submit-row .btn { width:100%; }
+}

@@ -1,0 +1,89 @@
+@model OrderDto
+@{
+    ViewData["Title"] = "Chi tiết đơn " + Model.OrderCode;
+    string Local(DateTime? value) => value?.AddHours(7).ToString("dd/MM/yyyy HH:mm") ?? "";
+    var confirmed = Model.Timeline?.FirstOrDefault(e => e.Action == "OrderConfirmed")?.CreatedAtUtc;
+    var prepared = Model.Timeline?.FirstOrDefault(e => e.Action == "OrderPrepared")?.CreatedAtUtc;
+    var pickup = Model.Fulfillment == FulfillmentType.Pickup;
+    var cancelled = Model.Status == OrderStatus.Cancelled;
+    var stage = Model.Status == OrderStatus.Completed ? 3 : Model.Status is OrderStatus.Shipping or OrderStatus.ReadyForPickup ? 2 : confirmed.HasValue ? 1 : 0;
+    var status = Model.Status == OrderStatus.Completed ? pickup ? "Đã nhận tại CoCo" : "Giao hàng thành công" : UiText.For(Model.Status);
+    var steps = new (string Label, DateTime? At)[] { ("Đã đặt đơn", Model.CreatedAtUtc), ("CoCo xác nhận", confirmed),
+        (pickup ? "Sẵn sàng tại CoCo" : "Bàn giao vận chuyển", prepared), (pickup ? "Hoàn tất nhận hàng" : "Giao hàng thành công", Model.CompletedAtUtc) };
+}
+<div class="admin-order-page">
+    <header class="admin-order-heading">
+        <a asp-action="Index" class="text-link">← Danh sách đơn hàng</a>
+        <h1>Chi tiết đơn hàng</h1>
+        <p><strong>@Model.OrderCode</strong><span>Đặt lúc @Local(Model.CreatedAtUtc)</span></p>
+    </header>
+    <div class="admin-order-layout">
+        <div class="admin-order-main">
+            <section class="admin-order-card admin-order-product">
+                @if (ViewBag.HasProductImage == true)
+                { <img src="@Url.Action("ProductImage", "Orders", new { area = "", id = Model.Id })" alt="@Model.ProductName" width="144" height="192" /> }
+                else
+                { <div class="admin-order-image-empty" aria-label="Sản phẩm chưa có ảnh"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#bag" /></svg></div> }
+                <div>
+                    <span class="admin-code">@Model.ProductSku</span>
+                    <h2>@Model.ProductName</h2>
+                    <p>Kích cỡ @UiText.For(Model.ProductSize) · Số lượng 1</p>
+                    @if (ViewBag.ProductCondition is int condition) { <p>Độ mới @condition%</p> }
+                    <span class="admin-status admin-status--muted">@status</span>
+                </div>
+            </section>
+            <section class="admin-order-card">
+                <h2>Thông tin người nhận</h2>
+                <dl class="admin-order-facts">
+                    <div><dt>Họ tên</dt><dd>@Model.RecipientName</dd></div>
+                    <div><dt>Điện thoại</dt><dd><a href="tel:@Model.RecipientPhone">@Model.RecipientPhone</a></dd></div>
+                    <div class="admin-order-wide"><dt>@(pickup ? "Địa chỉ nhận tại CoCo" : "Địa chỉ giao hàng")</dt><dd>@(pickup ? Model.PickupAddress : $"{Model.StreetAddress}, {Model.Ward}, {Model.Province}")</dd></div>
+                </dl>
+            </section>
+            <section class="admin-order-card">
+                <h2>Giao hàng và nhận hàng</h2>
+                <dl class="admin-order-facts">
+                    <div><dt>Hình thức</dt><dd>@UiText.For(Model.Fulfillment)</dd></div>
+                    <div><dt>Phí vận chuyển</dt><dd>@Model.ShippingFee.ToString("N0") VNĐ</dd></div>
+                    @if (Model.PickupAtUtc.HasValue) { <div><dt>Giờ hẹn nhận</dt><dd>@Local(Model.PickupAtUtc) (giờ Việt Nam)</dd></div> }
+                    @if (Model.PickupDeadlineAtUtc.HasValue) { <div><dt>Hạn nhận hàng</dt><dd>@Local(Model.PickupDeadlineAtUtc) (giờ Việt Nam)</dd></div> }
+                    @if (Model.PreferredDeliveryWindow.HasValue) { <div><dt>Khung giờ giao</dt><dd>@UiText.For(Model.PreferredDeliveryWindow.Value)</dd></div> }
+                    @if (!string.IsNullOrWhiteSpace(Model.TrackingCode)) { <div><dt>Mã vận chuyển</dt><dd>@Model.TrackingCode</dd></div> }
+                    @if (!string.IsNullOrWhiteSpace(Model.DeliveryNote)) { <div class="admin-order-wide"><dt>Ghi chú giao hàng</dt><dd>@Model.DeliveryNote</dd></div> }
+                </dl>
+            </section>
+            <section class="admin-order-card">
+                <h2>Thanh toán và đối soát</h2>
+                <dl class="admin-order-money">
+                    <div><dt>Trạng thái thanh toán</dt><dd>@UiText.For(Model.PaymentStatus)</dd></div>
+                    <div><dt>Tiền hàng trước giảm giá</dt><dd>@Model.MerchandisePrice.ToString("N0") VNĐ</dd></div>
+                    <div><dt>Phí vận chuyển</dt><dd>@Model.ShippingFee.ToString("N0") VNĐ</dd></div>
+                    @if (Model.DiscountAmount > 0) { <div><dt>Mã @Model.DiscountCode</dt><dd>−@Model.DiscountAmount.ToString("N0") VNĐ</dd></div> }
+                    <div class="admin-order-total"><dt>Tổng thanh toán</dt><dd>@Model.TotalAmount.ToString("N0") VNĐ</dd></div>
+                    <div><dt>Người ký gửi nhận</dt><dd>@((Model.MerchandisePrice - Model.CommissionAmount).ToString("N0")) VNĐ</dd></div>
+                    <div class="admin-order-commission"><dt>Hoa hồng CoCo thực nhận</dt><dd>@((Model.CommissionAmount - Model.DiscountAmount).ToString("N0")) VNĐ</dd></div>
+                    @if (!string.IsNullOrWhiteSpace(Model.PaymentReference)) { <div><dt>Tham chiếu thanh toán</dt><dd>@Model.PaymentReference</dd></div> }
+                    @if (Model.PaidAtUtc.HasValue) { <div><dt>Đã nhận tiền lúc</dt><dd>@Local(Model.PaidAtUtc)</dd></div> }
+                </dl>
+            </section>
+        </div>
+        <aside class="admin-order-side">
+            <section class="admin-order-card">
+                <h2>Xử lý đơn hàng</h2>
+                <p class="admin-order-current-status">@status</p>
+                @if (cancelled) { <p class="small mb-3">Đơn đã hủy lúc @Local(Model.CancelledAtUtc).</p> }
+                <ol class="admin-order-progress">
+                    @for (var i = 0; i < steps.Length; i++)
+                    {
+                        var step = steps[i];
+                        <li class="@(!cancelled && i <= stage ? "is-done" : "")">
+                            <span class="admin-order-step" aria-hidden="true">@(i + 1)</span>
+                            <div><strong>@step.Label</strong>@if (step.At is DateTime at) { <time datetime="@at.ToString("o")">@Local(at)</time> }</div>
+                        </li>
+                    }
+                </ol>
+                <div class="admin-order-actions"><partial name="_OrderProcessing" model="Model" /></div>
+            </section>
+        </aside>
+    </div>
+</div>

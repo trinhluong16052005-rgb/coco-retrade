@@ -1,0 +1,16 @@
+@model IReadOnlyList<ProductCard>
+@{ ViewData["Title"] = "Tủ đồ của tôi"; ViewBag.IsCloset = true; ViewBag.ProductSelection = "closet"; }
+<div class="d-flex justify-content-between align-items-end gap-3 mt-4 mb-4"><div><div class="eyebrow">Không gian ký gửi</div><h1 class="page-title mt-1 mb-0">Tủ đồ của tôi</h1></div><a class="btn btn-wine" asp-action="Create">+ Đăng món mới</a></div>
+<section class="product-collection closet-products" data-product-collection="closet" aria-label="Danh sách món đồ ký gửi">
+    <div class="collection-summary"><span><strong data-collection-count>@Model.Count</strong> món đồ</span><span><strong data-status-count="PendingApproval">@Model.Count(x => x.Status == ProductStatus.PendingApproval)</strong> chờ duyệt</span><span><strong data-status-count="Active">@Model.Count(x => x.Status == ProductStatus.Active)</strong> đang bán</span><span><strong data-status-count="Rejected">@Model.Count(x => x.Status == ProductStatus.Rejected)</strong> từ chối</span></div>
+    <form id="closet-selection-form" asp-action="RemoveFromCloset" method="post" class="collection-toolbar" data-collection-form hidden="@(Model.Count == 0)">
+        <button type="button" class="btn btn-outline-wine" data-collection-all>Chọn tất cả</button>
+        <button type="button" class="btn btn-light" data-collection-clear disabled>Bỏ chọn</button>
+        <span class="collection-selection-count" data-selection-count>Đã chọn 0</span>
+        <button type="submit" class="btn btn-wine" data-collection-remove disabled>Xóa khỏi tủ</button>
+    </form>
+    <p class="collection-rule" hidden="@(Model.Count == 0)">Chỉ xóa món chưa kiểm định chính thức và chưa đăng bán. Món không đủ điều kiện được khóa chọn.</p>
+    <p class="collection-feedback" data-collection-feedback role="status" aria-live="polite" hidden></p>
+    @if (Model.Count > 0) { <partial name="_ProductGrid" model="Model" /> }
+    <div class="empty-state" data-collection-empty hidden="@(Model.Count > 0)"><h2>Tủ đồ của bạn đang trống</h2><p>Gửi thông tin món đồ để bắt đầu ký gửi cùng CoCo.</p><a class="btn btn-wine" asp-action="Create">Ký gửi món đồ</a></div>
+</section>

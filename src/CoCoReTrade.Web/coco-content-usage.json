@@ -1,0 +1,214 @@
+{
+  "placements": [
+    {
+      "view": "Home/Index.cshtml",
+      "key": "coco-shop-interior",
+      "originalSha256": "a5d21611cea7328882eb4af808da2d668f0857406a8f84c1d92cd36a9651b041",
+      "visualOriginalSha256": "a5d21611cea7328882eb4af808da2d668f0857406a8f84c1d92cd36a9651b041"
+    },
+    {
+      "view": "Home/Index.cshtml",
+      "key": "coco-white-rail",
+      "originalSha256": "9c026c923dbf2394a9864ff3cb87d929f42043ed06a7c44e636a301b20e367a2",
+      "visualOriginalSha256": "9c026c923dbf2394a9864ff3cb87d929f42043ed06a7c44e636a301b20e367a2"
+    },
+    {
+      "view": "Home/Index.cshtml",
+      "key": "coco-tops-flatlay",
+      "originalSha256": "eeaae9d53bf21b9ca8003c5df4c33e3460816aaf36fcaf8f95fd047da4b7a224",
+      "visualOriginalSha256": "eeaae9d53bf21b9ca8003c5df4c33e3460816aaf36fcaf8f95fd047da4b7a224"
+    },
+    {
+      "view": "Home/Index.cshtml",
+      "key": "coco-shoppers-accessories",
+      "originalSha256": "ee268d6a8450105db7db71775dbbe6b66ed16c6a7b3cd8e7ee8a431e492e2a48",
+      "visualOriginalSha256": "ee268d6a8450105db7db71775dbbe6b66ed16c6a7b3cd8e7ee8a431e492e2a48"
+    },
+    {
+      "view": "Home/Index.cshtml",
+      "key": "coco-folded-trousers",
+      "originalSha256": "a4f51950f7448730df59964e97986b4b0dadb83e31a2f8f793d2102841715cb2",
+      "visualOriginalSha256": "a4f51950f7448730df59964e97986b4b0dadb83e31a2f8f793d2102841715cb2"
+    },
+    {
+      "view": "Home/Index.cshtml",
+      "key": "coco-visitors-together",
+      "originalSha256": "8f77d2538858cc16c66526c0c29381ad1d5ff7f74772426e2555068ff74b3af9",
+      "visualOriginalSha256": "8f77d2538858cc16c66526c0c29381ad1d5ff7f74772426e2555068ff74b3af9"
+    },
+    {
+      "view": "Home/Index.cshtml",
+      "key": "coco-visitor-bag",
+      "originalSha256": "420866e7b23bd0320fa319b6ea9ec95b551815aa637c3b120d0709d8bccb9c4a",
+      "visualOriginalSha256": "420866e7b23bd0320fa319b6ea9ec95b551815aa637c3b120d0709d8bccb9c4a"
+    },
+    {
+      "view": "Home/Index.cshtml",
+      "key": "coco-category-bags-display",
+      "originalSha256": "ab8eb781fa63f6cc4cdb2483a72b4bde47f28694966eb33144e8c3054ddfd21f",
+      "visualOriginalSha256": "ab8eb781fa63f6cc4cdb2483a72b4bde47f28694966eb33144e8c3054ddfd21f"
+    },
+    {
+      "view": "Home/Index.cshtml",
+      "key": "coco-top-rail",
+      "originalSha256": "a26ad9148340df51731721e8117d8057c55d815b4e3ab7eeaf177ec519d702e7",
+      "visualOriginalSha256": "a26ad9148340df51731721e8117d8057c55d815b4e3ab7eeaf177ec519d702e7"
+    },
+    {
+      "view": "Home/Index.cshtml",
+      "key": "coco-trouser-rail",
+      "originalSha256": "adf29038e24f3b39a7c1728c281a4361a57f67f1e945cac31f93c199f478d343",
+      "visualOriginalSha256": "adf29038e24f3b39a7c1728c281a4361a57f67f1e945cac31f93c199f478d343"
+    },
+    {
+      "view": "Home/Index.cshtml",
+      "key": "coco-dress-rail",
+      "originalSha256": "734c41a49a0c69f10a4b6eee48f6187359f75b3620416c9c7bdb638c08645b7a",
+      "visualOriginalSha256": "734c41a49a0c69f10a4b6eee48f6187359f75b3620416c9c7bdb638c08645b7a"
+    },
+    {
+      "view": "Home/Index.cshtml",
+      "key": "coco-accessories-selection",
+      "originalSha256": "5787b5c8206486a3eba5f8c031e4aa642075f9e0cd0e36d5d3ab9e3d209a58aa",
+      "visualOriginalSha256": "5787b5c8206486a3eba5f8c031e4aa642075f9e0cd0e36d5d3ab9e3d209a58aa"
+    },
+    {
+      "view": "Home/Index.cshtml",
+      "key": "coco-category-all-outfits",
+      "originalSha256": "343bf0b787d514a642d239538da9201b0c1aa447810cf499a52364edeed6adbf",
+      "visualOriginalSha256": "eeaae9d53bf21b9ca8003c5df4c33e3460816aaf36fcaf8f95fd047da4b7a224"
+    },
+    {
+      "view": "Home/Clearout.cshtml",
+      "key": "coco-shop-interior",
+      "originalSha256": "a5d21611cea7328882eb4af808da2d668f0857406a8f84c1d92cd36a9651b041",
+      "visualOriginalSha256": "a5d21611cea7328882eb4af808da2d668f0857406a8f84c1d92cd36a9651b041"
+    },
+    {
+      "view": "Home/Clearout.cshtml",
+      "key": "coco-consign-step-photos",
+      "originalSha256": "eeaae9d53bf21b9ca8003c5df4c33e3460816aaf36fcaf8f95fd047da4b7a224",
+      "visualOriginalSha256": "eeaae9d53bf21b9ca8003c5df4c33e3460816aaf36fcaf8f95fd047da4b7a224"
+    },
+    {
+      "view": "Home/Clearout.cshtml",
+      "key": "coco-consign-step-check",
+      "originalSha256": "8a892baac27c88ecc08a8ecdae1e662646fc489d3c247db48bbb95e0822d25a1",
+      "visualOriginalSha256": "8a892baac27c88ecc08a8ecdae1e662646fc489d3c247db48bbb95e0822d25a1"
+    },
+    {
+      "view": "Home/Clearout.cshtml",
+      "key": "coco-consign-step-sale",
+      "originalSha256": "a8cae8a550cab728db0a9e83332d0eedbdb35dbac07affb75044c51eb23c5b4e",
+      "visualOriginalSha256": "a8cae8a550cab728db0a9e83332d0eedbdb35dbac07affb75044c51eb23c5b4e"
+    },
+    {
+      "view": "About/Index.cshtml",
+      "key": "coco-shop-browsing",
+      "originalSha256": "043703690cc8ed818f988f4f4e50c79227cffe63a37039266f84e810f42b009f",
+      "visualOriginalSha256": "043703690cc8ed818f988f4f4e50c79227cffe63a37039266f84e810f42b009f"
+    },
+    {
+      "view": "About/Index.cshtml",
+      "key": "coco-fitting-area",
+      "originalSha256": "48d1fe551e6b033f5fc0822e1d5ca6f26aa80ef000a69c3b95761600bcb477e6",
+      "visualOriginalSha256": "48d1fe551e6b033f5fc0822e1d5ca6f26aa80ef000a69c3b95761600bcb477e6"
+    },
+    {
+      "view": "About/Index.cshtml",
+      "key": "coco-shop-exterior",
+      "originalSha256": "156ae3886de39f8535c6461325856fcf8e5ce527ce64cb84a1fa9cafa5c7e81c",
+      "visualOriginalSha256": "156ae3886de39f8535c6461325856fcf8e5ce527ce64cb84a1fa9cafa5c7e81c"
+    },
+    {
+      "view": "About/Index.cshtml",
+      "key": "coco-childrens-day",
+      "originalSha256": "a8b64b9b82b4f060025d9863848173d6b197b6782a69bcc6b6fcf337ad0f80ee",
+      "visualOriginalSha256": "a8b64b9b82b4f060025d9863848173d6b197b6782a69bcc6b6fcf337ad0f80ee"
+    },
+    {
+      "view": "About/Index.cshtml",
+      "key": "coco-mid-autumn",
+      "originalSha256": "98868cfaa40ccd94c52c8fb92764affd0ae4ff20294c66b7f3440b19ade2cb2d",
+      "visualOriginalSha256": "98868cfaa40ccd94c52c8fb92764affd0ae4ff20294c66b7f3440b19ade2cb2d"
+    },
+    {
+      "view": "About/Index.cshtml",
+      "key": "coco-warm-winter",
+      "originalSha256": "d57b30fee04e78e2948aabeeb7699b2e6ec79515216fd3cd0b346fe8913ce344",
+      "visualOriginalSha256": "d57b30fee04e78e2948aabeeb7699b2e6ec79515216fd3cd0b346fe8913ce344"
+    },
+    {
+      "view": "About/Index.cshtml",
+      "key": "coco-dau-gathering",
+      "originalSha256": "7aa72ab79762ebd00c0773161650a9a3641f394b0f5f32d358ea13b4b5315e74",
+      "visualOriginalSha256": "7aa72ab79762ebd00c0773161650a9a3641f394b0f5f32d358ea13b4b5315e74"
+    },
+    {
+      "view": "About/Policies.cshtml",
+      "key": "coco-trouser-rail",
+      "originalSha256": "adf29038e24f3b39a7c1728c281a4361a57f67f1e945cac31f93c199f478d343",
+      "visualOriginalSha256": "adf29038e24f3b39a7c1728c281a4361a57f67f1e945cac31f93c199f478d343"
+    },
+    {
+      "view": "About/Policies.cshtml",
+      "key": "coco-clothing-selection",
+      "originalSha256": "37bec90aaba80eb7fde0606b86eda68bd84aec1ad3c6b89d4e6b9e662ef8b0c1",
+      "visualOriginalSha256": "37bec90aaba80eb7fde0606b86eda68bd84aec1ad3c6b89d4e6b9e662ef8b0c1"
+    },
+    {
+      "view": "About/Returns.cshtml",
+      "key": "coco-busy-clothing",
+      "originalSha256": "3a7430ec93d61ad3740f1ef64c776e442f90c6807562c372527e27f7a075dacb",
+      "visualOriginalSha256": "3a7430ec93d61ad3740f1ef64c776e442f90c6807562c372527e27f7a075dacb"
+    },
+    {
+      "view": "About/Returns.cshtml",
+      "key": "coco-visitor-bag",
+      "originalSha256": "420866e7b23bd0320fa319b6ea9ec95b551815aa637c3b120d0709d8bccb9c4a",
+      "visualOriginalSha256": "420866e7b23bd0320fa319b6ea9ec95b551815aa637c3b120d0709d8bccb9c4a"
+    },
+    {
+      "view": "About/Inspection.cshtml",
+      "key": "coco-accessory-room",
+      "originalSha256": "f9755375807af9d5cfda69bb375e8e06d4a2f629244b9659b1c876361d44a0a7",
+      "visualOriginalSha256": "f9755375807af9d5cfda69bb375e8e06d4a2f629244b9659b1c876361d44a0a7"
+    },
+    {
+      "view": "About/Inspection.cshtml",
+      "key": "coco-folded-trousers",
+      "originalSha256": "a4f51950f7448730df59964e97986b4b0dadb83e31a2f8f793d2102841715cb2",
+      "visualOriginalSha256": "a4f51950f7448730df59964e97986b4b0dadb83e31a2f8f793d2102841715cb2"
+    },
+    {
+      "view": "About/Inspection.cshtml",
+      "key": "coco-shoes-selection",
+      "originalSha256": "c1ec82c931f781930538a35574284b1967b08f3dafb252c3659a78cc5c6f2a5f",
+      "visualOriginalSha256": "c1ec82c931f781930538a35574284b1967b08f3dafb252c3659a78cc5c6f2a5f"
+    },
+    {
+      "view": "About/Inspection.cshtml",
+      "key": "coco-dress-rail",
+      "originalSha256": "734c41a49a0c69f10a4b6eee48f6187359f75b3620416c9c7bdb638c08645b7a",
+      "visualOriginalSha256": "734c41a49a0c69f10a4b6eee48f6187359f75b3620416c9c7bdb638c08645b7a"
+    },
+    {
+      "view": "About/Inspection.cshtml",
+      "key": "coco-top-rail",
+      "originalSha256": "a26ad9148340df51731721e8117d8057c55d815b4e3ab7eeaf177ec519d702e7",
+      "visualOriginalSha256": "a26ad9148340df51731721e8117d8057c55d815b4e3ab7eeaf177ec519d702e7"
+    },
+    {
+      "view": "About/Help.cshtml",
+      "key": "coco-shoppers-accessories",
+      "originalSha256": "ee268d6a8450105db7db71775dbbe6b66ed16c6a7b3cd8e7ee8a431e492e2a48",
+      "visualOriginalSha256": "ee268d6a8450105db7db71775dbbe6b66ed16c6a7b3cd8e7ee8a431e492e2a48"
+    }
+  ],
+  "uniqueOriginals": 26,
+  "uniquePhotographs": 25,
+  "totalPlacements": 34,
+  "maximumUsesPerOriginal": 2,
+  "samePageDuplicates": 1,
+  "reuseException": "User explicitly supplied the flat-lay attachment for the all-products category while requesting other sections be preserved. It also remains in an existing homepage benefit and in the separate consignment steps. Same-photograph aliases are counted together, not hidden as different files."
+}

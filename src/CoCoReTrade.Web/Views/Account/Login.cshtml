@@ -1,0 +1,6 @@
+@model LoginForm
+@{ ViewData["Title"] = "Đăng nhập"; }
+<section class="auth-page" data-auth-page="login">
+    <div class="auth-page-intro"><span>COCO RETRADE</span><h1>Chào bạn, ghé CoCo nhé.</h1><p>Mua sắm, lưu món yêu thích và ký gửi cùng một tài khoản.</p></div>
+    <div class="auth-page-card" data-auth-page-content><partial name="_LoginForm" model="Model" /></div>
+</section>

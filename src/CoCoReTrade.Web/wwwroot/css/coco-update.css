@@ -1,0 +1,49 @@
+/* CoCo: focused refinements for the storefront and category hierarchy. */
+.page-home .sign-home .sign-hero-storefront {
+    display:grid;
+    grid-template-columns:minmax(0,3fr) minmax(0,2fr);
+    aspect-ratio:auto;
+    min-height:0;
+    background:var(--white);
+}
+.page-home .sign-home .sign-hero-storefront::after { display:none; }
+.page-home .sign-home .sign-hero-storefront .sign-hero-media { position:static; min-width:0; align-self:center; }
+.page-home .sign-home .sign-hero-storefront .sign-hero-media img { display:block; width:100%; height:auto; aspect-ratio:4/3; object-fit:contain; }
+.page-home .sign-home .sign-hero-storefront .sign-hero-copy { position:static; align-self:center; width:100%; min-width:0; max-width:none; padding:clamp(24px,3.5vw,60px); }
+.page-home .sign-home .sign-hero-storefront .sign-hero-copy h1 { color:var(--black); font-size:clamp(1.75rem,2.65vw,3rem); line-height:1.25; }
+.page-home .sign-home .sign-hero-storefront .sign-hero-copy p { color:var(--black); }
+.page-home .sign-home .sign-arrivals { padding-bottom:24px; }
+.page-home .sign-home .sign-arrivals > .sign-button { margin-top:24px; }
+.page-home .sign-home .sign-brands { padding-top:16px; }
+.page-home .sign-home .sign-product-copy { padding:6px 4px 4px; row-gap:3px; }
+.page-home .sign-home .sign-product-brand { line-height:1.35; }
+.page-home .sign-home .sign-product h3 { line-height:1.4; }
+.page-home .sign-home .sign-product-size { line-height:1.4; }
+
+/* Use the same shape for both states, with an explicit solid brand fill. */
+.page-home .sign-home .favorite-button.is-saved,
+body.storefront-pages .product-card-favorite .favorite-button.is-saved { color:var(--red); }
+.favorite-button [data-favorite-shape] { fill:none; stroke:currentColor; }
+.favorite-button.is-saved [data-favorite-shape] { fill:currentColor; }
+
+body.storefront-pages.page-shop:not(.page-home):not(.page-clearout) #main-content .product-body { padding-top:8px; }
+body.storefront-pages.page-shop:not(.page-home):not(.page-clearout) #main-content .product-card-brand { min-height:1.35em; line-height:1.35; }
+body.storefront-pages.page-shop:not(.page-home):not(.page-clearout) #main-content .product-body h3 { min-height:2.8em; margin:3px 0; line-height:1.4; }
+body.storefront-pages.page-shop:not(.page-home):not(.page-clearout) #main-content .product-meta { display:flex; flex-wrap:wrap; gap:0 8px; min-height:1.4em; line-height:1.4; }
+body.storefront-pages.page-shop:not(.page-home):not(.page-clearout) #main-content .product-meta > span { margin:0; }
+body.storefront-pages.page-shop:not(.page-home):not(.page-clearout) #main-content .product-body > .product-price-row { padding-top:5px; margin-top:auto !important; }
+body.storefront-pages.page-shop:not(.page-home):not(.page-clearout) #main-content .product-card-actions { margin-top:8px; }
+body.storefront-pages.page-shop:not(.page-home):not(.page-clearout) #main-content .product-body > .product-seller { min-height:28px; margin-top:8px !important; padding-top:0; }
+.category-nav .category-nav-child { gap:6px; padding-inline-start:4px; font-weight:400; }
+@media (max-width:991px) {
+    .page-home .sign-home .sign-hero-storefront { grid-template-columns:minmax(0,1fr); }
+    .page-home .sign-home .sign-hero-storefront .sign-hero-copy { padding:28px 24px 36px; }
+    .page-home .sign-home .sign-hero-storefront .sign-hero-copy h1 { max-width:26ch; font-size:clamp(1.75rem,5vw,2.5rem); }
+    .page-home .sign-home .sign-hero-storefront .sign-hero-copy p { max-width:62ch; }
+}
+@media (max-width:767px) {
+    .page-home .sign-home .sign-arrivals { padding-bottom:20px; }
+    .page-home .sign-home .sign-arrivals > .sign-button { margin-top:20px; }
+    .page-home .sign-home .sign-brands { padding-top:12px; }
+    .page-home .sign-home .sign-product-copy { row-gap:3px; }
+}

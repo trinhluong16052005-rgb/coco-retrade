@@ -1,0 +1,55 @@
+@model IReadOnlyList<AdminProductItem>
+@{ ViewData["Title"] = "Quản lý sản phẩm"; }
+<link rel="stylesheet" href="~/css/admin-bulk.css" asp-append-version="true" />
+<header class="admin-page-header"><div><div class="eyebrow">Danh mục cửa hàng</div><h1 class="page-title">Sản phẩm</h1><p class="subtitle mb-0">Tra cứu ký gửi và theo dõi từng sản phẩm từ lúc tiếp nhận đến khi bán.</p></div><span class="admin-status">@Model.Count kết quả</span></header>
+<form method="get" class="panel admin-toolbar mb-4">
+    <partial name="_DashboardRangeFields" />
+    <div class="flex-grow-1"><label class="form-label" for="productSearch">Tìm sản phẩm</label><input class="form-control" type="search" id="productSearch" name="search" value="@ViewBag.Search" placeholder="Mã chờ duyệt, SKU, tên hoặc người bán" /></div>
+    <div><label class="form-label" for="productStatus">Trạng thái</label><select class="form-select" id="productStatus" name="status"><option value="">Tất cả trạng thái</option>
+        @foreach (var status in Enum.GetValues<ProductStatus>().Where(x => x != ProductStatus.Removed))
+        { <option value="@status" selected="@(ViewBag.Status?.ToString() == status.ToString())">@UiText.For(status)</option> }
+    </select></div>
+    <button class="btn btn-wine" type="submit"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#filter" /></svg> Áp dụng</button>
+    @if (!string.IsNullOrWhiteSpace((string?)ViewBag.Search) || ViewBag.Status is not null) { <a class="btn btn-outline-wine" asp-action="Index">Xóa lọc</a> }
+</form>
+<partial name="_DashboardSelection" />
+<div class="panel mb-5">
+@if (Model.Count == 0)
+{
+    <div class="empty-state border-0"><h2 class="fs-4">Không có sản phẩm phù hợp</h2><p class="mb-0">Thử từ khóa khác hoặc chọn tất cả trạng thái.</p></div>
+}
+else
+{
+    <form id="bulk-product-delete" asp-action="DeleteSelected" method="post" class="admin-bulk-toolbar" data-admin-bulk data-bulk-noun="sản phẩm" data-bulk-confirm="Lịch sử đơn hàng và ký gửi vẫn được giữ nguyên.">
+        <input type="hidden" name="status" value="@ViewBag.Status" /><input type="hidden" name="search" value="@ViewBag.Search" />
+        <span data-bulk-count role="status" aria-live="polite">Đã chọn 0 sản phẩm</span>
+        <button class="admin-trash-button" type="submit" disabled data-bulk-submit aria-label="Xóa sản phẩm đã chọn" title="Xóa sản phẩm đã chọn"><partial name="_AdminTrashIcon" /></button>
+    </form>
+    <div class="table-responsive"><table class="table admin-table admin-product-table align-middle mb-0"><caption class="visually-hidden">Danh sách sản phẩm và trạng thái ký gửi</caption><thead><tr>
+        <th scope="col" class="admin-selection-column"><input class="form-check-input" type="checkbox" data-bulk-all data-bulk-target="bulk-product-delete" aria-label="Chọn tất cả sản phẩm có thể xóa trên trang này" /></th>
+        <th scope="col">Sản phẩm</th><th scope="col">Mã chờ duyệt</th><th scope="col">SKU chính thức</th><th scope="col">Người ký gửi</th><th scope="col" class="admin-product-status-column">Trạng thái</th><th scope="col"><span class="visually-hidden">Thao tác</span></th>
+    </tr></thead><tbody>
+    @foreach (var p in Model)
+    {
+        var canDelete = p.Status != ProductStatus.Reserved;
+        <tr>
+            <td class="admin-selection-column"><input class="form-check-input" type="checkbox" form="bulk-product-delete" name="selectedIds" value="@p.Id" data-bulk-item disabled="@(!canDelete)" aria-label="Chọn @p.Name" /><input form="bulk-product-delete" type="hidden" name="versions[@p.Id]" value="@p.RowVersion" /></td>
+            <td><div class="admin-product-identity">
+                @if (p.CoverImageId.HasValue) { <img class="admin-product-thumb" src="/images/@p.CoverImageId" alt="@p.Name" width="64" height="64" loading="lazy" /> }
+                else { <span class="admin-product-thumb admin-product-thumb--empty" aria-label="Chưa có ảnh"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#image" /></svg></span> }
+                <div><strong>@p.Name</strong><div class="small text-muted">@p.Brand</div></div>
+            </div></td>
+            <td><span class="admin-code">@p.ConsignmentCode</span></td><td><span class="admin-code">@(string.IsNullOrEmpty(p.Sku) ? "Chưa cấp" : p.Sku)</span></td><td>@p.SellerName</td>
+            <td class="admin-product-status-column"><span class="admin-status admin-product-status admin-product-status--@p.Status">@UiText.For(p.Status)</span></td>
+            <td><div class="admin-row-actions"><a class="btn btn-outline-wine btn-sm text-nowrap" asp-area="Admin" asp-controller="Inspection" asp-action="@(p.Status == ProductStatus.PendingApproval ? "Review" : "Details")" asp-route-id="@p.Id">@(p.Status == ProductStatus.PendingApproval ? "Kiểm định" : "Chi tiết") <span aria-hidden="true">→</span></a>
+                <form asp-action="Delete" asp-route-id="@p.Id" method="post" data-admin-single-delete data-delete-name="@p.Name" data-delete-kind="sản phẩm" data-delete-note="Lịch sử đơn hàng và ký gửi vẫn được giữ nguyên.">
+                    <input type="hidden" name="expectedRowVersion" value="@p.RowVersion" /><input type="hidden" name="status" value="@ViewBag.Status" /><input type="hidden" name="search" value="@ViewBag.Search" />
+                    <button type="submit" class="admin-trash-button" disabled="@(!canDelete)" aria-label="Xóa @p.Name" title="@(canDelete ? "Xóa sản phẩm" : "Cần hoàn tất đơn trước khi xóa")"><partial name="_AdminTrashIcon" /></button>
+                </form>
+            </div></td>
+        </tr>
+    }
+    </tbody></table></div>
+}
+</div>
+@section Scripts { <script src="~/js/admin-bulk.js" asp-append-version="true"></script> }

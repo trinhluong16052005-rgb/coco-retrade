@@ -1,0 +1,180 @@
+{
+  "notice": "Thrift+ reference photo; local personal noncommercial coursework demo only. Not a CoCo consigned item. No public republication license verified.",
+  "assets": [
+    {
+      "name": "home-hero",
+      "sourceUrl": "https://a.storyblok.com/f/177537/900x500/739b9c59c8/homepage-slider-sales-6.png",
+      "sourcePage": "https://thrift.plus/",
+      "useRestriction": "Thrift+ reference photo; local personal noncommercial coursework demo only. Not a CoCo consigned item. No public republication license verified.",
+      "maxWidth": 1920
+    },
+    {
+      "name": "home-hero-mobile",
+      "sourceUrl": "https://a.storyblok.com/f/177537/900x500/739b9c59c8/homepage-slider-sales-6.png",
+      "sourcePage": "https://thrift.plus/",
+      "useRestriction": "Thrift+ reference photo; local personal noncommercial coursework demo only. Not a CoCo consigned item. No public republication license verified.",
+      "maxWidth": 800
+    },
+    {
+      "name": "edit-1",
+      "sourceUrl": "https://a.storyblok.com/f/177537/900x500/739b9c59c8/homepage-slider-sales-6.png",
+      "sourcePage": "https://thrift.plus/",
+      "useRestriction": "Thrift+ reference photo; local personal noncommercial coursework demo only. Not a CoCo consigned item. No public republication license verified.",
+      "maxWidth": 1000
+    },
+    {
+      "name": "edit-2",
+      "sourceUrl": "https://a.storyblok.com/f/177537/900x500/6c6f43369c/15.png",
+      "sourcePage": "https://thrift.plus/",
+      "useRestriction": "Thrift+ reference photo; local personal noncommercial coursework demo only. Not a CoCo consigned item. No public republication license verified.",
+      "maxWidth": 1000
+    },
+    {
+      "name": "edit-3",
+      "sourceUrl": "https://a.storyblok.com/f/177537/900x500/9536598133/18.png",
+      "sourcePage": "https://thrift.plus/",
+      "useRestriction": "Thrift+ reference photo; local personal noncommercial coursework demo only. Not a CoCo consigned item. No public republication license verified.",
+      "maxWidth": 1000
+    },
+    {
+      "name": "edit-4",
+      "sourceUrl": "https://a.storyblok.com/f/177537/900x500/e238c58302/14.png",
+      "sourcePage": "https://thrift.plus/",
+      "useRestriction": "Thrift+ reference photo; local personal noncommercial coursework demo only. Not a CoCo consigned item. No public republication license verified.",
+      "maxWidth": 1000
+    },
+    {
+      "name": "edit-5",
+      "sourceUrl": "https://a.storyblok.com/f/177537/900x500/48f58145cd/homepage-slider-sales-4.png",
+      "sourcePage": "https://thrift.plus/",
+      "useRestriction": "Thrift+ reference photo; local personal noncommercial coursework demo only. Not a CoCo consigned item. No public republication license verified.",
+      "maxWidth": 1000
+    },
+    {
+      "name": "edit-6",
+      "sourceUrl": "https://a.storyblok.com/f/177537/900x500/7a6d2e8c99/homepage-slider-sales-1.png",
+      "sourcePage": "https://thrift.plus/",
+      "useRestriction": "Thrift+ reference photo; local personal noncommercial coursework demo only. Not a CoCo consigned item. No public republication license verified.",
+      "maxWidth": 1000
+    },
+    {
+      "name": "category-coats",
+      "sourceUrl": "https://a.storyblok.com/f/177537/1080x1080/4125e0079f/coats.png",
+      "sourcePage": "https://thrift.plus/",
+      "useRestriction": "Thrift+ reference photo; local personal noncommercial coursework demo only. Not a CoCo consigned item. No public republication license verified.",
+      "maxWidth": 600
+    },
+    {
+      "name": "category-dresses",
+      "sourceUrl": "https://a.storyblok.com/f/177537/1080x1080/60eeda8488/dresses.png",
+      "sourcePage": "https://thrift.plus/",
+      "useRestriction": "Thrift+ reference photo; local personal noncommercial coursework demo only. Not a CoCo consigned item. No public republication license verified.",
+      "maxWidth": 600
+    },
+    {
+      "name": "category-knitwear",
+      "sourceUrl": "https://a.storyblok.com/f/177537/1080x1080/7e793afe06/jumpers.png",
+      "sourcePage": "https://thrift.plus/",
+      "useRestriction": "Thrift+ reference photo; local personal noncommercial coursework demo only. Not a CoCo consigned item. No public republication license verified.",
+      "maxWidth": 600
+    },
+    {
+      "name": "category-tops",
+      "sourceUrl": "https://a.storyblok.com/f/177537/1080x1080/2b39bf19b1/tops.png",
+      "sourcePage": "https://thrift.plus/",
+      "useRestriction": "Thrift+ reference photo; local personal noncommercial coursework demo only. Not a CoCo consigned item. No public republication license verified.",
+      "maxWidth": 600
+    },
+    {
+      "name": "category-accessories",
+      "sourceUrl": "https://a.storyblok.com/f/177537/1080x1080/0292615b9d/accessories.png",
+      "sourcePage": "https://thrift.plus/",
+      "useRestriction": "Thrift+ reference photo; local personal noncommercial coursework demo only. Not a CoCo consigned item. No public republication license verified.",
+      "maxWidth": 600
+    },
+    {
+      "name": "category-bags",
+      "sourceUrl": "https://a.storyblok.com/f/177537/1080x1080/70a7d1dc5a/bags.png",
+      "sourcePage": "https://thrift.plus/",
+      "useRestriction": "Thrift+ reference photo; local personal noncommercial coursework demo only. Not a CoCo consigned item. No public republication license verified.",
+      "maxWidth": 600
+    },
+    {
+      "name": "category-trousers",
+      "sourceUrl": "https://a.storyblok.com/f/177537/1080x1080/c3b02b11fc/trousers.png",
+      "sourcePage": "https://thrift.plus/",
+      "useRestriction": "Thrift+ reference photo; local personal noncommercial coursework demo only. Not a CoCo consigned item. No public republication license verified.",
+      "maxWidth": 600
+    },
+    {
+      "name": "category-jeans",
+      "sourceUrl": "https://a.storyblok.com/f/177537/1080x1080/0f01b94bd5/jeans.png",
+      "sourcePage": "https://thrift.plus/",
+      "useRestriction": "Thrift+ reference photo; local personal noncommercial coursework demo only. Not a CoCo consigned item. No public republication license verified.",
+      "maxWidth": 600
+    },
+    {
+      "name": "category-skirts",
+      "sourceUrl": "https://a.storyblok.com/f/177537/1080x1080/018eb1869b/skirts.png",
+      "sourcePage": "https://thrift.plus/",
+      "useRestriction": "Thrift+ reference photo; local personal noncommercial coursework demo only. Not a CoCo consigned item. No public republication license verified.",
+      "maxWidth": 600
+    },
+    {
+      "name": "home-clearout",
+      "sourceUrl": "https://a.storyblok.com/f/177537/992x661/84729bd6ae/untitled-design-18.png",
+      "sourcePage": "https://thrift.plus/clearout",
+      "useRestriction": "Thrift+ reference photo; local personal noncommercial coursework demo only. Not a CoCo consigned item. No public republication license verified.",
+      "maxWidth": 1200
+    },
+    {
+      "name": "home-story",
+      "sourceUrl": "https://a.storyblok.com/f/177537/710x474/df117959e4/thrift-e-commerce-model-1511229596-1-1.png",
+      "sourcePage": "https://thrift.plus/",
+      "useRestriction": "Thrift+ reference photo; local personal noncommercial coursework demo only. Not a CoCo consigned item. No public republication license verified.",
+      "maxWidth": 1200
+    },
+    {
+      "name": "clearout-hero",
+      "sourceUrl": "https://a.storyblok.com/f/177537/992x661/84729bd6ae/untitled-design-18.png",
+      "sourcePage": "https://thrift.plus/clearout",
+      "useRestriction": "Thrift+ reference photo; local personal noncommercial coursework demo only. Not a CoCo consigned item. No public republication license verified.",
+      "maxWidth": 1600
+    },
+    {
+      "name": "clearout-hero-mobile",
+      "sourceUrl": "https://a.storyblok.com/f/177537/992x661/84729bd6ae/untitled-design-18.png",
+      "sourcePage": "https://thrift.plus/clearout",
+      "useRestriction": "Thrift+ reference photo; local personal noncommercial coursework demo only. Not a CoCo consigned item. No public republication license verified.",
+      "maxWidth": 800
+    },
+    {
+      "name": "clearout-shop",
+      "sourceUrl": "https://a.storyblok.com/f/177537/992x661/84729bd6ae/untitled-design-18.png",
+      "sourcePage": "https://thrift.plus/clearout",
+      "useRestriction": "Thrift+ reference photo; local personal noncommercial coursework demo only. Not a CoCo consigned item. No public republication license verified.",
+      "maxWidth": 1200
+    },
+    {
+      "name": "clearout-step-1",
+      "sourceUrl": "https://a.storyblok.com/f/177537/781x781/797f2651fd/pack.png",
+      "sourcePage": "https://thrift.plus/clearout",
+      "useRestriction": "Thrift+ reference photo; local personal noncommercial coursework demo only. Not a CoCo consigned item. No public republication license verified.",
+      "maxWidth": 700
+    },
+    {
+      "name": "clearout-step-2",
+      "sourceUrl": "https://a.storyblok.com/f/177537/400x400/5cc61aa58e/thrift-bag.png",
+      "sourcePage": "https://thrift.plus/clearout",
+      "useRestriction": "Thrift+ reference photo; local personal noncommercial coursework demo only. Not a CoCo consigned item. No public republication license verified.",
+      "maxWidth": 700
+    },
+    {
+      "name": "clearout-step-3",
+      "sourceUrl": "https://a.storyblok.com/f/177537/750x750/80bdf7c3c8/2.png",
+      "sourcePage": "https://thrift.plus/clearout",
+      "useRestriction": "Thrift+ reference photo; local personal noncommercial coursework demo only. Not a CoCo consigned item. No public republication license verified.",
+      "maxWidth": 700
+    }
+  ]
+}

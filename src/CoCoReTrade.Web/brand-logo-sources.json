@@ -1,0 +1,77 @@
+{
+  "reference": "https://signofthetimeslondon.com/",
+  "referenceComponent": "data-logo-marquee-section: continuous horizontal logo strip, not individual logo rotation",
+  "checkedDate": "2026-11-18",
+  "sources": [
+    {
+      "brand": "Lululemon",
+      "slug": "lululemon",
+      "url": "https://corporate.lululemon.com/~/media/Images/L/Lululemon/logo/logo-black-full.svg",
+      "page": "https://corporate.lululemon.com/",
+      "file": "/images/brands/lululemon.svg",
+      "width": 120.0,
+      "height": 17.0,
+      "bytes": 5916,
+      "retrievedUtc": "2026-11-18T12:30:12.881675+00:00",
+      "processing": "Original logo shapes retained; SVG fills normalized to black. Raster logo cropped and stored as lossless WebP."
+    },
+    {
+      "brand": "Badgley Mischka",
+      "slug": "badgley-mischka",
+      "inline": "badgley-mischka-original.svg",
+      "page": "https://badgleymischka.com/",
+      "file": "/images/brands/badgley-mischka.svg",
+      "width": 66.0,
+      "height": 20.0,
+      "bytes": 24442,
+      "retrievedUtc": "2026-11-18T12:30:12.346188+00:00",
+      "processing": "Original logo shapes retained; SVG fills normalized to black. Raster logo cropped and stored as lossless WebP."
+    },
+    {
+      "brand": "ALDO",
+      "slug": "aldo",
+      "inline": "aldo-original.svg",
+      "page": "https://www.aldoshoes.com/",
+      "file": "/images/brands/aldo.svg",
+      "width": 759.28,
+      "height": 137.25,
+      "bytes": 1068,
+      "retrievedUtc": "2026-11-18T12:30:12.344119+00:00",
+      "processing": "Original logo shapes retained; SVG fills normalized to black. Raster logo cropped and stored as lossless WebP."
+    },
+    {
+      "brand": "Steve Madden",
+      "slug": "steve-madden",
+      "url": "https://www.stevemadden.com/cdn/shop/files/SM_logo_SansSerif_BLACK_98eccc71-567f-4994-8bca-f94bf013b0c8.png?v=1717148677&width=760",
+      "page": "https://www.stevemadden.com/",
+      "file": "/images/brands/steve-madden.webp",
+      "width": 760,
+      "height": 116,
+      "bytes": 9506,
+      "retrievedUtc": "2026-11-18T12:30:13.003102+00:00",
+      "processing": "Original logo shapes retained; SVG fills normalized to black. Raster logo cropped and stored as lossless WebP."
+    },
+    {
+      "brand": "Edikted",
+      "slug": "edikted",
+      "url": "https://edikted.com/cdn/shop/files/logo_dark.svg?v=1710521959&width=189",
+      "page": "https://edikted.com/",
+      "file": "/images/brands/edikted.svg",
+      "width": 189.0,
+      "height": 48.0,
+      "bytes": 8675,
+      "retrievedUtc": "2026-11-18T12:30:12.732159+00:00",
+      "processing": "Original logo shapes retained; SVG fills normalized to black. Raster logo cropped and stored as lossless WebP."
+    }
+  ],
+  "textFallbacks": [
+    {
+      "brand": "Michael Kors",
+      "reason": "Public asset requests returned 403; retain plain brand name."
+    },
+    {
+      "brand": "PacSun",
+      "reason": "Public asset requests returned 429/403; retain plain brand name."
+    }
+  ]
+}

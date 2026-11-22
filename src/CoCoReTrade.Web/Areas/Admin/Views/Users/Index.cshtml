@@ -1,0 +1,89 @@
+@model IReadOnlyList<AdminUserRow>
+@{
+    ViewData["Title"] = "Quản lý người dùng";
+    var actorId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+    const int pageSize = 10;
+    var pageCount = Math.Max(1, (Model.Count + pageSize - 1) / pageSize);
+    var pageNumber = int.TryParse(Context.Request.Query["page"].FirstOrDefault(), out var requestedPage) ? Math.Clamp(requestedPage, 1, pageCount) : 1;
+    var visibleUsers = Model.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+}
+<link rel="stylesheet" href="~/css/admin-bulk.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/admin-lists.css" asp-append-version="true" />
+<div class="admin-list-page admin-users-page">
+    <header class="admin-page-header"><div><div class="eyebrow">Tài khoản và phân quyền</div><h1 class="page-title">Người dùng</h1><p class="subtitle mb-0">Quản lý thành viên, kiểm định viên và quyền đăng bán sản phẩm.</p></div><span class="admin-status">@Model.Count kết quả</span></header>
+    <form method="get" class="panel admin-toolbar mb-4">
+        <div class="flex-grow-1"><label for="userSearch" class="form-label">Tìm tài khoản</label><input id="userSearch" class="form-control" type="search" name="search" value="@ViewBag.Search" placeholder="Nhập tên, email hoặc số điện thoại" /></div>
+        <button class="btn btn-wine" type="submit"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#filter" /></svg> Áp dụng</button>
+        @if (!string.IsNullOrWhiteSpace((string?)ViewBag.Search)) { <a class="btn btn-outline-wine" asp-action="Index">Xóa lọc</a> }
+    </form>
+    <p class="admin-list-notice text-muted"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#shield" /></svg> Sau khi thay đổi quyền, người dùng cần đăng nhập lại để áp dụng.</p>
+    <div class="panel admin-list-panel mb-5">
+        @if (Model.Count == 0)
+        {
+            <div class="empty-state border-0"><h2 class="fs-4">Không tìm thấy tài khoản</h2><p class="mb-0">Kiểm tra lại tên, email hoặc số điện thoại bạn vừa nhập.</p></div>
+        }
+        else
+        {
+            <form id="bulk-user-delete" asp-action="DeleteSelected" method="post" class="admin-bulk-toolbar" data-admin-bulk data-bulk-noun="tài khoản" data-bulk-confirm="Xóa vĩnh viễn tài khoản khỏi hệ thống và SQL. Thao tác không thể hoàn tác. Tài khoản còn lịch sử giao dịch hoặc số dư sẽ không bị xóa.">
+                <input type="hidden" name="search" value="@ViewBag.Search" />
+                <span data-bulk-count role="status" aria-live="polite">Đã chọn 0 tài khoản</span>
+                <button class="admin-trash-button" type="submit" disabled data-bulk-submit aria-label="Xóa tài khoản đã chọn" title="Xóa tài khoản đã chọn"><partial name="_AdminTrashIcon" /></button>
+            </form>
+            <div class="table-responsive" role="region" aria-label="Danh sách người dùng, có thể cuộn ngang" tabindex="0">
+                <table class="table admin-table admin-list-table align-middle mb-0"><caption class="visually-hidden">Người dùng, quyền truy cập và trạng thái tài khoản</caption>
+                    <thead><tr><th scope="col" class="admin-selection-column"><input class="form-check-input" type="checkbox" data-bulk-all data-bulk-target="bulk-user-delete" aria-label="Chọn tất cả tài khoản có thể xóa trên trang này" /></th><th scope="col">Người dùng</th><th scope="col">Số điện thoại</th><th scope="col" class="admin-user-role">Vai trò</th><th scope="col">Điểm tín nhiệm</th><th scope="col" class="admin-user-state">Trạng thái</th><th scope="col"><span class="visually-hidden">Thao tác</span></th></tr></thead>
+                    <tbody>
+                        @for (var index = 0; index < visibleUsers.Count; index++)
+                        {
+                            var user = visibleUsers[index];
+                            var canDelete = !user.IsAdmin && user.Id != "system" && user.Id != actorId;
+                            var canManage = !user.IsAdmin && user.Id != actorId;
+                            <tr>
+                                <td class="admin-selection-column"><input class="form-check-input" type="checkbox" form="bulk-user-delete" name="selectedIds" value="@user.Id" data-bulk-item disabled="@(!canDelete)" aria-label="Chọn @user.FullName" /></td>
+                                <td><div class="admin-list-identity"><strong>@user.FullName</strong><small class="text-muted text-break">@user.Email</small></div></td>
+                                <td class="admin-list-phone">@(string.IsNullOrWhiteSpace(user.Phone) ? "—" : user.Phone)</td>
+                                <td class="admin-user-role"><div class="admin-list-badges"><span class="admin-status admin-list-badge admin-list-badge--@(user.IsAdmin ? "admin" : user.IsInspector ? "inspector" : "member")">@(user.IsAdmin ? "Quản trị viên" : user.IsInspector ? "Kiểm định viên" : "Người dùng")</span>@if (user.HasDirectPublishGrant) { <span class="admin-status admin-list-badge admin-list-badge--publish">Được phép đăng bán</span> }</div></td>
+                                <td><strong>@user.TrustScore/100</strong></td>
+                                <td class="admin-user-state"><div class="admin-list-badges">@if (user.TrustSuspended) { <span class="admin-status admin-list-badge admin-list-badge--suspended">Tạm khóa theo điểm</span> }@if (user.IsLocked) { <span class="admin-status admin-list-badge admin-list-badge--locked">Đã khóa tài khoản</span> }@if (!user.TrustSuspended && !user.IsLocked) { <span class="admin-status admin-list-badge admin-list-badge--active">Đang hoạt động</span> }</div></td>
+                                <td><div class="admin-row-actions">
+                                    @if (canManage) { <button class="btn btn-outline-wine btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#admin-user-manage-@index">Quản lý</button> }
+                                    <form asp-action="Delete" method="post" data-admin-single-delete data-delete-name="@user.FullName" data-delete-kind="tài khoản" data-delete-note="Xóa vĩnh viễn tài khoản khỏi hệ thống và SQL. Thao tác không thể hoàn tác. Tài khoản còn lịch sử giao dịch hoặc số dư sẽ không bị xóa."><input type="hidden" name="id" value="@user.Id" /><input type="hidden" name="search" value="@ViewBag.Search" /><button class="admin-trash-button" type="submit" disabled="@(!canDelete)" aria-label="Xóa @user.FullName" title="@(canDelete ? "Xóa tài khoản" : "Tài khoản này được bảo vệ")"><partial name="_AdminTrashIcon" /></button></form>
+                                </div></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <partial name="_AdminListPagination" model="@((Model.Count, pageNumber, pageSize))" />
+        }
+    </div>
+    @for (var index = 0; index < visibleUsers.Count; index++)
+    {
+        var user = visibleUsers[index];
+        if (user.IsAdmin || user.Id == actorId) { continue; }
+        <div class="modal fade admin-list-modal" id="admin-user-manage-@index" tabindex="-1" aria-labelledby="admin-user-title-@index" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"><div class="modal-content">
+                <div class="modal-header"><div><h2 class="modal-title" id="admin-user-title-@index">@user.FullName</h2><div class="small text-muted text-break mt-1">@user.Email</div></div><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Đóng"></button></div>
+                <div class="modal-body">
+                    <section><h3>Quyền truy cập</h3><div class="admin-list-permissions">
+                        <form asp-area="Admin" asp-controller="Users" asp-action="Inspector" method="post"><input type="hidden" name="id" value="@user.Id" /><input type="hidden" name="enabled" value="@(user.IsInspector ? "false" : "true")" /><button class="btn btn-sm btn-outline-wine" type="submit">@(user.IsInspector ? "Thu hồi quyền kiểm định" : "Cấp quyền kiểm định")</button></form>
+                        @if (user.IsInspector)
+                        {
+                            <form asp-area="Admin" asp-controller="Users" asp-action="PublishGrant" method="post"><input type="hidden" name="id" value="@user.Id" /><input type="hidden" name="enabled" value="@(user.HasDirectPublishGrant ? "false" : "true")" /><button class="btn btn-sm btn-outline-wine" type="submit">@(user.HasDirectPublishGrant ? "Thu hồi quyền đăng bán" : "Cấp quyền đăng bán")</button></form>
+                        }
+                    </div></section>
+                    <section><h3>Điểm tín nhiệm</h3>
+                        <form asp-action="Trust" method="post" class="row g-2">
+                            <input type="hidden" name="id" value="@user.Id" />
+                            <div class="col-4"><label class="form-label small" for="score-@user.Id">Điểm tín nhiệm</label><input id="score-@user.Id" class="form-control form-control-sm" type="number" name="score" min="0" max="100" value="@user.TrustScore" required /></div>
+                            <div class="col-8"><label class="form-label small" for="reason-@user.Id">Lý do điều chỉnh</label><input id="reason-@user.Id" class="form-control form-control-sm" name="reason" placeholder="Nhập lý do" minlength="5" maxlength="500" required /></div>
+                            <div class="col-12"><button class="btn btn-outline-wine btn-sm" type="submit">Lưu điểm tín nhiệm</button></div>
+                        </form>
+                    </section>
+                    <section><h3>Trạng thái tài khoản</h3><form asp-area="Admin" asp-controller="Users" asp-action="Lock" method="post"><input type="hidden" name="id" value="@user.Id" /><input type="hidden" name="locked" value="@(user.IsLocked ? "false" : "true")" /><button class="btn btn-sm @(user.IsLocked ? "btn-outline-success" : "btn-outline-danger")" type="submit">@(user.IsLocked ? "Mở khóa tài khoản" : "Khóa tài khoản")</button></form></section>
+                </div>
+            </div></div>
+        </div>
+    }
+</div>
+@section Scripts { <script src="~/js/admin-bulk.js" asp-append-version="true"></script> }

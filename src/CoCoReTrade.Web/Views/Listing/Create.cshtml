@@ -1,0 +1,55 @@
+@model ListingForm
+@{ ViewData["Title"] = "Ký gửi món đồ"; }
+<div class="consign-form-page consign-create-page">
+    <header class="listing-editorial-heading">
+        <h1>Ký gửi cùng CoCo</h1>
+        <a class="listing-closet-link" asp-action="Closet">Tủ đồ của tôi <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#arrow-right" /></svg></a>
+    </header>
+    <ol class="listing-progress coco-process-steps" aria-label="Ba bước ký gửi">
+        <li><span class="listing-progress-number coco-process-number" aria-hidden="true">01</span><strong class="coco-process-title">Gửi thông tin và chờ duyệt sơ bộ</strong></li>
+        <li><span class="listing-progress-number coco-process-number" aria-hidden="true">02</span><strong class="coco-process-title">Được duyệt sơ bộ và gửi sản phẩm đến CoCo</strong></li>
+        <li><span class="listing-progress-number coco-process-number" aria-hidden="true">03</span><strong class="coco-process-title">CoCo kiểm định thực tế, duyệt và đăng bán</strong></li>
+    </ol>
+    <form asp-action="Create" method="post" enctype="multipart/form-data" class="listing-form">
+        <div asp-validation-summary="ModelOnly" class="text-danger listing-validation" role="alert"></div>
+        <section class="listing-photo-section" aria-labelledby="photos-title">
+            <h2 id="photos-title"><label asp-for="Images">Ảnh món đồ</label></h2>
+            <div class="upload-panel listing-photo-dropzone" data-photo-dropzone>
+                <input asp-for="Images" class="listing-photo-input" type="file" accept="image/jpeg,image/png,image/webp" multiple required data-preview="photoPreview" data-max-files="10" aria-describedby="images-help" />
+                <div class="listing-photo-prompt"><span class="listing-upload-symbol" aria-hidden="true">+</span><strong>Kéo thả ảnh vào đây hoặc bấm để chọn ảnh</strong><span id="images-help">JPG, PNG hoặc WebP · 3–10 ảnh</span></div>
+            </div>
+            <span asp-validation-for="Images" class="text-danger small"></span>
+            <div id="photoPreview" class="photo-preview"></div>
+            <button type="button" class="btn btn-outline-wine" data-photo-add>Thêm ảnh</button>
+        </section>
+        <div class="listing-details-grid">
+            <section class="listing-section listing-info-section" aria-labelledby="product-info-title">
+                <h2 id="product-info-title">Giới thiệu món đồ</h2>
+                <div class="listing-info-grid">
+                    <div class="listing-field"><label asp-for="Name" class="form-label"></label><input asp-for="Name" class="form-control" /><span asp-validation-for="Name" class="text-danger small"></span></div>
+                    <div class="listing-field"><label asp-for="Brand" class="form-label"></label><input asp-for="Brand" class="form-control" /><span asp-validation-for="Brand" class="text-danger small"></span></div>
+                    <div class="listing-field"><label asp-for="Category" class="form-label"></label><select asp-for="Category" class="form-select" data-listing-category><partial name="_CategoryOptions" model="Model.Category" /></select><span asp-validation-for="Category" class="text-danger small"></span></div>
+                    <div class="listing-field"><partial name="_ProductSizeInput" model="@(new ProductSizeInput(Model.Category, Model.Size, false))" /></div>
+                    <div class="listing-field"><label asp-for="ConditionPercent" class="form-label"></label><select asp-for="ConditionPercent" class="form-select"><option value="99">Như mới 99%</option><option value="95">Rất tốt 95%</option><option value="90">Tốt 90%</option><option value="85">Khá 85%</option><option value="80">Đã qua sử dụng 80%</option></select><span asp-validation-for="ConditionPercent" class="text-danger small"></span></div>
+                    <div class="listing-field"><label asp-for="Color" class="form-label"></label><input asp-for="Color" class="form-control" maxlength="80" /><span asp-validation-for="Color" class="text-danger small"></span></div>
+                    <div class="listing-field listing-description"><label asp-for="Description" class="form-label"></label><textarea asp-for="Description" class="form-control" rows="4" maxlength="2000"></textarea><span asp-validation-for="Description" class="text-danger small"></span></div>
+                </div>
+            </section>
+            <section class="listing-section listing-price-section" aria-labelledby="price-title">
+                <h2 id="price-title">Mức giá bán mong muốn</h2>
+                <div class="listing-price-fields">
+                    <div class="listing-field"><label asp-for="OriginalPrice" class="form-label"></label><div class="input-group"><input asp-for="OriginalPrice" class="form-control" type="text" inputmode="numeric" autocomplete="off" data-vnd-price /><span class="input-group-text">VNĐ</span></div><span asp-validation-for="OriginalPrice" class="text-danger small"></span></div>
+                    <div class="listing-field"><label asp-for="AskingPrice" class="form-label"></label><div class="input-group"><input asp-for="AskingPrice" class="form-control" type="text" inputmode="numeric" autocomplete="off" data-vnd-price /><span class="input-group-text">VNĐ</span></div><span asp-validation-for="AskingPrice" class="text-danger small"></span></div>
+                </div>
+                <div class="listing-options">
+                    <div class="form-check form-switch"><input asp-for="AllowOffers" class="form-check-input" role="switch" /><label asp-for="AllowOffers" class="form-check-label">Cho phép người mua đề xuất giá</label></div>
+                    <div class="listing-acknowledgement">
+                        <div class="form-check form-switch"><input asp-for="AcknowledgedDeliveryInstructions" class="form-check-input" role="switch" required data-listing-ack /><label asp-for="AcknowledgedDeliveryInstructions" class="form-check-label">Sau khi CoCo duyệt sơ bộ, bạn cần mang hoặc gửi sản phẩm đến cửa hàng trong <strong>3 ngày</strong>. Nếu gửi qua đơn vị vận chuyển, bạn cần <strong>trả trước cước gửi</strong>, không yêu cầu CoCo thanh toán khi nhận và ghi rõ <strong>tên tài khoản của bạn trên website COCO RETRADE cùng số điện thoại</strong> trên kiện hàng để thuận tiện đối chiếu thông tin.</label></div>
+                        <span asp-validation-for="AcknowledgedDeliveryInstructions" class="text-danger small"></span>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="listing-submit"><button type="submit" class="btn btn-wine" data-listing-submit>Gửi duyệt sơ bộ <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#arrow-right" /></svg></button></div>
+    </form>
+</div>

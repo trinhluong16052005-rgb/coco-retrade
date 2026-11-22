@@ -1,0 +1,48 @@
+@model MakeOfferForm
+@{
+    var product = (ProductDetails)ViewBag.Product;
+    decimal minimum = (decimal)ViewBag.MinimumPrice;
+    ViewData["Title"] = "Đề xuất giá " + product.Name;
+    Guid? firstImage = product.ImageIds.Count > 0 ? product.ImageIds[0] : null;
+    var productSummary = (product.Name, product.Sku, product.AskingPrice, firstImage);
+}
+
+<section class="offer-page" aria-labelledby="offer-title">
+    <header class="offer-heading">
+        <a class="text-link offer-back" asp-controller="Shop" asp-action="Details" asp-route-id="@product.Id">
+            <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#arrow-right" /></svg>Quay lại
+        </a>
+        <div class="offer-title-row">
+            <h1 id="offer-title"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#tag" /></svg>Đề xuất giá cho món đồ</h1>
+        </div>
+        <p>Gửi mức giá phù hợp với bạn để người bán xem xét.</p>
+    </header>
+
+    <div class="offer-layout">
+        <div class="offer-panel offer-main">
+            <partial name="_OfferProduct" model="productSummary" />
+            <form asp-controller="Offers" asp-action="Make" method="post" class="offer-counter">
+                <input asp-for="ProductId" type="hidden" />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <label asp-for="Price" class="form-label fw-semibold"></label>
+                <div class="input-group">
+                    <input asp-for="Price" type="text" inputmode="numeric" autocomplete="off" data-vnd-price required class="form-control" aria-describedby="offer-price-range" />
+                    <span class="input-group-text">VNĐ</span>
+                </div>
+                <span asp-validation-for="Price" class="text-danger small"></span>
+                <div class="offer-note" id="offer-price-range">
+                    <p>Mức giá hợp lệ từ <strong>@minimum.ToString("N0") VNĐ</strong> đến <strong>@((product.AskingPrice - 1).ToString("N0")) VNĐ</strong>.</p>
+                    <p>Bạn có tối đa 3 lượt gửi giá. Người bán có 24 giờ để phản hồi.</p>
+                </div>
+                <div class="offer-action-pair">
+                    <a class="btn btn-outline-wine offer-secondary" asp-controller="Shop" asp-action="Details" asp-route-id="@product.Id">Hủy bỏ</a>
+                    <button class="btn btn-wine" type="submit">Gửi đề xuất giá</button>
+                </div>
+            </form>
+        </div>
+
+        <aside class="offer-sidebar">
+            <partial name="_OfferProcess" />
+        </aside>
+    </div>
+</section>

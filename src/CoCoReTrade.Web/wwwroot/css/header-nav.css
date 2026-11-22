@@ -1,0 +1,38 @@
+/* Keep storefront navigation visible without crowding the logo or account tools. */
+@media (min-width: 768px) and (max-width: 991px) {
+    .storefront .market-header {
+        height: auto;
+        min-height: 104px;
+        grid-template-rows: 60px auto;
+        gap: 0 10px;
+    }
+
+    .storefront .market-header .brand {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .storefront .market-header .header-actions {
+        grid-column: 3;
+        grid-row: 1;
+        gap: 10px;
+    }
+
+    .storefront .market-header .header-browse {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        width: 100%;
+        max-width: 100%;
+        justify-content: center;
+        gap: 18px;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+    }
+
+    .storefront .market-header .header-main-link {
+        display: inline-flex !important;
+        flex: 0 0 auto;
+        min-height: 44px;
+        font-size: .75rem;
+    }
+}

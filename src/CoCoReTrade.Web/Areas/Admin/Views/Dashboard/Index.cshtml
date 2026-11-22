@@ -1,0 +1,71 @@
+@model AdminDashboardOverview
+@inject Microsoft.AspNetCore.Authorization.IAuthorizationService Authorization
+@{
+    ViewData["Title"] = "Tổng quan quản trị";
+    var manageProducts = (await Authorization.AuthorizeAsync(User, null, StaffPermissions.ManageProducts)).Succeeded;
+    var updated = Model.UpdatedAtUtc.AddHours(7);
+    string? Destination(string key) => key switch {
+        "pending" => Url.Action("Index", "Inspection", new { area = "Admin" }),
+        "active" when manageProducts => Url.Action("Index", "Products", new { area = "Admin", status = ProductStatus.Active }),
+        "held" when Model.CanViewOrders => Url.Action("HeldPickups", "Orders", new { area = "Admin" }),
+        "shipping" when Model.CanViewOrders => Url.Action("Index", "Orders", new { area = "Admin", group = "shipping" }),
+        "sold" when Model.CanViewOrders => Url.Action("Index", "Orders", new { area = "Admin", group = "completed" }),
+        "withdrawals" when Model.CanViewFinancials => Url.Action("Index", "Wallets", new { area = "Admin", status = "actionRequired" }) + "#withdrawals",
+        _ => null };
+    string Icon(string key) => key switch { "pending" => "clipboard", "active" => "hanger", "held" => "clock", "shipping" => "package", "sold" => "check", _ => "wallet" };
+}
+<div class="coco-dashboard" data-dashboard>
+    <header class="dashboard-heading">
+        <div><span class="eyebrow">Hiệu quả kinh doanh và vận hành</span><h1>Tổng quan</h1></div>
+        <span class="dashboard-updated">Cập nhật <time data-dashboard-updated datetime="@Model.UpdatedAtUtc.ToString("o")">@updated.ToString("HH:mm, dd/MM/yyyy")</time></span>
+    </header>
+    <div asp-validation-summary="All" class="text-danger small" role="alert"></div>
+    <form method="get" class="dashboard-filter" data-dashboard-filter>
+        <div class="dashboard-filter-field"><label for="dashboard-period">Khoảng thời gian</label><select name="period" id="dashboard-period">@foreach (var option in new[] { ("7d", "7 ngày"), ("30d", "30 ngày"), ("3m", "3 tháng"), ("12m", "12 tháng"), ("custom", "Tùy chọn khoảng ngày") }) { <option value="@option.Item1" selected="@(Model.Range.Period == option.Item1)">@option.Item2</option> }</select></div>
+        <div class="dashboard-custom-dates" data-dashboard-custom hidden="@(Model.Range.Period != "custom")">
+            <div class="dashboard-filter-field"><label for="dashboard-from">Từ ngày</label><input id="dashboard-from" type="date" name="from" value="@Model.Range.From.ToString("yyyy-MM-dd")" max="@Model.Range.Today.ToString("yyyy-MM-dd")" min="2000-01-01" required /></div>
+            <div class="dashboard-filter-field"><label for="dashboard-through">Đến ngày</label><input id="dashboard-through" type="date" name="through" value="@Model.Range.Through.ToString("yyyy-MM-dd")" max="@Model.Range.Today.ToString("yyyy-MM-dd")" required /></div>
+        </div>
+        <button type="submit" class="btn btn-wine dashboard-refresh"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#filter" /></svg> Cập nhật</button>
+        <div class="dashboard-range"><strong data-dashboard-range>@Model.Range.From.ToString("dd/MM/yyyy") – @Model.Range.Through.ToString("dd/MM/yyyy")</strong><span data-dashboard-previous>So với @Model.Range.PreviousFrom.ToString("dd/MM/yyyy") – @Model.Range.PreviousThrough.ToString("dd/MM/yyyy")</span></div>
+    </form>
+    <p class="dashboard-feedback" data-dashboard-feedback role="status" aria-live="polite" hidden></p>
+    <div class="dashboard-metrics" aria-label="Sáu chỉ số vận hành">
+        @foreach (var metric in Model.Metrics)
+        {
+            <a class="dashboard-metric" href="@Destination(metric.Key)" data-metric="@metric.Key" title="Xem tất cả: @metric.Label">
+                <div class="dashboard-metric-top"><span class="dashboard-metric-icon @metric.Key"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#@Icon(metric.Key)" /></svg></span><h2>@metric.Label</h2></div>
+                <strong class="dashboard-metric-value" data-measure-value>@(metric.Value?.ToString("N0") ?? "—")</strong>
+                <partial name="_MeasureChange" model="metric" />
+            </a>
+        }
+    </div>
+    @if (Model.Business.Count > 0)
+    {
+        <section class="dashboard-business" aria-label="Kết quả kinh doanh trong kỳ">
+            @foreach (var metric in Model.Business)
+            {
+                <div data-business="@metric.Key"><h2>@metric.Label</h2><strong data-measure-value>@metric.Value?.ToString("N0")@(metric.Currency ? " ₫" : "")</strong><partial name="_MeasureChange" model="metric" /></div>
+            }
+        </section>
+    }
+    <div class="dashboard-charts">
+        @if (Model.CanViewFinancials)
+        {
+            <section class="dashboard-chart-card" aria-labelledby="dashboard-revenue-title"><div class="dashboard-chart-heading"><div><h2 id="dashboard-revenue-title">Doanh thu và hoa hồng</h2></div><span>VNĐ</span></div><div class="dashboard-chart-legend"><span><i style="--series:#ff3366"></i>Doanh thu tiền hàng</span><span><i style="--series:#5967b0"></i>Hoa hồng CoCo</span></div><div class="dashboard-canvas"><canvas data-chart="revenue" role="img" aria-label="Xu hướng doanh thu tiền hàng và hoa hồng CoCo theo thời gian"></canvas></div></section>
+        }
+        <section class="dashboard-chart-card" aria-labelledby="dashboard-sales-title"><div class="dashboard-chart-heading"><div><h2 id="dashboard-sales-title">Đơn hàng và sản phẩm đã bán</h2></div></div><div class="dashboard-chart-legend">@if (Model.CanViewOrders) { <span><i style="--series:#f49ab1"></i>Đơn hàng mới</span> }<span><i style="--series:#5666a5"></i>Sản phẩm đã bán</span></div><div class="dashboard-canvas"><canvas data-chart="sales" role="img" aria-label="Số đơn hàng mới và sản phẩm bán thành công"></canvas></div></section>
+        @if (Model.CanViewOrders)
+        {
+            <section class="dashboard-chart-card" aria-labelledby="dashboard-orders-title"><div class="dashboard-chart-heading"><div><h2 id="dashboard-orders-title">Trạng thái đơn hàng</h2></div></div><div class="dashboard-donut-layout"><div class="dashboard-canvas dashboard-donut"><canvas data-chart="orders" role="img" aria-label="Tỷ lệ đơn hàng theo từng trạng thái"></canvas><p class="dashboard-chart-empty" data-orders-empty hidden>Chưa có đơn hàng trong khoảng ngày này.</p></div><ul class="dashboard-status-legend" data-order-legend>@foreach (var state in Model.OrderStatuses) { <li data-state="@state.Key"><span><i></i>@state.Label</span><strong>@state.Count.ToString("N0")</strong></li> }</ul></div></section>
+        }
+        <section class="dashboard-chart-card" aria-labelledby="dashboard-products-title"><div class="dashboard-chart-heading"><div><h2 id="dashboard-products-title">Tình hình sản phẩm</h2></div></div><div class="dashboard-canvas"><canvas data-chart="products" role="img" aria-label="Sản phẩm đang bán, đã bán và ký gửi chờ duyệt"></canvas></div><div class="dashboard-chart-legend">@foreach (var state in Model.ProductStatuses) { <span data-product-state="@state.Key">@state.Label: <strong>@state.Count.ToString("N0")</strong></span> }</div></section>
+    </div>
+    <details class="dashboard-data-table"><summary>Xem bảng số liệu theo thời gian</summary><div class="table-responsive"><table class="table"><caption class="visually-hidden">Số liệu dùng cho biểu đồ trong khoảng ngày đã chọn</caption><thead><tr><th scope="col">Thời gian</th>@if (Model.CanViewFinancials) { <th scope="col">Doanh thu tiền hàng</th><th scope="col">Hoa hồng CoCo</th> }@if (Model.CanViewOrders) { <th scope="col">Đơn hàng mới</th> }<th scope="col">Sản phẩm đã bán</th></tr></thead><tbody data-dashboard-table>@foreach (var bucket in Model.Series) { <tr><th scope="row">@bucket.Label</th>@if (Model.CanViewFinancials) { <td>@bucket.Revenue?.ToString("N0") ₫</td><td>@bucket.Commission?.ToString("N0") ₫</td> }@if (Model.CanViewOrders) { <td>@bucket.NewOrders?.ToString("N0")</td> }<td>@bucket.SoldProducts.ToString("N0")</td></tr> }</tbody></table></div></details>
+    <noscript><p class="dashboard-scope">Chọn bộ lọc rồi nhấn Cập nhật để xem chỉ số và bảng số liệu.</p></noscript>
+    <script id="dashboard-data" type="application/json">@Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model, new System.Text.Json.JsonSerializerOptions(System.Text.Json.JsonSerializerDefaults.Web)))</script>
+</div>
+@section Scripts {
+    <script src="~/lib/chartjs/chart.umd.min.js" defer></script>
+    <script src="~/js/admin-dashboard.js" asp-append-version="true" defer></script>
+}

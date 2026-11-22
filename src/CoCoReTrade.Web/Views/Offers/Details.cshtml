@@ -1,0 +1,132 @@
+@model OfferDto
+@{
+    ViewData["Title"] = "Thương lượng giá " + Model.ProductSku;
+    var me = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+    var myTurn = (Model.Status == OfferStatus.PendingSeller && me == Model.SellerId)
+        || (Model.Status == OfferStatus.PendingBuyer && me == Model.BuyerId);
+    var canCounter = Model.CounterMinimumPrice.HasValue && Model.CounterMaximumPrice.HasValue;
+    var product = (ProductDetails?)ViewBag.Product;
+    Guid? firstImage = product is { ImageIds.Count: > 0 } ? product.ImageIds[0] : null;
+    var productSummary = (Model.ProductName, Model.ProductSku, Model.AskingPrice, firstImage);
+}
+
+<section class="offer-page" aria-labelledby="offer-title">
+    <header class="offer-heading">
+        <a class="text-link offer-back" asp-controller="Offers" asp-action="Index">
+            <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#arrow-right" /></svg>Quay lại
+        </a>
+        <div class="offer-title-row">
+            <h1 id="offer-title"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#tag" /></svg>Thương lượng giá</h1>
+            <span class="status-pill @Model.Status">@UiText.For(Model.Status)</span>
+        </div>
+        <p>Bạn đang tham gia với vai trò @(me == Model.SellerId ? "người bán" : "người mua"). Theo dõi mức giá và phản hồi cho món đồ này.</p>
+    </header>
+
+    <div class="offer-layout">
+        <div class="offer-panel offer-main">
+            <partial name="_OfferProduct" model="productSummary" />
+            <dl class="offer-stats">
+                <div>
+                    <dt><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#tag" /></svg>Giá đang thương lượng</dt>
+                    <dd class="offer-negotiated-price">@Model.CurrentPrice.ToString("N0") VNĐ</dd>
+                </div>
+                <div>
+                    <dt><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#clock" /></svg>Hạn phản hồi hoặc đặt hàng</dt>
+                    <dd>@Model.ExpiresAtUtc.ToLocalTime().ToString("dd/MM/yyyy HH:mm")</dd>
+                </div>
+                <div>
+                    <dt><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#message" /></svg>Lượt gửi giá của người mua</dt>
+                    <dd>@Model.BuyerOffersUsed / 3</dd>
+                </div>
+            </dl>
+
+            @if (Model.Status == OfferStatus.Accepted)
+            {
+                <div class="offer-note">Giá @Model.AcceptedPrice?.ToString("N0") VNĐ dành riêng cho người mua này trong 24 giờ.</div>
+                @if ((bool?)ViewBag.PreviewMode == true)
+                {
+                    <a asp-controller="Preview" asp-action="Checkout" class="btn btn-wine w-100">Xem thông tin đặt hàng</a>
+                }
+                else if (me == Model.BuyerId)
+                {
+                    <a asp-controller="Checkout" asp-action="Index" asp-route-productId="@Model.ProductId" asp-route-offerId="@Model.Id" class="btn btn-wine w-100">Tiến hành đặt hàng</a>
+                    <p class="offer-help">Bạn sẽ chọn cách nhận hàng khi đặt đơn. Nếu nhận tại CoCo, cửa hàng giữ món đồ sau khi bạn xác nhận đơn. Khi hết hạn giữ hàng, đơn chưa nhận và chưa thanh toán sẽ được hủy, món đồ mở bán lại theo giá niêm yết.</p>
+                }
+            }
+            else if (myTurn)
+            {
+                @if (canCounter)
+                {
+                    <form asp-action="Respond" asp-route-id="@Model.Id" method="post" class="offer-counter">
+                        <input type="hidden" name="action" value="Counter" />
+                        <label for="counterPrice" class="form-label fw-semibold">Mức giá bạn đề xuất</label>
+                        <div class="offer-price-entry">
+                            <div class="input-group">
+                                <input id="counterPrice" name="price" type="text" inputmode="numeric" autocomplete="off" data-vnd-price required class="form-control" aria-describedby="offer-price-range" />
+                                <span class="input-group-text">VNĐ</span>
+                            </div>
+                            <button class="btn btn-wine" type="submit">Gửi đề xuất</button>
+                        </div>
+                        <div class="offer-note" id="offer-price-range">
+                            <p>Mức giá hợp lệ từ <strong>@Model.CounterMinimumPrice.GetValueOrDefault().ToString("N0") VNĐ</strong> đến <strong>@Model.CounterMaximumPrice.GetValueOrDefault().ToString("N0") VNĐ</strong>.</p>
+                            <p>Đến lượt bạn phản hồi. Mỗi đề xuất có hiệu lực 24 giờ.</p>
+                        </div>
+                    </form>
+                }
+                else if (me == Model.BuyerId && Model.BuyerOffersUsed >= 3)
+                {
+                    <div class="offer-note">Bạn đã dùng hết 3 lượt gửi giá. Bạn vẫn có thể đồng ý hoặc từ chối mức giá hiện tại.</div>
+                }
+                else
+                {
+                    <div class="offer-note">Khoảng giá hợp lệ đã hết. Bạn có thể đồng ý hoặc từ chối mức giá hiện tại.</div>
+                }
+
+                <div class="offer-action-pair">
+                    <form asp-action="Respond" asp-route-id="@Model.Id" method="post">
+                        <input type="hidden" name="action" value="Decline" />
+                        <button class="btn btn-outline-wine offer-secondary" type="submit">Từ chối</button>
+                    </form>
+                    <form asp-action="Respond" asp-route-id="@Model.Id" method="post">
+                        <input type="hidden" name="action" value="Accept" />
+                        <button class="btn btn-wine" type="submit">Đồng ý mức giá hiện tại</button>
+                    </form>
+                </div>
+            }
+            else if (Model.Status is OfferStatus.PendingSeller or OfferStatus.PendingBuyer)
+            {
+                <div class="offer-note">Đang chờ phản hồi từ người còn lại.</div>
+            }
+            else
+            {
+                <div class="offer-note">Phiên thương lượng đã kết thúc.</div>
+            }
+        </div>
+
+        <aside class="offer-sidebar">
+            <section class="offer-panel" aria-labelledby="offer-history-title">
+                <h2 id="offer-history-title">Lịch sử thương lượng</h2>
+                @if (Model.Events.Count == 0)
+                {
+                    <p class="offer-help">Chưa có cập nhật.</p>
+                }
+                else
+                {
+                    <ol class="offer-timeline">
+                        @foreach (var entry in Model.Events)
+                        {
+                            <li>
+                                <p><time datetime="@entry.CreatedAtUtc.ToString("O")">@entry.CreatedAtUtc.ToLocalTime().ToString("dd/MM HH:mm")</time> · @(entry.ActorId == me ? "Bạn" : "Đối phương")</p>
+                                <div class="offer-timeline-entry">
+                                    <strong>@UiText.For(entry.Action)</strong>
+                                    @if (entry.Price.HasValue) { <span>@entry.Price.Value.ToString("N0") VNĐ</span> }
+                                </div>
+                            </li>
+                        }
+                    </ol>
+                }
+            </section>
+            <partial name="_OfferProcess" />
+        </aside>
+    </div>
+</section>
