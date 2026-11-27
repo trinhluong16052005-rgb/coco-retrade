@@ -1,5 +1,7 @@
 # Mã nguồn COCO RETRADE
 
+**Bắt đầu tại đây:** [Hướng dẫn cài đặt và sử dụng cho người mua, người ký gửi, Admin](HUONG_DAN_CAI_DAT_VA_SU_DUNG.md).
+
 Hướng dẫn nhận dữ liệu và chạy từ GitHub: [docs/CHAY-TU-GITHUB.md](docs/CHAY-TU-GITHUB.md).
 
 Bản bàn giao đầy đủ, gồm mã nguồn, SQL và ảnh/video: [Tải ZIP trong Releases](https://github.com/trinhluong16052005-rgb/coco-retrade/releases/tag/ban-giao-20261122).
